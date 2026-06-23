@@ -73,6 +73,20 @@ const SEED_SUGGESTIONS = [
     tags: ["2区", "HQ-T1", "NEW", "NI期刊", "Q1", "SCIE", "新锐2区", "高质量目录"],
   },
   {
+    id: 753,
+    title: "ENVIRONMENTAL POLLUTION",
+    issn: "0269-7491",
+    eissn: "1873-6424",
+    if_2023: 7.2,
+    if_year: "2025",
+    jcr_quartile: "Q1",
+    cas_2025: "2\u533a",
+    is_top: false,
+    hq_level: "",
+    ni_journal: false,
+    tags: ["2\u533a", "Q1", "SCIE"],
+  },
+  {
     id: 496,
     title: "Journal of Cleaner Production",
     issn: "0959-6526",
@@ -247,6 +261,10 @@ function getAbbrVariants(row) {
   return variants;
 }
 
+function isCuratedAbbrPriority(row, abbrQuery) {
+  return abbrQuery === "ep" && Number(row?.id) === 753;
+}
+
 function yearNum(v) {
   const n = Number(String(v || "").replace(/[^\d]/g, ""));
   return Number.isFinite(n) ? n : 0;
@@ -318,10 +336,11 @@ function scoreRow(row, query) {
   let score = 0;
   if (title === q) score += 1000;
   if (issn === q || eissn === q || cn === q) score += 950;
+  if (isCuratedAbbrPriority(row, qAbbr)) score += 900;
+  if (abbrExact) score += 520;
+  else if (abbrPrefix) score += 430;
   if (title.startsWith(q)) score += 450;
   if (issn.startsWith(q) || eissn.startsWith(q) || cn.startsWith(q)) score += 330;
-  if (abbrExact) score += 280;
-  else if (abbrPrefix) score += 220;
   if (q.length >= 3 && title.includes(q)) score += 180;
   if (q.length >= 3 && getHaystack(row).includes(q)) score += 70;
   if (row.if_2023 !== null && row.if_2023 !== undefined) score += Math.min(80, Number(row.if_2023) / 8);
