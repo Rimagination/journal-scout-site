@@ -166,7 +166,8 @@ const pageState = {
 };
 
 const API_BASE = getApiBase();
-const DETAIL_API_TIMEOUT_MS = 6000;
+const DETAIL_API_TIMEOUT_MS = 15000;
+const DETAIL_API_RETRY_DELAY_MS = 500;
 const STATIC_DATA_FALLBACK_ENABLED =
   window.JOURNAL_SCOUT_ALLOW_STATIC_DATA === true ||
   new URLSearchParams(window.location.search).get("staticData") === "1";
@@ -5249,30 +5250,64 @@ function toSafeBucket(id, chunkCount) {
   return Math.abs(Math.trunc(n)) % chunkCount;
 }
 
+function sleep(ms) {
+  return new Promise((resolve) => window.setTimeout(resolve, ms));
+}
+
+async function fetchApiJsonWithTimeout(url, timeoutMs = 4500, fetchOptions = {}) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    const resp = await fetch(url, { ...fetchOptions, signal: controller.signal });
+    const payload = await resp.json().catch(() => null);
+    if (!resp.ok) {
+      const error = new Error(payload?.error || `api_http_${resp.status}`);
+      error.status = resp.status;
+      error.payload = payload;
+      throw error;
+    }
+    return payload;
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+function isTransientDetailApiError(error) {
+  const name = String(error?.name || "");
+  const message = String(error?.message || "");
+  return name === "AbortError" || /network|fetch|failed|abort|unreachable|timeout/i.test(message);
+}
+
 async function fetchJournalDetailFromApi(id) {
   const url = new URL(`${API_BASE}/journals/detail`);
   url.searchParams.set("id", String(id));
-  const controller = new AbortController();
-  const timer = window.setTimeout(() => controller.abort(), DETAIL_API_TIMEOUT_MS);
-  try {
-    const payload = await fetchJsonWithTimeout(url.toString(), DETAIL_API_TIMEOUT_MS, {
-      headers: { Accept: "application/json" },
-      signal: controller.signal,
-    });
-    const row = payload?.journal || payload?.row || null;
-    if (!payload?.ok || !row) {
-      throw new Error(payload?.error || "journal_detail_not_found");
+  for (let attempt = 0; attempt < 2; attempt += 1) {
+    try {
+      const payload = await fetchApiJsonWithTimeout(url.toString(), DETAIL_API_TIMEOUT_MS, {
+        headers: { Accept: "application/json" },
+      });
+      if (!payload) throw new Error("journal_detail_unreachable");
+
+      const row = payload?.journal || payload?.row || null;
+      if (!payload?.ok || !row) {
+        throw new Error(payload?.error || "journal_detail_not_found");
+      }
+      return {
+        row,
+        meta: payload?.data || payload?.meta || {},
+        rows: Array.isArray(payload?.related) ? payload.related : [],
+        related: Array.isArray(payload?.related) ? payload.related : [],
+        source: payload?.source || "journal-detail-api",
+      };
+    } catch (error) {
+      if (attempt === 0 && isTransientDetailApiError(error)) {
+        await sleep(DETAIL_API_RETRY_DELAY_MS);
+        continue;
+      }
+      throw error;
     }
-    return {
-      row,
-      meta: payload?.data || payload?.meta || {},
-      rows: Array.isArray(payload?.related) ? payload.related : [],
-      related: Array.isArray(payload?.related) ? payload.related : [],
-      source: payload?.source || "journal-detail-api",
-    };
-  } finally {
-    window.clearTimeout(timer);
   }
+  throw new Error("journal_detail_unreachable");
 }
 
 async function loadJournalFromChunks(id) {
