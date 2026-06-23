@@ -2061,6 +2061,17 @@ h1 {
   stroke-width: 2.8;
 }
 
+.trend-point {
+  cursor: pointer;
+  outline: none;
+}
+
+.trend-point-hit {
+  fill: transparent;
+  stroke: transparent;
+  pointer-events: all;
+}
+
 .if-trend-dot {
   fill: #4f6fd0;
   stroke: #fff;
@@ -2190,6 +2201,47 @@ h1 {
   fill: #6a5b48;
   font-size: 12px;
   font-weight: 700;
+}
+
+.trend-point:hover .if-trend-dot,
+.trend-point:focus-visible .if-trend-dot,
+.trend-point.is-tip-active .if-trend-dot,
+.trend-point:hover .cas-trend-dot,
+.trend-point:focus-visible .cas-trend-dot,
+.trend-point.is-tip-active .cas-trend-dot,
+.trend-point:hover .annual-trend-dot,
+.trend-point:focus-visible .annual-trend-dot,
+.trend-point.is-tip-active .annual-trend-dot {
+  stroke-width: 2.4;
+  filter: drop-shadow(0 2px 4px rgba(18, 39, 73, 0.25));
+}
+
+.chart-point-tip[hidden] {
+  display: none;
+}
+
+.chart-point-tip {
+  position: fixed;
+  z-index: 120;
+  max-width: min(260px, calc(100vw - 24px));
+  padding: 8px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 8px;
+  background: #10233d;
+  color: #ffffff;
+  box-shadow: 0 14px 34px rgba(12, 28, 50, 0.24);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.35;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateX(-50%) translateY(4px);
+  transition: opacity 0.16s ease, transform 0.16s ease;
+}
+
+.chart-point-tip.is-visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }
 
 .detail-page .trend-panel-head {

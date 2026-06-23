@@ -148,6 +148,8 @@ const apcExchangeRateCache = new Map();
 const apcExchangeRateRequestCache = new Map();
 const publicationStartYearCache = new Map();
 const officialApcIndexCache = new Map();
+let chartPointTipEl = null;
+let activeChartTipPoint = null;
 const officialApcIndexRequestCache = new Map();
 const officialApcCatalogCache = new Map();
 const officialApcCatalogRequestCache = new Map();
@@ -3409,6 +3411,18 @@ function renderRow(j, meta) {
     .join("");
 }
 
+function buildTrendPoint({ x, y, radius, className, label }) {
+  const safeLabel = escapeHtml(label);
+  const xText = x.toFixed(2);
+  const yText = y.toFixed(2);
+  return `
+    <g class="trend-point" tabindex="0" role="button" aria-label="${safeLabel}" data-chart-tip="${safeLabel}">
+      <circle cx="${xText}" cy="${yText}" r="12" class="trend-point-hit" aria-hidden="true"></circle>
+      <circle cx="${xText}" cy="${yText}" r="${radius}" class="${className}"><title>${safeLabel}</title></circle>
+    </g>
+  `;
+}
+
 function buildIFTrend(ifRows) {
   const rows = ifRows
     .map((r) => ({ year: String(r.year || ""), value: numberOrNull(r.if_value) }))
@@ -3516,11 +3530,14 @@ function buildIFTrend(ifRows) {
     .join("");
 
   const pointDots = points
-    .map(
-      (p) =>
-        `<circle cx="${p.x.toFixed(2)}" cy="${p.y.toFixed(2)}" r="3.6" class="if-trend-dot"><title>${escapeHtml(
-          `${formatIFAcademicYear(p.year) || p.year} · IF ${p.value}`
-        )}</title></circle>`
+    .map((p) =>
+      buildTrendPoint({
+        x: p.x,
+        y: p.y,
+        radius: 3.6,
+        className: "if-trend-dot",
+        label: `${formatIFAcademicYear(p.year) || p.year} · IF ${p.value}`,
+      })
     )
     .join("");
 
@@ -3616,11 +3633,14 @@ function buildCASTrend(casRows) {
     .join("");
 
   const pointDots = points
-    .map(
-      (p) =>
-        `<circle cx="${p.x.toFixed(2)}" cy="${p.y.toFixed(2)}" r="3.8" class="cas-trend-dot"><title>${escapeHtml(
-          `${p.year} · 中科院${p.rankText || `${p.rank}区`}`
-        )}</title></circle>`
+    .map((p) =>
+      buildTrendPoint({
+        x: p.x,
+        y: p.y,
+        radius: 3.8,
+        className: "cas-trend-dot",
+        label: `${p.year} · 中科院${p.rankText || `${p.rank}区`}`,
+      })
     )
     .join("");
 
@@ -3746,11 +3766,14 @@ function buildAnnualTrend(annualRows) {
     .join("");
 
   const pointDots = points
-    .map(
-      (p) =>
-        `<circle cx="${p.x.toFixed(2)}" cy="${p.y.toFixed(2)}" r="3.8" class="annual-trend-dot"><title>${escapeHtml(
-          `${p.year} · 发文量 ${Math.round(p.value).toLocaleString()} 篇`
-        )}</title></circle>`
+    .map((p) =>
+      buildTrendPoint({
+        x: p.x,
+        y: p.y,
+        radius: 3.8,
+        className: "annual-trend-dot",
+        label: `${p.year} · 发文量 ${Math.round(p.value).toLocaleString()} 篇`,
+      })
     )
     .join("");
 
@@ -5045,6 +5068,7 @@ function closeSourceModal() {
 }
 
 function activateTrendChart(trendKey = "if") {
+  hideChartPointTip();
   const key = TREND_CHARTS[trendKey] ? trendKey : "if";
   const config = TREND_CHARTS[key];
 
@@ -5084,6 +5108,7 @@ function bindTrendTabs() {
 
 function openChartModal(chartId, chartTitle = "") {
   if (!els.chartModal || !els.chartModalBody || !els.chartModalTitle) return;
+  hideChartPointTip();
   const id = String(chartId || "").trim();
   const chart = id ? document.getElementById(id) : null;
   if (!chart) return;
@@ -5100,8 +5125,126 @@ function openChartModal(chartId, chartTitle = "") {
 
 function closeChartModal() {
   if (!els.chartModal || !els.chartModalBody) return;
+  hideChartPointTip();
   els.chartModal.hidden = true;
   els.chartModalBody.innerHTML = "";
+}
+
+function getChartPointTipEl() {
+  if (!chartPointTipEl) {
+    chartPointTipEl = document.createElement("div");
+    chartPointTipEl.className = "chart-point-tip";
+    chartPointTipEl.setAttribute("role", "status");
+    chartPointTipEl.setAttribute("aria-live", "polite");
+    chartPointTipEl.hidden = true;
+    document.body.appendChild(chartPointTipEl);
+  }
+  return chartPointTipEl;
+}
+
+function getChartTipPoint(target) {
+  return target instanceof Element ? target.closest("[data-chart-tip]") : null;
+}
+
+function positionChartPointTip(point, tipEl) {
+  const anchor = point.querySelector(".if-trend-dot, .cas-trend-dot, .annual-trend-dot") || point;
+  const rect = anchor.getBoundingClientRect();
+  if (!rect.width && !rect.height) return;
+
+  const margin = 8;
+  const gap = 10;
+  const tipWidth = tipEl.offsetWidth || 0;
+  const tipHeight = tipEl.offsetHeight || 0;
+  let left = rect.left + rect.width / 2;
+  let top = rect.top - tipHeight - gap;
+
+  if (tipWidth) {
+    left = Math.max(margin + tipWidth / 2, Math.min(window.innerWidth - margin - tipWidth / 2, left));
+  }
+  if (top < margin) {
+    top = rect.bottom + gap;
+  }
+  if (tipHeight && top + tipHeight > window.innerHeight - margin) {
+    top = window.innerHeight - tipHeight - margin;
+  }
+
+  tipEl.style.left = `${left}px`;
+  tipEl.style.top = `${Math.max(margin, top)}px`;
+}
+
+function showChartPointTip(point) {
+  const label = point?.dataset?.chartTip;
+  if (!label) return;
+  if (activeChartTipPoint && activeChartTipPoint !== point) {
+    activeChartTipPoint.classList.remove("is-tip-active");
+  }
+
+  const tipEl = getChartPointTipEl();
+  activeChartTipPoint = point;
+  point.classList.add("is-tip-active");
+  tipEl.textContent = label;
+  tipEl.hidden = false;
+  tipEl.classList.add("is-visible");
+  positionChartPointTip(point, tipEl);
+}
+
+function hideChartPointTip() {
+  if (activeChartTipPoint) {
+    activeChartTipPoint.classList.remove("is-tip-active");
+  }
+  activeChartTipPoint = null;
+  if (!chartPointTipEl) return;
+  chartPointTipEl.classList.remove("is-visible");
+  chartPointTipEl.hidden = true;
+}
+
+function bindChartPointTooltipEvents() {
+  document.addEventListener("click", (event) => {
+    const point = getChartTipPoint(event.target);
+    if (point) {
+      event.preventDefault();
+      showChartPointTip(point);
+      return;
+    }
+
+    const target = event.target instanceof Element ? event.target : null;
+    if (!target || !target.closest(".chart-point-tip")) {
+      hideChartPointTip();
+    }
+  });
+
+  document.addEventListener("focusin", (event) => {
+    const point = getChartTipPoint(event.target);
+    if (point) showChartPointTip(point);
+  });
+
+  document.addEventListener("focusout", (event) => {
+    const nextPoint = getChartTipPoint(event.relatedTarget);
+    if (!nextPoint) hideChartPointTip();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      hideChartPointTip();
+      return;
+    }
+
+    if (event.key !== "Enter" && event.key !== " ") return;
+    const point = getChartTipPoint(document.activeElement);
+    if (!point) return;
+    event.preventDefault();
+    showChartPointTip(point);
+  });
+
+  window.addEventListener("resize", () => {
+    if (activeChartTipPoint && document.body.contains(activeChartTipPoint)) {
+      positionChartPointTip(activeChartTipPoint, getChartPointTipEl());
+    } else {
+      hideChartPointTip();
+    }
+  });
+
+  document.addEventListener("scroll", hideChartPointTip, true);
 }
 
 function bindSourceModalEvents() {
@@ -5369,6 +5512,7 @@ async function bootstrap() {
   ensureDetailPageRevision();
   bindSourceModalEvents();
   bindChartModalEvents();
+  bindChartPointTooltipEvents();
   bindTrendTabs();
   bindSubmissionEvents();
   const { id, q } = getParams();
