@@ -1,0 +1,207 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Journal Scout - 期刊详情</title>
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+  <link rel="stylesheet" href="./styles.css?v=20260617-jcr-v31" />
+  <link rel="prefetch" href="./index.html" as="document" />
+</head>
+<body class="detail-page with-global-nav">
+  <nav class="scansci-global-nav">
+    <div class="brand-cluster">
+      <a class="brand" href="https://www.scansci.com/" target="_blank" rel="noreferrer">
+        <img class="brand-logo" src="./assets/brand/scansci-app-icon-64.png" alt="" aria-hidden="true">
+        <span>ScanSci 出品</span>
+      </a>
+      <span class="brand-divider" aria-hidden="true"></span>
+      <a class="product-brand" href="./index.html">Journal Scout<span class="product-brand__home" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M3.5 10.8 12 3.5l8.5 7.3"></path><path d="M5.8 10.2V21h12.4V10.2"></path><path d="M9.5 21v-5.6h5V21"></path></svg></span></a>
+    </div>
+    <details class="scansci-global-menu">
+      <summary>应用导航</summary>
+      <div class="scansci-global-menu__panel">
+        <a href="https://easyslides.scansci.com">EasySlides</a>
+        <a href="https://dataset.scansci.com">DataRaven</a>
+        <a href="./index.html">Journal Scout</a>
+        <a href="https://citation.scansci.com">Citation Lab</a>
+      </div>
+    </details>
+  </nav>
+  <header class="hero hero--detail">
+    <div class="hero__content">
+      <h1 id="title">加载中...</h1>
+      <p class="subtitle" id="subtitle">正在读取期刊信息</p>
+      <div class="tags" id="topTags"></div>
+    </div>
+  </header>
+
+  <main class="detail-main">
+    <aside class="detail-sidebar">
+      <section class="panel panel--wide panel--core">
+        <h2>核心信息</h2>
+        <div class="detail-grid detail-grid--wide" id="coreGrid"></div>
+      </section>
+
+      <section class="panel panel--wide panel--submission" hidden>
+        <h2>投稿参考</h2>
+        <div id="submissionPanel" class="submission-panel">
+          <p class="placeholder">正在加载投稿参考...</p>
+        </div>
+      </section>
+
+      <section class="panel panel--wide panel--hq">
+        <h2>科协高质量期刊分级 <button class="info-dot" type="button" data-info="hq" aria-label="查看数据说明">?</button></h2>
+        <div class="detail-grid" id="hqMetaGrid"></div>
+        <div id="hqRecordList" class="hq-record-list"></div>
+      </section>
+
+      <section class="panel panel--wide panel--evidence">
+        <h2>风险预警</h2>
+        <div id="paperEvidencePanel" class="paper-evidence-panel">
+          <p class="placeholder">正在加载风险预警...</p>
+        </div>
+      </section>
+    </aside>
+
+    <div class="detail-content">
+      <section class="panel panel--wide panel--spotlight">
+        <h2>期刊概览</h2>
+        <div class="spotlight-layout">
+          <div class="spotlight-visual">
+            <div class="spotlight-cover" id="spotlightCover"></div>
+          </div>
+          <div class="spotlight-content">
+            <div class="spotlight-link-row">
+              <a id="journalWebsite" class="spotlight-link" href="#" target="_blank" rel="noopener noreferrer">访问期刊官网</a>
+            </div>
+            <div class="spotlight-top">
+              <aside class="citescore-card impact-card" id="citeScoreCard">
+                <div class="impact-card__head">影响指标</div>
+                <div class="impact-card__numbers">
+                  <div class="impact-number impact-number--primary">
+                    <span class="impact-number__label">影响因子 IF <span id="impactIfNewBadge" class="if-new-badge" hidden>NEW</span></span>
+                    <div class="impact-if-row">
+                      <strong id="impactIfValue">-</strong>
+                      <span id="impactIfDelta" class="impact-if-delta" hidden></span>
+                    </div>
+                    <em id="impactIfMeta">-</em>
+                  </div>
+                  <div class="impact-number impact-number--predicted">
+                    <span class="impact-number__label">
+                      动态预测IF
+                      <button class="inline-info" type="button" data-info="predicted_if" aria-label="查看动态预测 IF 说明">?</button>
+                    </span>
+                    <strong id="predictedIfValue">-</strong>
+                    <em id="predictedIfMeta" class="is-muted">计算中</em>
+                  </div>
+                  <div class="impact-number impact-number--secondary">
+                    <span class="impact-number__label">
+                      CiteScore
+                      <button class="inline-info" type="button" data-info="citescore" aria-label="查看数据说明">?</button>
+                    </span>
+                    <strong><span id="citeScoreValue">-</span></strong>
+                    <em id="citeScoreMeta" class="is-muted">等待官方数据</em>
+                  </div>
+                </div>
+                <div class="citescore-metrics" id="citeScoreMetrics"></div>
+                <div class="citescore-stars" id="citeScoreStars"></div>
+                <div class="citescore-percent-row">
+                  <span class="citescore-percent-label" id="citeScorePercentLabel">学科百分位</span>
+                  <span class="citescore-percent-value" id="citeScorePercentValue">-</span>
+                </div>
+                <div class="citescore-percent-track"><span id="citeScorePercentFill"></span></div>
+                <div class="citescore-breakdown" id="citeScoreBreakdown"></div>
+                <div class="citescore-source" id="citeScoreSource">来源：待识别</div>
+              </aside>
+            </div>
+          </div>
+          <div class="detail-grid detail-grid--wide spotlight-grid spotlight-grid--under-cover" id="spotlightGrid">
+            <div class="kv">
+              <div class="k">出版商</div>
+              <div class="v is-muted" id="spotPublisher">待补充</div>
+            </div>
+            <div class="kv">
+              <div class="k">收录类型 <button class="inline-info" type="button" data-info="index_type" aria-label="查看收录类型说明">?</button></div>
+              <div class="v is-muted" id="spotIndexType">待补充</div>
+            </div>
+            <div class="kv">
+              <div class="k">OA模式 <button class="inline-info" type="button" data-info="oa" aria-label="查看 OA 模式说明">?</button></div>
+              <div class="v is-muted" id="spotOA">待补充</div>
+            </div>
+            <div class="kv">
+              <div class="k">OA发表APC <button class="inline-info" type="button" data-info="apc" aria-label="查看 APC 费用说明">?</button></div>
+              <div class="v is-muted" id="spotApc">暂无数据</div>
+            </div>
+            <div class="kv">
+              <div class="k">创刊参考年</div>
+              <div class="v is-muted" id="spotPublishYear">待补充</div>
+            </div>
+            <div class="kv">
+              <div class="k">年发文量 <button class="inline-info" type="button" data-info="annual_articles" aria-label="查看年发文量说明">?</button></div>
+              <div class="v is-muted" id="spotAnnualArticles">待补充</div>
+            </div>
+          </div>
+          <div class="spotlight-summary-wrap">
+            <p class="spotlight-summary" id="journalSummary"></p>
+          </div>
+        </div>
+      </section>
+
+      <aside class="detail-rail">
+        <section class="panel panel--wide panel--trend">
+          <div class="trend-panel-head">
+            <h2>历年评价趋势</h2>
+            <div class="trend-tabs" role="tablist" aria-label="历年评价趋势">
+              <button id="trendTabIf" class="trend-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="ifTrendChart" data-trend-tab="if">IF</button>
+              <button id="trendTabCas" class="trend-tab" type="button" role="tab" aria-selected="false" aria-controls="casTrendChart" data-trend-tab="cas">中科院</button>
+              <button id="trendTabAnnual" class="trend-tab" type="button" role="tab" aria-selected="false" aria-controls="annualTrendChart" data-trend-tab="annual">发文量</button>
+            </div>
+          </div>
+          <div class="trend-stage">
+            <div class="trend-stage-head">
+              <h3 id="trendStageTitle">IF 历年变化</h3>
+              <button id="trendStageZoom" class="chart-zoom-btn" type="button" data-chart-zoom="ifTrendChart" data-chart-title="IF 历年变化" data-tip="点击放大" aria-label="放大 IF 历年变化图">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <circle cx="11" cy="11" r="6.5"></circle>
+                  <line x1="16" y1="16" x2="21" y2="21"></line>
+                </svg>
+              </button>
+            </div>
+            <div id="trendStageChart" class="trend-stage-chart">
+              <div id="ifTrendChart" class="if-trend-chart trend-chart-pane is-active" role="tabpanel" aria-labelledby="trendTabIf"></div>
+              <div id="casTrendChart" class="cas-trend-chart trend-chart-pane" role="tabpanel" aria-labelledby="trendTabCas" hidden></div>
+              <div id="annualTrendChart" class="annual-trend-chart trend-chart-pane" role="tabpanel" aria-labelledby="trendTabAnnual" hidden></div>
+            </div>
+          </div>
+        </section>
+      </aside>
+
+      <section class="panel panel--wide panel--related">
+        <h2>相近期刊</h2>
+        <div id="relatedList" class="related-list"></div>
+      </section>
+    </div>
+  </main>
+
+  <div id="sourceModal" class="source-modal" hidden>
+    <div class="source-modal__backdrop" data-close-source></div>
+    <div class="source-modal__card" role="dialog" aria-modal="true" aria-labelledby="sourceModalTitle">
+      <button id="sourceModalClose" class="source-modal__close" type="button" aria-label="关闭">×</button>
+      <h3 id="sourceModalTitle">数据说明</h3>
+      <div id="sourceModalBody" class="source-modal__body"></div>
+    </div>
+  </div>
+
+  <div id="chartModal" class="chart-modal" hidden>
+    <div class="chart-modal__backdrop" data-close-chart></div>
+    <div class="chart-modal__card" role="dialog" aria-modal="true" aria-labelledby="chartModalTitle">
+      <button id="chartModalClose" class="chart-modal__close" type="button" aria-label="关闭">×</button>
+      <h3 id="chartModalTitle">图表大图</h3>
+      <div id="chartModalBody" class="chart-modal__body"></div>
+    </div>
+  </div>
+
+  <script src="./detail.js?v=20260617-jcr-v31"></script>
+</body>
+</html>

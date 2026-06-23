@@ -1,0 +1,80 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Journal Scout - 期刊查询</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont/style.css" rel="stylesheet" />
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+  <link rel="stylesheet" href="./styles.css?v=20260617-jcr-v31" />
+</head>
+<body class="search-page with-global-nav">
+  <nav class="scansci-global-nav">
+    <div class="brand-cluster">
+      <a class="brand" href="https://www.scansci.com/" target="_blank" rel="noreferrer">
+        <img class="brand-logo" src="./assets/brand/scansci-app-icon-64.png" alt="" aria-hidden="true">
+        <span>ScanSci 出品</span>
+      </a>
+      <span class="brand-divider" aria-hidden="true"></span>
+      <a class="product-brand" href="./index.html">Journal Scout<span class="product-brand__home" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M3.5 10.8 12 3.5l8.5 7.3"></path><path d="M5.8 10.2V21h12.4V10.2"></path><path d="M9.5 21v-5.6h5V21"></path></svg></span></a>
+    </div>
+    <details class="scansci-global-menu">
+      <summary>应用导航</summary>
+      <div class="scansci-global-menu__panel">
+        <a href="https://easyslides.scansci.com">EasySlides</a>
+        <a href="https://dataset.scansci.com">DataRaven</a>
+        <a href="./index.html">Journal Scout</a>
+        <a href="https://citation.scansci.com">Citation Lab</a>
+      </div>
+    </details>
+  </nav>
+  <main class="search-main">
+    <section class="search-shell search-shell--single">
+      <div class="single-hero">
+        <img class="single-logo" src="./assets/journal-logo.png" alt="JournalScout logo" />
+        <h1 class="single-title-en">JournalScout <span>期刊侦选</span></h1>
+        <p class="single-subtitle">从分区到风险一搜即明</p>
+      </div>
+      <div class="search-box search-box--single">
+        <span class="search-box__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" focusable="false">
+            <circle cx="11" cy="11" r="6.8"></circle>
+            <line x1="16" y1="16" x2="21" y2="21"></line>
+          </svg>
+        </span>
+        <input
+          id="searchInput"
+          autocomplete="off"
+          placeholder="搜索期刊、缩写或 ISSN"
+        />
+        <button id="searchClearBtn" class="search-box__clear" type="button" aria-label="清空搜索内容" hidden>×</button>
+        <button id="searchGoBtn" class="search-box__go" type="button" aria-label="进入详情">→</button>
+      </div>
+      <div id="suggestionPanel" class="suggestion-panel" aria-live="polite"></div>
+      <div class="home-quick-queries" aria-label="常用期刊示例">
+        <button type="button" data-home-query="PRL">PRL</button>
+        <button type="button" data-home-query="Nature Communications">Nature Communications</button>
+        <button type="button" data-home-query="Environmental Research">Environmental Research</button>
+        <button type="button" data-home-query="Journal of Cleaner Production">Journal of Cleaner Production</button>
+      </div>
+    </section>
+  </main>
+
+  <div id="cmdModal" class="cmd-modal" hidden>
+    <div class="cmd-modal__backdrop" data-close-cmd></div>
+    <div class="cmd-modal__card" role="dialog" aria-modal="true" aria-labelledby="cmdTitle">
+      <div class="cmd-modal__head">
+        <h2 id="cmdTitle">命令面板</h2>
+        <button id="cmdClose" class="cmd-modal__close" type="button" aria-label="关闭">×</button>
+      </div>
+      <input id="cmdInput" class="cmd-input" placeholder="输入命令，如 > filter IF > 10" />
+      <div id="cmdList" class="cmd-list"></div>
+    </div>
+  </div>
+
+  <script src="./app.js?v=20260617-jcr-v31"></script>
+</body>
+</html>
