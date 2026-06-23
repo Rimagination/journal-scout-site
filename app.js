@@ -10,6 +10,7 @@ const state = {
   loadPromise: null,
   searchRequestSeq: 0,
   searchInputTimer: null,
+  searchWarmPromise: null,
 };
 
 const DATA_PATHS = [
@@ -27,6 +28,107 @@ const SEARCH_API_RETRY_DELAY_MS = 450;
 const STATIC_DATA_FALLBACK_ENABLED =
   window.JOURNAL_SCOUT_ALLOW_STATIC_DATA === true ||
   new URLSearchParams(window.location.search).get("staticData") === "1";
+
+const SEED_SUGGESTIONS = [
+  {
+    id: 821,
+    title: "PHYSICAL REVIEW LETTERS",
+    issn: "0031-9007",
+    eissn: "1079-7114",
+    if_2023: 9.4,
+    if_year: "2025",
+    jcr_quartile: "Q1",
+    cas_2025: "1区",
+    is_top: true,
+    hq_level: "T1",
+    ni_journal: true,
+    tags: ["1区", "HQ-T1", "NI期刊", "Q1", "SCIE", "中科院Top", "新锐1区", "高质量目录"],
+  },
+  {
+    id: 229,
+    title: "Nature Communications",
+    issn: "2041-1723",
+    eissn: "2041-1723",
+    if_2023: 18.1,
+    if_year: "2025",
+    jcr_quartile: "Q1",
+    cas_2025: "1区",
+    is_top: true,
+    hq_level: "T1",
+    ni_journal: true,
+    tags: ["1区", "HQ-T1", "NI期刊", "Q1", "SCIE", "中科院Top", "新锐1区", "高质量目录"],
+  },
+  {
+    id: 868,
+    title: "ENVIRONMENTAL RESEARCH",
+    issn: "0013-9351",
+    eissn: "1096-0953",
+    if_2023: 8.2,
+    if_year: "2025",
+    jcr_quartile: "Q1",
+    cas_2025: "2区",
+    is_top: false,
+    hq_level: "T1",
+    ni_journal: true,
+    tags: ["2区", "HQ-T1", "NEW", "NI期刊", "Q1", "SCIE", "新锐2区", "高质量目录"],
+  },
+  {
+    id: 496,
+    title: "Journal of Cleaner Production",
+    issn: "0959-6526",
+    eissn: "1879-1786",
+    if_2023: 10.7,
+    if_year: "2025",
+    jcr_quartile: "Q1",
+    cas_2025: "1区",
+    is_top: true,
+    hq_level: "T1",
+    ni_journal: true,
+    tags: ["1区", "HQ-T1", "NEW", "NI期刊", "Q1", "SCIE", "中科院Top", "新锐1区", "高质量目录"],
+  },
+  {
+    id: 18,
+    title: "NATURE",
+    issn: "0028-0836",
+    eissn: "1476-4687",
+    if_2023: 56.1,
+    if_year: "2025",
+    jcr_quartile: "Q1",
+    cas_2025: "1区",
+    is_top: true,
+    hq_level: "T1",
+    ni_journal: true,
+    tags: ["1区", "HQ-T1", "NI期刊", "Q1", "SCIE", "中科院Top", "新锐1区", "高质量目录"],
+  },
+  {
+    id: 22,
+    title: "SCIENCE",
+    issn: "0036-8075",
+    eissn: "1095-9203",
+    if_2023: 47.3,
+    if_year: "2025",
+    jcr_quartile: "Q1",
+    cas_2025: "1区",
+    is_top: true,
+    hq_level: "T1",
+    ni_journal: true,
+    tags: ["1区", "HQ-T1", "NI期刊", "Q1", "SCIE", "中科院Top", "新锐1区", "高质量目录"],
+  },
+  {
+    id: 19,
+    title: "CELL",
+    issn: "0092-8674",
+    eissn: "1097-4172",
+    if_2023: 45.1,
+    if_year: "2025",
+    jcr_quartile: "Q1",
+    cas_2025: "1区",
+    is_top: true,
+    hq_level: "T1",
+    ni_journal: true,
+    tags: ["1区", "HQ-T1", "NI期刊", "Q1", "SCIE", "中科院Top", "新锐1区", "高质量目录"],
+  },
+];
 
 function getApiBase() {
   if (["127.0.0.1", "localhost"].includes(window.location.hostname) && /^https?:$/.test(window.location.protocol)) {
@@ -381,6 +483,25 @@ function findSuggestions(query, limit = 12) {
     .map((x) => x.row);
 }
 
+function findSeedSuggestions(query, limit = 12) {
+  const q = query.trim();
+  if (!q) return [];
+  const qLower = q.toLowerCase();
+  const qAbbr = normalizeAbbrQuery(q);
+  const useAbbrMatch = isAbbrQuery(qAbbr);
+
+  return SEED_SUGGESTIONS.filter((row) => {
+    if (getHaystack(row).includes(qLower)) return true;
+    if (!useAbbrMatch) return false;
+    return getAbbrVariants(row).some((abbr) => abbr.startsWith(qAbbr));
+  })
+    .map((row) => ({ row, score: scoreRow(row, q) }))
+    .filter((x) => x.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, limit)
+    .map((x) => x.row);
+}
+
 async function fetchSearchApi(query, limit = 12) {
   const url = new URL(`${API_BASE}/journals/search`);
   url.searchParams.set("q", query);
@@ -584,6 +705,11 @@ async function renderSuggestions() {
   }
 
   setPanelMessage("\u6b63\u5728\u68c0\u7d22\u671f\u520a...");
+  const seedRows = findSeedSuggestions(q);
+  if (seedRows.length) {
+    renderSuggestionRows(q, seedRows);
+  }
+
   let rows = [];
   try {
     rows = await findSuggestionsRemoteFirst(q);
@@ -605,6 +731,12 @@ function scheduleRenderSuggestions(delay = SEARCH_INPUT_DEBOUNCE_MS) {
     state.searchInputTimer = null;
     void renderSuggestions();
   }, delay);
+}
+
+function warmSearchApi() {
+  if (state.searchWarmPromise) return state.searchWarmPromise;
+  state.searchWarmPromise = fetchSearchApi("", 1).catch(() => null);
+  return state.searchWarmPromise;
 }
 
 function applyFilterHint() {
@@ -869,6 +1001,8 @@ function bindEvents() {
   if (els.cmdInput) {
     els.cmdInput.addEventListener("input", () => renderCommandList(els.cmdInput.value));
   }
+
+  window.setTimeout(warmSearchApi, 200);
 }
 
 function dataPathCandidates() {
