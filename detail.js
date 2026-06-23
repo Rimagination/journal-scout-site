@@ -170,6 +170,10 @@ const DETAIL_API_TIMEOUT_MS = 6000;
 const STATIC_DATA_FALLBACK_ENABLED =
   window.JOURNAL_SCOUT_ALLOW_STATIC_DATA === true ||
   new URLSearchParams(window.location.search).get("staticData") === "1";
+const STATIC_OFFICIAL_APC_ENABLED =
+  STATIC_DATA_FALLBACK_ENABLED ||
+  window.JOURNAL_SCOUT_ALLOW_STATIC_APC === true ||
+  new URLSearchParams(window.location.search).get("staticApc") === "1";
 const ELSEVIER_API_TIMEOUT_MS = 8000;
 const PREDICTED_IF_TIMEOUT_MS = 9000;
 const METRIC_CACHE_PREFIX = "journalScoutMetric";
@@ -650,10 +654,24 @@ function textHash(input) {
 }
 
 function normalizeHttpUrl(raw) {
-  const s = String(raw || "").trim();
+  let s = String(raw || "").trim();
   if (!s) return "";
-  if (/^https?:\/\//i.test(s)) return s;
-  return `https://${s}`;
+  s = s
+    .replace(/^https?:\/\/(https?)\/\//i, "$1://")
+    .replace(/^(https?)\/\//i, "$1://")
+    .replace(/^\/\//, "https://");
+  if (!/^https?:\/\//i.test(s)) s = `https://${s}`;
+  try {
+    const url = new URL(s);
+    if (!["http:", "https:"].includes(url.protocol)) return "";
+    if (/^https?$/i.test(url.hostname) && /^\/\//.test(url.pathname)) {
+      const repaired = `${url.hostname.toLowerCase()}://${url.pathname.replace(/^\/+/, "")}${url.search}${url.hash}`;
+      return new URL(repaired).href;
+    }
+    return url.href;
+  } catch (_) {
+    return "";
+  }
 }
 
 const NON_OFFICIAL_HOST_PATTERNS = [
@@ -2040,6 +2058,7 @@ async function buildOfficialApcInfoAsync(row, source = null, catalog = null) {
 }
 
 async function fetchOfficialApcIndex() {
+  if (!STATIC_OFFICIAL_APC_ENABLED) return null;
   const cacheKey = "official";
   const cached = officialApcIndexCache.get(cacheKey);
   if (cached?.expiresAt > Date.now() && Array.isArray(cached?.payload?.issns)) {
@@ -2075,6 +2094,7 @@ function buildOfficialApcRecordChunkPath(template, chunkIndex) {
 }
 
 async function fetchOfficialApcRecordChunk(chunkIndex, catalog = null) {
+  if (!STATIC_OFFICIAL_APC_ENABLED) return null;
   if (!Number.isInteger(chunkIndex) || chunkIndex < 0) return null;
   const cacheKey = `chunk-${chunkIndex}`;
   const cached = officialApcRecordChunkCache.get(cacheKey);
@@ -2107,6 +2127,7 @@ async function fetchOfficialApcRecordChunk(chunkIndex, catalog = null) {
 }
 
 async function fetchOfficialApcCatalog() {
+  if (!STATIC_OFFICIAL_APC_ENABLED) return null;
   const cacheKey = "official";
   const cached = officialApcCatalogCache.get(cacheKey);
   if (cached?.expiresAt > Date.now() && (cached?.payload?.by_issn || cached?.payload?.by_title)) {
