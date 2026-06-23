@@ -9,6 +9,7 @@ const state = {
   loadError: null,
   loadPromise: null,
   searchRequestSeq: 0,
+  searchInputTimer: null,
 };
 
 const DATA_PATHS = [
@@ -20,7 +21,9 @@ const DATA_PATHS = [
 
 const DATA_PATH_CACHE_KEY = "journal_scout_data_path";
 const API_BASE = getApiBase();
-const SEARCH_API_TIMEOUT_MS = 4500;
+const SEARCH_API_TIMEOUT_MS = 12000;
+const SEARCH_INPUT_DEBOUNCE_MS = 180;
+const SEARCH_API_RETRY_DELAY_MS = 450;
 const STATIC_DATA_FALLBACK_ENABLED =
   window.JOURNAL_SCOUT_ALLOW_STATIC_DATA === true ||
   new URLSearchParams(window.location.search).get("staticData") === "1";
@@ -402,10 +405,28 @@ async function fetchSearchApi(query, limit = 12) {
   }
 }
 
+function sleep(ms) {
+  return new Promise((resolve) => window.setTimeout(resolve, ms));
+}
+
+function isTransientSearchError(error) {
+  const name = String(error?.name || "");
+  const message = String(error?.message || "");
+  return name === "AbortError" || /network|fetch|failed|abort/i.test(message);
+}
+
 async function findSuggestionsRemoteFirst(query, limit = 12) {
   try {
     return await fetchSearchApi(query, limit);
   } catch (err) {
+    if (isTransientSearchError(err)) {
+      await sleep(SEARCH_API_RETRY_DELAY_MS);
+      try {
+        return await fetchSearchApi(query, limit);
+      } catch (retryErr) {
+        err = retryErr;
+      }
+    }
     if (!STATIC_DATA_FALLBACK_ENABLED) throw err;
     if (!state.isDataReady) await ensureDataReady();
     return findSuggestions(query, limit);
@@ -569,13 +590,21 @@ async function renderSuggestions() {
   } catch (err) {
     console.error("Journal search API failed:", err);
     if (seq === state.searchRequestSeq) {
-      setPanelMessage("\u68c0\u7d22\u670d\u52a1\u6682\u4e0d\u53ef\u7528\uff0c\u8bf7\u7a0d\u540e\u91cd\u8bd5");
+      setPanelMessage("\u7f51\u7edc\u8fde\u63a5\u8f83\u6162\uff0c\u8bf7\u518d\u8f93\u5165\u6216\u6309 Enter \u68c0\u7d22");
     }
     return;
   }
 
   if (seq !== state.searchRequestSeq) return;
   renderSuggestionRows(q, rows);
+}
+
+function scheduleRenderSuggestions(delay = SEARCH_INPUT_DEBOUNCE_MS) {
+  if (state.searchInputTimer) window.clearTimeout(state.searchInputTimer);
+  state.searchInputTimer = window.setTimeout(() => {
+    state.searchInputTimer = null;
+    void renderSuggestions();
+  }, delay);
 }
 
 function applyFilterHint() {
@@ -767,10 +796,10 @@ function bindEvents() {
   syncSearchClearButton();
   els.searchInput.addEventListener("input", () => {
     syncSearchClearButton();
-    void renderSuggestions();
+    scheduleRenderSuggestions();
   });
   els.searchInput.addEventListener("focus", () => {
-    if (els.searchInput.value.trim()) void renderSuggestions();
+    if (els.searchInput.value.trim()) scheduleRenderSuggestions(0);
   });
 
   els.searchInput.addEventListener("keydown", async (e) => {
@@ -813,7 +842,7 @@ function bindEvents() {
       els.searchInput.value = query;
       syncSearchClearButton();
       els.searchInput.focus();
-      void renderSuggestions();
+      scheduleRenderSuggestions(0);
     });
   });
 
