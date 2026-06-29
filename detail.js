@@ -4728,7 +4728,7 @@ function buildSubmissionLoginCta() {
       <p>登录后可提交你的投稿体验评分，帮助其他用户更快判断是否投稿。</p>
       <div class="submission-auth-cta__actions">
         <a class="submission-login-btn" href="${escapeHtml(buildGithubLoginUrl())}">GitHub 登录后评分</a>
-        <a class="submission-secondary-link" href="https://www.scansci.com/" target="_blank" rel="noopener noreferrer">邮箱登录请前往 ScanSci 首页</a>
+        <a class="submission-secondary-link" href="https://www.scansci.com/">邮箱登录请前往 ScanSci 首页</a>
       </div>
     </div>
   `;
