@@ -229,6 +229,20 @@ function normalizeAbbrQuery(query) {
     .replace(/[^a-z0-9]+/g, "");
 }
 
+function collectExplicitAbbrVariants(rawAbbreviations) {
+  const values = Array.isArray(rawAbbreviations)
+    ? rawAbbreviations
+    : String(rawAbbreviations || "")
+        .split(/[;,|]+/)
+        .filter(Boolean);
+  const variants = new Set();
+  for (const value of values) {
+    const normalized = normalizeAbbrQuery(value);
+    if (normalized.length >= 2) variants.add(normalized);
+  }
+  return variants;
+}
+
 function isAbbrQuery(query) {
   return /^[a-z0-9]{2,10}$/.test(query);
 }
@@ -240,12 +254,18 @@ function buildTitleAbbrVariants(title) {
   if (!words.length) return [];
 
   const variants = new Set();
+  const hasLowercase = /[a-z]/.test(String(title || ""));
   const allInitials = words.map((w) => w[0]).join("").toLowerCase();
   if (allInitials.length >= 2) variants.add(allInitials);
 
   const coreWords = words.filter((w) => !ABBR_STOPWORDS.has(w.toLowerCase()));
   const coreInitials = coreWords.map((w) => w[0]).join("").toLowerCase();
   if (coreInitials.length >= 2) variants.add(coreInitials);
+  const coreAcronymAware = coreWords
+    .map((w) => (hasLowercase && /^[A-Z0-9]{2,6}$/.test(w) ? w : w[0]))
+    .join("")
+    .toLowerCase();
+  if (coreAcronymAware.length >= 2) variants.add(coreAcronymAware);
 
   if (coreWords.length >= 2) {
     variants.add((coreWords[0][0] + coreWords[1][0]).toLowerCase());
@@ -256,9 +276,12 @@ function buildTitleAbbrVariants(title) {
 
 function getAbbrVariants(row) {
   if (Array.isArray(row.__abbrVariants)) return row.__abbrVariants;
-  const variants = buildTitleAbbrVariants(row.title);
-  row.__abbrVariants = variants;
-  return variants;
+  const variants = new Set(buildTitleAbbrVariants(row.title));
+  for (const variant of collectExplicitAbbrVariants(row.abbreviations)) {
+    variants.add(variant);
+  }
+  row.__abbrVariants = [...variants];
+  return row.__abbrVariants;
 }
 
 function isCuratedAbbrPriority(row, abbrQuery) {
