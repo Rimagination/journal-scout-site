@@ -185,7 +185,7 @@ const SCHOLAR_EVIDENCE_TIMEOUT_MS = 5000;
 const SCHOLAR_EVIDENCE_ROWS = 8;
 const CAR_RISK_TIMEOUT_MS = 4500;
 const PUBLICATION_START_YEAR_TIMEOUT_MS = 4500;
-const DETAIL_PAGE_REV = "20260805-apc-v1";
+const DETAIL_PAGE_REV = "20260805-apc-v2";
 const DATA_REV = "20260617-jcr-2025-full-v2";
 const LATEST_OFFICIAL_JIF_YEAR = 2025;
 const APC_EXCHANGE_RATE_API_URL = "https://api.frankfurter.dev/v2/rates";
@@ -1947,7 +1947,7 @@ function officialApcPublisherHint(row, source = null) {
     ["MDPI", /\bmdpi\b|multidisciplinary digital publishing institute|mdpi\.com/],
     ["Frontiers", /\bfrontiers\b|frontiersin\.org/],
     ["SAGE", /\bsage\b|sagepub|journals\.sagepub\.com/],
-    ["Cambridge University Press", /cambridge university press|cambridge\.org|cambridge core/],
+    ["Cambridge University Press", /cambridge (?:univ(?:ersity)?|university) press|cambridge\.org|cambridge core/],
     ["IEEE", /\bieee\b|ieeeauthorcenter|ieeexplore/],
     ["PLOS", /\bplos\b|public library of science|plos\.org/],
     ["Emerald", /\bemerald\b|emeraldgrouppublishing|ice publishing/],
