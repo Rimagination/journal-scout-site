@@ -173,10 +173,7 @@ const DETAIL_API_RETRY_DELAY_MS = 500;
 const STATIC_DATA_FALLBACK_ENABLED =
   window.JOURNAL_SCOUT_ALLOW_STATIC_DATA === true ||
   new URLSearchParams(window.location.search).get("staticData") === "1";
-const STATIC_OFFICIAL_APC_ENABLED =
-  STATIC_DATA_FALLBACK_ENABLED ||
-  window.JOURNAL_SCOUT_ALLOW_STATIC_APC === true ||
-  new URLSearchParams(window.location.search).get("staticApc") === "1";
+const STATIC_OFFICIAL_APC_ENABLED = window.JOURNAL_SCOUT_DISABLE_STATIC_APC !== true;
 const ELSEVIER_API_TIMEOUT_MS = 8000;
 const PREDICTED_IF_TIMEOUT_MS = 9000;
 const METRIC_CACHE_PREFIX = "journalScoutMetric";
@@ -188,7 +185,7 @@ const SCHOLAR_EVIDENCE_TIMEOUT_MS = 5000;
 const SCHOLAR_EVIDENCE_ROWS = 8;
 const CAR_RISK_TIMEOUT_MS = 4500;
 const PUBLICATION_START_YEAR_TIMEOUT_MS = 4500;
-const DETAIL_PAGE_REV = "20260617-jcr-v31";
+const DETAIL_PAGE_REV = "20260805-apc-v1";
 const DATA_REV = "20260617-jcr-2025-full-v2";
 const LATEST_OFFICIAL_JIF_YEAR = 2025;
 const APC_EXCHANGE_RATE_API_URL = "https://api.frankfurter.dev/v2/rates";
@@ -1987,31 +1984,99 @@ function resolveOfficialApcRecord(candidate, catalog = null) {
   return null;
 }
 
-function findOfficialApcRecordCandidate(row, source = null, catalog = null) {
+function officialApcCandidateValues(value) {
+  if (Array.isArray(value)) return value.flatMap((item) => officialApcCandidateValues(item));
+  if (value && typeof value === "object" && Array.isArray(value.indexes)) {
+    return value.indexes.flatMap((item) => officialApcCandidateValues(item));
+  }
+  return value === null || value === undefined ? [] : [value];
+}
+
+function normalizeOfficialApcPublisherFamily(raw) {
+  return officialApcPublisherHint({ publisher: raw }) || String(raw || "").trim().toLowerCase();
+}
+
+function officialApcTitleSimilarity(query, candidate) {
+  const left = normalizeApcTitleKey(query);
+  const right = normalizeApcTitleKey(candidate);
+  if (!left || !right) return 0;
+  if (left === right) return 100;
+  if (left.includes(right) || right.includes(left)) return 70;
+  const leftTokens = new Set(left.split(" ").filter(Boolean));
+  const rightTokens = new Set(right.split(" ").filter(Boolean));
+  const overlap = [...leftTokens].filter((token) => rightTokens.has(token)).length;
+  return overlap ? Math.round((overlap / Math.max(leftTokens.size, rightTokens.size)) * 45) : 0;
+}
+
+function scoreOfficialApcRecord(record, row, source = null) {
+  if (!record || typeof record !== "object") return Number.NEGATIVE_INFINITY;
+  const publisherHint = normalizeOfficialApcPublisherFamily(officialApcPublisherHint(row, source));
+  const publisher = normalizeOfficialApcPublisherFamily(record.publisher);
+  let score = 0;
+  if (publisherHint && publisher) score += publisher === publisherHint ? 1000 : -1000;
+
+  const recordTitles = [record.title, ...(Array.isArray(record.title_aliases) ? record.title_aliases : [])];
+  const titleScore = Math.max(
+    0,
+    ...getApcTitleCandidates(row, source).flatMap((query) => recordTitles.map((title) => officialApcTitleSimilarity(query, title))),
+  );
+  return score + titleScore;
+}
+
+function findOfficialApcRecordCandidates(row, source = null, catalog = null) {
+  const values = [];
+  const seen = new Set();
+  const addValues = (raw) => {
+    for (const value of officialApcCandidateValues(raw)) {
+      const key = value && typeof value === "object" ? value : `${typeof value}:${value}`;
+      if (seen.has(key)) continue;
+      seen.add(key);
+      values.push(value);
+    }
+  };
+
   const byIssn = catalog?.by_issn;
   if (byIssn && typeof byIssn === "object") {
     for (const issn of getApcIssnCandidates(row, source)) {
-      if (Object.prototype.hasOwnProperty.call(byIssn, issn)) return byIssn[issn];
+      if (Object.prototype.hasOwnProperty.call(byIssn, issn)) addValues(byIssn[issn]);
     }
   }
 
   const byTitle = catalog?.by_title;
-  if (!byTitle || typeof byTitle !== "object" || !isLikelyOfficialApcCandidate(row, source)) return null;
-  const publisherHint = officialApcPublisherHint(row, source).toLowerCase();
-  for (const title of getApcTitleCandidates(row, source)) {
-    if (!Object.prototype.hasOwnProperty.call(byTitle, title)) continue;
-    const candidate = byTitle[title];
-    const record = resolveOfficialApcRecord(candidate, catalog);
-    if (!record || typeof record !== "object") return candidate;
-    const publisher = String(record.publisher || "").toLowerCase();
-    if (publisherHint && publisher && !publisher.includes(publisherHint.split(" ")[0])) continue;
-    return candidate;
+  if (byTitle && typeof byTitle === "object" && isLikelyOfficialApcCandidate(row, source)) {
+    for (const title of getApcTitleCandidates(row, source)) {
+      if (Object.prototype.hasOwnProperty.call(byTitle, title)) addValues(byTitle[title]);
+    }
   }
-  return null;
+  return values;
+}
+
+function pickOfficialApcRecord(records, row, source = null) {
+  const usable = (Array.isArray(records) ? records : [records]).filter((record) => record && typeof record === "object");
+  if (!usable.length) return null;
+  return usable.reduce((best, record) => (
+    !best || scoreOfficialApcRecord(record, row, source) > scoreOfficialApcRecord(best, row, source) ? record : best
+  ), null);
+}
+
+function findOfficialApcRecordCandidate(row, source = null, catalog = null) {
+  const candidates = findOfficialApcRecordCandidates(row, source, catalog);
+  const records = candidates.map((candidate) => resolveOfficialApcRecord(candidate, catalog)).filter(Boolean);
+  const bestRecord = pickOfficialApcRecord(records, row, source);
+  if (bestRecord) {
+    const index = records.indexOf(bestRecord);
+    return candidates[index];
+  }
+  return candidates[0] ?? null;
 }
 
 function findOfficialApcRecord(row, source = null, catalog = null) {
-  return resolveOfficialApcRecord(findOfficialApcRecordCandidate(row, source, catalog), catalog);
+  const candidates = findOfficialApcRecordCandidates(row, source, catalog);
+  return pickOfficialApcRecord(
+    candidates.map((candidate) => resolveOfficialApcRecord(candidate, catalog)).filter(Boolean),
+    row,
+    source,
+  );
 }
 
 async function resolveOfficialApcRecordAsync(candidate, catalog = null) {
@@ -2027,6 +2092,31 @@ async function resolveOfficialApcRecordAsync(candidate, catalog = null) {
   if (!chunk || !Array.isArray(chunk.records)) return null;
   const start = Number.isInteger(Number(chunk.start)) ? Number(chunk.start) : chunkIndex * chunkSize;
   return chunk.records[recordIndex - start] || null;
+}
+
+async function resolveOfficialApcRecordCandidatesAsync(candidates, catalog = null) {
+  const values = officialApcCandidateValues(candidates);
+  const resolved = values.map((candidate) => resolveOfficialApcRecord(candidate, catalog));
+  const chunkSize = Number(catalog?.chunk_size || catalog?.meta?.chunk_size);
+  const indexes = values
+    .map((candidate, index) => ({ candidate: Number(candidate), index }))
+    .filter(({ candidate, index }) => !resolved[index] && Number.isInteger(candidate) && candidate >= 0);
+  if (!indexes.length || !Number.isInteger(chunkSize) || chunkSize <= 0) return resolved;
+
+  const chunkIndexes = [...new Set(indexes.map(({ candidate }) => Math.floor(candidate / chunkSize)))];
+  const chunks = new Map();
+  await Promise.all(chunkIndexes.map(async (chunkIndex) => {
+    const chunk = await fetchOfficialApcRecordChunk(chunkIndex, catalog);
+    if (chunk && Array.isArray(chunk.records)) chunks.set(chunkIndex, chunk);
+  }));
+  for (const { candidate, index } of indexes) {
+    const chunkIndex = Math.floor(candidate / chunkSize);
+    const chunk = chunks.get(chunkIndex);
+    if (!chunk) continue;
+    const start = Number.isInteger(Number(chunk.start)) ? Number(chunk.start) : chunkIndex * chunkSize;
+    resolved[index] = chunk.records[candidate - start] || null;
+  }
+  return resolved;
 }
 
 function buildOfficialApcInfoFromRecord(record) {
@@ -2055,8 +2145,9 @@ function buildOfficialApcInfo(row, source = null, catalog = null) {
 }
 
 async function buildOfficialApcInfoAsync(row, source = null, catalog = null) {
-  const candidate = findOfficialApcRecordCandidate(row, source, catalog);
-  const record = await resolveOfficialApcRecordAsync(candidate, catalog);
+  const candidates = findOfficialApcRecordCandidates(row, source, catalog);
+  const records = await resolveOfficialApcRecordCandidatesAsync(candidates, catalog);
+  const record = pickOfficialApcRecord(records, row, source);
   return buildOfficialApcInfoFromRecord(record);
 }
 
