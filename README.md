@@ -20,3 +20,8 @@ commits changed runtime assets, which triggers the legacy GitHub Pages deploymen
 Do not commit row-level journal datasets such as `data/journals.json`,
 `data/search_index.json`, `data/related_index.json`, `data/journal_chunks/`, or the
 full maintenance catalog `data/official_apc_prices.json`.
+
+The browser extension guide is `extension-install.html`. Its download links point to the
+tested release archives in `downloads/`; update the displayed version, link paths and both
+archives together when publishing a new extension release. The Firefox package is currently
+unsigned and is offered only for temporary installation.
