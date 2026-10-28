@@ -1,6 +1,7 @@
-﻿@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700;800&family=Noto+Serif+SC:wght@700;900&display=swap");
+﻿@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@600;700&family=Noto+Sans+SC:wght@400;500;700;800&family=Noto+Serif+SC:wght@700;900&display=swap");
 
 :root {
+  --scansci-header-height: 60px;
   --bg: #eef2f8;
   --paper: #fdfdff;
   --ink: #152036;
@@ -33,7 +34,7 @@ body {
 }
 
 .with-global-nav {
-  padding-top: 40px;
+  padding-top: var(--scansci-header-height);
 }
 
 .scansci-global-nav {
@@ -42,100 +43,66 @@ body {
   left: 0;
   right: 0;
   z-index: 1100;
-  height: 40px;
-  border-bottom: 1px solid #e8e4d8;
-  background: rgba(252, 251, 247, 0.96);
-  backdrop-filter: blur(8px);
+  height: var(--scansci-header-height);
+  border-bottom: 1px solid #e7ece8;
+  background: #fff;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
-  padding: 0 14px;
-}
-
-.scansci-global-nav__home {
-  font-size: 12px;
-  font-weight: 700;
-  color: #24405a;
-  text-decoration: none;
-  white-space: nowrap;
-}
-
-.scansci-global-nav__home:hover {
-  color: #17635f;
+  gap: 12px;
+  padding: 0 5.2%;
+  font-family: "DM Sans", "Noto Sans SC", sans-serif;
+  line-height: normal;
+  letter-spacing: 0;
 }
 
 .brand-cluster {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   min-width: 0;
 }
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 8px;
-  color: #566579;
-  font-size: 12px;
-  letter-spacing: 0.08em;
+  gap: 12px;
+  color: #202c29;
+  font-size: 19px;
+  font-weight: 700;
   white-space: nowrap;
   text-decoration: none;
-}
-
-.brand:hover {
-  color: #17635f;
 }
 
 .brand-logo {
-  width: 24px;
-  height: 24px;
-  border-radius: 6px;
-  box-shadow: 0 0 0 1px rgba(28, 42, 64, 0.1), 0 2px 6px rgba(28, 42, 64, 0.08);
-}
-
-.brand-divider {
-  width: 1px;
-  height: 20px;
-  background: rgba(85, 78, 62, 0.18);
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  flex: none;
 }
 
 .product-brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  color: #24405a;
-  font-family: "LXGW WenKai", "Roboto Slab", serif;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 1;
+  color: #87928d;
+  font-size: 15px;
+  font-weight: 600;
   text-decoration: none;
   white-space: nowrap;
 }
 
+.brand:hover,
 .product-brand:hover {
-  color: #17635f;
+  color: #316c58;
 }
 
-.product-brand__home {
-  width: 18px;
-  height: 18px;
-  border: 1px solid rgba(23, 99, 95, 0.22);
-  border-radius: 50%;
-  background: #f5faf7;
-  color: currentColor;
-  display: inline-grid;
-  place-items: center;
+.scansci-global-nav a:focus-visible {
+  outline: 2px solid #316c58;
+  outline-offset: 4px;
+  border-radius: 4px;
 }
 
-.product-brand__home svg {
-  width: 12px;
-  height: 12px;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 2.2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+@media (max-width: 720px) {
+  .scansci-global-nav { padding: 0 18px; }
+  .product-brand { font-size: 13px; }
 }
 
 .back-link {
@@ -143,59 +110,6 @@ body {
   color: var(--brand);
   font-weight: 700;
   font-size: 13px;
-}
-
-.scansci-global-menu {
-  position: relative;
-}
-
-.scansci-global-menu summary {
-  list-style: none;
-  cursor: pointer;
-  font-size: 12px;
-  font-weight: 700;
-  color: #24405a;
-  padding: 4px 8px;
-  border-radius: 8px;
-  border: 1px solid #d9d4c6;
-  background: #fffefa;
-}
-
-.scansci-global-menu summary::-webkit-details-marker {
-  display: none;
-}
-
-.scansci-global-menu[open] summary {
-  border-color: #9fd8cb;
-  background: #f5faf7;
-}
-
-.scansci-global-menu__panel {
-  position: absolute;
-  right: 0;
-  top: calc(100% + 6px);
-  min-width: 210px;
-  border: 1px solid #ded8c9;
-  border-radius: 10px;
-  background: #fff;
-  box-shadow: 0 10px 22px rgba(28, 42, 64, 0.16);
-  padding: 6px;
-  display: grid;
-  gap: 4px;
-}
-
-.scansci-global-menu__panel a {
-  text-decoration: none;
-  color: #24405a;
-  font-size: 12px;
-  font-weight: 700;
-  padding: 6px 8px;
-  border-radius: 7px;
-}
-
-.scansci-global-menu__panel a:hover {
-  background: #f5faf7;
-  color: #17635f;
 }
 
 button,
@@ -4139,69 +4053,6 @@ h1 {
 }
 
 @media (max-width: 560px) {
-  .scansci-global-nav {
-    gap: 7px;
-    padding: 0 10px;
-  }
-
-  .brand-cluster {
-    gap: 8px;
-  }
-
-  .brand {
-    gap: 6px;
-    font-size: 11px;
-    letter-spacing: 0.06em;
-  }
-
-  .brand-logo {
-    width: 22px;
-    height: 22px;
-  }
-
-  .brand-divider {
-    height: 18px;
-  }
-
-  .product-brand {
-    gap: 5px;
-    font-size: 15px;
-  }
-
-  .scansci-global-nav__home {
-    max-width: 130px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .scansci-global-menu {
-    flex: 0 0 auto;
-  }
-
-  .scansci-global-menu summary {
-    width: 32px;
-    height: 32px;
-    padding: 0;
-    border-radius: 50%;
-    display: inline-grid;
-    place-items: center;
-    font-size: 0;
-    line-height: 1;
-    white-space: nowrap;
-  }
-
-  .scansci-global-menu summary::before {
-    content: "☰";
-    font-size: 17px;
-    font-weight: 800;
-    line-height: 1;
-  }
-
-  .scansci-global-menu__panel {
-    min-width: 180px;
-    max-width: calc(100vw - 20px);
-  }
-
   .paper-risk-grid {
     grid-template-columns: 1fr;
   }

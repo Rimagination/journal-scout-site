@@ -1,6 +1,5 @@
-.scansci-nav-actions { display: flex; flex: 0 0 auto; align-items: center; gap: 8px; }
 .extension-install-link, .extension-back { display: inline-flex; align-items: center; gap: 5px; color: #17635f; font-size: 12px; font-weight: 700; line-height: 1; text-decoration: none; white-space: nowrap; }
-.extension-install-link { padding: 7px 9px; border: 1px solid #c8e1d8; border-radius: 8px; background: #f4faf7; }
+.extension-install-link { flex: none; padding: 7px 9px; border: 1px solid #c8e1d8; border-radius: 8px; background: #f4faf7; }
 .extension-install-link:hover { border-color: #86bcae; background: #eaf6f0; }
 .extension-install-link svg, .extension-primary svg, .extension-download svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .extension-install-link:focus-visible, .extension-back:focus-visible, .extension-primary:focus-visible, .extension-download:focus-visible, .browser-guide summary:focus-visible, .extension-help a:focus-visible { outline: 3px solid #87c9b8; outline-offset: 3px; }
@@ -94,10 +93,8 @@
   .extension-help { display: block; padding: 18px; }
   .extension-help a { display: inline-block; margin-top: 12px; }
 }
-@media (max-width: 390px) {
-  .scansci-global-nav .brand > span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
-  .scansci-global-nav .brand-divider { display: none; }
-  .scansci-global-nav .brand-cluster { gap: 6px; }
-  .scansci-global-nav .product-brand { font-size: 14px; }
+@media (max-width: 420px) {
+  .extension-install-link { padding: 8px; }
+  .extension-install-link svg { display: none; }
 }
 @media (prefers-reduced-motion: reduce) { .browser-chevron { transition: none; } }
