@@ -1,0 +1,18 @@
+.privacy-main { width: min(900px, calc(100% - 48px)); margin: 0 auto; padding: 54px 0 64px; }
+.privacy-main h1 { margin: 0 0 24px; color: #183a32; font-family: var(--font-display); font-size: clamp(27px, 4vw, 38px); line-height: 1.35; }
+.privacy-main h2 { margin: 40px 0 15px; color: #244c40; font-size: 20px; line-height: 1.5; }
+.privacy-main p, .privacy-main li { color: #405b50; font-size: 14px; line-height: 1.9; overflow-wrap: anywhere; }
+.privacy-main p[lang="en"] { color: #65796f; }
+.privacy-main a { color: #176b59; text-underline-offset: 3px; }
+.privacy-main a:focus-visible { outline: 3px solid #87c9b8; outline-offset: 3px; }
+.privacy-main code { border-radius: 3px; background: #eaf1eb; padding: 2px 4px; font-size: 12px; overflow-wrap: anywhere; }
+.privacy-main ul { padding-left: 22px; }
+.privacy-main li { margin: 8px 0; }
+.privacy-table { width: 100%; overflow-x: auto; margin: 20px 0; border: 1px solid #dce7dc; border-radius: 8px; background: #fff; }
+.privacy-table table { width: 100%; min-width: 580px; border-collapse: collapse; text-align: left; }
+.privacy-table th, .privacy-table td { padding: 12px 14px; border-bottom: 1px solid #e5ece4; color: #405b50; font-size: 13px; line-height: 1.75; vertical-align: top; }
+.privacy-table th { background: #edf4ee; color: #274b3c; font-weight: 700; }
+.privacy-table tr:last-child td { border-bottom: 0; }
+.privacy-skip { position: absolute; left: 16px; top: -70px; z-index: 200; background: #fff; color: #176b59; padding: 10px 14px; }
+.privacy-skip:focus { top: 10px; }
+@media (max-width: 560px) { .privacy-main { width: calc(100% - 36px); padding-top: 34px; } .privacy-main h2 { font-size: 18px; } }

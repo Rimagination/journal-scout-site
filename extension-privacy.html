@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Journal Scout 浏览器插件隐私政策：期刊识别、翻译、引用导出所需的数据、在线服务、本地存储与用户控制。Privacy policy for the Journal Scout browser extension." />
+  <title>插件隐私政策 · Journal Scout</title>
+  <link rel="canonical" href="https://journal.scansci.com/extension-privacy.html" />
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+  <link rel="stylesheet" href="./styles.css?v=20261029-header" />
+  <link rel="stylesheet" href="./extension-install.css?v=20261029-header" />
+  <link rel="stylesheet" href="./extension-privacy.css?v=20261029" />
+</head>
+<body class="extension-page with-global-nav">
+  <a class="privacy-skip" href="#privacy-content">跳到隐私政策 / Skip to privacy policy</a>
+  <header class="scansci-global-nav">
+    <div class="brand-cluster">
+      <a class="brand" href="https://www.scansci.com/" aria-label="ScanSci 首页">
+        <img class="brand-logo" src="./assets/brand/scansci-app-icon-64.png" alt="" width="30" height="30">
+        <span>ScanSci</span>
+      </a>
+      <a class="product-brand" href="./index.html" aria-label="Journal Scout 首页">Journal Scout</a>
+    </div>
+    <a class="extension-back" href="./extension-install.html">插件安装 <span aria-hidden="true">↗</span></a>
+  </header>
+  <main class="privacy-main" id="privacy-content">
+<h1>Journal Scout 隐私政策 / Privacy Policy</h1>
+<p>生效日期 / Effective date：2026-10-29</p>
+<p>本政策适用于 ScanSci 的 Journal Scout 浏览器扩展。它说明扩展为显示期刊信息、辅助阅读学术文献和整理引用而处理的数据。独立访问 ScanSci 网站或第三方网站时，还应阅读相应网站的政策。</p>
+<p lang="en">This policy covers ScanSci's Journal Scout browser extension and the data it handles to display journal information, assist scholarly reading, and organize citations. Visiting the ScanSci website or a third-party website separately is also subject to that website's policies.</p>
+<h2>1. 页面信息与在线查询 / Page information and online requests</h2>
+<p>扩展在已适配或经你额外授权的学术页面中读取论文元数据和相关结果内容，包括期刊名称、ISSN、DOI、论文标题、论文编号，以及页面提供的年份或被引次数，用于识别、标签、筛选和排序。没有相关来源信息的页面不保证能够识别。</p>
+<p lang="en">The extension reads article metadata and relevant result content on supported pages or websites you additionally authorize. This can include journal names, ISSNs, DOIs, article titles, article identifiers, and available years or citation counts. It uses these for journal recognition, badges, filtering, and sorting. Recognition is not guaranteed for pages without suitable metadata.</p>
+<p>为完成这些功能，扩展按需要发出以下 HTTPS 请求：</p>
+<div class="privacy-table" role="region" aria-label="在线服务与数据传输 / Online services and data transfer" tabindex="0"><table>
+<thead>
+<tr>
+<th>接收服务 / Recipient</th>
+<th>发送内容 / Data sent</th>
+<th>使用场景 / Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ScanSci / Journal Scout，<code>www.scansci.com</code></td>
+<td>期刊名、ISSN 或期刊记录编号 / Journal names, ISSNs, or journal record IDs</td>
+<td>查询期刊和指标；必要时核对缩写，或获取你选择的详细指标 / Journal metrics, abbreviation checks, and selected detail indicators</td>
+</tr>
+<tr>
+<td>Crossref，<code>api.crossref.org</code></td>
+<td>DOI；必要时为 Google Scholar 中的完整论文标题 / DOI; when needed, the complete article title from Google Scholar</td>
+<td>开启 DOI / 标题辅助识别后补充期刊来源；你主动输入 DOI 后查询引用元数据 / Optional recognition assistance and DOI citation lookup</td>
+</tr>
+<tr>
+<td>NCBI，<code>eutils.ncbi.nlm.nih.gov</code></td>
+<td>PubMed / PMC 论文编号；Crossref 不可用时可能发送 DOI / PubMed or PMC article IDs; a DOI may be sent when Crossref is unavailable</td>
+<td>补充期刊来源信息 / Resolve article journal metadata</td>
+</tr>
+</tbody>
+</table></div>
+<p>论文年份用于本地核对 Crossref 返回结果；不会作为标题检索的查询参数发送。扩展不会为了筛选结果上传整个结果列表或完整页面内容。</p>
+<p lang="en">Publication years are used locally to check returned Crossref records and are not sent as article-title search parameters. The extension does not upload a complete result list or page body to filter results.</p>
+<h2>2. 翻译 / Translation</h2>
+<p>划词翻译在你选中文字并按翻译快捷键后，将所选文字发送到你选择的在线服务。自动英文标题翻译默认关闭；你在设置中开启后，扩展会在支持页面向所选服务发送识别到的英文论文标题。本版每次划词最多 1,500 个字符，自动标题翻译每页最多 20 条。</p>
+<p lang="en">Selection translation sends the text you select to the chosen online provider after you press the translation shortcut. Automatic English-title translation is off by default. When you enable it, recognized English article titles on supported pages are sent to the chosen provider. This version limits each selected-text request to 1,500 characters and automatic title translation to 20 titles per page.</p>
+<p>可选服务为微软 Edge 翻译（<code>edge.microsoft.com</code>）和腾讯交互翻译（<code>transmart.qq.com</code>）。请求还包含目标语言和服务所需的请求参数；腾讯请求会生成临时随机请求标识，不以此建立持久用户账号。你可以更换服务、关闭自动标题翻译或关闭翻译功能。切换服务后，已开启的自动标题翻译会使用新选择的服务。</p>
+<p lang="en">Available providers are Microsoft Edge translation (<code>edge.microsoft.com</code>) and Tencent Transmart (<code>transmart.qq.com</code>). Requests also include the target language and service-required parameters. Tencent requests use a temporary random request identifier rather than a persistent user account. You can change providers, disable automatic title translation, or disable translation. If automatic title translation is already enabled, changing the provider sends subsequent title requests to the newly selected provider.</p>
+<p>选中文字可能包含个人信息或未公开内容。请根据需要选择要发送的文字；本扩展不要求你提交密码、密钥或其他敏感信息。服务方按各自规则处理收到的文本，可能实施限流或调整服务。</p>
+<p lang="en">Selected text may contain personal or unpublished information. Choose the text you send accordingly; the extension does not ask you to submit passwords, API keys, or other sensitive information. Providers handle received text under their own terms and may change or limit their services.</p>
+<h2>3. 本地存储与保留 / Local storage and retention</h2>
+<ul>
+<li>显示偏好、配色、标签顺序、翻译设置和额外授权网站的域名模式保存在当前浏览器的扩展本地存储中，不由本扩展同步到云端。</li>
+<li>期刊查询、详情和论文识别结果使用有容量上限的后台内存缓存；可用时也保存到浏览器会话存储。成功结果通常最多缓存 6 小时，未匹配结果通常最多缓存 15 分钟；过期结果不会继续用于查询。</li>
+<li>翻译文字与结果仅缓存在扩展后台内存中，最多 200 项；后台进程结束时该缓存随之消失。</li>
+<li>如果你从早期版本升级，早期版本已收藏的 DOI、标题、作者等文献元数据仍可保存在当前浏览器中；当前版本提供查看、删除和 RIS 导出。</li>
+<li>RIS / BibTeX 导出由扩展在本地生成文件。导出的文件由你保管，卸载扩展不会删除已经导出的文件。</li>
+</ul>
+<p lang="en">Display preferences, colors, badge order, translation settings, and additional authorized-site patterns are stored in local extension storage and are not cloud-synchronized by this extension. Journal search, detail, and article-recognition results use bounded background-memory caches and, when available, browser session storage. Successful results are generally cached for up to six hours and misses for up to 15 minutes; expired entries are not used for lookups. Translation text and results remain in background memory only, with a limit of 200 entries, and disappear when that background process ends. If you upgrade from an older version, previously saved paper metadata, including DOIs, titles, and authors, may remain locally available for viewing, deletion, and RIS export. RIS / BibTeX files are generated locally and remain under your control after export.</p>
+<p>你可以在设置页修改偏好，在额外网站的面板停用额外适配，并通过浏览器扩展管理页控制网站访问权限。关闭扩展或限制其站点访问可停止在相应页面进行后续处理。卸载扩展或清除扩展数据通常会移除该浏览器中的扩展本地数据；浏览器备份、同步和你导出的文件由相应工具管理。已有收藏请在需要时先导出。</p>
+<p lang="en">You can change preferences in settings, disable additional site adaptation from the toolbar panel, and manage site access in the browser's extension controls. Disable the extension or restrict site access to stop subsequent processing on affected pages. Uninstalling or clearing extension data normally removes the extension's local browser data; browser backups, browser-managed synchronization, and exported files are controlled by those tools. Export old saved papers first if you want to keep them.</p>
+<h2>4. 网络信息与第三方 / Network information and third parties</h2>
+<p>扩展发起的接口请求设置为不携带网站 Cookie、不发送来源页面的 Referrer。扩展不会主动将完整页面地址、浏览历史列表、登录凭证或站点 Cookie 上传给上述接口。打开工具栏面板时，扩展会在本机读取当前标签页的地址，用于识别需要授权的网站；保存额外适配时仅保存网站域名模式。</p>
+<p lang="en">API requests made by the extension omit website cookies and the source page's Referrer. The extension does not intentionally upload full page URLs, a browsing-history list, login credentials, or site cookies to those APIs. Opening the toolbar panel allows it to read the active tab's URL locally to identify the website for an access grant. Additional-site preferences retain the site's domain pattern.</p>
+<p lang="en">HTTPS 接收服务和网络基础设施能够接触请求所需的 IP 地址、请求时间及请求内容等网络信息，并可能依据其政策记录这些信息。本扩展没有承诺第三方服务不会保留日志。前述浏览器缓存期限也不代表接收服务或网络日志的保留期限。有关接收服务的数据处理，请参阅 <a href="https://privacy.microsoft.com/privacystatement">Microsoft 隐私声明</a>、<a href="https://privacy.tencent.com/">腾讯隐私保护平台</a>、<a href="https://www.crossref.org/privacy/">Crossref 隐私政策</a> 和 <a href="https://www.nlm.nih.gov/privacy.html">NCBI / NLM 隐私政策</a>。</p>
+<p lang="en">HTTPS recipients and network infrastructure receive network information such as the IP address, request time, and request content needed to handle a request, and may record it under their policies. The extension does not promise that third-party services keep no logs. The browser-cache limits described above are not server or network-log retention periods. Refer to the linked Microsoft, Tencent, Crossref, and NCBI / NLM policies for their data practices.</p>
+<h2>5. 用途限制 / Limited use</h2>
+<p>扩展处理的信息用于本政策披露的学术阅读与期刊识别功能。当前版本没有广告模块、行为分析 SDK 或用于跨站追踪的持久用户标识。我们不会出售扩展处理的用户数据，不将其用于个性化广告、数据经纪、信用评估或与所披露功能无关的用途。向上述服务传输内容是为了完成相应的用户可见功能。</p>
+<p lang="en">Information handled by the extension is used for the scholarly-reading and journal-recognition functions disclosed here. This version has no advertising module, behavior-analytics SDK, or persistent user identifier for cross-site tracking. We do not sell extension user data or use it for personalized advertising, data brokering, credit assessment, or purposes unrelated to the disclosed functionality. Transfers to the services above support the corresponding user-facing features.</p>
+<p lang="en">Journal Scout 对扩展所访问或接收的信息的使用遵守 Chrome Web Store 用户数据政策，包括 Limited Use 要求。我们不为广告或无关商业目的人工查看上述内容；如因用户明确请求的支持、安全或法律要求需要处理信息，将限制在相应的必要范围内。</p>
+<p lang="en">Journal Scout's use of information accessed or received by the extension complies with the Chrome Web Store User Data Policy, including its Limited Use requirements. We do not conduct human review of this information for advertising or unrelated commercial purposes. Any handling for user-requested support, security, or legal obligations is limited to what is necessary for that purpose.</p>
+<h2>6. 联系与更新 / Contact and changes</h2>
+<p>如需咨询本政策或反馈与本扩展相关的数据问题，请使用 <a href="https://github.com/Rimagination/journal-scout-site/issues">Journal Scout 问题反馈</a>。该渠道公开可见，请勿在问题内容中提交密码、密钥或私密翻译原文。官方产品网站为 <a href="https://journal.scansci.com/">Journal Scout</a>。本政策如因功能变化而更新，会在本页标注新的生效日期；需要新增授权的功能将通过相应设置或浏览器权限提示提供控制。</p>
+<p lang="en">For privacy questions or issues concerning extension-related data, use <a href="https://github.com/Rimagination/journal-scout-site/issues">Journal Scout issue reports</a>. This channel is public; do not include passwords, API keys, or private source text. The official product website is <a href="https://journal.scansci.com/">Journal Scout</a>. Changes to this policy will carry a revised effective date. Features that need additional authorization provide controls through settings or browser permission prompts.</p>
+  </main>
+  <footer class="extension-footer"><span>Journal Scout <i>by ScanSci</i></span><a href="./extension-install.html">插件安装</a><a href="https://github.com/Rimagination/journal-scout-site/issues">问题反馈</a></footer>
+</body>
+</html>
