@@ -2,7 +2,7 @@
 .extension-install-link { flex: none; padding: 7px 9px; border: 1px solid #c8e1d8; border-radius: 8px; background: #f4faf7; }
 .extension-install-link:hover { border-color: #86bcae; background: #eaf6f0; }
 .extension-install-link svg, .extension-primary svg, .extension-download svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.extension-install-link:focus-visible, .extension-back:focus-visible, .extension-primary:focus-visible, .extension-download:focus-visible, .browser-guide summary:focus-visible, .extension-help a:focus-visible { outline: 3px solid #87c9b8; outline-offset: 3px; }
+.extension-install-link:focus-visible, .extension-back:focus-visible, .extension-primary:focus-visible, .extension-secondary:focus-visible, .extension-download:focus-visible, .browser-guide summary:focus-visible, .extension-help a:focus-visible { outline: 3px solid #87c9b8; outline-offset: 3px; }
 
 .extension-page { background: #f7f9f6; color: #18302f; font-family: var(--font-sans); }
 .extension-back { padding: 8px; }
@@ -18,6 +18,9 @@
 .extension-release span { padding: 4px 9px; border: 1px solid #dce9df; border-radius: 5px; background: #fff; color: #54736a; font-size: 11px; font-weight: 700; line-height: 1.3; }
 .extension-primary { display: inline-flex; align-items: center; gap: 13px; padding: 12px 16px; border-radius: 8px; background: #176b59; color: white; font-size: 13px; font-weight: 700; text-decoration: none; box-shadow: 0 6px 15px rgba(23,107,89,.15); }
 .extension-primary:hover { background: #105a4c; }
+.extension-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 20px; }
+.extension-secondary { color: #17635f; font-size: 12px; font-weight: 700; text-underline-offset: 4px; }
+.extension-secondary:hover { color: #0b443e; }
 
 .extension-preview { overflow: hidden; border: 1px solid #dce9df; border-radius: 15px; background: #fff; box-shadow: 0 20px 55px rgba(32,63,48,.09); transform: rotate(1deg); }
 .extension-preview__top { display: flex; justify-content: space-between; align-items: center; height: 41px; padding: 0 16px; border-bottom: 1px solid #edf2ed; background: #fbfcfa; color: #789087; font-size: 10px; font-weight: 700; }
@@ -72,6 +75,8 @@
 .extension-help { display: flex; justify-content: space-between; align-items: center; gap: 24px; margin-top: 25px; padding: 21px 23px; border: 1px solid #e2ebe1; border-radius: 11px; background: #f0f6f0; }
 .extension-help h3 { margin: 0 0 5px; color: #345b4e; font-size: 13px; }
 .extension-help p { max-width: 700px; margin: 0; color: #71887b; font-size: 12px; line-height: 1.7; }
+.extension-help p + p { margin-top: 9px; }
+.extension-help code { overflow-wrap: anywhere; }
 .extension-help a { flex: 0 0 auto; color: #176b59; font-size: 12px; font-weight: 700; text-decoration: none; }
 .extension-footer { display: flex; justify-content: space-between; width: min(1100px, calc(100% - 48px)); margin: 0 auto; padding: 18px 0 28px; border-top: 1px solid #e0eae0; color: #688076; font-family: Georgia, serif; font-size: 12px; font-weight: 700; }
 .extension-footer i { color: #9aaca1; font-family: var(--font-sans); font-size: 10px; font-style: normal; font-weight: 500; }
