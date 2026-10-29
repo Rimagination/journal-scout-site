@@ -7,7 +7,7 @@
   <title>插件安装 · Journal Scout</title>
   <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
   <link rel="stylesheet" href="./styles.css?v=20261029-header" />
-  <link rel="stylesheet" href="./extension-install.css?v=20261029-edge-store" />
+  <link rel="stylesheet" href="./extension-install.css?v=20261029-install-screenshots" />
 </head>
 <body class="extension-page with-global-nav">
   <header class="scansci-global-nav">
@@ -54,7 +54,7 @@
 
       <div class="browser-guides">
         <details class="browser-guide" id="edge-install" name="browser-guide" open>
-          <summary><span class="browser-mark browser-mark--edge" aria-hidden="true">E</span><span class="browser-name"><strong>Microsoft Edge</strong><small>商店安装 · 自动更新 · Edge 116 或更高</small></span><span class="browser-chevron" aria-hidden="true">⌄</span></summary>
+          <summary><span class="browser-mark browser-mark--edge" aria-hidden="true"><img src="./assets/browser-icons/edge.png" alt=""></span><span class="browser-name"><strong>Microsoft Edge</strong><small>商店安装 · 自动更新 · Edge 116 或更高</small></span><span class="browser-chevron" aria-hidden="true">⌄</span></summary>
           <div class="browser-guide__body">
             <a class="extension-download" href="https://microsoftedge.microsoft.com/addons/detail/journal-scout-%E6%9C%9F%E5%88%8A%E5%88%86%E5%8C%BA%E4%B8%8E%E5%BD%B1%E5%93%8D%E5%9B%A0%E5%AD%90/jehpajedcihlfkcichdodghfigadcmbk" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/></svg><span>打开 Edge 扩展商店<small>官方商店 · 免费安装</small></span></a>
             <ol class="extension-steps">
@@ -63,11 +63,15 @@
               <li><strong>显示工具栏图标</strong><span>打开 Edge 工具栏的扩展菜单，将 Journal Scout 显示在工具栏，方便打开设置。</span></li>
               <li><strong>刷新论文页面</strong><span>打开或刷新 Google Scholar、PubMed 等支持的学术页面。识别到期刊后即可看到标签；点击插件图标可调整显示项目、配色和翻译设置。</span></li>
             </ol>
+            <figure class="install-screenshot">
+              <img src="./assets/install-guide/edge-store-listing.png" alt="Microsoft Edge 扩展商店里的 Journal Scout 详情页，显示 ScanSci 发布者和获取按钮" width="1024" height="760" loading="lazy" decoding="async">
+              <figcaption><strong>Edge 商店安装</strong> 通过直达链接打开详情页，确认名称与发布者后点击「获取」。搜索暂时没有结果时，无需反复搜索。</figcaption>
+            </figure>
           </div>
         </details>
 
         <details class="browser-guide" name="browser-guide">
-          <summary><span class="browser-mark browser-mark--chrome" aria-hidden="true">C</span><span class="browser-name"><strong>Google Chrome</strong><small>手动安装 · Chrome 116 或更高</small></span><span class="browser-chevron" aria-hidden="true">⌄</span></summary>
+          <summary><span class="browser-mark browser-mark--chrome" aria-hidden="true"><img src="./assets/browser-icons/chrome.svg" alt=""></span><span class="browser-name"><strong>Google Chrome</strong><small>手动安装 · Chrome 116 或更高</small></span><span class="browser-chevron" aria-hidden="true">⌄</span></summary>
           <div class="browser-guide__body">
             <a class="extension-download" href="./downloads/scansci-chromium-0.1.8.zip" download="Journal-Scout-Chrome-Edge-0.1.8.zip"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg><span>下载插件安装包<small>ZIP · v0.1.8</small></span></a>
             <ol class="extension-steps">
@@ -76,11 +80,15 @@
               <li><strong>加载插件</strong><span>点击「加载已解压的扩展程序」，选择解压后的文件夹（包含 <code>manifest.json</code>）。</span></li>
               <li><strong>开始使用</strong><span>在工具栏扩展菜单中固定「ScanSci 文献助手」，再刷新已打开的论文页面。</span></li>
             </ol>
+            <figure class="install-screenshot">
+              <img src="./assets/install-guide/chrome-developer-mode.png" alt="Chrome 扩展程序页面，开发者模式已开启，并显示加载未打包的扩展程序按钮" width="1024" height="720" loading="lazy" decoding="async">
+              <figcaption><strong>Chrome 加载解压版</strong> 开启右上角「开发者模式」，然后点击左上角「加载未打包的扩展程序」，选择刚才解压的插件文件夹。</figcaption>
+            </figure>
           </div>
         </details>
 
         <details class="browser-guide" name="browser-guide">
-          <summary><span class="browser-mark browser-mark--firefox" aria-hidden="true">F</span><span class="browser-name"><strong>Firefox</strong><small>桌面版 · Firefox 140 或更高 · 临时安装</small></span><span class="browser-chevron" aria-hidden="true">⌄</span></summary>
+          <summary><span class="browser-mark browser-mark--firefox" aria-hidden="true"><img src="./assets/browser-icons/firefox.svg" alt=""></span><span class="browser-name"><strong>Firefox</strong><small>桌面版 · Firefox 140 或更高 · 临时安装</small></span><span class="browser-chevron" aria-hidden="true">⌄</span></summary>
           <div class="browser-guide__body">
             <a class="extension-download" href="./downloads/scansci-firefox-0.1.8.xpi" download="Journal-Scout-Firefox-0.1.8.xpi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg><span>下载 Firefox 测试包<small>XPI · v0.1.8</small></span></a>
             <ol class="extension-steps">

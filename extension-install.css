@@ -51,10 +51,8 @@
 .browser-guide[open] { border-color: #b8d9c9; box-shadow: 0 8px 28px rgba(32,63,48,.045); }
 .browser-guide summary { display: flex; align-items: center; gap: 13px; padding: 15px 19px; list-style: none; cursor: pointer; }
 .browser-guide summary::-webkit-details-marker { display: none; }
-.browser-mark { display: grid; flex: 0 0 auto; place-items: center; width: 36px; height: 36px; border-radius: 10px; font-family: Georgia, serif; font-size: 19px; font-weight: 700; }
-.browser-mark--edge { background: #e3f3ef; color: #08786c; }
-.browser-mark--chrome { background: #edf2fb; color: #3f6592; }
-.browser-mark--firefox { background: #fdf0e4; color: #a75b2a; }
+.browser-mark { display: grid; flex: 0 0 auto; place-items: center; width: 36px; height: 36px; }
+.browser-mark img { display: block; width: 30px; height: 30px; object-fit: contain; }
 .browser-name { display: grid; flex: 1; gap: 2px; }
 .browser-name strong { color: #24443b; font-size: 14px; }
 .browser-name small { color: #81948a; font-size: 11px; }
@@ -71,6 +69,10 @@
 .extension-steps strong { color: #29453c; font-size: 13px; }
 .extension-steps li > span { margin-top: 3px; color: #697c71; font-size: 12px; line-height: 1.7; }
 .extension-steps code { padding: 2px 5px; border-radius: 4px; background: #f1f5f0; color: #365c4f; overflow-wrap: anywhere; font-size: 11px; }
+.install-screenshot { overflow: hidden; margin: 22px 0 0; border: 1px solid #dce9df; border-radius: 9px; background: #fff; box-shadow: 0 5px 18px rgba(32,63,48,.045); }
+.install-screenshot img { display: block; width: 100%; height: auto; }
+.install-screenshot figcaption { padding: 10px 13px; border-top: 1px solid #e9f0e9; color: #6c8075; font-size: 11px; line-height: 1.7; }
+.install-screenshot figcaption strong { color: #315d4b; }
 .extension-note { margin: 20px 0 0; padding: 12px 14px; border-radius: 7px; background: #f9f6eb; color: #7d7050; font-size: 12px; line-height: 1.7; }
 .extension-note strong { display: block; color: #6b5a32; }
 .extension-help { display: flex; justify-content: space-between; align-items: center; gap: 24px; margin-top: 25px; padding: 21px 23px; border: 1px solid #e2ebe1; border-radius: 11px; background: #f0f6f0; }
