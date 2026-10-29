@@ -76,13 +76,23 @@
 .extension-download:hover { background: #e1f2e7; }
 .extension-download > span { display: grid; gap: 1px; font-size: 12px; font-weight: 700; line-height: 1.3; }
 .extension-download small { color: #6a9180; font-size: 10px; font-weight: 500; }
-.edge-install-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-bottom: 24px; }
-.edge-install-option { display: grid; align-content: start; gap: 12px; padding: 14px; border: 1px solid #dce9df; border-radius: 9px; background: #fbfdfb; }
+.edge-install-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-bottom: 14px; }
+.edge-install-option { appearance: none; display: grid; grid-template-areas: "copy chevron" "hint chevron"; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 4px 12px; width: 100%; padding: 14px; border: 1px solid #dce9df; border-radius: 9px; background: #fbfdfb; color: inherit; font: inherit; text-align: left; cursor: pointer; transition: border-color .15s ease, background-color .15s ease, box-shadow .15s ease; }
+.edge-install-option:hover { border-color: #a8d1bf; background: #f4faf6; }
+.edge-install-option[aria-expanded="true"] { border-color: #83bba5; background: #eef8f1; box-shadow: 0 0 0 2px rgba(42,157,123,.08); }
+.edge-install-option:focus-visible { outline: 3px solid #87c9b8; outline-offset: 3px; }
 .edge-install-option--offline { border-color: #d9e4ef; background: #f7f9fc; }
-.edge-install-option__copy { display: grid; gap: 4px; }
+.edge-install-option--offline:hover { border-color: #a9bfd5; background: #f1f6fb; }
+.edge-install-option--offline[aria-expanded="true"] { border-color: #87a8c7; background: #edf4fa; box-shadow: 0 0 0 2px rgba(70,119,164,.08); }
+.edge-install-option__copy { display: grid; grid-area: copy; gap: 4px; }
 .edge-install-option__copy strong { color: #29453c; font-size: 13px; }
 .edge-install-option__copy span { color: #697c71; font-size: 11px; line-height: 1.65; }
-.edge-install-choice-note { margin: -12px 0 18px; color: #78877f; font-size: 11px; line-height: 1.5; }
+.edge-install-option__hint { grid-area: hint; color: #6a9180; font-size: 10px; font-weight: 700; }
+.edge-install-option__chevron { grid-area: chevron; color: #7a9487; font-size: 19px; line-height: 1; transition: transform .15s ease; }
+.edge-install-option[aria-expanded="true"] .edge-install-option__chevron { transform: rotate(180deg); }
+.edge-install-details { margin: 0 0 16px; padding: 17px; border: 1px solid #e1ece2; border-radius: 9px; background: #fff; }
+.edge-install-details[hidden] { display: none !important; }
+.edge-install-choice-note { margin: 0 0 15px; color: #78877f; font-size: 11px; line-height: 1.5; }
 .edge-install-subtitle { margin: 22px 0 10px; color: #29453c; font-size: 13px; }
 .edge-offline-instructions { margin-top: 26px; padding-top: 8px; border-top: 1px solid #e5eee5; }
 .edge-offline-update { margin: 16px 0 0; padding: 11px 12px; border-radius: 7px; background: #f0f6f0; color: #647a70; font-size: 12px; line-height: 1.7; }
@@ -133,4 +143,4 @@
   .extension-install-link { padding: 8px; }
   .extension-install-link svg { display: none; }
 }
-@media (prefers-reduced-motion: reduce) { .browser-chevron { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .browser-chevron, .edge-install-option, .edge-install-option__chevron { transition: none; } }

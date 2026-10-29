@@ -7,7 +7,7 @@
   <title>插件安装 · Journal Scout</title>
   <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
   <link rel="stylesheet" href="./styles.css?v=20261029-header" />
-  <link rel="stylesheet" href="./extension-install.css?v=20261029-edge-options" />
+  <link rel="stylesheet" href="./extension-install.css?v=20261029-edge-accordion" />
 </head>
 <body class="extension-page with-global-nav">
   <header class="scansci-global-nav">
@@ -64,6 +64,12 @@
           </a>
           <figcaption><strong>Google Scholar 搜索与筛选</strong><span>结果条目旁展示期刊信息，侧栏可按分区、核心目录和最低 IF 等条件筛选。</span></figcaption>
         </figure>
+        <figure class="extension-showcase-card">
+          <a class="extension-showcase-card__image" href="./assets/showcase/nature-article-page.png" target="_blank" rel="noopener noreferrer" aria-label="打开 Nature Ecology & Evolution 文章页效果截图原图">
+            <img src="./assets/showcase/nature-article-page.png" alt="Nature Ecology & Evolution 文章标题下显示 Journal Scout 标签，包括 IF 17.1、SCIE、JCR Q1、新锐 1 区、中科院 1 区、中科院 Top 和科协 T1" width="1396" height="922" loading="lazy" decoding="async">
+          </a>
+          <figcaption><strong>Nature 期刊文章页</strong><span>在论文标题下直接查看 IF、SCIE、JCR 分区和学科评价，不必离开文章页面。</span></figcaption>
+        </figure>
       </div>
     </section>
 
@@ -77,36 +83,38 @@
         <details class="browser-guide" id="edge-install" name="browser-guide" open>
           <summary><span class="browser-mark browser-mark--edge" aria-hidden="true"><img src="./assets/browser-icons/edge.png" alt=""></span><span class="browser-name"><strong>Microsoft Edge</strong><small>商店版或离线版 · Edge 116 或更高</small></span><span class="browser-chevron" aria-hidden="true">⌄</span></summary>
           <div class="browser-guide__body">
-            <div class="edge-install-options">
-              <div class="edge-install-option">
-                <div class="edge-install-option__copy"><strong>官方商店</strong><span>安装最省事，Edge 会自动更新；新版本要等商店审核。</span></div>
-                <a class="extension-download" href="https://microsoftedge.microsoft.com/addons/detail/journal-scout-%E6%9C%9F%E5%88%8A%E5%88%86%E5%8C%BA%E4%B8%8E%E5%BD%B1%E5%93%8D%E5%9B%A0%E5%AD%90/jehpajedcihlfkcichdodghfigadcmbk" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/></svg><span>从官方商店安装<small>免费 · 自动更新</small></span></a>
-              </div>
-              <div class="edge-install-option edge-install-option--offline">
-                <div class="edge-install-option__copy"><strong>离线安装包</strong><span>新包发布后可直接下载，不用等商店审核；需要手动更新。</span></div>
-                <a class="extension-download" href="./downloads/scansci-chromium-0.1.8.zip" download="Journal-Scout-Edge-Offline-0.1.8.zip"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg><span>下载离线安装包<small>ZIP · v0.1.8</small></span></a>
-              </div>
+            <div class="edge-install-options" role="group" aria-label="选择 Edge 安装方式">
+              <button class="edge-install-option" id="edge-store-toggle" type="button" aria-expanded="false" aria-controls="edge-store-details">
+                <span class="edge-install-option__copy"><strong>官方商店</strong><span>安装省事 · 自动更新</span></span><span class="edge-install-option__hint">点击查看</span><span class="edge-install-option__chevron" aria-hidden="true">⌄</span>
+              </button>
+              <button class="edge-install-option edge-install-option--offline" id="edge-offline-toggle" type="button" aria-expanded="false" aria-controls="edge-offline-details">
+                <span class="edge-install-option__copy"><strong>离线安装包</strong><span>新版本通常更快 · 需要手动更新</span></span><span class="edge-install-option__hint">点击查看</span><span class="edge-install-option__chevron" aria-hidden="true">⌄</span>
+              </button>
             </div>
             <p class="edge-install-choice-note">请选择一种安装方式，不要同时安装，以免页面出现重复标签。</p>
-            <h3 class="edge-install-subtitle">官方商店安装</h3>
-            <ol class="extension-steps">
-              <li><strong>点击「获取」</strong><span>在商店页面确认发布者是「ScanSci」，点击「获取」并确认添加。搜索暂时找不到时，直接用上方商店按钮。</span></li>
-              <li><strong>显示工具栏图标</strong><span>打开 Edge 工具栏的扩展菜单，将 Journal Scout 显示在工具栏，方便打开设置。</span></li>
-              <li><strong>刷新论文页面</strong><span>打开或刷新 Google Scholar、PubMed 等支持的学术页面。识别到期刊后即可看到标签；点击插件图标可调整显示项目、配色和翻译设置。</span></li>
-            </ol>
-            <figure class="install-screenshot">
-              <img src="./assets/install-guide/edge-store-listing.png" alt="Microsoft Edge 扩展商店里的 Journal Scout 详情页，显示 ScanSci 发布者和获取按钮" width="1024" height="760" loading="lazy" decoding="async">
-              <figcaption><strong>Edge 商店安装</strong> 通过直达链接打开详情页，确认名称与发布者后点击「获取」。搜索暂时没有结果时，无需反复搜索。</figcaption>
-            </figure>
-            <div class="edge-offline-instructions">
-              <h3 class="edge-install-subtitle">离线版安装</h3>
+            <section class="edge-install-details" id="edge-store-details" aria-labelledby="edge-store-toggle" hidden>
+              <a class="extension-download" href="https://microsoftedge.microsoft.com/addons/detail/journal-scout-%E6%9C%9F%E5%88%8A%E5%88%86%E5%8C%BA%E4%B8%8E%E5%BD%B1%E5%93%8D%E5%9B%A0%E5%AD%90/jehpajedcihlfkcichdodghfigadcmbk" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/></svg><span>从官方商店安装<small>免费 · 自动更新</small></span></a>
+              <h3 class="edge-install-subtitle">安装步骤</h3>
+              <ol class="extension-steps">
+                <li><strong>点击「获取」</strong><span>在商店页面确认发布者是「ScanSci」，点击「获取」并确认添加。搜索暂时找不到时，直接用上方商店按钮。</span></li>
+                <li><strong>显示工具栏图标</strong><span>打开 Edge 工具栏的扩展菜单，将 Journal Scout 显示在工具栏，方便打开设置。</span></li>
+                <li><strong>刷新论文页面</strong><span>打开或刷新 Google Scholar、PubMed 等支持的学术页面。识别到期刊后即可看到标签；点击插件图标可调整显示项目、配色和翻译设置。</span></li>
+              </ol>
+              <figure class="install-screenshot">
+                <img src="./assets/install-guide/edge-store-listing.png" alt="Microsoft Edge 扩展商店里的 Journal Scout 详情页，显示 ScanSci 发布者和获取按钮" width="1024" height="760" loading="lazy" decoding="async">
+                <figcaption><strong>Edge 商店安装</strong> 通过直达链接打开详情页，确认名称与发布者后点击「获取」。搜索暂时没有结果时，无需反复搜索。</figcaption>
+              </figure>
+            </section>
+            <section class="edge-install-details" id="edge-offline-details" aria-labelledby="edge-offline-toggle" hidden>
+              <a class="extension-download" href="./downloads/scansci-chromium-0.1.8.zip" download="Journal-Scout-Edge-Offline-0.1.8.zip"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg><span>下载离线安装包<small>ZIP · v0.1.8</small></span></a>
+              <h3 class="edge-install-subtitle">安装步骤</h3>
               <ol class="extension-steps">
                 <li><strong>下载并解压</strong><span>下载上方 ZIP，解压后保留文件夹。</span></li>
                 <li><strong>打开 Edge 扩展页</strong><span>在地址栏输入 <code>edge://extensions</code>，打开右上角的「开发人员模式」。</span></li>
                 <li><strong>加载插件</strong><span>点击「加载解压缩的扩展」，选择解压后的文件夹（里面有 <code>manifest.json</code>）。</span></li>
               </ol>
-              <p class="edge-offline-update"><strong>更新离线版：</strong>下载新版 ZIP，解压并覆盖原文件，再到 <code>edge://extensions</code> 点击「重新加载」。</p>
-            </div>
+              <p class="edge-offline-update"><strong>手动更新：</strong>新版本发布后下载新版 ZIP，解压并覆盖原文件，再到 <code>edge://extensions</code> 点击「重新加载」。</p>
+            </section>
           </div>
         </details>
 
@@ -145,5 +153,6 @@
     </section>
   </main>
   <footer class="extension-footer"><span>Journal Scout <i>by ScanSci</i></span><a href="./extension-privacy.html">插件隐私政策</a><a href="https://github.com/Rimagination/journal-scout-site/issues">问题反馈</a><a href="./index.html">期刊查询</a></footer>
+  <script src="./assets/edge-install-options.js" defer></script>
 </body>
 </html>
