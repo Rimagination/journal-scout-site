@@ -76,6 +76,17 @@
 .extension-download:hover { background: #e1f2e7; }
 .extension-download > span { display: grid; gap: 1px; font-size: 12px; font-weight: 700; line-height: 1.3; }
 .extension-download small { color: #6a9180; font-size: 10px; font-weight: 500; }
+.edge-install-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-bottom: 24px; }
+.edge-install-option { display: grid; align-content: start; gap: 12px; padding: 14px; border: 1px solid #dce9df; border-radius: 9px; background: #fbfdfb; }
+.edge-install-option--offline { border-color: #d9e4ef; background: #f7f9fc; }
+.edge-install-option__copy { display: grid; gap: 4px; }
+.edge-install-option__copy strong { color: #29453c; font-size: 13px; }
+.edge-install-option__copy span { color: #697c71; font-size: 11px; line-height: 1.65; }
+.edge-install-choice-note { margin: -12px 0 18px; color: #78877f; font-size: 11px; line-height: 1.5; }
+.edge-install-subtitle { margin: 22px 0 10px; color: #29453c; font-size: 13px; }
+.edge-offline-instructions { margin-top: 26px; padding-top: 8px; border-top: 1px solid #e5eee5; }
+.edge-offline-update { margin: 16px 0 0; padding: 11px 12px; border-radius: 7px; background: #f0f6f0; color: #647a70; font-size: 12px; line-height: 1.7; }
+.edge-offline-update strong { color: #315d4b; }
 .extension-steps { display: grid; gap: 14px; margin: 24px 0 0; padding: 0; list-style: none; counter-reset: extension-step; }
 .extension-steps li { display: grid; grid-template-columns: 25px 1fr; column-gap: 10px; align-items: start; counter-increment: extension-step; }
 .extension-steps li::before { display: grid; grid-row: span 2; place-items: center; width: 23px; height: 23px; border-radius: 50%; background: #edf5ef; color: #4a7d68; content: counter(extension-step); font-size: 11px; font-weight: 800; }
@@ -105,6 +116,7 @@
   .extension-guide__heading > p { margin-top: 9px; }
   .extension-showcase__heading { display: block; }
   .extension-showcase__heading > p { margin-top: 8px; }
+  .edge-install-options { grid-template-columns: 1fr; }
 }
 @media (max-width: 560px) {
   .extension-main, .extension-footer { width: calc(100% - 36px); }
