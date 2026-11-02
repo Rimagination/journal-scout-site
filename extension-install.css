@@ -76,27 +76,27 @@
 .extension-download:hover { background: #e1f2e7; }
 .extension-download > span { display: grid; gap: 1px; font-size: 12px; font-weight: 700; line-height: 1.3; }
 .extension-download small { color: #6a9180; font-size: 10px; font-weight: 500; }
-.edge-install-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-bottom: 14px; }
-.edge-install-option { appearance: none; display: grid; grid-template-areas: "copy chevron" "hint chevron"; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 4px 12px; width: 100%; padding: 14px; border: 1px solid #dce9df; border-radius: 9px; background: #fbfdfb; color: inherit; font: inherit; text-align: left; cursor: pointer; transition: border-color .15s ease, background-color .15s ease, box-shadow .15s ease; }
-.edge-install-option:hover { border-color: #a8d1bf; background: #f4faf6; }
-.edge-install-option[aria-expanded="true"] { border-color: #83bba5; background: #eef8f1; box-shadow: 0 0 0 2px rgba(42,157,123,.08); }
-.edge-install-option:focus-visible { outline: 3px solid #87c9b8; outline-offset: 3px; }
-.edge-install-option--offline { border-color: #d9e4ef; background: #f7f9fc; }
-.edge-install-option--offline:hover { border-color: #a9bfd5; background: #f1f6fb; }
-.edge-install-option--offline[aria-expanded="true"] { border-color: #87a8c7; background: #edf4fa; box-shadow: 0 0 0 2px rgba(70,119,164,.08); }
-.edge-install-option__copy { display: grid; grid-area: copy; gap: 4px; }
-.edge-install-option__copy strong { color: #29453c; font-size: 13px; }
-.edge-install-option__copy span { color: #697c71; font-size: 11px; line-height: 1.65; }
-.edge-install-option__hint { grid-area: hint; color: #6a9180; font-size: 10px; font-weight: 700; }
-.edge-install-option__chevron { grid-area: chevron; color: #7a9487; font-size: 19px; line-height: 1; transition: transform .15s ease; }
-.edge-install-option[aria-expanded="true"] .edge-install-option__chevron { transform: rotate(180deg); }
-.edge-install-details { margin: 0 0 16px; padding: 17px; border: 1px solid #e1ece2; border-radius: 9px; background: #fff; }
-.edge-install-details[hidden] { display: none !important; }
-.edge-install-choice-note { margin: 0 0 15px; color: #78877f; font-size: 11px; line-height: 1.5; }
-.edge-install-subtitle { margin: 22px 0 10px; color: #29453c; font-size: 13px; }
+.install-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-bottom: 14px; }
+.install-option { appearance: none; display: grid; grid-template-areas: "copy chevron" "hint chevron"; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 4px 12px; width: 100%; padding: 14px; border: 1px solid #dce9df; border-radius: 9px; background: #fbfdfb; color: inherit; font: inherit; text-align: left; cursor: pointer; transition: border-color .15s ease, background-color .15s ease, box-shadow .15s ease; }
+.install-option:hover { border-color: #a8d1bf; background: #f4faf6; }
+.install-option[aria-expanded="true"] { border-color: #83bba5; background: #eef8f1; box-shadow: 0 0 0 2px rgba(42,157,123,.08); }
+.install-option:focus-visible { outline: 3px solid #87c9b8; outline-offset: 3px; }
+.install-option--offline { border-color: #d9e4ef; background: #f7f9fc; }
+.install-option--offline:hover { border-color: #a9bfd5; background: #f1f6fb; }
+.install-option--offline[aria-expanded="true"] { border-color: #87a8c7; background: #edf4fa; box-shadow: 0 0 0 2px rgba(70,119,164,.08); }
+.install-option__copy { display: grid; grid-area: copy; gap: 4px; }
+.install-option__copy strong { color: #29453c; font-size: 13px; }
+.install-option__copy span { color: #697c71; font-size: 11px; line-height: 1.65; }
+.install-option__hint { grid-area: hint; color: #6a9180; font-size: 10px; font-weight: 700; }
+.install-option__chevron { grid-area: chevron; color: #7a9487; font-size: 19px; line-height: 1; transition: transform .15s ease; }
+.install-option[aria-expanded="true"] .install-option__chevron { transform: rotate(180deg); }
+.install-details { margin: 0 0 16px; padding: 17px; border: 1px solid #e1ece2; border-radius: 9px; background: #fff; }
+.install-details[hidden] { display: none !important; }
+.install-choice-note { margin: 0 0 15px; color: #78877f; font-size: 11px; line-height: 1.5; }
+.install-subtitle { margin: 22px 0 10px; color: #29453c; font-size: 13px; }
 .edge-offline-instructions { margin-top: 26px; padding-top: 8px; border-top: 1px solid #e5eee5; }
-.edge-offline-update { margin: 16px 0 0; padding: 11px 12px; border-radius: 7px; background: #f0f6f0; color: #647a70; font-size: 12px; line-height: 1.7; }
-.edge-offline-update strong { color: #315d4b; }
+.install-offline-update { margin: 16px 0 0; padding: 11px 12px; border-radius: 7px; background: #f0f6f0; color: #647a70; font-size: 12px; line-height: 1.7; }
+.install-offline-update strong { color: #315d4b; }
 .extension-steps { display: grid; gap: 14px; margin: 24px 0 0; padding: 0; list-style: none; counter-reset: extension-step; }
 .extension-steps li { display: grid; grid-template-columns: 25px 1fr; column-gap: 10px; align-items: start; counter-increment: extension-step; }
 .extension-steps li::before { display: grid; grid-row: span 2; place-items: center; width: 23px; height: 23px; border-radius: 50%; background: #edf5ef; color: #4a7d68; content: counter(extension-step); font-size: 11px; font-weight: 800; }
@@ -126,7 +126,7 @@
   .extension-guide__heading > p { margin-top: 9px; }
   .extension-showcase__heading { display: block; }
   .extension-showcase__heading > p { margin-top: 8px; }
-  .edge-install-options { grid-template-columns: 1fr; }
+  .install-options { grid-template-columns: 1fr; }
 }
 @media (max-width: 560px) {
   .extension-main, .extension-footer { width: calc(100% - 36px); }
@@ -143,4 +143,4 @@
   .extension-install-link { padding: 8px; }
   .extension-install-link svg { display: none; }
 }
-@media (prefers-reduced-motion: reduce) { .browser-chevron, .edge-install-option, .edge-install-option__chevron { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .browser-chevron, .install-option, .install-option__chevron { transition: none; } }

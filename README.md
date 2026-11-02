@@ -21,14 +21,13 @@ Do not commit row-level journal datasets such as `data/journals.json`,
 `data/search_index.json`, `data/related_index.json`, `data/journal_chunks/`, or the
 full maintenance catalog `data/official_apc_prices.json`.
 
-The browser extension guide is `extension-install.html`. Edge users should install the
+The browser extension guide is `extension-install.html`. Edge and Chrome users can choose
+their public store listing or a versioned offline package. Edge users can install from the
 public [Microsoft Edge Add-ons listing](https://microsoftedge.microsoft.com/addons/detail/journal-scout-%E6%9C%9F%E5%88%8A%E5%88%86%E5%8C%BA%E4%B8%8E%E5%BD%B1%E5%93%8D%E5%9B%A0%E5%AD%90/jehpajedcihlfkcichdodghfigadcmbk),
-verified live on 2026-10-29; Edge manages subsequent store updates. Users migrating from
-the unpacked extension should disable the old installation to avoid duplicate badges;
-extension settings do not automatically transfer between the two extension IDs.
-
-Chrome manual installation and Firefox temporary installation still use the tested release
-archives in `downloads/`. Update the displayed version, link paths and corresponding
-archives together when publishing a new manual release. The Firefox package is currently
-unsigned and is offered only for temporary installation. A store listing URL must be
-verified publicly available before adding it to this guide.
+and Chrome users can install from the public [Chrome Web Store listing](https://chromewebstore.google.com/detail/journal-scout-%E6%9C%9F%E5%88%8A%E5%88%86%E5%8C%BA%E4%B8%8E%E5%BD%B1%E5%93%8D%E5%9B%A0%E5%AD%90/mnoflinhlbochdphhmjogjfnokncpoec).
+Both stores manage automatic updates after review. The versioned Chromium packages in
+`downloads/` support manual offline installation and can be offered as soon as a new package
+is published; update the displayed version, link paths and corresponding archives together.
+Users switching between store and offline installations should disable the old installation
+to avoid duplicate badges; settings do not automatically transfer between separate extension
+IDs. The Firefox package is currently unsigned and is offered only for temporary installation.
