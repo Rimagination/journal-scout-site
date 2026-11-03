@@ -246,7 +246,7 @@ input:focus {
   color: inherit;
   padding: 12px;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-columns: minmax(0, 1fr);
   gap: 10px;
   cursor: pointer;
   transition: background 0.16s ease, transform 0.16s ease;
@@ -292,50 +292,10 @@ input:focus {
   letter-spacing: 0.02em;
 }
 
-.suggestion__meta,
-.suggestion__if {
+.suggestion__meta {
   color: var(--muted);
   font-size: 12px;
   margin-top: 2px;
-}
-
-.suggestion__if {
-  text-align: right;
-  font-weight: 600;
-}
-
-.if-delta {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 34px;
-  min-height: 17px;
-  padding: 0 6px;
-  border-radius: 999px;
-  font-size: 10px;
-  font-weight: 850;
-  line-height: 1;
-  letter-spacing: 0;
-  vertical-align: middle;
-  white-space: nowrap;
-}
-
-.if-delta--up {
-  border: 1px solid #efb1aa;
-  background: #fff1ee;
-  color: #c93f35;
-}
-
-.if-delta--down {
-  border: 1px solid #a6d7b6;
-  background: #eefaf1;
-  color: #23814a;
-}
-
-.if-delta--flat {
-  border: 1px solid #d3dce8;
-  background: #f4f7fb;
-  color: #66748a;
 }
 
 .tags {
@@ -363,10 +323,22 @@ input:focus {
   color: #4a2c95;
 }
 
+.tag--impact {
+  border-color: #d3e5ef;
+  background: #e8f2f8;
+  color: #174d73;
+}
+
 .tag--cas {
   border-color: #b8d9c8;
   background: #eaf8f0;
   color: #1f6848;
+}
+
+.tag--xuankan {
+  border-color: #cee9de;
+  background: #e5f4ee;
+  color: #08624f;
 }
 
 .tag--hq {
@@ -379,6 +351,30 @@ input:focus {
   border-color: #9ec7f0;
   background: #ecf5ff;
   color: #1d5ea8;
+}
+
+.tag--nature-index {
+  border-color: #f1d5e1;
+  background: #faeaf0;
+  color: #8b3f5e;
+}
+
+.tag--ccf {
+  border-color: #d9e0f4;
+  background: #eaeefa;
+  color: #414b88;
+}
+
+.tag--ccft {
+  border-color: #e5d9ef;
+  background: #f1eaf7;
+  color: #65487c;
+}
+
+.tag--scd {
+  border-color: #f0dfb9;
+  background: #faf1dd;
+  color: #76500d;
 }
 
 .tag--ni-new {
@@ -605,10 +601,16 @@ h1 {
   color: #513a92;
 }
 
+.detail-page .tags .tag--impact {
+  border-color: #d3e5ef;
+  background: #e8f2f8;
+  color: #174d73;
+}
+
 .detail-page .tags .tag--xuankan {
-  border-color: #c8d9ee;
-  background: #eef6ff;
-  color: #2a5d8f;
+  border-color: #cee9de;
+  background: #e5f4ee;
+  color: #08624f;
 }
 
 .detail-page .tags .tag--cas {
@@ -627,6 +629,24 @@ h1 {
   border-color: #9ec7f0;
   background: #ecf5ff;
   color: #1f65ab;
+}
+
+.detail-page .tags .tag--nature-index {
+  border-color: #f1d5e1;
+  background: #faeaf0;
+  color: #8b3f5e;
+}
+
+.detail-page .tags .tag--ccf {
+  border-color: #d9e0f4;
+  background: #eaeefa;
+  color: #414b88;
+}
+
+.detail-page .tags .tag--ccft {
+  border-color: #e5d9ef;
+  background: #f1eaf7;
+  color: #65487c;
 }
 
 .detail-page .tags .tag--ni-new {

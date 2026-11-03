@@ -185,7 +185,7 @@ const SCHOLAR_EVIDENCE_TIMEOUT_MS = 5000;
 const SCHOLAR_EVIDENCE_ROWS = 8;
 const CAR_RISK_TIMEOUT_MS = 4500;
 const PUBLICATION_START_YEAR_TIMEOUT_MS = 4500;
-const DETAIL_PAGE_REV = "20260805-apc-v2";
+const DETAIL_PAGE_REV = "20261103-badge-parity-v1";
 const DATA_REV = "20260617-jcr-2025-full-v2";
 const LATEST_OFFICIAL_JIF_YEAR = 2025;
 const APC_EXCHANGE_RATE_API_URL = "https://api.frankfurter.dev/v2/rates";
@@ -546,83 +546,12 @@ function lastYearToken(text) {
 }
 
 function buildPriorityTags(row) {
-  const tags = [];
-  const rowTags = Array.isArray(row.tags) ? row.tags.map((x) => String(x || "").trim()).filter(Boolean) : [];
-  const pushTag = (text, cls) => {
-    const t = String(text || "").trim();
-    if (!t) return;
-    if (tags.some((x) => x.text === t)) return;
-    tags.push({ text: t, cls });
-  };
-
-  if (row.jcr_quartile) {
-    pushTag(`JCR ${row.jcr_quartile}`, "tag--jcr");
-  }
-  if (row.xuankan_2026) {
-    pushTag(`新锐${row.xuankan_2026}`, "tag--xuankan");
-  }
-  if (row.cas_2025) {
-    const top = row.is_top === true ? " (Top)" : "";
-    pushTag(`中科院${row.cas_2025}${top}`, "tag--cas");
-  }
-  if (row.hq_level) {
-    pushTag(`科协-${row.hq_level}`, "tag--hq");
-  }
-  if (row.ni_journal === true || rowTags.includes("NI期刊")) {
-    pushTag("NI期刊", "tag--ni");
-  }
-  if (row.pku_core === true || rowTags.includes("北大核心")) {
-    pushTag("北大核心", "tag--pku");
-  }
-  let cssciType = String(row.cssci_type || "").trim();
-  if (!cssciType) {
-    if (rowTags.includes("CSSCI(扩展)") || rowTags.includes("CSSCI扩展")) cssciType = "扩展版";
-    else if (rowTags.includes("CSSCI")) cssciType = "来源版";
-  }
-  if (cssciType) {
-    pushTag(cssciType === "扩展版" ? "CSSCI(扩展)" : "CSSCI", "tag--cssci");
-  }
-  let cscdType = String(row.cscd_type || "").trim();
-  if (!cscdType) {
-    const cscdTag = rowTags.find((t) => t.startsWith("CSCD-"));
-    if (cscdTag) cscdType = cscdTag.slice(5);
-    else if (rowTags.includes("CSCD(核心)") || rowTags.includes("CSCD核心")) cscdType = "核心库";
-    else if (rowTags.includes("CSCD(扩展)") || rowTags.includes("CSCD扩展")) cscdType = "扩展库";
-    else if (rowTags.includes("CSCD")) cscdType = "核心库";
-  }
-  if (cscdType) {
-    pushTag(`CSCD-${cscdType}`, "tag--cscd");
-  }
-
-  const wosKnown = new Set(["SCI", "SCIE", "SSCI", "ESCI", "AHCI"]);
-  const wosOut = new Set();
-  for (const raw of rowTags) {
-    const upper = String(raw || "").toUpperCase();
-    const parts = upper.replace(/[^A-Z]+/g, " ").split(/\s+/).filter(Boolean);
-    for (const p of parts) {
-      if (wosKnown.has(p)) wosOut.add(p);
-    }
-    if (upper.includes("SCIE")) wosOut.add("SCIE");
-    if (upper.includes("SSCI")) wosOut.add("SSCI");
-    if (upper.includes("ESCI")) wosOut.add("ESCI");
-    if (upper.includes("AHCI")) wosOut.add("AHCI");
-    if (/\bSCI\b/.test(upper.replace(/[^A-Z]/g, " "))) wosOut.add("SCI");
-  }
-  for (const token of wosOut) {
-    pushTag(token, "tag--wos");
-  }
-  if (rowTags.some((t) => String(t).toUpperCase() === "EI")) {
-    pushTag("EI", "tag--ei");
-  }
-  if (row.xuankan_warning) {
-    pushTag("新锐预警", "tag--xuankan-warn");
-  }
-  if (row.warning_latest) {
-    pushTag("中科院预警", "tag--warn");
-  }
-  return tags;
+  return window.JournalScoutBadges.build(row).map((badge) => ({
+    text: badge.text,
+    cls: badge.className,
+    title: badge.title,
+  }));
 }
-
 function hasNatureIndexNewSignal(row) {
   const rowTags = Array.isArray(row?.tags) ? row.tags.map((x) => String(x || "").trim()).filter(Boolean) : [];
   return row?.ni_new === true || rowTags.includes("NEW") || rowTags.includes("NI新增");
@@ -636,7 +565,7 @@ function buildNatureIndexCoreValue(row) {
 function renderTopTags(row) {
   const tags = buildPriorityTags(row);
   els.topTags.innerHTML = tags.length
-    ? tags.map((t) => `<span class="tag ${t.cls}">${escapeHtml(t.text)}</span>`).join("")
+    ? tags.map((t) => `<span class="tag ${t.cls}" title="${escapeHtml(t.title || t.text)}">${escapeHtml(t.text)}</span>`).join("")
     : "<span class='tag tag--empty'>无核心标签</span>";
 }
 

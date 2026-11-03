@@ -25,6 +25,8 @@ const API_BASE = getApiBase();
 const SEARCH_API_TIMEOUT_MS = 12000;
 const SEARCH_INPUT_DEBOUNCE_MS = 180;
 const SEARCH_API_RETRY_DELAY_MS = 450;
+const CLASSIFICATION_API_TIMEOUT_MS = 2500;
+const classificationCache = new Map();
 const STATIC_DATA_FALLBACK_ENABLED =
   window.JOURNAL_SCOUT_ALLOW_STATIC_DATA === true ||
   new URLSearchParams(window.location.search).get("staticData") === "1";
@@ -151,22 +153,6 @@ function getApiBase() {
   return "https://www.scansci.com/api";
 }
 
-const TAG_TEXT = {
-  casPrefix: "\u4e2d\u79d1\u9662",
-  hqPrefix: "\u79d1\u534f-",
-  ni: "NI\u671f\u520a",
-  pku: "\u5317\u5927\u6838\u5fc3",
-  cssci: "CSSCI",
-  cssciExt: "CSSCI(\u6269\u5c55)",
-  cssciSourceType: "\u6765\u6e90\u7248",
-  cssciExpandType: "\u6269\u5c55\u7248",
-  cscdCore: "\u6838\u5fc3\u5e93",
-  cscdExt: "\u6269\u5c55\u5e93",
-  cscdPrefix: "CSCD-",
-  warning: "\u4e2d\u79d1\u9662\u9884\u8b66",
-  empty: "\u65e0\u6838\u5fc3\u6807\u7b7e",
-};
-
 const els = {
   searchShell: document.querySelector(".search-shell"),
   searchInput: document.getElementById("searchInput"),
@@ -183,8 +169,6 @@ const els = {
 
 const DETAIL_PAGE_REV = "20260617-jcr-v31";
 const DATA_REV = "20260617-jcr-2025-full-v2";
-const LATEST_OFFICIAL_JIF_YEAR = 2025;
-
 function safe(v) {
   return v === null || v === undefined || v === "" ? "-" : String(v);
 }
@@ -293,58 +277,6 @@ function yearNum(v) {
   return Number.isFinite(n) ? n : 0;
 }
 
-function parseFloatLoose(v) {
-  if (v === null || v === undefined) return null;
-  if (typeof v === "number" && Number.isFinite(v)) return v;
-  const s = String(v).trim();
-  if (!s) return null;
-  const m = s.match(/-?\d+(?:\.\d+)?/);
-  if (!m) return null;
-  const n = Number(m[0]);
-  return Number.isFinite(n) ? n : null;
-}
-
-function formatIFAcademicYear(rawYear) {
-  const y = yearNum(rawYear);
-  if (!y) return "";
-  return `${y}-${y + 1}\u5e74\u5ea6`;
-}
-
-function formatOfficialJifShort(rawYear) {
-  const y = yearNum(rawYear);
-  if (!y) return "";
-  return `${y} JIF`;
-}
-
-function isLatestOfficialJifYear(rawYear) {
-  const y = yearNum(rawYear);
-  return y >= LATEST_OFFICIAL_JIF_YEAR;
-}
-
-function formatIfDelta(delta) {
-  const n = Number(delta);
-  if (!Number.isFinite(n)) return "";
-  const abs = Math.abs(n);
-  const digits = abs > 0 && abs < 1 ? 2 : 1;
-  const text = abs.toFixed(digits).replace(/\.?0+$/, "");
-  return `${n > 0 ? "+" : n < 0 ? "-" : ""}${text}`;
-}
-
-function ifDeltaTone(delta) {
-  const n = Number(delta);
-  if (n > 0) return "up";
-  if (n < 0) return "down";
-  return "flat";
-}
-
-function buildIfDeltaBadge(row) {
-  const delta = parseFloatLoose(row?.if_delta);
-  if (delta === null) return "";
-  const fromYear = String(row?.if_delta_from_year || "").trim();
-  const title = fromYear ? ` title="较 ${escapeHtml(fromYear)} JIF"` : "";
-  return ` <span class="if-delta if-delta--${ifDeltaTone(delta)}"${title}>${escapeHtml(formatIfDelta(delta))}</span>`;
-}
-
 function scoreRow(row, query) {
   const q = query.toLowerCase();
   const qAbbr = normalizeAbbrQuery(query);
@@ -372,123 +304,18 @@ function scoreRow(row, query) {
   return score;
 }
 
-function pushTag(tags, text, cls) {
-  const t = String(text || "").trim();
-  if (!t) return;
-  if (tags.some((x) => x.text === t)) return;
-  tags.push({ text: t, cls });
-}
-
-function collectCnkiWosTokens(rowTags) {
-  const known = new Set(["SCI", "SCIE", "SSCI", "ESCI", "AHCI"]);
-  const out = new Set();
-
-  for (const raw of rowTags) {
-    const upper = String(raw || "").toUpperCase();
-    const parts = upper.replace(/[^A-Z]+/g, " ").split(/\s+/).filter(Boolean);
-    for (const p of parts) {
-      if (known.has(p)) out.add(p);
-    }
-    if (upper.includes("SCIE")) out.add("SCIE");
-    if (upper.includes("SSCI")) out.add("SSCI");
-    if (upper.includes("ESCI")) out.add("ESCI");
-    if (upper.includes("AHCI")) out.add("AHCI");
-    if (/\bSCI\b/.test(upper.replace(/[^A-Z]/g, " "))) out.add("SCI");
-  }
-
-  return [...out];
-}
-
-function deriveHqLevel(row, rowTags) {
-  const raw = String(row.hq_level || "").trim();
-  if (raw) return raw;
-  for (const tag of rowTags) {
-    const m = String(tag).trim().match(/^HQ-(.+)$/i);
-    if (m && m[1]) return m[1].trim().toUpperCase();
-  }
-  return "";
-}
-
 function buildPriorityTags(row) {
-  const tags = [];
-  const rowTags = Array.isArray(row.tags)
-    ? row.tags.map((x) => String(x || "").trim()).filter(Boolean)
-    : [];
-
-  if (row.jcr_quartile) {
-    pushTag(tags, `JCR ${row.jcr_quartile}`, "tag--jcr");
-  }
-
-  if (row.xuankan_2026) {
-    pushTag(tags, `新锐${row.xuankan_2026}`, "tag--xuankan");
-  }
-
-  if (row.cas_2025) {
-    const suffix = row.is_top === true ? " (Top)" : "";
-    pushTag(tags, `${TAG_TEXT.casPrefix}${row.cas_2025}${suffix}`, "tag--cas");
-  }
-
-  const hqLevel = deriveHqLevel(row, rowTags);
-  if (hqLevel) {
-    pushTag(tags, `${TAG_TEXT.hqPrefix}${hqLevel}`, "tag--hq");
-  }
-
-  if (row.ni_journal === true || rowTags.includes(TAG_TEXT.ni)) {
-    pushTag(tags, TAG_TEXT.ni, "tag--ni");
-  }
-  if (row.pku_core === true || rowTags.includes(TAG_TEXT.pku)) {
-    pushTag(tags, TAG_TEXT.pku, "tag--pku");
-  }
-
-  let cssciType = String(row.cssci_type || "").trim();
-  if (!cssciType) {
-    if (rowTags.includes(TAG_TEXT.cssciExt) || rowTags.includes("CSSCI\u6269\u5c55")) {
-      cssciType = TAG_TEXT.cssciExpandType;
-    } else if (rowTags.includes(TAG_TEXT.cssci)) {
-      cssciType = TAG_TEXT.cssciSourceType;
-    }
-  }
-  if (cssciType) {
-    const text = cssciType === TAG_TEXT.cssciExpandType ? TAG_TEXT.cssciExt : TAG_TEXT.cssci;
-    pushTag(tags, text, "tag--cssci");
-  }
-
-  let cscdType = String(row.cscd_type || "").trim();
-  if (!cscdType) {
-    const cscdTag = rowTags.find((t) => t.startsWith(TAG_TEXT.cscdPrefix));
-    if (cscdTag) cscdType = cscdTag.slice(TAG_TEXT.cscdPrefix.length).trim();
-    else if (rowTags.includes("CSCD(\u6838\u5fc3)") || rowTags.includes("CSCD\u6838\u5fc3")) cscdType = TAG_TEXT.cscdCore;
-    else if (rowTags.includes("CSCD(\u6269\u5c55)") || rowTags.includes("CSCD\u6269\u5c55")) cscdType = TAG_TEXT.cscdExt;
-    else if (rowTags.includes("CSCD")) cscdType = TAG_TEXT.cscdCore;
-  }
-  if (cscdType) {
-    pushTag(tags, `${TAG_TEXT.cscdPrefix}${cscdType}`, "tag--cscd");
-  }
-
-  for (const token of collectCnkiWosTokens(rowTags)) {
-    pushTag(tags, token, "tag--wos");
-  }
-
-  if (rowTags.some((t) => String(t).toUpperCase() === "EI")) {
-    pushTag(tags, "EI", "tag--ei");
-  }
-
-  if (row.xuankan_warning) {
-    pushTag(tags, "新锐预警", "tag--xuankan-warn");
-  }
-
-  if (row.warning_latest) {
-    pushTag(tags, TAG_TEXT.warning, "tag--warn");
-  }
-
-  return tags;
+  return window.JournalScoutBadges.build(row).map((badge) => ({
+    text: badge.text,
+    cls: badge.className,
+    title: badge.title,
+  }));
 }
 
 function renderTagList(tags) {
-  if (!tags.length) return `<span class="tag tag--empty">${TAG_TEXT.empty}</span>`;
-  return tags.map((t) => `<span class="tag ${t.cls}">${escapeHtml(t.text)}</span>`).join("");
+  if (!tags.length) return `<span class="tag tag--empty">无核心标签</span>`;
+  return tags.map((tag) => `<span class="tag ${tag.cls}" title="${escapeHtml(tag.title || tag.text)}">${escapeHtml(tag.text)}</span>`).join("");
 }
-
 function findSuggestions(query, limit = 12) {
   const q = query.trim();
   if (!q) return [];
@@ -568,6 +395,59 @@ async function fetchSearchApi(query, limit = 12) {
   }
 }
 
+function compactIssn(value) {
+  const key = String(value || "").toUpperCase().replace(/[^0-9X]/g, "");
+  return /^\d{7}[\dX]$/.test(key) ? key : "";
+}
+
+async function enrichSearchRowsWithClassifications(rows) {
+  const keys = [...new Set(rows.flatMap((row) => [row.issn, row.eissn]).map(compactIssn).filter(Boolean))].slice(0, 40);
+  if (!keys.length) return rows;
+  const missing = keys.filter((key) => !classificationCache.has(key));
+
+  if (missing.length) {
+    const url = new URL(`${API_BASE}/reader/journal-classifications`);
+    for (const key of missing) url.searchParams.append("issn", key);
+    const controller = new AbortController();
+    const timer = window.setTimeout(() => controller.abort(), CLASSIFICATION_API_TIMEOUT_MS);
+    try {
+      const response = await fetch(url.toString(), {
+        cache: "default",
+        headers: { Accept: "application/json" },
+        signal: controller.signal,
+      });
+      const payload = await response.json().catch(() => null);
+      if (!response.ok || !payload?.ok || !Array.isArray(payload.items)) return rows;
+
+      for (const item of payload.items) {
+        for (const value of Array.isArray(item.issns) ? item.issns : []) {
+          const key = compactIssn(value);
+          if (key) classificationCache.set(key, item);
+        }
+      }
+      for (const key of missing) if (!classificationCache.has(key)) classificationCache.set(key, null);
+    } catch {
+      return rows;
+    } finally {
+      window.clearTimeout(timer);
+    }
+  }
+
+  return rows.map((row) => {
+    const detail = [row.issn, row.eissn]
+      .map(compactIssn)
+      .map((key) => classificationCache.get(key))
+      .find(Boolean);
+    if (!detail) return row;
+    return {
+      ...row,
+      ccf_records: detail.ccf_records,
+      ccft_records: detail.ccft_records,
+      ei_indexed: detail.ei_indexed,
+    };
+  });
+}
+
 function sleep(ms) {
   return new Promise((resolve) => window.setTimeout(resolve, ms));
 }
@@ -606,14 +486,6 @@ function suggestionItem(row, idx) {
   const query = String(els.searchInput?.value || "").trim();
   const ids = [row.issn, row.cn_number].filter(Boolean).join(" / ");
   const tagsHtml = renderTagList(buildPriorityTags(row));
-  const ifYear = formatOfficialJifShort(row.if_year);
-  const ifYearText = ifYear ? `(${ifYear})` : "";
-  const ifText = row.if_2023 === null || row.if_2023 === undefined ? "-" : safe(row.if_2023);
-  const ifNewBadge =
-    row.if_2023 === null || row.if_2023 === undefined || !isLatestOfficialJifYear(row.if_year)
-      ? ""
-      : ` <span class="if-new-badge if-new-badge--inline">NEW</span>`;
-  const ifDeltaBadge = buildIfDeltaBadge(row);
   const activeCls = idx === state.activeIndex ? "is-active" : "";
   const matchHint = isAbbreviationMatch(row, query)
     ? `<span class="suggestion__match-hint">缩写匹配</span>`
@@ -627,10 +499,7 @@ function suggestionItem(row, idx) {
           ${matchHint}
         </div>
         <div class="suggestion__meta">${escapeHtml(safe(ids))}</div>
-      </div>
-      <div class="suggestion__side">
-        <div class="suggestion__if">IF${escapeHtml(ifYearText)}${ifNewBadge} ${escapeHtml(ifText)}${ifDeltaBadge}</div>
-        <div class="tags">${tagsHtml}</div>
+        <div class="tags" data-suggestion-badges>${tagsHtml}</div>
       </div>
     </button>
   `;
@@ -765,6 +634,16 @@ async function renderSuggestions() {
 
   if (seq !== state.searchRequestSeq) return;
   renderSuggestionRows(q, rows);
+  void enrichSearchRowsWithClassifications(rows).then((enrichedRows) => {
+    if (seq !== state.searchRequestSeq || els.searchInput.value.trim() !== q) return;
+    const enrichedById = new Map(enrichedRows.map((row) => [String(row.id), row]));
+    state.suggestions = state.suggestions.map((row) => enrichedById.get(String(row.id)) || row);
+    for (const button of els.suggestionPanel.querySelectorAll(".suggestion")) {
+      const row = enrichedById.get(String(button.dataset.id));
+      const badges = button.querySelector("[data-suggestion-badges]");
+      if (row && badges) badges.innerHTML = renderTagList(buildPriorityTags(row));
+    }
+  });
 }
 
 function scheduleRenderSuggestions(delay = SEARCH_INPUT_DEBOUNCE_MS) {
