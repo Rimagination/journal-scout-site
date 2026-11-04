@@ -7,7 +7,7 @@
   <title>插件安装 · Journal Scout</title>
   <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
   <link rel="stylesheet" href="./styles.css?v=20261029-header" />
-  <link rel="stylesheet" href="./extension-install.css?v=20261102-chrome-accordion" />
+  <link rel="stylesheet" href="./extension-install.css?v=20261104-showcase-grid" />
 </head>
 <body class="extension-page with-global-nav">
   <header class="scansci-global-nav">
@@ -27,7 +27,7 @@
         <p class="extension-eyebrow"><span></span> JOURNAL SCOUT FOR BROWSER</p>
         <h1 id="extension-title">让期刊信息<br /><em>跟随你的阅读。</em></h1>
         <p class="extension-intro">浏览论文时直接查看期刊信息。Edge 和 Chrome 都可选商店版或离线版：商店版自动更新；离线版通常能更快拿到新版本，但需要手动更新。Firefox 安装方法见下方。</p>
-        <div class="extension-release"><span>手动安装包 v0.1.9</span><span>Edge、Chrome 商店版已上架</span><span>桌面浏览器</span></div>
+        <div class="extension-release"><span>手动安装包 v0.1.9.2</span><span>Edge、Chrome 商店版已上架</span><span>桌面浏览器</span></div>
         <div class="extension-actions">
           <a class="extension-primary" href="#install-guide">选择安装方式 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg></a>
           <a class="extension-secondary" href="#showcase-title">查看效果展示</a>
@@ -101,12 +101,14 @@
                 <li><strong>刷新论文页面</strong><span>打开或刷新 Google Scholar、PubMed 等支持的学术页面。识别到期刊后即可看到标签；点击插件图标可调整显示项目、配色和翻译设置。</span></li>
               </ol>
               <figure class="install-screenshot">
-                <img src="./assets/install-guide/edge-store-listing.png" alt="Microsoft Edge 扩展商店里的 Journal Scout 详情页，显示 ScanSci 发布者和获取按钮" width="1024" height="760" loading="lazy" decoding="async">
-                <figcaption><strong>Edge 商店安装</strong> 通过直达链接打开详情页，确认名称与发布者后点击「获取」。搜索暂时没有结果时，无需反复搜索。</figcaption>
+                <a href="./assets/install-guide/edge-store-listing.png" target="_blank" rel="noopener noreferrer" aria-label="打开 Edge 商店安装截图原图">
+                  <img src="./assets/install-guide/edge-store-listing.png" alt="Microsoft Edge 扩展商店里的 Journal Scout 详情页，显示 ScanSci 发布者和获取按钮" width="1024" height="760" loading="lazy" decoding="async">
+                </a>
+                <figcaption><strong>Edge 商店安装</strong> 通过直达链接打开详情页，确认名称与发布者后点击「获取」。搜索暂时没有结果时，无需反复搜索。点击图片可查看原图。</figcaption>
               </figure>
             </section>
             <section class="install-details" id="edge-offline-details" aria-labelledby="edge-offline-toggle" hidden>
-              <a class="extension-download" href="./downloads/scansci-chromium-0.1.9.zip" download="Journal-Scout-Edge-Offline-0.1.9.zip"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg><span>下载离线安装包<small>ZIP · v0.1.9</small></span></a>
+              <a class="extension-download" href="./downloads/scansci-chromium-0.1.9.2.zip" download="Journal-Scout-Edge-Offline-0.1.9.2.zip"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg><span>下载离线安装包<small>ZIP · v0.1.9.2</small></span></a>
               <h3 class="install-subtitle">安装步骤</h3>
               <ol class="extension-steps">
                 <li><strong>下载并解压</strong><span>下载上方 ZIP，解压后保留文件夹。</span></li>
@@ -140,7 +142,7 @@
               </ol>
             </section>
             <section class="install-details" id="chrome-offline-details" aria-labelledby="chrome-offline-toggle" hidden>
-              <a class="extension-download" href="./downloads/scansci-chromium-0.1.9.zip" download="Journal-Scout-Chrome-Offline-0.1.9.zip"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg><span>下载离线安装包<small>ZIP · v0.1.9</small></span></a>
+              <a class="extension-download" href="./downloads/scansci-chromium-0.1.9.2.zip" download="Journal-Scout-Chrome-Offline-0.1.9.2.zip"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg><span>下载离线安装包<small>ZIP · v0.1.9.2</small></span></a>
               <h3 class="install-subtitle">安装步骤</h3>
               <ol class="extension-steps">
                 <li><strong>下载并解压</strong><span>下载上方 ZIP，解压后保留文件夹。</span></li>
@@ -149,8 +151,10 @@
                 <li><strong>开始使用</strong><span>在工具栏扩展菜单中固定 Journal Scout，再刷新已打开的论文页面。</span></li>
               </ol>
               <figure class="install-screenshot">
-                <img src="./assets/install-guide/chrome-developer-mode.png" alt="Chrome 扩展程序页面，开发者模式已开启，并显示加载未打包的扩展程序按钮" width="1024" height="720" loading="lazy" decoding="async">
-                <figcaption><strong>Chrome 离线安装</strong> 开启「开发者模式」，点击「加载已解压的扩展程序」，选择刚才解压的插件文件夹。</figcaption>
+                <a href="./assets/install-guide/chrome-developer-mode.png" target="_blank" rel="noopener noreferrer" aria-label="打开 Chrome 离线安装截图原图">
+                  <img src="./assets/install-guide/chrome-developer-mode.png" alt="Chrome 扩展程序页面，开发者模式已开启，并显示加载未打包的扩展程序按钮" width="1024" height="720" loading="lazy" decoding="async">
+                </a>
+                <figcaption><strong>Chrome 离线安装</strong> 开启「开发者模式」，点击「加载已解压的扩展程序」，选择刚才解压的插件文件夹。点击图片可查看原图。</figcaption>
               </figure>
               <p class="install-offline-update"><strong>手动更新：</strong>新版本发布后下载新版 ZIP，解压并覆盖原文件，再到 <code>chrome://extensions</code> 点击「重新加载」。</p>
             </section>
@@ -160,7 +164,7 @@
         <details class="browser-guide" name="browser-guide">
           <summary><span class="browser-mark browser-mark--firefox" aria-hidden="true"><img src="./assets/browser-icons/firefox.svg" alt=""></span><span class="browser-name"><strong>Firefox</strong><small>桌面版 · Firefox 140 或更高 · 临时安装</small></span><span class="browser-chevron" aria-hidden="true">⌄</span></summary>
           <div class="browser-guide__body">
-            <a class="extension-download" href="./downloads/scansci-firefox-0.1.9.xpi" download="Journal-Scout-Firefox-0.1.9.xpi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg><span>下载 Firefox 测试包<small>XPI · v0.1.9</small></span></a>
+            <a class="extension-download" href="./downloads/scansci-firefox-0.1.9.2.xpi" download="Journal-Scout-Firefox-0.1.9.2.xpi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg><span>下载 Firefox 测试包<small>XPI · v0.1.9.2</small></span></a>
             <ol class="extension-steps">
               <li><strong>下载测试包</strong><span>下载上面的 XPI 文件，无需解压。</span></li>
               <li><strong>打开调试页面</strong><span>在 Firefox 地址栏输入 <code>about:debugging#/runtime/this-firefox</code> 并回车。</span></li>

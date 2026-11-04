@@ -46,7 +46,7 @@
 .extension-showcase__heading .extension-eyebrow { margin-bottom: 8px; }
 .extension-showcase__heading h2 { margin: 0; color: #183a32; font-family: var(--font-display); font-size: 26px; }
 .extension-showcase__heading > p { margin: 0 0 3px; color: #6c8075; font-size: 12px; }
-.extension-showcase__grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; }
+.extension-showcase__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
 .extension-showcase-card { overflow: hidden; margin: 0; border: 1px solid #dce9df; border-radius: 10px; background: #fff; box-shadow: 0 5px 18px rgba(32,63,48,.045); }
 .extension-showcase-card__image { display: block; background: #f5f7fa; }
 .extension-showcase-card__image img { display: block; width: 100%; height: auto; }
@@ -103,7 +103,8 @@
 .extension-steps strong { color: #29453c; font-size: 13px; }
 .extension-steps li > span { margin-top: 3px; color: #697c71; font-size: 12px; line-height: 1.7; }
 .extension-steps code { padding: 2px 5px; border-radius: 4px; background: #f1f5f0; color: #365c4f; overflow-wrap: anywhere; font-size: 11px; }
-.install-screenshot { overflow: hidden; margin: 22px 0 0; border: 1px solid #dce9df; border-radius: 9px; background: #fff; box-shadow: 0 5px 18px rgba(32,63,48,.045); }
+.install-screenshot { overflow: hidden; max-width: 800px; margin: 22px auto 0; border: 1px solid #dce9df; border-radius: 9px; background: #fff; box-shadow: 0 5px 18px rgba(32,63,48,.045); }
+.install-screenshot a { display: block; cursor: zoom-in; }
 .install-screenshot img { display: block; width: 100%; height: auto; }
 .install-screenshot figcaption { padding: 10px 13px; border-top: 1px solid #e9f0e9; color: #6c8075; font-size: 11px; line-height: 1.7; }
 .install-screenshot figcaption strong { color: #315d4b; }
@@ -126,6 +127,7 @@
   .extension-guide__heading > p { margin-top: 9px; }
   .extension-showcase__heading { display: block; }
   .extension-showcase__heading > p { margin-top: 8px; }
+  .extension-showcase__grid { grid-template-columns: minmax(0, 1fr); }
   .install-options { grid-template-columns: 1fr; }
 }
 @media (max-width: 560px) {
