@@ -33,7 +33,6 @@ const STATIC_DATA_FALLBACK_ENABLED =
 
 const SEED_SUGGESTIONS = [
   {
-    id: 821,
     title: "PHYSICAL REVIEW LETTERS",
     issn: "0031-9007",
     eissn: "1079-7114",
@@ -47,7 +46,6 @@ const SEED_SUGGESTIONS = [
     tags: ["1区", "HQ-T1", "NI期刊", "Q1", "SCIE", "中科院Top", "新锐1区", "高质量目录"],
   },
   {
-    id: 229,
     title: "Nature Communications",
     issn: "2041-1723",
     eissn: "2041-1723",
@@ -61,7 +59,6 @@ const SEED_SUGGESTIONS = [
     tags: ["1区", "HQ-T1", "NI期刊", "Q1", "SCIE", "中科院Top", "新锐1区", "高质量目录"],
   },
   {
-    id: 868,
     title: "ENVIRONMENTAL RESEARCH",
     issn: "0013-9351",
     eissn: "1096-0953",
@@ -75,7 +72,6 @@ const SEED_SUGGESTIONS = [
     tags: ["2区", "HQ-T1", "NEW", "NI期刊", "Q1", "SCIE", "新锐2区", "高质量目录"],
   },
   {
-    id: 753,
     title: "ENVIRONMENTAL POLLUTION",
     issn: "0269-7491",
     eissn: "1873-6424",
@@ -89,7 +85,6 @@ const SEED_SUGGESTIONS = [
     tags: ["2\u533a", "Q1", "SCIE"],
   },
   {
-    id: 496,
     title: "Journal of Cleaner Production",
     issn: "0959-6526",
     eissn: "1879-1786",
@@ -103,7 +98,6 @@ const SEED_SUGGESTIONS = [
     tags: ["1区", "HQ-T1", "NEW", "NI期刊", "Q1", "SCIE", "中科院Top", "新锐1区", "高质量目录"],
   },
   {
-    id: 18,
     title: "NATURE",
     issn: "0028-0836",
     eissn: "1476-4687",
@@ -117,7 +111,6 @@ const SEED_SUGGESTIONS = [
     tags: ["1区", "HQ-T1", "NI期刊", "Q1", "SCIE", "中科院Top", "新锐1区", "高质量目录"],
   },
   {
-    id: 22,
     title: "SCIENCE",
     issn: "0036-8075",
     eissn: "1095-9203",
@@ -131,7 +124,6 @@ const SEED_SUGGESTIONS = [
     tags: ["1区", "HQ-T1", "NI期刊", "Q1", "SCIE", "中科院Top", "新锐1区", "高质量目录"],
   },
   {
-    id: 19,
     title: "CELL",
     issn: "0092-8674",
     eissn: "1097-4172",
@@ -492,7 +484,7 @@ function suggestionItem(row, idx) {
     : "";
 
   return `
-    <button class="suggestion ${activeCls}" data-id="${escapeHtml(String(row.id))}" data-idx="${idx}" type="button">
+    <button class="suggestion ${activeCls}" data-id="${escapeHtml(String(row.id ?? ""))}" data-idx="${idx}" type="button">
       <div class="suggestion__main">
         <div class="suggestion__title-row">
           <div class="suggestion__title">${escapeHtml(row.title || "\u672a\u77e5\u671f\u520a")}</div>
@@ -538,6 +530,8 @@ function openSuggestionPanel() {
 }
 
 function setPanelMessage(message) {
+  state.suggestions = [];
+  state.activeIndex = -1;
   if (!els.suggestionPanel) return;
   openSuggestionPanel();
   els.suggestionPanel.innerHTML = `<p class="placeholder">${escapeHtml(message)}</p>`;
@@ -559,6 +553,48 @@ function gotoDetail(id, q = "") {
   window.location.href = url.toString();
 }
 
+function suggestionIssnKey(value) {
+  const key = String(value || "").toUpperCase().replace(/[^0-9X]/g, "");
+  return /^\d{7}[\dX]$/.test(key) ? key : "";
+}
+
+async function gotoSuggestion(row, q) {
+  if (!row || !els.searchInput || els.searchInput.value.trim() !== q) return;
+  if (state.searchInputTimer) {
+    window.clearTimeout(state.searchInputTimer);
+    state.searchInputTimer = null;
+  }
+  const seq = (state.searchRequestSeq += 1);
+  if (row.id != null && String(row.id).trim()) {
+    gotoDetail(row.id, q);
+    return;
+  }
+
+  // Seed suggestions have no durable database ID; resolve their ISSN first.
+  const issn = row.issn || row.eissn;
+  const key = suggestionIssnKey(issn);
+  if (!key) {
+    setPanelMessage("无法确认期刊信息，请重新搜索");
+    return;
+  }
+  setPanelMessage("正在确认期刊信息...");
+  try {
+    const rows = await findSuggestionsRemoteFirst(issn, 12);
+    if (seq !== state.searchRequestSeq || els.searchInput.value.trim() !== q) return;
+    const matches = rows.filter((candidate) =>
+      candidate.id != null && String(candidate.id).trim() &&
+      [candidate.issn, candidate.eissn].some((value) => suggestionIssnKey(value) === key)
+    );
+    const title = String(row.title || "").trim().toLowerCase();
+    const match = matches.find((candidate) => String(candidate.title || "").trim().toLowerCase() === title) ||
+      (matches.length === 1 ? matches[0] : null);
+    if (match) gotoDetail(match.id, q);
+    else setPanelMessage("无法确认期刊信息，请重新搜索");
+  } catch (err) {
+    if (seq === state.searchRequestSeq && els.searchInput.value.trim() === q) showLoadError(err);
+  }
+}
+
 async function gotoPickedSuggestion() {
   if (!els.searchInput) return;
   const q = els.searchInput.value.trim();
@@ -566,16 +602,25 @@ async function gotoPickedSuggestion() {
 
   let picked = state.suggestions[state.activeIndex >= 0 ? state.activeIndex : 0];
   if (picked) {
-    gotoDetail(picked.id, q);
+    await gotoSuggestion(picked, q);
     return;
   }
 
-  const fallback = await findSuggestionsRemoteFirst(q, 1).catch((err) => {
-    showLoadError(err);
-    return [];
-  });
-  picked = fallback[0];
-  if (picked) gotoDetail(picked.id, q);
+  if (state.searchInputTimer) {
+    window.clearTimeout(state.searchInputTimer);
+    state.searchInputTimer = null;
+  }
+  const seq = (state.searchRequestSeq += 1);
+  setPanelMessage("正在检索期刊...");
+  try {
+    const fallback = await findSuggestionsRemoteFirst(q, 1);
+    if (seq !== state.searchRequestSeq || els.searchInput.value.trim() !== q) return;
+    picked = fallback[0];
+    if (picked) await gotoSuggestion(picked, q);
+    else renderSuggestionRows(q, []);
+  } catch (err) {
+    if (seq === state.searchRequestSeq && els.searchInput.value.trim() === q) showLoadError(err);
+  }
 }
 
 function ensureActiveVisible() {
@@ -597,7 +642,10 @@ function renderSuggestionRows(query, rows) {
 
   els.suggestionPanel.innerHTML = state.suggestions.map((row, i) => suggestionItem(row, i)).join("");
   els.suggestionPanel.querySelectorAll(".suggestion").forEach((btn) => {
-    btn.addEventListener("click", () => gotoDetail(Number(btn.dataset.id), query));
+    btn.addEventListener("click", (event) => {
+      event.stopPropagation();
+      void gotoSuggestion(rows[Number(btn.dataset.idx)], query);
+    });
     btn.addEventListener("mouseenter", () => {
       state.activeIndex = Number(btn.dataset.idx);
       els.suggestionPanel.querySelectorAll(".suggestion").forEach((s) => s.classList.remove("is-active"));
@@ -647,6 +695,8 @@ async function renderSuggestions() {
 }
 
 function scheduleRenderSuggestions(delay = SEARCH_INPUT_DEBOUNCE_MS) {
+  state.searchRequestSeq += 1;
+  closeSuggestionPanel();
   if (state.searchInputTimer) window.clearTimeout(state.searchInputTimer);
   state.searchInputTimer = window.setTimeout(() => {
     state.searchInputTimer = null;
