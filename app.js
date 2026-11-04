@@ -159,7 +159,7 @@ const els = {
   cmdList: document.getElementById("cmdList"),
 };
 
-const DETAIL_PAGE_REV = "20260617-jcr-v31";
+const DETAIL_PAGE_REV = "20261104-wiki-intro-v1";
 const DATA_REV = "20260617-jcr-2025-full-v2";
 function safe(v) {
   return v === null || v === undefined || v === "" ? "-" : String(v);

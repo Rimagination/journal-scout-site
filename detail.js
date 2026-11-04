@@ -185,7 +185,7 @@ const SCHOLAR_EVIDENCE_TIMEOUT_MS = 5000;
 const SCHOLAR_EVIDENCE_ROWS = 8;
 const CAR_RISK_TIMEOUT_MS = 4500;
 const PUBLICATION_START_YEAR_TIMEOUT_MS = 4500;
-const DETAIL_PAGE_REV = "20261103-badge-parity-v1";
+const DETAIL_PAGE_REV = "20261104-wiki-intro-v1";
 const DATA_REV = "20260617-jcr-2025-full-v2";
 const LATEST_OFFICIAL_JIF_YEAR = 2025;
 const APC_EXCHANGE_RATE_API_URL = "https://api.frankfurter.dev/v2/rates";
@@ -1339,9 +1339,12 @@ async function fetchWikipediaExtract(title, lang) {
   if (!t) return "";
   const params = new URLSearchParams({
     action: "query",
-    prop: "extracts",
+    prop: "info|extracts|pageprops",
     exintro: "1",
     explaintext: "1",
+    exsentences: "3",
+    redirects: "1",
+    ppprop: "disambiguation",
     format: "json",
     origin: "*",
     titles: t,
@@ -1350,7 +1353,12 @@ async function fetchWikipediaExtract(title, lang) {
   const payload = await fetchJsonWithTimeout(url, 6500);
   const pages = payload?.query?.pages || {};
   const first = Object.values(pages)[0];
-  return normalizeIntroText(first?.extract || "");
+  if (!first || first.ns !== 0 || first.missing !== undefined || first.invalid !== undefined ||
+      first.redirect !== undefined || first.pageprops?.disambiguation !== undefined) return "";
+  const intro = normalizeIntroText(first.extract || "");
+  if (/^(?:#\s*(?:redirect\b|重定向)|(?:英语|英語|英文|中文)?重定向\s*[：:]|(?:this (?:page )?is a redirect|redirect (?:from|to))\b)/i.test(intro)) return "";
+  if (!/(?:期刊|刊物|杂志|雜誌|学报|學報|报刊|報刊|\b(?:journals?|periodicals?|magazines?|serial publications?)\b)/i.test(intro)) return "";
+  return intro;
 }
 
 async function fetchWikidataEntity(qid) {
@@ -1421,16 +1429,31 @@ function buildWikidataStartYearInfo(entity) {
 }
 
 async function fetchJournalIntro(j, source, prefetchedEntity = null) {
+  const attempted = new Set();
+  const unavailable = new Set();
+  async function getExtract(title, lang) {
+    const cleanTitle = String(title || "").trim();
+    const key = `${lang}:${cleanTitle}`;
+    if (!cleanTitle || attempted.has(key) || unavailable.has(lang)) return "";
+    attempted.add(key);
+    try {
+      return await fetchWikipediaExtract(cleanTitle, lang);
+    } catch {
+      unavailable.add(lang);
+      return "";
+    }
+  }
+
   const qid = parseWikidataQid(source?.ids?.wikidata);
   if (qid) {
-    const entity = prefetchedEntity || (await fetchWikidataEntity(qid));
+    const entity = prefetchedEntity || (await fetchWikidataEntity(qid).catch(() => null));
     const zhTitle = entity?.sitelinks?.zhwiki?.title || "";
     const enTitle = entity?.sitelinks?.enwiki?.title || source?.display_name || j.title || "";
 
-    const zhExtract = await fetchWikipediaExtract(zhTitle, "zh");
+    const zhExtract = await getExtract(zhTitle, "zh");
     if (zhExtract) return zhExtract;
 
-    const enExtract = await fetchWikipediaExtract(enTitle, "en");
+    const enExtract = await getExtract(enTitle, "en");
     if (enExtract) return enExtract;
 
     const zhDesc = normalizeIntroText(entity?.descriptions?.zh?.value || "", 180);
@@ -1439,11 +1462,23 @@ async function fetchJournalIntro(j, source, prefetchedEntity = null) {
     if (enDesc) return enDesc;
   }
 
-  const titleZh = await fetchWikipediaExtract(j.title, "zh");
+  const titleZh = await getExtract(j.title, "zh");
   if (titleZh) return titleZh;
 
-  const titleEn = await fetchWikipediaExtract(source?.display_name || j.title, "en");
-  if (titleEn) return titleEn;
+  const enTitle = String(source?.display_name || j.title || "").trim();
+  const enTitles = [enTitle];
+  if (/[A-Z]/.test(enTitle) && enTitle === enTitle.toUpperCase()) {
+    enTitles.push(enTitle.toLowerCase().replace(/(^|[\s-])([a-z])/g, (_, prefix, letter) => prefix + letter.toUpperCase()));
+  }
+  for (const candidate of enTitles) {
+    const titleEn = await getExtract(candidate, "en");
+    if (titleEn) return titleEn;
+  }
+  for (const candidate of enTitles.slice().reverse()) {
+    if (!candidate || /\(\s*journal\s*\)$/i.test(candidate)) continue;
+    const journalEn = await getExtract(`${candidate} (journal)`, "en");
+    if (journalEn) return journalEn;
+  }
 
   return "";
 }
