@@ -27,7 +27,7 @@ const url = `http://127.0.0.1:${server.address().port}/extension-install.html`;
 const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_EXECUTABLE, headless: true });
 const siteData = JSON.parse(await readFile(path.join(root, 'data', 'extension-site-coverage.json'), 'utf8'));
 try {
-  for (const viewport of [{ width: 1440, height: 800 }, { width: 390, height: 844 }, { width: 320, height: 700 }]) {
+  for (const viewport of [{ width: 1440, height: 800 }, { width: 1366, height: 768 }, { width: 390, height: 844 }, { width: 320, height: 700 }]) {
     const page = await browser.newPage({ viewport });
     await page.route('https://**/*', route => route.abort());
     let requests = 0;
@@ -41,12 +41,66 @@ try {
     assert.equal(await nav.locator('[href="#install-guide"]').getAttribute('aria-current'), 'page');
     assert.equal(await page.locator('#release-history').isVisible(), false);
     assert.equal(await page.locator('#site-coverage').isVisible(), false);
+    assert.equal(await page.locator('.extension-actions [href="#release-history"], .extension-actions [href="#site-coverage"]').count(), 0);
+    assert.equal(await page.locator('.browser-guide').count(), 3);
+    if (viewport.width >= 390) {
+      assert.ok((await page.locator('.extension-footer').boundingBox()).y + (await page.locator('.extension-footer').boundingBox()).height <= viewport.height, 'collapsed home page fits in the viewport');
+    }
+    const guides = page.locator('.browser-guide');
+    const boxes = await Promise.all([0, 1, 2].map(index => guides.nth(index).boundingBox()));
+    if (viewport.width > 760) {
+      assert.equal(boxes[0].y, boxes[1].y);
+      assert.equal(boxes[1].y, boxes[2].y);
+      assert.ok(boxes[0].width < (await page.locator('.browser-guides').boundingBox()).width / 2);
+    } else {
+      assert.ok(boxes[0].y < boxes[1].y && boxes[1].y < boxes[2].y);
+    }
+    for (const index of [0, 1, 2]) {
+      const icon = await guides.nth(index).locator('.browser-chevron').boundingBox();
+      assert.ok(Math.abs((icon.y + icon.height / 2) - (boxes[index].y + boxes[index].height / 2)) < 1, 'chevrons are vertically centered');
+      assert.equal(await guides.nth(index).getAttribute('aria-expanded'), 'false');
+    }
+    if (process.env.COVERAGE_SCREENSHOT_DIR) {
+      await page.screenshot({ path: path.join(process.env.COVERAGE_SCREENSHOT_DIR, `home-compact-${viewport.width}.png`) });
+      await page.locator('#install-guide').screenshot({ path: path.join(process.env.COVERAGE_SCREENSHOT_DIR, `browser-cards-${viewport.width}.png`) });
+    }
     const history = await page.locator('.release-history__list strong').allTextContents();
     assert.ok(history.includes(`v${siteData.manualVersion}`));
     assert.ok(!history.includes('v0.1.11'));
+    await page.locator('#edge-install').click();
+    assert.equal(await page.locator('#edge-install-panel').isVisible(), true);
     await page.locator('#edge-offline-toggle').click();
     assert.equal(await page.locator('#edge-offline-details').isVisible(), true);
     assert.ok((await page.locator('#edge-offline-details a.extension-download').getAttribute('href')).includes(siteData.manualVersion));
+    await page.locator('#chrome-install').click();
+    assert.equal(await page.locator('#edge-install-panel').isVisible(), false);
+    assert.equal(await page.locator('#edge-install').getAttribute('aria-expanded'), 'false');
+    assert.equal(await page.locator('#chrome-install-panel').isVisible(), true);
+    await page.locator('#chrome-store-toggle').click();
+    assert.equal(await page.locator('#chrome-store-details').isVisible(), true);
+    await page.locator('#chrome-offline-toggle').click();
+    assert.equal(await page.locator('#chrome-store-details').isVisible(), false);
+    assert.equal(await page.locator('#chrome-offline-details').isVisible(), true);
+    await page.locator('#firefox-install').click();
+    assert.equal(await page.locator('#chrome-install-panel').isVisible(), false);
+    assert.equal(await page.locator('#firefox-install-panel').isVisible(), true);
+    await page.locator('#firefox-store-toggle').click();
+    assert.equal(await page.locator('#firefox-store-details').isVisible(), true);
+    assert.match(await page.locator('#firefox-store-details a.extension-download').getAttribute('href'), /^https:\/\/addons\.mozilla\.org\/zh-CN\/firefox\/addon\/journal-scout-/);
+    assert.equal(await page.locator('#firefox-test-details').isVisible(), false);
+    await page.locator('#firefox-test-toggle').click();
+    assert.equal(await page.locator('#firefox-store-details').isVisible(), false);
+    assert.equal(await page.locator('#firefox-test-details').isVisible(), true);
+    assert.ok((await page.locator('#firefox-test-details a.extension-download').getAttribute('href')).includes(siteData.manualVersion));
+    if (process.env.COVERAGE_SCREENSHOT_DIR) {
+      await page.locator('#install-guide').screenshot({ path: path.join(process.env.COVERAGE_SCREENSHOT_DIR, `browser-open-${viewport.width}.png`) });
+    }
+    await page.locator('#firefox-install').click();
+    assert.equal(await page.locator('#firefox-install-panel').isVisible(), false);
+    await page.locator('#edge-install').focus();
+    await page.keyboard.press('Enter');
+    assert.equal(await page.locator('#edge-install-panel').isVisible(), true);
+    assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth), true);
     await nav.locator('[href="#release-history"]').click();
     assert.equal(await page.locator('#release-history').isVisible(), true);
     assert.equal(await page.locator('#install-guide').isVisible(), false);
@@ -138,6 +192,21 @@ try {
   assert.equal(await page.locator('#site-coverage-retry').isVisible(), false);
   await page.close();
   console.log('coverage data failure and retry passed');
+
+  const linkedPage = await browser.newPage();
+  await linkedPage.route('https://**/*', route => route.abort());
+  await linkedPage.goto(url + '#edge-install', { waitUntil: 'load' });
+  assert.equal(await linkedPage.locator('#edge-install-panel').isVisible(), true);
+  await linkedPage.close();
+
+  const noScriptPage = await browser.newPage({ javaScriptEnabled: false });
+  await noScriptPage.route('https://**/*', route => route.abort());
+  await noScriptPage.goto(url, { waitUntil: 'load' });
+  for (const selector of ['#edge-store-details', '#edge-offline-details', '#chrome-store-details', '#chrome-offline-details', '#firefox-store-details', '#firefox-test-details']) {
+    assert.equal(await noScriptPage.locator(selector).isVisible(), true, `${selector} works without JavaScript`);
+  }
+  await noScriptPage.close();
+  console.log('direct browser link and JavaScript-free installation instructions passed');
 } finally {
   await browser.close();
   server.close();
