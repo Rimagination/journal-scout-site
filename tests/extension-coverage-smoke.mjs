@@ -36,16 +36,17 @@ try {
     page.on('pageerror', error => errors.push(error.message));
     await page.goto(url, { waitUntil: 'load' });
     assert.equal(requests, 0, 'coverage data should not load at the top of the page');
-    assert.deepEqual(await page.locator('main h2').allTextContents(), ['选择你的浏览器', '更新说明', '网站覆盖', '效果展示']);
+    assert.deepEqual(await page.locator('main h2').allTextContents(), ['效果展示', '选择你的浏览器', '更新说明', '网站覆盖']);
     const nav = page.locator('.extension-section-nav');
     assert.equal(await nav.locator('[href="#install-guide"]').getAttribute('aria-current'), 'page');
     assert.equal(await page.locator('#release-history').isVisible(), false);
     assert.equal(await page.locator('#site-coverage').isVisible(), false);
+    assert.equal(await page.locator('#showcase').isVisible(), true);
+    assert.equal(await page.locator('#showcase .extension-showcase-card').count(), 5);
+    assert.ok((await page.locator('#showcase .extension-showcase-card').first().boundingBox()).y < viewport.height, 'showcase begins within the first screen');
+    assert.ok((await page.locator('#showcase').boundingBox()).y < (await page.locator('#install-guide').boundingBox()).y, 'showcase comes before installation options');
     assert.equal(await page.locator('.extension-actions [href="#release-history"], .extension-actions [href="#site-coverage"]').count(), 0);
     assert.equal(await page.locator('.browser-guide').count(), 3);
-    if (viewport.width >= 390) {
-      assert.ok((await page.locator('.extension-footer').boundingBox()).y + (await page.locator('.extension-footer').boundingBox()).height <= viewport.height, 'collapsed home page fits in the viewport');
-    }
     const guides = page.locator('.browser-guide');
     const boxes = await Promise.all([0, 1, 2].map(index => guides.nth(index).boundingBox()));
     if (viewport.width > 760) {
@@ -67,6 +68,10 @@ try {
     const history = await page.locator('.release-history__list strong').allTextContents();
     assert.ok(history.includes(`v${siteData.manualVersion}`));
     assert.ok(!history.includes('v0.1.11'));
+    await page.locator('.extension-primary').click();
+    assert.ok(page.url().endsWith('#install-guide'));
+    assert.equal(await page.locator('#showcase').isVisible(), true);
+    assert.ok((await page.locator('#install-guide').boundingBox()).y < viewport.height, 'installation button scrolls to browser options');
     await page.locator('#edge-install').click();
     assert.equal(await page.locator('#edge-install-panel').isVisible(), true);
     await page.locator('#edge-offline-toggle').click();
@@ -104,6 +109,7 @@ try {
     await nav.locator('[href="#release-history"]').click();
     assert.equal(await page.locator('#release-history').isVisible(), true);
     assert.equal(await page.locator('#install-guide').isVisible(), false);
+    assert.equal(await page.locator('#showcase').isVisible(), false);
     assert.equal(await nav.locator('[href="#release-history"]').getAttribute('aria-current'), 'page');
     assert.ok(page.url().endsWith('#release-history'));
     if (process.env.COVERAGE_SCREENSHOT_DIR) {
@@ -112,6 +118,7 @@ try {
     await nav.locator('[href="#showcase"]').click();
     assert.equal(await page.locator('#showcase').isVisible(), true);
     assert.equal(await page.locator('#release-history').isVisible(), false);
+    assert.equal(await page.locator('#install-guide').isVisible(), false);
     await page.goBack();
     assert.equal(await page.locator('#release-history').isVisible(), true);
     await page.goForward();
@@ -171,6 +178,10 @@ try {
     if (process.env.COVERAGE_SCREENSHOT_DIR) {
       await page.locator('#site-coverage').screenshot({ path: path.join(process.env.COVERAGE_SCREENSHOT_DIR, `coverage-table-${viewport.width}.png`) });
     }
+    await nav.locator('[href="#install-guide"]').click();
+    assert.equal(await page.locator('#showcase').isVisible(), true);
+    assert.equal(await page.locator('#install-guide').isVisible(), true);
+    assert.equal(await page.locator('#site-coverage').isVisible(), false);
     assert.deepEqual(errors, []);
     console.log(`${viewport.width}px: section navigation, history, search, scrolling and layout passed`);
     await page.close();

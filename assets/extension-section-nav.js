@@ -1,12 +1,16 @@
 (() => {
-  const views = [...document.querySelectorAll('[data-extension-view]')];
+  const views = [...document.querySelectorAll('[data-extension-view]')].map(element => ({
+    element,
+    names: element.dataset.extensionView.split(/\s+/),
+  }));
   const navLinks = [...document.querySelectorAll('.extension-section-nav [data-extension-nav]')];
-  const viewNames = new Set(views.map(view => view.dataset.extensionView));
+  const viewNames = new Set(views.flatMap(view => view.names));
   const defaultView = 'install-guide';
 
   function showView(name) {
     const active = viewNames.has(name) ? name : defaultView;
-    views.forEach(view => { view.hidden = view.dataset.extensionView !== active; });
+    views.forEach(({ element, names }) => { element.hidden = !names.includes(active); });
+    document.body.dataset.activeExtensionView = active;
     navLinks.forEach(link => {
       if (link.hash === `#${active}`) link.setAttribute('aria-current', 'page');
       else link.removeAttribute('aria-current');

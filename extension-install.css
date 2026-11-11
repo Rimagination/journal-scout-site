@@ -163,6 +163,9 @@
 .site-coverage__bottom { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; margin-top: 10px; color: #788d82; font-size: 12px; }
 .site-coverage__bottom p { margin: 0; }
 
+@media (min-width: 761px) {
+  body[data-active-extension-view="install-guide"] .extension-showcase__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
 @media (max-width: 760px) {
   .extension-hero { grid-template-columns: minmax(0, 1fr) minmax(95px, 32%); gap: 14px; padding: 22px 0; }
   .extension-guide__heading { display: block; }
