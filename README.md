@@ -28,6 +28,16 @@ and Chrome users can install from the public [Chrome Web Store listing](https://
 Both stores manage automatic updates after review. The versioned Chromium packages in
 `downloads/` support manual offline installation and can be offered as soon as a new package
 is published; update the displayed version, link paths and corresponding archives together.
+The install page's `journal-scout-manual-version` meta tag is also used by the extension to
+check for newer manual packages. Only update it, the download links, and the version history
+when those packages are actually released; unreleased development changes do not get entries.
+Run `node --test tests/extension-version.test.mjs` to check that the published versions match.
+The install guide's searchable coverage table reads `data/extension-site-coverage.json`
+only when needed. Its list describes the actual published manual package, groups Chinese
+and English sites, and distinguishes list adapters from metadata-based article recognition.
+When a manual package is released, check the list and its version against that package's
+manifest and implementation; update the table's displayed version and the coverage-data
+cache key together. Do not add unreleased sites as covered.
 Users switching between store and offline installations should disable the old installation
 to avoid duplicate badges; settings do not automatically transfer between separate extension
 IDs. The Firefox package is currently unsigned and is offered only for temporary installation.

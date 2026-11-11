@@ -1,0 +1,774 @@
+{
+  "manualVersion": "0.1.9.4",
+  "sites": [
+    {
+      "name": "中国知网",
+      "hosts": [
+        "kns.cnki.net"
+      ],
+      "pages": "搜索结果、期刊论文详情",
+      "note": "",
+      "keywords": "CNKI",
+      "language": "zh"
+    },
+    {
+      "name": "百度学术",
+      "hosts": [
+        "xueshu.baidu.com"
+      ],
+      "pages": "搜索结果",
+      "note": "",
+      "keywords": "Baidu Scholar",
+      "language": "zh"
+    },
+    {
+      "name": "万方数据",
+      "hosts": [
+        "*.wanfangdata.com.cn"
+      ],
+      "pages": "搜索结果",
+      "note": "",
+      "keywords": "Wanfang",
+      "language": "zh"
+    },
+    {
+      "name": "维普",
+      "hosts": [
+        "*.cqvip.com"
+      ],
+      "pages": "搜索结果",
+      "note": "",
+      "keywords": "CQVIP",
+      "language": "zh"
+    },
+    {
+      "name": "AMiner",
+      "hosts": [
+        "*.aminer.cn",
+        "aminer.cn"
+      ],
+      "pages": "部分搜索结果",
+      "note": "",
+      "keywords": "Aminer",
+      "language": "zh"
+    },
+    {
+      "name": "X-MOL",
+      "hosts": [
+        "*.x-mol.com"
+      ],
+      "pages": "部分搜索及阅读列表",
+      "note": "",
+      "keywords": "XMOL",
+      "language": "zh"
+    },
+    {
+      "name": "ReadPaper",
+      "hosts": [
+        "*.readpaper.com"
+      ],
+      "pages": "部分搜索结果",
+      "note": "",
+      "keywords": "",
+      "language": "zh"
+    },
+    {
+      "name": "Science China / 科学通报",
+      "hosts": [
+        "*.sciengine.com"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据识别。",
+      "keywords": "SCI Engine",
+      "language": "zh"
+    },
+    {
+      "name": "Higher Education Press",
+      "hosts": [
+        "journal.hep.com.cn"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据识别。",
+      "keywords": "高等教育出版社 HEP",
+      "language": "zh"
+    },
+    {
+      "name": "Google Scholar",
+      "hosts": [
+        "scholar.google.ca",
+        "scholar.google.co.in",
+        "scholar.google.co.jp",
+        "scholar.google.co.kr",
+        "scholar.google.co.uk",
+        "scholar.google.com",
+        "scholar.google.com.au",
+        "scholar.google.com.br",
+        "scholar.google.com.hk",
+        "scholar.google.com.sg",
+        "scholar.google.com.tw",
+        "scholar.google.de",
+        "scholar.google.es",
+        "scholar.google.fr",
+        "scholar.google.it"
+      ],
+      "pages": "搜索结果、个人主页",
+      "note": "官方地区域名；镜像站需另行适配。",
+      "keywords": "谷歌学术",
+      "language": "en"
+    },
+    {
+      "name": "PubMed",
+      "hosts": [
+        "pubmed.ncbi.nlm.nih.gov"
+      ],
+      "pages": "搜索结果、论文详情",
+      "note": "",
+      "keywords": "pub med",
+      "language": "en"
+    },
+    {
+      "name": "PubMed Central (PMC)",
+      "hosts": [
+        "pmc.ncbi.nlm.nih.gov"
+      ],
+      "pages": "搜索结果、论文详情",
+      "note": "",
+      "keywords": "ncbi",
+      "language": "en"
+    },
+    {
+      "name": "Web of Science",
+      "hosts": [
+        "*.webofscience.com"
+      ],
+      "pages": "搜索结果",
+      "note": "不同页面版本可能影响识别。",
+      "keywords": "WOS",
+      "language": "en"
+    },
+    {
+      "name": "Scopus",
+      "hosts": [
+        "*.scopus.com"
+      ],
+      "pages": "搜索结果",
+      "note": "不同页面版本可能影响识别。",
+      "keywords": "",
+      "language": "en"
+    },
+    {
+      "name": "ScienceDirect",
+      "hosts": [
+        "*.sciencedirect.com"
+      ],
+      "pages": "搜索结果、论文详情",
+      "note": "论文详情按页面元数据识别。",
+      "keywords": "Elsevier",
+      "language": "en"
+    },
+    {
+      "name": "Springer Nature Link",
+      "hosts": [
+        "link.springer.com"
+      ],
+      "pages": "搜索结果、论文详情",
+      "note": "论文详情按页面元数据识别。",
+      "keywords": "Springer",
+      "language": "en"
+    },
+    {
+      "name": "Nature",
+      "hosts": [
+        "*.nature.com"
+      ],
+      "pages": "部分搜索结果、论文详情",
+      "note": "论文详情按页面元数据识别。",
+      "keywords": "",
+      "language": "en"
+    },
+    {
+      "name": "IEEE Xplore",
+      "hosts": [
+        "ieeexplore.ieee.org"
+      ],
+      "pages": "部分搜索结果",
+      "note": "论文和期刊详情的专用适配尚未发布。",
+      "keywords": "IEEE",
+      "language": "en"
+    },
+    {
+      "name": "DBLP",
+      "hosts": [
+        "dblp.org",
+        "dblp.dagstuhl.de"
+      ],
+      "pages": "期刊论文列表",
+      "note": "",
+      "keywords": "dblp",
+      "language": "en"
+    },
+    {
+      "name": "ACM Digital Library",
+      "hosts": [
+        "dl.acm.org"
+      ],
+      "pages": "搜索结果、论文详情",
+      "note": "论文详情按页面元数据识别。",
+      "keywords": "ACM",
+      "language": "en"
+    },
+    {
+      "name": "Semantic Scholar",
+      "hosts": [
+        "*.semanticscholar.org"
+      ],
+      "pages": "搜索结果、论文详情",
+      "note": "论文详情按页面元数据识别。",
+      "keywords": "语义学术",
+      "language": "en"
+    },
+    {
+      "name": "ResearchGate",
+      "hosts": [
+        "*.researchgate.net"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据识别；首页及个人页的专用适配尚未发布。",
+      "keywords": "RG",
+      "language": "en"
+    },
+    {
+      "name": "Europe PMC",
+      "hosts": [
+        "europepmc.org"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据识别。",
+      "keywords": "",
+      "language": "en"
+    },
+    {
+      "name": "Cell Press",
+      "hosts": [
+        "*.cell.com"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据识别。",
+      "keywords": "Cell",
+      "language": "en"
+    },
+    {
+      "name": "Wiley Online Library",
+      "hosts": [
+        "*.onlinelibrary.wiley.com"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据识别。",
+      "keywords": "AGU ESA",
+      "language": "en"
+    },
+    {
+      "name": "Copernicus Publications",
+      "hosts": [
+        "*.copernicus.org"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据识别。",
+      "keywords": "EGU Biogeosciences ACP HESS",
+      "language": "en"
+    },
+    {
+      "name": "Oxford Academic",
+      "hosts": [
+        "academic.oup.com"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据识别。",
+      "keywords": "OUP",
+      "language": "en"
+    },
+    {
+      "name": "Cambridge Core",
+      "hosts": [
+        "*.cambridge.org"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据识别。",
+      "keywords": "Cambridge University Press",
+      "language": "en"
+    },
+    {
+      "name": "Taylor & Francis Online",
+      "hosts": [
+        "*.tandfonline.com"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据识别。",
+      "keywords": "T&F",
+      "language": "en"
+    },
+    {
+      "name": "SAGE Journals",
+      "hosts": [
+        "journals.sagepub.com"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据识别。",
+      "keywords": "Sage",
+      "language": "en"
+    },
+    {
+      "name": "Frontiers",
+      "hosts": [
+        "*.frontiersin.org"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据识别。",
+      "keywords": "",
+      "language": "en"
+    },
+    {
+      "name": "MDPI",
+      "hosts": [
+        "*.mdpi.com"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据识别。",
+      "keywords": "",
+      "language": "en"
+    },
+    {
+      "name": "PLOS",
+      "hosts": [
+        "journals.plos.org"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据识别。",
+      "keywords": "Public Library of Science",
+      "language": "en"
+    },
+    {
+      "name": "Science",
+      "hosts": [
+        "*.science.org"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据识别。",
+      "keywords": "AAAS",
+      "language": "en"
+    },
+    {
+      "name": "PNAS",
+      "hosts": [
+        "*.pnas.org"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据识别。",
+      "keywords": "",
+      "language": "en"
+    },
+    {
+      "name": "The Lancet",
+      "hosts": [
+        "*.thelancet.com"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据识别。",
+      "keywords": "",
+      "language": "en"
+    },
+    {
+      "name": "NEJM",
+      "hosts": [
+        "*.nejm.org"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据识别。",
+      "keywords": "New England Journal of Medicine",
+      "language": "en"
+    },
+    {
+      "name": "JAMA Network",
+      "hosts": [
+        "*.jamanetwork.com"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据识别。",
+      "keywords": "",
+      "language": "en"
+    },
+    {
+      "name": "BMJ",
+      "hosts": [
+        "*.bmj.com"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据识别。",
+      "keywords": "",
+      "language": "en"
+    },
+    {
+      "name": "INFORMS PubsOnLine",
+      "hosts": [
+        "pubsonline.informs.org"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据识别。",
+      "keywords": "",
+      "language": "en"
+    },
+    {
+      "name": "ACS Publications",
+      "hosts": [
+        "pubs.acs.org"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据识别。",
+      "keywords": "American Chemical Society",
+      "language": "en"
+    },
+    {
+      "name": "RSC Publishing",
+      "hosts": [
+        "pubs.rsc.org"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据识别。",
+      "keywords": "Royal Society of Chemistry",
+      "language": "en"
+    },
+    {
+      "name": "IOPscience",
+      "hosts": [
+        "iopscience.iop.org"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据识别。",
+      "keywords": "IOP",
+      "language": "en"
+    },
+    {
+      "name": "ASCE Library",
+      "hosts": [
+        "ascelibrary.org"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据识别。",
+      "keywords": "",
+      "language": "en"
+    },
+    {
+      "name": "Royal Society Publishing",
+      "hosts": [
+        "royalsocietypublishing.org"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据识别。",
+      "keywords": "",
+      "language": "en"
+    },
+    {
+      "name": "APS Journals",
+      "hosts": [
+        "journals.aps.org"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据识别。",
+      "keywords": "APS Physics",
+      "language": "en"
+    },
+    {
+      "name": "BioMed Central",
+      "hosts": [
+        "*.biomedcentral.com"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据识别。",
+      "keywords": "BMC",
+      "language": "en"
+    },
+    {
+      "name": "SpringerOpen",
+      "hosts": [
+        "*.springeropen.com"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据识别。",
+      "keywords": "Springer",
+      "language": "en"
+    },
+    {
+      "name": "Hindawi",
+      "hosts": [
+        "*.hindawi.com"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据识别。",
+      "keywords": "",
+      "language": "en"
+    },
+    {
+      "name": "World Scientific",
+      "hosts": [
+        "*.worldscientific.com"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据识别。",
+      "keywords": "",
+      "language": "en"
+    },
+    {
+      "name": "AIP Publishing",
+      "hosts": [
+        "pubs.aip.org"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据识别。",
+      "keywords": "",
+      "language": "en"
+    },
+    {
+      "name": "ASM Journals",
+      "hosts": [
+        "journals.asm.org"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据识别。",
+      "keywords": "",
+      "language": "en"
+    },
+    {
+      "name": "Lippincott Williams & Wilkins",
+      "hosts": [
+        "journals.lww.com"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据识别。",
+      "keywords": "LWW",
+      "language": "en"
+    },
+    {
+      "name": "The Company of Biologists",
+      "hosts": [
+        "journals.biologists.com"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据识别。",
+      "keywords": "Biologists",
+      "language": "en"
+    },
+    {
+      "name": "ASH Publications",
+      "hosts": [
+        "ashpublications.org"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据识别。",
+      "keywords": "",
+      "language": "en"
+    },
+    {
+      "name": "De Gruyter Brill",
+      "hosts": [
+        "*.degruyter.com",
+        "*.degruyterbrill.com"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据识别。",
+      "keywords": "De Gruyter",
+      "language": "en"
+    },
+    {
+      "name": "J-STAGE",
+      "hosts": [
+        "www.jstage.jst.go.jp"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据识别。",
+      "keywords": "JSTAGE",
+      "language": "en"
+    },
+    {
+      "name": "SciELO",
+      "hosts": [
+        "www.scielo.br",
+        "www.scielo.org"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据识别。",
+      "keywords": "",
+      "language": "en"
+    },
+    {
+      "name": "Annual Reviews",
+      "hosts": [
+        "*.annualreviews.org"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据识别。",
+      "keywords": "",
+      "language": "en"
+    },
+    {
+      "name": "Karger",
+      "hosts": [
+        "*.karger.com"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据识别。",
+      "keywords": "",
+      "language": "en"
+    },
+    {
+      "name": "Thieme",
+      "hosts": [
+        "*.thieme-connect.de",
+        "*.thieme-connect.com"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据识别。",
+      "keywords": "Thieme Connect",
+      "language": "en"
+    },
+    {
+      "name": "Emerald",
+      "hosts": [
+        "*.emerald.com"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据识别。",
+      "keywords": "",
+      "language": "en"
+    },
+    {
+      "name": "Brill",
+      "hosts": [
+        "*.brill.com"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据识别。",
+      "keywords": "",
+      "language": "en"
+    },
+    {
+      "name": "BioOne",
+      "hosts": [
+        "*.bioone.org"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据识别。",
+      "keywords": "",
+      "language": "en"
+    },
+    {
+      "name": "IWA Publishing",
+      "hosts": [
+        "*.iwaponline.com"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据识别。",
+      "keywords": "",
+      "language": "en"
+    },
+    {
+      "name": "EurekaSelect",
+      "hosts": [
+        "*.eurekaselect.com"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据识别。",
+      "keywords": "Bentham",
+      "language": "en"
+    },
+    {
+      "name": "PeerJ",
+      "hosts": [
+        "*.peerj.com"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据识别。",
+      "keywords": "",
+      "language": "en"
+    },
+    {
+      "name": "eLife",
+      "hosts": [
+        "*.elifesciences.org"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据识别。",
+      "keywords": "",
+      "language": "en"
+    },
+    {
+      "name": "F1000Research",
+      "hosts": [
+        "*.f1000research.com"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据识别。",
+      "keywords": "",
+      "language": "en"
+    },
+    {
+      "name": "JMIR",
+      "hosts": [
+        "*.jmir.org"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据识别。",
+      "keywords": "Journal of Medical Internet Research",
+      "language": "en"
+    },
+    {
+      "name": "JMIR Research Protocols",
+      "hosts": [
+        "*.researchprotocols.org"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据识别。",
+      "keywords": "JMIR",
+      "language": "en"
+    },
+    {
+      "name": "Pensoft",
+      "hosts": [
+        "*.pensoft.net"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据识别。",
+      "keywords": "ZooKeys",
+      "language": "en"
+    },
+    {
+      "name": "Spandidos Publications",
+      "hosts": [
+        "*.spandidos-publications.com"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据识别。",
+      "keywords": "",
+      "language": "en"
+    },
+    {
+      "name": "Journal of Cognition",
+      "hosts": [
+        "journalofcognition.org"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据识别。",
+      "keywords": "Ubiquity",
+      "language": "en"
+    },
+    {
+      "name": "Dove Medical Press",
+      "hosts": [
+        "*.dovepress.com"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据识别。",
+      "keywords": "Dove Press",
+      "language": "en"
+    }
+  ]
+}
