@@ -67,7 +67,6 @@ try {
     }
     const history = await page.locator('.release-history__list strong').allTextContents();
     assert.ok(history.includes(`v${siteData.manualVersion}`));
-    assert.ok(!history.includes('v0.1.11'));
     await page.locator('.extension-primary').click();
     assert.ok(page.url().endsWith('#install-guide'));
     assert.equal(await page.locator('#showcase').isVisible(), true);
@@ -134,10 +133,12 @@ try {
     const rowCount = () => page.locator('#site-coverage-rows tr:not(.site-coverage__group)').count();
     assert.equal(await rowCount(), 20, 'initial batch');
     assert.equal(await page.locator('#site-coverage-status').innerText(), `已显示 20 / ${siteData.sites.length} 个网站`);
-    assert.deepEqual(await page.locator('.site-coverage__group th').allTextContents(), ['中文网站', '英文网站']);
+    // The initial batch may be entirely within the Chinese group when it holds more rows than the batch size.
+    const initialGroups = await page.locator('.site-coverage__group th').allTextContents();
+    assert.equal(initialGroups[0], '中文网站');
 
     await page.locator('[data-coverage-language="zh"]').click();
-    assert.equal(await rowCount(), siteData.sites.filter(site => site.language === 'zh').length);
+    assert.equal(await rowCount(), Math.min(20, siteData.sites.filter(site => site.language === 'zh').length));
     assert.deepEqual(await page.locator('.site-coverage__group th').allTextContents(), ['中文网站']);
     assert.equal(await page.locator('[data-coverage-language="zh"]').getAttribute('aria-pressed'), 'true');
     await page.locator('[data-coverage-language="en"]').click();
@@ -166,6 +167,7 @@ try {
     assert.equal(previous, siteData.sites.length);
     assert.equal(await page.locator('#site-coverage-status').innerText(), `已显示 ${siteData.sites.length} / ${siteData.sites.length} 个网站`);
     assert.equal(await page.locator('#site-coverage-more').isVisible(), false);
+    assert.deepEqual(await page.locator('.site-coverage__group th').allTextContents(), ['中文网站', '英文网站']);
     assert.equal(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth), true);
     if (viewport.width < 500) {
       assert.equal(await page.locator('#site-coverage-scroll').evaluate(node => node.scrollWidth > node.clientWidth), true);

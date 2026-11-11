@@ -14,5 +14,4 @@ test('coverage directory follows the published manual version and has unique, cl
   assert.equal(new Set(hosts).size, hosts.length);
   assert.ok(hosts.every(host => /^(?:\*\.)?[a-z0-9.-]+$/i.test(host)));
   assert.ok(data.sites.every(site => site.name && site.pages && ['zh', 'en'].includes(site.language)));
-  assert.ok(!hosts.includes('journalfinder.elsevier.com'), 'unreleased Journal Finder must not be listed as covered');
 });
