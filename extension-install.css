@@ -2,8 +2,10 @@
 .extension-install-link { flex: none; padding: 7px 9px; border: 1px solid #c8e1d8; border-radius: 8px; background: #f4faf7; }
 .extension-install-link:hover { border-color: #86bcae; background: #eaf6f0; }
 .product-links { display: flex; align-items: center; gap: 6px; flex: none; }
+.updates-nav-link { padding: 7px 3px; color: #61776b; font-size: 12px; font-weight: 600; line-height: 1; text-decoration: none; white-space: nowrap; }
+.updates-nav-link:hover { color: #17635f; }
 .extension-install-link svg, .extension-primary svg, .extension-download svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.extension-install-link:focus-visible, .extension-back:focus-visible, .extension-primary:focus-visible, .extension-download:focus-visible, .browser-guide:focus-visible, .extension-help a:focus-visible { outline: 3px solid #87c9b8; outline-offset: 3px; }
+.extension-install-link:focus-visible, .updates-nav-link:focus-visible, .extension-back:focus-visible, .extension-primary:focus-visible, .extension-download:focus-visible, .browser-guide:focus-visible, .extension-help a:focus-visible { outline: 3px solid #87c9b8; outline-offset: 3px; }
 
 .extension-page { background: #f7f9f6; color: #18302f; font-family: var(--font-sans); }
 .install-page { --font-sans: "Times New Roman", SimSun, "宋体", "Songti SC", serif; --font-display: var(--font-sans); }
@@ -291,11 +293,11 @@
 }
 @media (max-width: 420px) {
   .extension-install-link { padding: 8px; }
-  .extension-install-link svg { display: none; }
 }
 @media (max-width: 520px) {
   .scansci-global-nav:has(.product-links) .product-brand { display: none; }
   .product-links { gap: 4px; }
   .product-links .extension-install-link { padding: 7px; font-size: 11px; }
+  .product-links .updates-nav-link { font-size: 11px; }
 }
 @media (prefers-reduced-motion: reduce) { .browser-guide, .browser-chevron svg, .install-option, .install-option__chevron svg { transition: none; } }

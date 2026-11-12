@@ -24,9 +24,13 @@ test('update-check metadata matches the displayed manual version and both packag
   for (const page of ['index.html', 'journal.html', 'hq_stats.html', 'conference.html', 'updates.html']) {
     const source = await readFile(new URL(`../${page}`, import.meta.url), 'utf8');
     const navigation = source.match(/<nav class="product-links"[^>]*>([\s\S]*?)<\/nav>/)?.[1] || '';
-    assert.equal((navigation.match(/class="extension-install-link"/g) || []).length, 2);
-    assert.ok(navigation.includes('href="./extension-install.html">插件下载</a>'));
-    assert.match(navigation, /href="\.\/updates\.html"[^>]*>更新说明<\/a>/);
+    const links = [...navigation.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/g)];
+    assert.equal(links.length, 2);
+    assert.match(links[0][1], /class="extension-install-link" href="\.\/extension-install\.html"/);
+    assert.match(links[0][2], /<svg\b[^>]*aria-hidden="true"/);
+    assert.match(links[0][2], /插件下载/);
+    assert.match(links[1][1], /class="updates-nav-link" href="\.\/updates\.html"/);
+    assert.equal(links[1][2], '更新说明');
   }
   const zoteroHistory = html.split('<h3 class="release-history__product">Zotero 插件</h3>')[1]?.split('</ol>')[0] || '';
   assert.ok(zoteroHistory.includes(`<strong>v${zoteroVersion}</strong>`));
