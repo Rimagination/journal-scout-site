@@ -43,6 +43,23 @@ try {
     assert.equal(await page.locator('#release-history').isVisible(), false);
     assert.equal(await page.locator('#site-coverage').isVisible(), false);
     assert.equal(await page.locator('#showcase').isVisible(), true);
+    const typeSizes = await page.evaluate(() => {
+      const style = selector => getComputedStyle(document.querySelector(selector));
+      const size = selector => parseFloat(style(selector).fontSize);
+      const textStyle = selector => {
+        const text = style(selector);
+        return [text.fontFamily, text.fontSize, text.fontWeight, text.lineHeight, text.color];
+      };
+      return { title: size('.extension-hero h1'), section: size('#guide-title'),
+        zoteroSection: size('#zotero-install-title'), card: size('.browser-name strong'),
+        zoteroCard: size('.zotero-install-entry__copy strong'), note: size('.extension-guide__note > p'),
+        browserDescription: textStyle('.extension-guide__note > p'),
+        zoteroDescription: textStyle('#zotero-install .extension-guide__heading > p') };
+    });
+    assert.equal(typeSizes.section, typeSizes.zoteroSection, 'section headings share a size');
+    assert.equal(typeSizes.card, typeSizes.zoteroCard, 'product cards share a size');
+    assert.deepEqual(typeSizes.browserDescription, typeSizes.zoteroDescription, 'both section descriptions share typography');
+    assert.ok(typeSizes.title > typeSizes.section && typeSizes.section > typeSizes.card && typeSizes.card > typeSizes.note, 'typography has a clear hierarchy');
     assert.equal(await page.locator('#showcase .extension-showcase-card').count(), 6);
     assert.ok((await page.locator('#showcase .extension-showcase-card').first().boundingBox()).y < viewport.height, 'showcase begins within the first screen');
     assert.ok((await page.locator('#showcase').boundingBox()).y < (await page.locator('#install-guide').boundingBox()).y, 'showcase comes before installation options');
