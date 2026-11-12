@@ -276,10 +276,10 @@
           <div class="zotero-install-entry__copy">
             <strong>Journal Scout for Zotero</strong>
             <p>下载后，在 Zotero 中打开「工具 → 插件」，通过齿轮菜单从文件安装。</p>
-            <small>安装清单声明支持 Zotero 7–10；已在 10.0.8 实测，7–9 尚未逐版测试。Zotero 6 不支持；需手动更新。</small>
+            <small>安装清单声明支持 Zotero 7–10；已在 10.0.8 实测，7–9 尚未逐版测试。Zotero 6 不支持；插件有新版本时会提示下载安装。</small>
           </div>
           <div class="zotero-install-entry__actions">
-            <a class="extension-download" href="./downloads/journal-scout-zotero-0.1.0.xpi?build=20261112-z010" download="journal-scout-zotero-0.1.0.xpi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg><span>下载 Zotero 插件<small>XPI · v0.1.0</small></span></a>
+            <a class="extension-download" href="./downloads/journal-scout-zotero-0.1.0.xpi?build=20261112-z010-data" download="journal-scout-zotero-0.1.0.xpi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg><span>下载 Zotero 插件<small>XPI · v0.1.0</small></span></a>
             <button class="install-option__toggle" id="zotero-steps-toggle" type="button" aria-label="查看 Zotero 插件安装步骤与说明" aria-expanded="false" aria-controls="zotero-install-details" data-open-label="查看步骤与说明" data-close-label="收起步骤与说明"><span class="install-option__hint">查看步骤与说明</span><span class="install-option__chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span></button>
           </div>
         </div>
@@ -302,6 +302,8 @@
             <p><strong>保存与同步：</strong>已确认的结果自动写入条目的 Extra（附加信息）区块及 Zotero 标签，并保留区块以外的原有内容和用户标签。条目的更改可能随 Zotero 同步，也可能出现在部分导出文件中；本地缓存可供同一期刊复用。</p>
             <p><strong>处理文库：</strong>默认逐步处理当前显示或选中的期刊论文。要处理整个文库，请选择文库后点击「工具 → Journal Scout：为当前文库建立筛选标签」；可通过停止菜单中断。插件优先复用已有归档和本地缓存，无法确认期刊、只读或正在编辑的条目可能被跳过，未匹配或跳过的条目可稍后重试。</p>
             <p><strong>查询数据：</strong>插件使用条目的期刊名或 ISSN 查询 ScanSci 期刊服务，不发送论文全文或附件。插件内置 ABS / AJG、UTD24、FMS 和 ABDC 商科名单；未收录或无法确认的期刊不会显示对应等级。</p>
+            <p><strong>数据更新与样式：</strong>已确认的期刊记录会在本地复用；网站发布数据更新后，插件错峰优先更新当前查看的文献。右侧「标签样式」可选择配色、字号和圆角，设置保存在本机。</p>
+            <p><strong>插件更新：</strong>发现更高的插件版本时，右侧面板会提示前往下载；下载后通过插件管理器从文件安装。已经安装过旧的 v0.1.0 的用户，可重新下载本页安装包并手动安装一次。</p>
             <p>插件由 ScanSci 提供，Zotero 标识用于指示适用的软件。</p>
           </div>
         </section>
@@ -331,7 +333,7 @@
       </ol>
       <h3 class="release-history__product">Zotero 插件</h3>
       <ol class="release-history__list">
-        <li><div><strong>v0.1.0</strong><small>2026.11.12 · 当前版本</small></div><p>在文献列表显示期刊指标，将已确认信息存入条目，并通过 Zotero 原生标签筛选和搜索；提供当前文库的标签建立功能。</p></li>
+        <li><div><strong>v0.1.0</strong><small>2026.11.12 · 当前版本</small></div><p>在文献列表显示期刊指标，将已确认信息存入条目，并通过 Zotero 原生标签筛选和搜索；提供标签建立、数据版本刷新、插件更新提示和标签样式设置。</p></li>
       </ol>
     </section>
 

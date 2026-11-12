@@ -53,3 +53,22 @@ Only publish the ordinary Zotero build, never personal builds containing private
 lists. Update its download, displayed version and compatibility notes together on release.
 `assets/zotero-icon.png` is the original 256 px icon extracted from the installed Zotero
 desktop executable, used to identify the target application.
+
+The lightweight public `data/zotero-data-release.json` is the Zotero plugin's update
+signal. It contains a data revision, the latest published plugin version and optional
+exact tag mappings; it contains no full journal dataset and no executable code. Clients
+check it approximately every 24–36 hours, with randomized scheduling. The signal updates
+the current item first, and other items only as they are displayed. It does not start a
+full-library scan. Already bundled business-ranking lists still require a plugin release.
+
+After new journal data is live in the search API, prepare the next data signal with
+`python scripts/zotero_release.py --data`. The helper schedules activation 65 minutes
+later, allowing the one-hour API cache to expire, then the plugin adds up to 30 minutes
+of randomized delay. Review and publish the changed JSON through the normal site release
+process. To expose a new tag already returned in the API `tags` array, add an exact match,
+for example `python scripts/zotero_release.py --data --tag-match "Example raw tag" --tag-label "Example label" --tag-kind hq`;
+to remove it use `--data --remove-tag "Example raw tag"`. New API fields or changes to
+the bundled business lists require corresponding application changes. For a plugin
+release, first publish its XPI and update the install page, then use
+`python scripts/zotero_release.py --plugin-version 0.1.1` and publish the signal. This
+prompts existing clients to download the new version; it does not install it for them.
