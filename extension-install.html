@@ -135,7 +135,7 @@
               </div>
               <div class="install-option install-option--offline">
                 <span class="install-option__copy"><strong>离线安装包</strong><span>手动更新</span></span>
-                <a class="install-option__action" href="./downloads/scansci-chromium-0.1.10.zip?build=20261112-ieee-2" download="Journal-Scout-Edge-Offline-0.1.10.zip">下载 ZIP ↓</a>
+                <a class="install-option__action" href="./downloads/scansci-chromium-0.1.10.zip?build=20261112-wos-cn" download="Journal-Scout-Edge-Offline-0.1.10.zip">下载 ZIP ↓</a>
                 <button class="install-option__toggle" id="edge-offline-toggle" type="button" aria-label="查看Edge 离线安装步骤" aria-expanded="false" aria-controls="edge-offline-details"><span class="install-option__hint">查看步骤</span><span class="install-option__chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span></button>
               </div>
             </div>
@@ -178,7 +178,7 @@
               </div>
               <div class="install-option install-option--offline">
                 <span class="install-option__copy"><strong>离线安装包</strong><span>手动更新</span></span>
-                <a class="install-option__action" href="./downloads/scansci-chromium-0.1.10.zip?build=20261112-ieee-2" download="Journal-Scout-Chrome-Offline-0.1.10.zip">下载 ZIP ↓</a>
+                <a class="install-option__action" href="./downloads/scansci-chromium-0.1.10.zip?build=20261112-wos-cn" download="Journal-Scout-Chrome-Offline-0.1.10.zip">下载 ZIP ↓</a>
                 <button class="install-option__toggle" id="chrome-offline-toggle" type="button" aria-label="查看Chrome 离线安装步骤" aria-expanded="false" aria-controls="chrome-offline-details"><span class="install-option__hint">查看步骤</span><span class="install-option__chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span></button>
               </div>
             </div>
@@ -220,7 +220,7 @@
               </div>
               <div class="install-option install-option--offline">
                 <span class="install-option__copy"><strong>临时测试包</strong><span>退出 Firefox 后需重新载入</span></span>
-                <a class="install-option__action" href="./downloads/scansci-firefox-0.1.10.xpi?build=20261112-ieee-2" download="Journal-Scout-Firefox-0.1.10.xpi">下载 XPI ↓</a>
+                <a class="install-option__action" href="./downloads/scansci-firefox-0.1.10.xpi?build=20261112-wos-cn" download="Journal-Scout-Firefox-0.1.10.xpi">下载 XPI ↓</a>
                 <button class="install-option__toggle" id="firefox-test-toggle" type="button" aria-label="查看Firefox 临时测试步骤" aria-expanded="false" aria-controls="firefox-test-details"><span class="install-option__hint">查看步骤</span><span class="install-option__chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span></button>
               </div>
             </div>
@@ -248,18 +248,18 @@
           <noscript><h3>Safari · Mac 临时测试</h3></noscript>
           <div class="install-options install-options--single" role="group" aria-label="Safari 安装方式">
             <div class="install-option install-option--offline">
-              <span class="install-option__copy"><strong>Mac 临时测试包</strong><span>尚未实机验证</span></span>
-              <a class="install-option__action" href="./downloads/journal-scout-safari-mac-test-0.1.10.zip?build=20261112-ieee-2" download="Journal-Scout-Safari-Mac-Test-0.1.10.zip">下载 ZIP ↓</a>
+              <span class="install-option__copy"><strong>Mac 临时测试包</strong><span>需 Safari 18.4+ · 尚未实机验证</span></span>
+              <a class="install-option__action" href="./downloads/journal-scout-safari-mac-test-0.1.10.zip?build=20261112-wos-cn" download="Journal-Scout-Safari-Mac-Test-0.1.10.zip">下载 ZIP ↓</a>
               <button class="install-option__toggle" id="safari-test-toggle" type="button" aria-label="查看 Safari 临时安装步骤" aria-expanded="false" aria-controls="safari-test-details"><span class="install-option__hint">查看步骤</span><span class="install-option__chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span></button>
             </div>
           </div>
-          <p class="install-choice-note">仅供 Mac Safari 临时测试，尚未实机验证；iPhone 和 iPad 不能直接安装此 ZIP。</p>
+          <p class="install-choice-note">仅供 macOS Safari 18.4 及以上临时测试，尚未实机验证；旧版 Safari 需用 Xcode 打包，iPhone 和 iPad 不能直接安装此 ZIP。</p>
           <section class="install-details" id="safari-test-details" aria-labelledby="safari-test-toggle" hidden>
             <h3 class="install-subtitle">Mac Safari 临时安装</h3>
           <ol class="extension-steps">
-            <li><strong>开启开发者功能</strong><span>在 Safari「设置 → 高级」中启用网页开发者功能。</span></li>
-            <li><strong>允许临时扩展</strong><span>在 Safari「设置 → 开发者」中允许未签名扩展。</span></li>
-            <li><strong>加载测试包</strong><span>选择「添加临时扩展」，打开下载的 ZIP 或解压后的文件夹，再刷新论文页面。</span></li>
+            <li><strong>开启开发者功能</strong><span>在 Safari「设置 → 高级」中勾选「显示网页开发者功能」（Safari 17 起）或「在菜单栏中显示开发菜单」。</span></li>
+            <li><strong>允许未签名扩展</strong><span>打开 Safari「设置 → 开发者」，勾选「允许未签名扩展」；每次退出 Safari 后需要重新勾选。</span></li>
+            <li><strong>加载测试包</strong><span>在「设置 → 开发者」中点击「添加临时扩展…」，选择下载的 ZIP 或解压后的文件夹，然后刷新论文页面。该入口从 Safari 18.4 起提供。</span></li>
           </ol>
           <p class="extension-note"><strong>Safari 测试限制</strong>该包尚未在 Safari 真机验证，仅供支持临时扩展的 Mac Safari 测试；退出 Safari 或 24 小时后需重新加载。iPhone 和 iPad 不能直接安装此 ZIP。<br><a href="https://developer.apple.com/documentation/safariservices/running-your-safari-web-extension" target="_blank" rel="noopener noreferrer">查看 Apple 的临时扩展说明 ↗</a></p>
           </section>
@@ -318,7 +318,7 @@
       </div>
       <h3 class="release-history__product">浏览器插件</h3>
       <ol class="release-history__list">
-        <li><div><strong>v0.1.10</strong><small>2026.11.12 · 当前手动包</small></div><p>更新 CCF 2026 目录和 CCFT 2025 目录，支持 IEEE Xplore、DBLP 的会议标签；新增 ABS / AJG、UTD24、FMS 和 ABDC 商科期刊标签及数据版本提示；补齐 IEEE 期刊身份识别，改进重复 ISSN 匹配，并对更名期刊区分前刊指标；扩展网站与检索结果识别，优化 ResearchGate、设置页和插件面板；提供 Mac Safari 临时测试包。AJG 使用 2024 版，期刊条目尚未逐条与官网名单核对；已安装同版本离线包的用户需重新下载以获取数据修订。部分网站与 Safari 测试包仍待进一步实测。</p></li>
+        <li><div><strong>v0.1.10</strong><small>2026.11.12 · 当前手动包</small></div><p>更新 CCF 2026 目录和 CCFT 2025 目录，支持 IEEE Xplore、DBLP 的会议标签；新增 ABS / AJG、UTD24、FMS 和 ABDC 商科期刊标签及数据版本提示；补齐 IEEE 期刊身份识别，改进重复 ISSN 匹配，并对更名期刊区分前刊指标；扩展网站与检索结果识别，补充 Web of Science 中国站（webofscience.clarivate.cn）适配，优化 ResearchGate、设置页和插件面板；提供 Mac Safari 临时测试包。AJG 使用 2024 版，期刊条目尚未逐条与官网名单核对；已安装同版本离线包的用户需重新下载以获取数据修订。部分网站与 Safari 测试包仍待进一步实测。</p></li>
         <li><div><strong>v0.1.9.4</strong><small>2026.11.06</small></div><p>在知网期刊论文标题下显示标签。</p></li>
         <li><div><strong>v0.1.9.3</strong><small>2026.11.06</small></div><p>修复部分中文期刊同名记录的匹配问题。</p></li>
         <li><div><strong>v0.1.9.2</strong><small>2026.11.04</small></div><p>增加鲜艳配色，精简插件面板。</p></li>

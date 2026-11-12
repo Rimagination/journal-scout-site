@@ -2726,7 +2726,8 @@
     {
       "name": "Web of Science",
       "hosts": [
-        "*.webofscience.com"
+        "*.webofscience.com",
+        "webofscience.clarivate.cn"
       ],
       "pages": "搜索结果",
       "note": "不同页面版本可能影响识别。",
