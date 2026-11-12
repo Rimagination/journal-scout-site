@@ -70,20 +70,24 @@
 .extension-download > span { display: grid; gap: 1px; font-size: 12px; font-weight: 700; line-height: 1.3; }
 .extension-download small { color: #6a9180; font-size: 10px; font-weight: 500; }
 .install-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-bottom: 14px; }
-.install-option { appearance: none; display: grid; grid-template-areas: "copy chevron" "hint chevron"; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 4px 12px; width: 100%; padding: 14px; border: 1px solid #dce9df; border-radius: 9px; background: #fbfdfb; color: inherit; font: inherit; text-align: left; cursor: pointer; transition: border-color .15s ease, background-color .15s ease, box-shadow .15s ease; }
+.install-options--single { grid-template-columns: minmax(0, 1fr); }
+.install-option { display: grid; grid-template-areas: "copy action toggle"; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center; gap: 12px; width: 100%; padding: 14px; border: 1px solid #dce9df; border-radius: 9px; background: #fbfdfb; color: inherit; transition: border-color .15s ease, background-color .15s ease, box-shadow .15s ease; }
 .install-option:hover { border-color: #a8d1bf; background: #f4faf6; }
-.install-option[aria-expanded="true"] { border-color: #83bba5; background: #eef8f1; box-shadow: 0 0 0 2px rgba(42,157,123,.08); }
-.install-option:focus-visible { outline: 3px solid #87c9b8; outline-offset: 3px; }
+.install-option.is-open { border-color: #83bba5; background: #eef8f1; box-shadow: 0 0 0 2px rgba(42,157,123,.08); }
 .install-option--offline { border-color: #d9e4ef; background: #f7f9fc; }
 .install-option--offline:hover { border-color: #a9bfd5; background: #f1f6fb; }
-.install-option--offline[aria-expanded="true"] { border-color: #87a8c7; background: #edf4fa; box-shadow: 0 0 0 2px rgba(70,119,164,.08); }
+.install-option--offline.is-open { border-color: #87a8c7; background: #edf4fa; box-shadow: 0 0 0 2px rgba(70,119,164,.08); }
 .install-option__copy { display: grid; grid-area: copy; gap: 4px; }
 .install-option__copy strong { color: #29453c; font-size: 13px; }
 .install-option__copy span { color: #697c71; font-size: 11px; line-height: 1.65; }
-.install-option__hint { grid-area: hint; color: #6a9180; font-size: 10px; font-weight: 700; }
-.install-option__chevron { display: grid; grid-area: chevron; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: #edf5ef; color: #668b79; }
+.install-option__action { grid-area: action; padding: 8px 10px; border: 1px solid #b8dbc9; border-radius: 7px; background: #eff8f1; color: #176b59; font-size: 12px; font-weight: 700; line-height: 1.3; text-decoration: none; white-space: nowrap; }
+.install-option__action:hover { background: #e1f2e7; }
+.install-option__toggle { appearance: none; display: inline-flex; grid-area: toggle; align-items: center; gap: 5px; padding: 0; border: 0; background: transparent; color: #6a9180; font: inherit; cursor: pointer; white-space: nowrap; }
+.install-option__action:focus-visible, .install-option__toggle:focus-visible { outline: 3px solid #87c9b8; outline-offset: 3px; border-radius: 6px; }
+.install-option__hint { font-size: 11px; font-weight: 700; }
+.install-option__chevron { display: grid; place-items: center; flex: none; width: 28px; height: 28px; border-radius: 50%; background: #edf5ef; color: #668b79; }
 .install-option__chevron svg { display: block; width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; transition: transform .15s ease; }
-.install-option[aria-expanded="true"] .install-option__chevron svg { transform: rotate(180deg); }
+.install-option__toggle[aria-expanded="true"] .install-option__chevron svg { transform: rotate(180deg); }
 .install-details { margin: 0 0 16px; padding: 17px; border: 1px solid #e1ece2; border-radius: 9px; background: #fff; }
 .install-details[hidden] { display: none !important; }
 .install-choice-note { margin: 0 0 15px; color: #78877f; font-size: 11px; line-height: 1.5; }
@@ -121,9 +125,12 @@
 .zotero-install-entry__copy strong { color: #24443b; font-size: 15px; }
 .zotero-install-entry__copy p { margin: 5px 0; color: #60786c; font-size: 12px; line-height: 1.7; }
 .zotero-install-entry__copy small { color: #81948a; font-size: 11px; line-height: 1.6; }
-.zotero-install-entry__actions { display: grid; justify-items: start; gap: 9px; flex: none; }
-.zotero-install-entry__guide { color: #176b59; font-size: 12px; font-weight: 700; text-decoration: none; }
-.zotero-install-entry__guide:focus-visible { outline: 3px solid #87c9b8; outline-offset: 3px; }
+.zotero-install-entry__actions { display: flex; align-items: center; gap: 10px; flex: none; }
+.zotero-install-entry__details { margin-top: 10px; }
+.zotero-guide-images { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 20px; }
+.zotero-guide-images .install-screenshot { width: 100%; margin: 0; }
+.zotero-guide-images__focus { display: block; overflow: hidden; height: clamp(160px, 25vw, 240px); }
+.zotero-guide-images__focus img { width: 250%; max-width: none; transform: translate(-60%, -12%); }
 .extension-footer { display: flex; justify-content: space-between; width: min(1100px, calc(100% - 48px)); margin: 0 auto; padding: 13px 0 18px; border-top: 1px solid #e0eae0; color: #688076; font-family: Georgia, serif; font-size: 12px; font-weight: 700; }
 .install-page .extension-footer { font-family: var(--font-sans); }
 .extension-footer i { color: #9aaca1; font-family: var(--font-sans); font-size: 10px; font-style: normal; font-weight: 500; }
@@ -133,6 +140,7 @@
 .release-history__heading { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 22px; }
 .release-history__heading h2 { margin: 0; color: #183a32; font-family: var(--font-display); font-size: 26px; }
 .release-history__heading p { margin: 0 0 3px; color: #6c8075; font-size: 12px; line-height: 1.6; }
+.release-history__product { margin: 25px 0 12px; color: #345b4e; font-size: 16px; }
 .release-history__list { margin: 0; padding: 0; list-style: none; }
 .release-history__list li { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 18px; padding: 16px 0; border-top: 1px solid #e0eae0; }
 .release-history__list li > div { display: grid; align-content: start; gap: 4px; }
@@ -212,7 +220,7 @@
 }
 @media (max-width: 560px) {
   .extension-main, .extension-footer { width: calc(100% - 36px); }
-  .extension-section-nav { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; }
+  .extension-section-nav { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; }
   .extension-section-nav a { padding: 14px 0 12px; font-size: 13px; text-align: center; }
   .extension-hero { padding: 16px 0; }
   .extension-hero h1 { font-size: 27px; }
@@ -224,6 +232,9 @@
   .browser-guides { gap: 8px; }
   .browser-guide { padding: 10px 14px; }
   .browser-guide__body { padding: 16px; }
+  .install-option { grid-template-areas: "copy toggle" "action action"; grid-template-columns: minmax(0, 1fr) auto; }
+  .install-option__action { justify-self: start; }
+  .zotero-guide-images { grid-template-columns: minmax(0, 1fr); }
   .release-history { padding: 35px 0 48px; }
   .release-history__list li { grid-template-columns: 1fr; gap: 7px; }
   .release-history__list li > div { display: flex; align-items: baseline; gap: 10px; }

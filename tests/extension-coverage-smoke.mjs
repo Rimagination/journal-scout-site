@@ -38,6 +38,7 @@ try {
     assert.equal(requests, 0, 'coverage data should not load at the top of the page');
     assert.deepEqual(await page.locator('main h2').allTextContents(), ['效果展示', '选择你的浏览器', '安装 Zotero 插件', '更新说明', '网站覆盖']);
     const nav = page.locator('.extension-section-nav');
+    assert.equal(await nav.locator('[href="#showcase"]').count(), 0);
     assert.equal(await nav.locator('[href="#install-guide"]').getAttribute('aria-current'), 'page');
     assert.equal(await page.locator('#release-history').isVisible(), false);
     assert.equal(await page.locator('#site-coverage').isVisible(), false);
@@ -56,9 +57,14 @@ try {
     assert.equal(await help.locator('.extension-help__content').isVisible(), false);
     const zoteroEntry = page.locator('#zotero-install');
     assert.ok((await zoteroEntry.boundingBox()).y > (await page.locator('.browser-guides').boundingBox()).y);
-    assert.equal(await zoteroEntry.locator('img').evaluate(img => img.complete && img.naturalWidth > 0), true);
+    assert.equal(await zoteroEntry.locator('.zotero-install-entry__icon').evaluate(img => img.complete && img.naturalWidth > 0), true);
     assert.equal(new URL(await zoteroEntry.locator('a[download]').getAttribute('href'), url).pathname, '/downloads/journal-scout-zotero-0.1.5.xpi');
-    assert.equal(await zoteroEntry.locator('.zotero-install-entry__guide').getAttribute('href'), './zotero.html#install');
+    assert.equal(await page.locator('#zotero-install-details').isVisible(), false);
+    await page.locator('#zotero-steps-toggle').click();
+    assert.equal(await page.locator('#zotero-install-details').isVisible(), true);
+    assert.equal(await page.locator('#zotero-install-details .zotero-guide-images img').count(), 2);
+    await page.locator('#zotero-steps-toggle').click();
+    assert.equal(await page.locator('#zotero-install-details').isVisible(), false);
     const guides = page.locator('.browser-guide');
     const boxes = await Promise.all([0, 1, 2, 3].map(index => guides.nth(index).boundingBox()));
     if (viewport.width > 1050) {
@@ -84,19 +90,26 @@ try {
     }
     const history = await page.locator('.release-history__list strong').allTextContents();
     assert.ok(history.includes(`v${siteData.manualVersion}`));
+    for (const version of ['v0.1.12', 'v0.1.9.4', 'v0.1.9.3', 'v0.1.9.2', 'v0.1.9', 'v0.1.8', 'v0.1.7', 'v0.1.6', 'v0.1.5', 'v0.1.4', 'v0.1.2', 'v0.1.1', 'v0.1.0']) {
+      assert.ok(history.includes(version), `published version ${version} is documented`);
+    }
     await page.locator('.extension-primary').click();
     assert.ok(page.url().endsWith('#install-guide'));
     assert.equal(await page.locator('#showcase').isVisible(), true);
     assert.ok((await page.locator('#install-guide').boundingBox()).y < viewport.height, 'installation button scrolls to browser options');
     await page.locator('#edge-install').click();
     assert.equal(await page.locator('#edge-install-panel').isVisible(), true);
+    assert.equal(await page.locator('#edge-install-panel .install-option__action').count(), 2);
+    assert.equal(await page.locator('#edge-offline-details').isVisible(), false);
+    assert.ok((await page.locator('#edge-offline-toggle').locator('..').locator('a').getAttribute('href')).includes(siteData.manualVersion));
     await page.locator('#edge-offline-toggle').click();
     assert.equal(await page.locator('#edge-offline-details').isVisible(), true);
-    assert.ok((await page.locator('#edge-offline-details a.extension-download').getAttribute('href')).includes(siteData.manualVersion));
     await page.locator('#chrome-install').click();
     assert.equal(await page.locator('#edge-install-panel').isVisible(), false);
     assert.equal(await page.locator('#edge-install').getAttribute('aria-expanded'), 'false');
     assert.equal(await page.locator('#chrome-install-panel').isVisible(), true);
+    assert.equal(await page.locator('#chrome-install-panel .install-option__action').count(), 2);
+    assert.equal(await page.locator('#chrome-store-details').isVisible(), false);
     await page.locator('#chrome-store-toggle').click();
     assert.equal(await page.locator('#chrome-store-details').isVisible(), true);
     await page.locator('#chrome-offline-toggle').click();
@@ -105,14 +118,15 @@ try {
     await page.locator('#firefox-install').click();
     assert.equal(await page.locator('#chrome-install-panel').isVisible(), false);
     assert.equal(await page.locator('#firefox-install-panel').isVisible(), true);
+    assert.equal(await page.locator('#firefox-install-panel .install-option__action').count(), 2);
+    assert.match(await page.locator('#firefox-store-toggle').locator('..').locator('a').getAttribute('href'), /^https:\/\/addons\.mozilla\.org\/zh-CN\/firefox\/addon\/journal-scout-/);
     await page.locator('#firefox-store-toggle').click();
     assert.equal(await page.locator('#firefox-store-details').isVisible(), true);
-    assert.match(await page.locator('#firefox-store-details a.extension-download').getAttribute('href'), /^https:\/\/addons\.mozilla\.org\/zh-CN\/firefox\/addon\/journal-scout-/);
     assert.equal(await page.locator('#firefox-test-details').isVisible(), false);
     await page.locator('#firefox-test-toggle').click();
     assert.equal(await page.locator('#firefox-store-details').isVisible(), false);
     assert.equal(await page.locator('#firefox-test-details').isVisible(), true);
-    assert.ok((await page.locator('#firefox-test-details a.extension-download').getAttribute('href')).includes(siteData.manualVersion));
+    assert.ok((await page.locator('#firefox-test-toggle').locator('..').locator('a').getAttribute('href')).includes(siteData.manualVersion));
     if (process.env.COVERAGE_SCREENSHOT_DIR) {
       await page.locator('#install-guide').screenshot({ path: path.join(process.env.COVERAGE_SCREENSHOT_DIR, `browser-open-${viewport.width}.png`) });
     }
@@ -120,8 +134,11 @@ try {
     assert.equal(await page.locator('#firefox-install-panel').isVisible(), false);
     await page.locator('#safari-install').click();
     assert.equal(await page.locator('#safari-install-panel').isVisible(), true);
-    assert.ok((await page.locator('#safari-install-panel a.extension-download').getAttribute('href')).includes(siteData.manualVersion));
+    assert.ok((await page.locator('#safari-install-panel .install-option__action').getAttribute('href')).includes(siteData.manualVersion));
     assert.match(await page.locator('#safari-install-panel').innerText(), /iPhone 和 iPad 不能直接安装/);
+    assert.equal(await page.locator('#safari-test-details').isVisible(), false);
+    await page.locator('#safari-test-toggle').click();
+    assert.equal(await page.locator('#safari-test-details').isVisible(), true);
     await page.locator('#safari-install').click();
     assert.equal(await page.locator('#safari-install-panel').isVisible(), false);
     await page.locator('#edge-install').focus();
@@ -137,14 +154,6 @@ try {
     if (process.env.COVERAGE_SCREENSHOT_DIR) {
       await page.screenshot({ path: path.join(process.env.COVERAGE_SCREENSHOT_DIR, `section-history-${viewport.width}.png`) });
     }
-    await nav.locator('[href="#showcase"]').click();
-    assert.equal(await page.locator('#showcase').isVisible(), true);
-    assert.equal(await page.locator('#release-history').isVisible(), false);
-    assert.equal(await page.locator('#install-guide').isVisible(), false);
-    await page.goBack();
-    assert.equal(await page.locator('#release-history').isVisible(), true);
-    await page.goForward();
-    assert.equal(await page.locator('#showcase').isVisible(), true);
     await nav.locator('[href="#site-coverage"]').click();
     assert.equal(await page.locator('#showcase').isVisible(), false);
     assert.equal(await page.locator('#site-coverage').isVisible(), true);
@@ -238,9 +247,10 @@ try {
   const noScriptPage = await browser.newPage({ javaScriptEnabled: false });
   await noScriptPage.route('https://**/*', route => route.abort());
   await noScriptPage.goto(url, { waitUntil: 'load' });
-  for (const selector of ['#edge-store-details', '#edge-offline-details', '#chrome-store-details', '#chrome-offline-details', '#firefox-store-details', '#firefox-test-details', '#safari-install-panel']) {
+  for (const selector of ['#edge-store-details', '#edge-offline-details', '#chrome-store-details', '#chrome-offline-details', '#firefox-store-details', '#firefox-test-details', '#safari-test-details', '#zotero-install-details']) {
     assert.equal(await noScriptPage.locator(selector).isVisible(), true, `${selector} works without JavaScript`);
   }
+  assert.equal(await noScriptPage.locator('#edge-install-panel .install-option__action').first().isVisible(), true);
   await noScriptPage.close();
   console.log('direct browser link and JavaScript-free installation instructions passed');
 } finally {

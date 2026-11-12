@@ -23,12 +23,12 @@ function openLinkedBrowser() {
 window.addEventListener("hashchange", openLinkedBrowser);
 openLinkedBrowser();
 
-const installOptions = document.querySelectorAll(".install-option[aria-controls]");
+const installOptions = document.querySelectorAll(".install-option__toggle[aria-controls]");
 
 for (const option of installOptions) {
   option.addEventListener("click", () => {
-    const group = option.closest(".browser-guide__body");
-    const groupOptions = group?.querySelectorAll(".install-option[aria-controls]") ?? [option];
+    const group = option.closest(".browser-guide__body, .zotero-install-entry");
+    const groupOptions = group?.querySelectorAll(".install-option__toggle[aria-controls]") ?? [option];
     const shouldOpen = option.getAttribute("aria-expanded") !== "true";
 
     for (const otherOption of groupOptions) {
@@ -37,7 +37,8 @@ for (const option of installOptions) {
       const hint = otherOption.querySelector(".install-option__hint");
 
       otherOption.setAttribute("aria-expanded", String(isOpen));
-      if (hint) hint.textContent = isOpen ? "点击收起" : "点击查看";
+      otherOption.closest(".install-option, .zotero-install-entry__card")?.classList.toggle("is-open", isOpen);
+      if (hint) hint.textContent = isOpen ? "收起步骤" : "查看步骤";
       if (panel) panel.hidden = !isOpen;
     }
   });

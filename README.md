@@ -31,6 +31,9 @@ is published; update the displayed version, link paths and corresponding archive
 The install page's `journal-scout-manual-version` meta tag is also used by the extension to
 check for newer manual packages. Only update it, the download links, and the version history
 when those packages are actually released; unreleased development changes do not get entries.
+Keep the earlier published version records when updating the current release. The briefly
+published 0.1.12 package was consolidated into the current 0.1.11 manual package, so its
+history entry is marked as merged. Browser and Zotero releases are recorded separately.
 Run `node --test tests/extension-version.test.mjs` to check that the published versions match.
 The install guide's searchable coverage table reads `data/extension-site-coverage.json`
 only when needed. Its list describes the actual published manual package, groups Chinese
