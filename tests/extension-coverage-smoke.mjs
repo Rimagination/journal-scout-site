@@ -118,7 +118,8 @@ try {
     }
     const history = await page.locator('.release-history__list strong').allTextContents();
     assert.ok(history.includes(`v${siteData.manualVersion}`));
-    for (const version of ['v0.1.12', 'v0.1.9.4', 'v0.1.9.3', 'v0.1.9.2', 'v0.1.9', 'v0.1.8', 'v0.1.7', 'v0.1.6', 'v0.1.5', 'v0.1.4', 'v0.1.2', 'v0.1.1', 'v0.1.0']) {
+    assert.equal(history.filter(version => version === `v${siteData.manualVersion}`).length, 1, 'current browser release has one combined history entry');
+    for (const version of ['v0.1.9.4', 'v0.1.9.3', 'v0.1.9.2', 'v0.1.9', 'v0.1.8', 'v0.1.7', 'v0.1.6', 'v0.1.5', 'v0.1.4', 'v0.1.2', 'v0.1.1', 'v0.1.0']) {
       assert.ok(history.includes(version), `published version ${version} is documented`);
     }
     await page.locator('.extension-primary').click();

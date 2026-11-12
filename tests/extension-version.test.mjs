@@ -7,6 +7,8 @@ test('update-check metadata matches the displayed manual version and both packag
   const version = html.match(/<meta name="journal-scout-manual-version" content="([\d.]+)"/i)?.[1];
   assert.match(version || '', /^\d+(?:\.\d+){1,3}$/);
   assert.ok(html.includes(`手动安装包 v${version}`));
+  const coverage = JSON.parse(await readFile(new URL('../data/extension-site-coverage.json', import.meta.url), 'utf8'));
+  assert.equal(coverage.manualVersion, version, 'coverage data matches the published manual version');
   assert.equal((html.match(new RegExp(`downloads/scansci-chromium-${version.replaceAll('.', '\\.')}\\.zip`, 'g')) || []).length, 2);
   assert.ok(html.includes(`downloads/scansci-firefox-${version}.xpi`));
   assert.ok(html.includes(`downloads/journal-scout-safari-mac-test-${version}.zip`));
