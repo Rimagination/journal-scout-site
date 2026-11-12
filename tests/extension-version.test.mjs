@@ -25,7 +25,7 @@ test('update-check metadata matches the displayed manual version and both packag
     const source = await readFile(new URL(`../${page}`, import.meta.url), 'utf8');
     const navigation = source.match(/<nav class="product-links"[^>]*>([\s\S]*?)<\/nav>/)?.[1] || '';
     assert.equal((navigation.match(/class="extension-install-link"/g) || []).length, 1);
-    assert.ok(navigation.includes('href="./extension-install.html">插件安装</a>'));
+    assert.ok(navigation.includes('href="./extension-install.html">插件下载</a>'));
   }
   const zoteroHistory = html.split('<h3 class="release-history__product">Zotero 插件</h3>')[1]?.split('</ol>')[0] || '';
   assert.ok(zoteroHistory.includes(`<strong>v${zoteroVersion}</strong>`));
