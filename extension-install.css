@@ -120,7 +120,7 @@
 .extension-help p + p { margin-top: 9px; }
 .extension-help code { overflow-wrap: anywhere; }
 .extension-help a { display: inline-block; margin-top: 8px; color: #176b59; font-size: 12px; font-weight: 700; text-decoration: none; }
-.zotero-install-entry { margin-top: 32px; padding-top: 28px; border-top: 1px solid #dce7dc; }
+.zotero-install-entry { scroll-margin-top: 80px; margin-top: 32px; padding-top: 28px; border-top: 1px solid #dce7dc; }
 .zotero-install-entry__card { display: flex; align-items: center; gap: 16px; padding: 18px; border: 1px solid #dde9de; border-radius: 11px; background: #fff; }
 .zotero-install-entry__icon { flex: none; width: 48px; height: 48px; object-fit: contain; }
 .zotero-install-entry__copy { flex: 1; min-width: 0; }
@@ -129,6 +129,10 @@
 .zotero-install-entry__copy small { color: #81948a; font-size: 11px; line-height: 1.6; }
 .zotero-install-entry__actions { display: flex; align-items: center; gap: 10px; flex: none; }
 .zotero-install-entry__details { margin-top: 10px; }
+.zotero-guide-info { margin-top: 24px; padding-top: 18px; border-top: 1px solid #e5eee5; }
+.zotero-guide-info h3 { margin: 0 0 10px; color: #29453c; }
+.zotero-guide-info p { margin: 8px 0 0; color: #60786c; line-height: 1.7; }
+.zotero-guide-info strong { color: #315d4b; }
 .zotero-guide-images { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 20px; }
 .zotero-guide-images .install-screenshot { width: 100%; margin: 0; }
 .zotero-guide-images__focus { display: block; overflow: hidden; height: clamp(160px, 25vw, 240px); }
@@ -209,7 +213,7 @@
 .extension-install-page :is(.extension-section-nav a, .extension-back, .extension-intro,
   .extension-primary, .extension-download > span, .install-option__action,
   .extension-steps li > span, .install-offline-update, .extension-note, .extension-help p,
-  .extension-help a, .zotero-install-entry__copy p, .extension-showcase-card figcaption strong,
+  .extension-help a, .zotero-install-entry__copy p, .zotero-guide-info p, .extension-showcase-card figcaption strong,
   .release-history__list p, .release-history__earlier summary, .site-coverage__intro,
   .site-coverage__categories button, .site-coverage__search input, .site-coverage__table tbody td,
   .site-coverage__table tbody a, .site-coverage__table tfoot button, #site-coverage-retry) {

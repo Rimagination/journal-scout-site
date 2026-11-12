@@ -38,7 +38,7 @@ for (const option of installOptions) {
 
       otherOption.setAttribute("aria-expanded", String(isOpen));
       otherOption.closest(".install-option, .zotero-install-entry__card")?.classList.toggle("is-open", isOpen);
-      if (hint) hint.textContent = isOpen ? "收起步骤" : "查看步骤";
+      if (hint) hint.textContent = isOpen ? (otherOption.dataset.closeLabel || "收起步骤") : (otherOption.dataset.openLabel || "查看步骤");
       if (panel) panel.hidden = !isOpen;
     }
   });

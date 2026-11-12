@@ -93,6 +93,11 @@ try {
     await page.locator('#zotero-steps-toggle').click();
     assert.equal(await page.locator('#zotero-install-details').isVisible(), true);
     assert.equal(await page.locator('#zotero-install-details .zotero-guide-images img').count(), 2);
+    assert.match(await page.locator('.zotero-guide-info').innerText(), /Extra.*标签/s);
+    assert.match(await page.locator('.zotero-guide-info').innerText(), /ISSN/);
+    assert.equal(await page.locator('#zotero-install-details a[href="./zotero.html"]').count(), 0);
+    assert.equal(await page.locator('#zotero-steps-toggle .install-option__hint').innerText(), '收起步骤与说明');
+    if (process.env.COVERAGE_SCREENSHOT_DIR && [1440, 390].includes(viewport.width)) await zoteroEntry.screenshot({ path: path.join(process.env.COVERAGE_SCREENSHOT_DIR, `zotero-guide-${viewport.width}.png`) });
     await page.locator('#zotero-steps-toggle').click();
     assert.equal(await page.locator('#zotero-install-details').isVisible(), false);
     const guides = page.locator('.browser-guide');
@@ -273,6 +278,11 @@ try {
   await linkedPage.route('https://**/*', route => route.abort());
   await linkedPage.goto(url + '#edge-install', { waitUntil: 'load' });
   assert.equal(await linkedPage.locator('#edge-install-panel').isVisible(), true);
+  await linkedPage.goto(url.replace('extension-install.html', 'zotero.html'), { waitUntil: 'load' });
+  await linkedPage.waitForURL('**/extension-install.html#zotero-install');
+  assert.equal(await linkedPage.locator('#zotero-install').isVisible(), true);
+  const zoteroHeadingBox = await linkedPage.locator('#zotero-install-title').boundingBox();
+  assert.ok(zoteroHeadingBox.y >= 0 && zoteroHeadingBox.y < (await linkedPage.evaluate(() => innerHeight)), 'legacy link scrolls to Zotero installation');
   await linkedPage.close();
 
   const noScriptPage = await browser.newPage({ javaScriptEnabled: false });

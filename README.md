@@ -45,10 +45,10 @@ Users switching between store and offline installations should disable the old i
 to avoid duplicate badges; settings do not automatically transfer between separate extension
 IDs. The Firefox package is currently unsigned and is offered only for temporary installation.
 
-`zotero.html` is the separate Journal Scout for Zotero product and installation page.
-Its public XPI is `downloads/journal-scout-zotero-0.1.0.xpi`; the browser extension and
-Zotero plugin have independent versions and installation procedures. The Zotero page
-documents the actual tested versions, manual updating, item metadata and tag changes.
+`zotero.html` redirects to the Zotero section of `extension-install.html`, which contains
+the Zotero installation, compatibility, features and data guidance. Its public XPI is
+`downloads/journal-scout-zotero-0.1.0.xpi`; the browser extension and Zotero plugin have
+independent versions and installation procedures.
 Only publish the ordinary Zotero build, never personal builds containing private ranking
 lists. Update its download, displayed version and compatibility notes together on release.
 `assets/zotero-icon.png` is the original 256 px icon extracted from the installed Zotero

@@ -18,9 +18,12 @@ test('update-check metadata matches the displayed manual version and both packag
   const zoteroVersion = html.match(/downloads\/journal-scout-zotero-([\d.]+)\.xpi/)?.[1];
   assert.match(zoteroVersion || '', /^\d+(?:\.\d+){1,3}$/);
   const zoteroPage = await readFile(new URL('../zotero.html', import.meta.url), 'utf8');
-  assert.ok(zoteroPage.includes(`downloads/journal-scout-zotero-${zoteroVersion}.xpi`));
+  assert.match(zoteroPage, /http-equiv="refresh" content="0; url=\.\/extension-install\.html#zotero-install"/);
   assert.ok(html.includes(`XPI · v${zoteroVersion}`));
-  assert.ok(zoteroPage.includes(`XPI · v${zoteroVersion}`));
+  for (const page of ['index.html', 'journal.html', 'hq_stats.html']) {
+    const source = await readFile(new URL(`../${page}`, import.meta.url), 'utf8');
+    assert.ok(source.includes('href="./extension-install.html#zotero-install"'));
+  }
   const zoteroHistory = html.split('<h3 class="release-history__product">Zotero 插件</h3>')[1]?.split('</ol>')[0] || '';
   assert.ok(zoteroHistory.includes(`<strong>v${zoteroVersion}</strong>`));
   assert.ok(!zoteroPage.includes('class="product-switch"'));
