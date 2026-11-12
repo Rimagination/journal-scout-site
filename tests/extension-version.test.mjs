@@ -20,9 +20,12 @@ test('update-check metadata matches the displayed manual version and both packag
   const zoteroPage = await readFile(new URL('../zotero.html', import.meta.url), 'utf8');
   assert.match(zoteroPage, /http-equiv="refresh" content="0; url=\.\/extension-install\.html#zotero-install"/);
   assert.ok(html.includes(`XPI · v${zoteroVersion}`));
-  for (const page of ['index.html', 'journal.html', 'hq_stats.html']) {
+  assert.ok(html.includes('id="zotero-install"'));
+  for (const page of ['index.html', 'journal.html', 'hq_stats.html', 'conference.html']) {
     const source = await readFile(new URL(`../${page}`, import.meta.url), 'utf8');
-    assert.ok(source.includes('href="./extension-install.html#zotero-install"'));
+    const navigation = source.match(/<nav class="product-links"[^>]*>([\s\S]*?)<\/nav>/)?.[1] || '';
+    assert.equal((navigation.match(/class="extension-install-link"/g) || []).length, 1);
+    assert.ok(navigation.includes('href="./extension-install.html">插件安装</a>'));
   }
   const zoteroHistory = html.split('<h3 class="release-history__product">Zotero 插件</h3>')[1]?.split('</ol>')[0] || '';
   assert.ok(zoteroHistory.includes(`<strong>v${zoteroVersion}</strong>`));
