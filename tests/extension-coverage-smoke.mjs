@@ -86,7 +86,9 @@ try {
     const zoteroEntry = page.locator('#zotero-install');
     assert.ok((await zoteroEntry.boundingBox()).y > (await page.locator('.browser-guides').boundingBox()).y);
     assert.equal(await zoteroEntry.locator('.zotero-install-entry__icon').evaluate(img => img.complete && img.naturalWidth > 0), true);
-    assert.equal(new URL(await zoteroEntry.locator('a[download]').getAttribute('href'), url).pathname, '/downloads/journal-scout-zotero-0.1.5.xpi');
+    const zoteroVersion = (await zoteroEntry.locator('.extension-download small').textContent()).match(/v(\d+(?:\.\d+){1,3})/)?.[1];
+    assert.ok(zoteroVersion, 'Zotero package version is displayed');
+    assert.equal(new URL(await zoteroEntry.locator('a[download]').getAttribute('href'), url).pathname, `/downloads/journal-scout-zotero-${zoteroVersion}.xpi`);
     assert.equal(await page.locator('#zotero-install-details').isVisible(), false);
     await page.locator('#zotero-steps-toggle').click();
     assert.equal(await page.locator('#zotero-install-details').isVisible(), true);
