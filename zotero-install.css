@@ -1,0 +1,56 @@
+.zotero-page { color: #24423a; }
+.zotero-hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: 50px; padding: 50px 0 58px; border-top: 1px solid #dce7dc; }
+.zotero-kicker { display: flex; align-items: center; gap: 8px; margin: 0 0 18px; color: #648374; font-size: 10px; font-weight: 700; letter-spacing: .14em; }
+.zotero-hero h1 { margin: 0; color: #143c31; font-size: clamp(37px, 4.2vw, 54px); font-weight: 900; line-height: 1.22; letter-spacing: -.025em; }
+.zotero-lead { max-width: 470px; margin: 20px 0 0; color: #5c756a; font-size: 16px; line-height: 1.9; }
+.zotero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; margin-top: 25px; }
+.zotero-text-link { color: #236b58; font-size: 13px; font-weight: 700; text-decoration: none; }
+.zotero-text-link:focus-visible { outline: 3px solid #87c9b8; outline-offset: 4px; }
+.zotero-version { margin: 12px 0 0; color: #7b9084; font-size: 12px; }
+.zotero-preview { overflow: hidden; border: 1px solid #d3e5d7; border-radius: 15px; background: #fff; box-shadow: 0 22px 55px rgba(31,78,55,.1); }
+.zotero-preview__bar { display: flex; align-items: center; gap: 15px; padding: 12px 16px; border-bottom: 1px solid #e8eeea; background: #f8fbf8; color: #506b5e; font-size: 12px; font-weight: 700; }
+.zotero-preview__bar img { margin-left: auto; }
+.zotero-preview__dots { color: #bdcfc2; font-size: 9px; letter-spacing: 2px; }
+.zotero-preview__table { padding: 14px 16px 10px; }
+.zotero-preview__heading, .zotero-preview__row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr); gap: 10px; align-items: center; }
+.zotero-preview__heading { padding: 7px 10px 10px; color: #8a9e91; font-size: 11px; }
+.zotero-preview__row { min-height: 44px; padding: 8px 10px; color: #496256; font-size: 12px; }
+.zotero-preview__row:nth-child(even) { border-radius: 6px; background: #f4f8f4; }
+.zotero-badges { display: flex; flex-wrap: wrap; gap: 4px; }
+.zotero-badges b { padding: 3px 6px; border-radius: 4px; background: #e1f2e7; color: #337254; font-size: 10px; white-space: nowrap; }
+.zotero-badges b:nth-child(even) { background: #e7eef9; color: #476a98; }
+.zotero-preview__foot { display: flex; justify-content: space-between; gap: 8px; padding: 12px 16px; border-top: 1px solid #e8eeea; color: #82988a; font-size: 11px; }
+.zotero-features { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; padding: 32px 0 48px; border-top: 1px solid #dce7dc; }
+.zotero-features article > span, .zotero-section-label { color: #83a495; font-size: 10px; font-weight: 700; letter-spacing: .13em; }
+.zotero-features h2 { margin: 10px 0 8px; color: #214b3d; font-size: 17px; }
+.zotero-features p, .zotero-install p, .zotero-data p { margin: 0; color: #687f73; font-size: 13px; line-height: 1.85; }
+.zotero-install { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 50px; padding: 40px 0 48px; border-top: 1px solid #dce7dc; scroll-margin-top: 75px; }
+.zotero-install h2, .zotero-data h2 { margin: 7px 0 10px; color: #183f32; font-size: 27px; }
+.zotero-install .zotero-section-label, .zotero-data .zotero-section-label { color: #83a495; font-size: 10px; letter-spacing: .13em; }
+.zotero-install .zotero-compatibility { margin-top: 22px; padding: 13px 15px; border-radius: 8px; background: #eef5ee; font-size: 12px; }
+.zotero-compatibility strong { color: #365e4d; }
+.zotero-steps { display: grid; gap: 19px; margin: 0; padding: 0; list-style: none; counter-reset: step; }
+.zotero-steps li { display: grid; grid-template-columns: 26px 1fr; column-gap: 12px; counter-increment: step; }
+.zotero-steps li::before { display: grid; grid-row: span 2; place-items: center; width: 25px; height: 25px; border-radius: 50%; background: #dfeee3; color: #39755a; content: counter(step); font-size: 11px; font-weight: 700; }
+.zotero-steps strong { color: #294f40; font-size: 14px; }
+.zotero-steps li > span { margin-top: 3px; color: #6b8175; font-size: 12px; line-height: 1.8; }
+.zotero-steps code { overflow-wrap: anywhere; color: #3d6b57; font-size: 11px; }
+.zotero-step-image { grid-column: 2; overflow: hidden; margin: 12px 0 0; border: 1px solid #dce9df; border-radius: 8px; background: #fff; }
+.zotero-step-image a { display: block; cursor: zoom-in; }
+.zotero-step-image img { display: block; width: 100%; height: auto; }
+.zotero-step-image__focus { display: block; overflow: hidden; height: clamp(160px, 36vw, 270px); }
+.zotero-step-image__focus img { width: 250%; max-width: none; transform: translate(-60%, -12%); }
+.zotero-step-image figcaption { padding: 8px 10px; border-top: 1px solid #e9f0e9; color: #748c7e; font-size: 11px; line-height: 1.6; }
+.zotero-data { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 50px; padding: 40px 0 55px; border-top: 1px solid #dce7dc; }
+.zotero-data p + p { margin-top: 13px; }
+@media (max-width: 760px) {
+  .zotero-hero { grid-template-columns: 1fr; gap: 28px; padding: 32px 0 38px; }
+  .zotero-hero h1 { font-size: 38px; }
+  .zotero-lead { font-size: 14px; }
+  .zotero-features { grid-template-columns: 1fr; gap: 22px; }
+  .zotero-install, .zotero-data { grid-template-columns: 1fr; gap: 24px; }
+}
+@media (max-width: 360px) {
+  .zotero-hero h1 { font-size: 33px; }
+  .zotero-preview__heading, .zotero-preview__row { grid-template-columns: minmax(0, .8fr) minmax(0, 1.4fr); }
+}

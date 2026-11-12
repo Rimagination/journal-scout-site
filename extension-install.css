@@ -1,6 +1,7 @@
 .extension-install-link, .extension-back { display: inline-flex; align-items: center; gap: 5px; color: #17635f; font-size: 12px; font-weight: 700; line-height: 1; text-decoration: none; white-space: nowrap; }
 .extension-install-link { flex: none; padding: 7px 9px; border: 1px solid #c8e1d8; border-radius: 8px; background: #f4faf7; }
 .extension-install-link:hover { border-color: #86bcae; background: #eaf6f0; }
+.product-links { display: flex; align-items: center; gap: 6px; flex: none; }
 .extension-install-link svg, .extension-primary svg, .extension-download svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .extension-install-link:focus-visible, .extension-back:focus-visible, .extension-primary:focus-visible, .extension-download:focus-visible, .browser-guide:focus-visible, .extension-help a:focus-visible { outline: 3px solid #87c9b8; outline-offset: 3px; }
 
@@ -10,6 +11,17 @@
 .extension-back { padding: 8px; }
 .extension-back:hover { color: #0b443e; }
 .extension-main { width: min(1100px, calc(100% - 48px)); margin: 0 auto; }
+.product-switch { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; padding: 22px 0; }
+.product-switch a { display: flex; align-items: center; gap: 12px; min-width: 0; padding: 12px 14px; border: 1px solid #dce9df; border-radius: 10px; background: #fff; color: #29453c; text-decoration: none; }
+.product-switch a:hover { border-color: #93c5b0; background: #f8fcf9; }
+.product-switch a[aria-current="page"] { border-color: #71ad96; background: #edf7f0; box-shadow: inset 0 0 0 1px #d9ece0; }
+.product-switch a:focus-visible { outline: 3px solid #87c9b8; outline-offset: 3px; }
+.product-switch__icon { display: grid; place-items: center; flex: none; width: 38px; height: 38px; border-radius: 9px; background: #edf5ef; color: #276d5a; }
+.product-switch__icon svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.5; }
+.product-switch__icon img { display: block; width: 34px; height: 34px; object-fit: contain; }
+.product-switch a > span:last-child { display: grid; min-width: 0; gap: 2px; }
+.product-switch strong { font-size: 14px; }
+.product-switch small { color: #70877b; font-size: 11px; line-height: 1.4; }
 .extension-section-nav { display: flex; align-items: center; gap: 8px; border-bottom: 1px solid #dce7dc; }
 .extension-section-nav a { display: block; padding: 16px 14px 14px; border-bottom: 2px solid transparent; color: #6c8075; font-size: 14px; font-weight: 700; text-decoration: none; }
 .extension-section-nav a:hover { color: #176b59; }
@@ -193,6 +205,11 @@
 }
 @media (max-width: 560px) {
   .extension-main, .extension-footer { width: calc(100% - 36px); }
+  .product-switch { gap: 7px; padding: 14px 0; }
+  .product-switch a { gap: 7px; padding: 9px; }
+  .product-switch__icon { width: 30px; height: 30px; }
+  .product-switch__icon img { width: 29px; height: 29px; }
+  .product-switch small { font-size: 10px; }
   .extension-section-nav { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; }
   .extension-section-nav a { padding: 14px 0 12px; font-size: 13px; text-align: center; }
   .extension-hero { padding: 16px 0; }
@@ -220,5 +237,10 @@
 @media (max-width: 420px) {
   .extension-install-link { padding: 8px; }
   .extension-install-link svg { display: none; }
+}
+@media (max-width: 520px) {
+  .scansci-global-nav:has(.product-links) .product-brand { display: none; }
+  .product-links { gap: 4px; }
+  .product-links .extension-install-link { padding: 7px; font-size: 11px; }
 }
 @media (prefers-reduced-motion: reduce) { .browser-guide, .browser-chevron svg, .install-option, .install-option__chevron svg { transition: none; } }
