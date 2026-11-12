@@ -47,10 +47,17 @@ try {
     assert.ok((await page.locator('#showcase').boundingBox()).y < (await page.locator('#install-guide').boundingBox()).y, 'showcase comes before installation options');
     assert.equal(await page.locator('.extension-actions [href="#release-history"], .extension-actions [href="#site-coverage"]').count(), 0);
     assert.equal(await page.locator('.browser-guide').count(), 4);
+    assert.equal(await page.locator('.product-switch').count(), 0);
+    const help = page.locator('.extension-help');
+    assert.equal(await help.locator('.extension-help__content').isVisible(), false);
+    await help.locator('summary').click();
+    assert.equal(await help.locator('.extension-help__content').isVisible(), true);
+    await help.locator('summary').click();
+    assert.equal(await help.locator('.extension-help__content').isVisible(), false);
     const zoteroEntry = page.locator('#zotero-install');
     assert.ok((await zoteroEntry.boundingBox()).y > (await page.locator('.browser-guides').boundingBox()).y);
     assert.equal(await zoteroEntry.locator('img').evaluate(img => img.complete && img.naturalWidth > 0), true);
-    assert.equal(await zoteroEntry.locator('a[download]').getAttribute('href'), './downloads/journal-scout-zotero-0.1.5.xpi');
+    assert.equal(new URL(await zoteroEntry.locator('a[download]').getAttribute('href'), url).pathname, '/downloads/journal-scout-zotero-0.1.5.xpi');
     assert.equal(await zoteroEntry.locator('.zotero-install-entry__guide').getAttribute('href'), './zotero.html#install');
     const guides = page.locator('.browser-guide');
     const boxes = await Promise.all([0, 1, 2, 3].map(index => guides.nth(index).boundingBox()));

@@ -8,7 +8,7 @@
   <title>浏览器插件 · Journal Scout</title>
   <link rel="icon" type="image/svg+xml" href="./assets/journal-scout-logo.svg?v=20261104-brand" />
   <link rel="stylesheet" href="./styles.css?v=20261029-header" />
-  <link rel="stylesheet" href="./extension-install.css?v=20261112-zotero-entry" />
+  <link rel="stylesheet" href="./extension-install.css?v=20261112-install-help" />
   <noscript><style>.browser-guide, .install-options, .install-choice-note { display: none !important; } .browser-guide__body[hidden], .install-details[hidden] { display: block !important; }</style></noscript>
 </head>
 <body class="extension-page install-page with-global-nav">
@@ -24,10 +24,6 @@
   </header>
 
   <main class="extension-main">
-    <nav class="product-switch" aria-label="选择插件产品">
-      <a href="./extension-install.html" aria-current="page"><span class="product-switch__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></span><span><strong>浏览器插件</strong><small>浏览论文时查看期刊指标</small></span></a>
-      <a href="./zotero.html"><span class="product-switch__icon" aria-hidden="true"><img src="./assets/zotero-icon.png" alt=""></span><span><strong>Zotero 插件</strong><small>在文献库中查看、筛选与存档</small></span></a>
-    </nav>
     <nav class="extension-section-nav" aria-label="插件页面导航">
       <a href="#install-guide" data-extension-nav>安装指南</a>
       <a href="#release-history" data-extension-nav>更新说明</a>
@@ -90,7 +86,13 @@
 
     <section class="extension-guide" id="install-guide" data-extension-view="install-guide" aria-labelledby="guide-title">
       <div class="extension-guide__heading">
-        <h2 id="guide-title">选择你的浏览器</h2>
+        <div class="extension-guide__title">
+          <h2 id="guide-title">选择你的浏览器</h2>
+          <details class="extension-help">
+            <summary aria-label="查看浏览器插件更新与迁移说明" title="浏览器插件更新与迁移"><span aria-hidden="true">!</span></summary>
+            <div class="extension-help__content"><h3>浏览器插件更新与迁移</h3><p>离线版更新：下载并覆盖原文件，在扩展管理页重新加载。曾使用测试包的用户请重新下载；版本号相同或回退时，旧包可能无法自动提示更新。切换安装方式前请导出收藏并停用旧版；设置不互通。</p><a href="./index.html">返回 Journal Scout <span aria-hidden="true">↗</span></a></div>
+          </details>
+        </div>
         <p>商店版自动更新；离线版需要手动更新。</p>
       </div>
 
@@ -239,8 +241,6 @@
           <p class="extension-note"><strong>Safari 测试限制</strong>该包尚未在 Safari 真机验证，仅供支持临时扩展的 Mac Safari 测试；退出 Safari 或 24 小时后需重新加载。iPhone 和 iPad 不能直接安装此 ZIP。<br><a href="https://developer.apple.com/documentation/safariservices/running-your-safari-web-extension" target="_blank" rel="noopener noreferrer">查看 Apple 的临时扩展说明 ↗</a></p>
         </section>
       </div>
-
-      <div class="extension-help"><div><h3>浏览器插件更新与迁移</h3><p>离线版更新：下载并覆盖原文件，在扩展管理页重新加载。曾使用测试包的用户请重新下载；版本号相同或回退时，旧包可能无法自动提示更新。切换安装方式前请导出收藏并停用旧版；设置不互通。</p></div><a href="./index.html">返回 Journal Scout <span aria-hidden="true">↗</span></a></div>
 
       <section class="zotero-install-entry" id="zotero-install" aria-labelledby="zotero-install-title">
         <div class="extension-guide__heading">

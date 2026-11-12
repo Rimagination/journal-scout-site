@@ -11,17 +11,6 @@
 .extension-back { padding: 8px; }
 .extension-back:hover { color: #0b443e; }
 .extension-main { width: min(1100px, calc(100% - 48px)); margin: 0 auto; }
-.product-switch { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; padding: 22px 0; }
-.product-switch a { display: flex; align-items: center; gap: 12px; min-width: 0; padding: 12px 14px; border: 1px solid #dce9df; border-radius: 10px; background: #fff; color: #29453c; text-decoration: none; }
-.product-switch a:hover { border-color: #93c5b0; background: #f8fcf9; }
-.product-switch a[aria-current="page"] { border-color: #71ad96; background: #edf7f0; box-shadow: inset 0 0 0 1px #d9ece0; }
-.product-switch a:focus-visible { outline: 3px solid #87c9b8; outline-offset: 3px; }
-.product-switch__icon { display: grid; place-items: center; flex: none; width: 38px; height: 38px; border-radius: 9px; background: #edf5ef; color: #276d5a; }
-.product-switch__icon svg { width: 24px; height: 24px; fill: none; stroke: currentColor; stroke-width: 1.5; }
-.product-switch__icon img { display: block; width: 34px; height: 34px; object-fit: contain; }
-.product-switch a > span:last-child { display: grid; min-width: 0; gap: 2px; }
-.product-switch strong { font-size: 14px; }
-.product-switch small { color: #70877b; font-size: 11px; line-height: 1.4; }
 .extension-section-nav { display: flex; align-items: center; gap: 8px; border-bottom: 1px solid #dce7dc; }
 .extension-section-nav a { display: block; padding: 16px 14px 14px; border-bottom: 2px solid transparent; color: #6c8075; font-size: 14px; font-weight: 700; text-decoration: none; }
 .extension-section-nav a:hover { color: #176b59; }
@@ -57,7 +46,8 @@
 .extension-showcase-card figcaption span { color: #6c8075; font-size: 11px; line-height: 1.65; }
 
 .extension-guide { scroll-margin-top: 60px; padding: 24px 0 28px; border-top: 1px solid #dce7dc; }
-.extension-guide__heading { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 14px; }
+.extension-guide__heading { position: relative; display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 14px; }
+.extension-guide__title { display: flex; align-items: center; gap: 9px; }
 .extension-guide__heading .extension-eyebrow { margin-bottom: 8px; }
 .extension-guide__heading h2 { margin: 0; color: #183a32; font-family: var(--font-display); font-size: 26px; }
 .extension-guide__heading > p { margin: 0 0 3px; color: #6c8075; font-size: 12px; }
@@ -114,12 +104,16 @@
 .install-screenshot figcaption strong { color: #315d4b; }
 .extension-note { margin: 20px 0 0; padding: 12px 14px; border-radius: 7px; background: #f9f6eb; color: #7d7050; font-size: 12px; line-height: 1.7; }
 .extension-note strong { display: block; color: #6b5a32; }
-.extension-help { display: flex; justify-content: space-between; align-items: center; gap: 24px; margin-top: 14px; padding: 14px 16px; border: 1px solid #e2ebe1; border-radius: 11px; background: #f0f6f0; }
+.extension-help summary { display: grid; place-items: center; width: 24px; height: 24px; border: 1px solid #bcd7c7; border-radius: 50%; background: #f0f6f0; color: #57816d; font: 700 14px/1 var(--font-sans); list-style: none; cursor: pointer; }
+.extension-help summary::-webkit-details-marker { display: none; }
+.extension-help summary:hover, .extension-help[open] summary { border-color: #83bba5; background: #e1f2e7; }
+.extension-help summary:focus-visible { outline: 3px solid #87c9b8; outline-offset: 3px; }
+.extension-help__content { position: absolute; z-index: 5; top: calc(100% + 8px); left: 0; width: min(460px, 100%); padding: 14px 16px; border: 1px solid #d8e8da; border-radius: 10px; background: #f7fbf7; box-shadow: 0 12px 28px rgba(32,63,48,.14); }
 .extension-help h3 { margin: 0 0 5px; color: #345b4e; font-size: 13px; }
 .extension-help p { max-width: 700px; margin: 0; color: #71887b; font-size: 12px; line-height: 1.7; }
 .extension-help p + p { margin-top: 9px; }
 .extension-help code { overflow-wrap: anywhere; }
-.extension-help a { flex: 0 0 auto; color: #176b59; font-size: 12px; font-weight: 700; text-decoration: none; }
+.extension-help a { display: inline-block; margin-top: 8px; color: #176b59; font-size: 12px; font-weight: 700; text-decoration: none; }
 .zotero-install-entry { margin-top: 32px; padding-top: 28px; border-top: 1px solid #dce7dc; }
 .zotero-install-entry__card { display: flex; align-items: center; gap: 16px; padding: 18px; border: 1px solid #dde9de; border-radius: 11px; background: #fff; }
 .zotero-install-entry__icon { flex: none; width: 48px; height: 48px; object-fit: contain; }
@@ -218,11 +212,6 @@
 }
 @media (max-width: 560px) {
   .extension-main, .extension-footer { width: calc(100% - 36px); }
-  .product-switch { gap: 7px; padding: 14px 0; }
-  .product-switch a { gap: 7px; padding: 9px; }
-  .product-switch__icon { width: 30px; height: 30px; }
-  .product-switch__icon img { width: 29px; height: 29px; }
-  .product-switch small { font-size: 10px; }
   .extension-section-nav { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; }
   .extension-section-nav a { padding: 14px 0 12px; font-size: 13px; text-align: center; }
   .extension-hero { padding: 16px 0; }
@@ -235,8 +224,6 @@
   .browser-guides { gap: 8px; }
   .browser-guide { padding: 10px 14px; }
   .browser-guide__body { padding: 16px; }
-  .extension-help { display: block; margin-top: 10px; padding: 11px 14px; }
-  .extension-help a { display: inline-block; margin-top: 8px; }
   .release-history { padding: 35px 0 48px; }
   .release-history__list li { grid-template-columns: 1fr; gap: 7px; }
   .release-history__list li > div { display: flex; align-items: baseline; gap: 10px; }
