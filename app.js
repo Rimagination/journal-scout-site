@@ -27,6 +27,7 @@ const SEARCH_INPUT_DEBOUNCE_MS = 180;
 const SEARCH_API_RETRY_DELAY_MS = 450;
 const CLASSIFICATION_API_TIMEOUT_MS = 2500;
 const classificationCache = new Map();
+let conferenceCatalogPromise;
 const STATIC_DATA_FALLBACK_ENABLED =
   window.JOURNAL_SCOUT_ALLOW_STATIC_DATA === true ||
   new URLSearchParams(window.location.search).get("staticData") === "1";
@@ -468,6 +469,38 @@ async function findSuggestionsRemoteFirst(query, limit = 12) {
   }
 }
 
+async function findConferenceSuggestions(query, limit = 12) {
+  if (state.minIF !== null || query.trim().length < 2 || !window.CCFConferences) return [];
+  if (!conferenceCatalogPromise) {
+    conferenceCatalogPromise = fetch("./data/ccf-conferences.json?v=20261112-ccf", { cache: "default" })
+      .then((response) => {
+        if (!response.ok) throw new Error(`CCF catalog HTTP ${response.status}`);
+        return response.json();
+      }).then((catalog) => window.CCFConferences.setCatalog(catalog))
+      .catch((error) => { conferenceCatalogPromise = null; throw error; });
+  }
+  await conferenceCatalogPromise;
+  return window.CCFConferences.search(query, limit).map((record) => ({
+    id: `conference:${record.id}`, conferenceId: record.id, venueType: "conference",
+    title: record.name, abbreviations: record.abbr ? [record.abbr] : [], acronym: record.abbr,
+    area: record.area, tags: [],
+    ccf_records: [{ year: String(record.edition), category: "推荐国际学术会议", level: `${record.level}类` }],
+  }));
+}
+
+async function findAllSuggestions(query, limit = 12) {
+  const [journals, conferences] = await Promise.allSettled([
+    findSuggestionsRemoteFirst(query, limit), findConferenceSuggestions(query, limit),
+  ]);
+  const journalRows = journals.status === "fulfilled" ? journals.value : [];
+  const conferenceRows = conferences.status === "fulfilled" ? conferences.value : [];
+  if (journals.status === "rejected" && !conferenceRows.length) throw journals.reason;
+  const q = query.trim().toLowerCase();
+  const exact = conferenceRows.filter(row => row.acronym.toLowerCase() === q || row.title.toLowerCase() === q);
+  const other = conferenceRows.filter(row => !exact.includes(row));
+  return [...exact, ...journalRows, ...other].slice(0, limit);
+}
+
 function isAbbreviationMatch(row, query) {
   const qAbbr = normalizeAbbrQuery(query);
   if (!isAbbrQuery(qAbbr)) return false;
@@ -476,7 +509,9 @@ function isAbbreviationMatch(row, query) {
 
 function suggestionItem(row, idx) {
   const query = String(els.searchInput?.value || "").trim();
-  const ids = [row.issn, row.cn_number].filter(Boolean).join(" / ");
+  const ids = row.venueType === "conference"
+    ? ["会议", row.acronym, row.area].filter(Boolean).join(" · ")
+    : [row.issn, row.cn_number].filter(Boolean).join(" / ");
   const tagsHtml = renderTagList(buildPriorityTags(row));
   const activeCls = idx === state.activeIndex ? "is-active" : "";
   const matchHint = isAbbreviationMatch(row, query)
@@ -565,6 +600,12 @@ async function gotoSuggestion(row, q) {
     state.searchInputTimer = null;
   }
   const seq = (state.searchRequestSeq += 1);
+  if (row.venueType === "conference" && /^[a-f0-9]{16}$/.test(row.conferenceId || "")) {
+    const url = new URL("./conference.html", window.location.href);
+    url.searchParams.set("id", row.conferenceId);
+    window.location.href = url.toString();
+    return;
+  }
   if (row.id != null && String(row.id).trim()) {
     gotoDetail(row.id, q);
     return;
@@ -613,7 +654,7 @@ async function gotoPickedSuggestion() {
   const seq = (state.searchRequestSeq += 1);
   setPanelMessage("正在检索期刊...");
   try {
-    const fallback = await findSuggestionsRemoteFirst(q, 1);
+    const fallback = await findAllSuggestions(q, 1);
     if (seq !== state.searchRequestSeq || els.searchInput.value.trim() !== q) return;
     picked = fallback[0];
     if (picked) await gotoSuggestion(picked, q);
@@ -636,7 +677,7 @@ function renderSuggestionRows(query, rows) {
 
   if (!state.suggestions.length) {
     els.suggestionPanel.innerHTML =
-      "<p class='placeholder'>\u672a\u627e\u5230\u5339\u914d\u671f\u520a\uff0c\u8bf7\u5c1d\u8bd5\u66f4\u5b8c\u6574\u7684\u540d\u79f0\u3001ISSN \u6216 CN \u53f7</p>";
+      "<p class='placeholder'>未找到匹配的期刊或会议，请尝试更完整的名称、缩写、ISSN 或 CN 号</p>";
     return;
   }
 
@@ -671,7 +712,7 @@ async function renderSuggestions() {
 
   let rows = [];
   try {
-    rows = await findSuggestionsRemoteFirst(q);
+    rows = await findAllSuggestions(q);
   } catch (err) {
     console.error("Journal search API failed:", err);
     if (seq === state.searchRequestSeq) {
@@ -682,7 +723,7 @@ async function renderSuggestions() {
 
   if (seq !== state.searchRequestSeq) return;
   renderSuggestionRows(q, rows);
-  void enrichSearchRowsWithClassifications(rows).then((enrichedRows) => {
+  void enrichSearchRowsWithClassifications(rows.filter(row => row.venueType !== "conference")).then((enrichedRows) => {
     if (seq !== state.searchRequestSeq || els.searchInput.value.trim() !== q) return;
     const enrichedById = new Map(enrichedRows.map((row) => [String(row.id), row]));
     state.suggestions = state.suggestions.map((row) => enrichedById.get(String(row.id)) || row);

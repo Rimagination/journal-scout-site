@@ -72,9 +72,12 @@
     }
     if (row.xuankan_warning || tags.includes("新锐预警")) push("xinruiWarning", "新锐预警", "warn", "新锐预警：该期刊被标记在新锐期刊预警相关名单中。");
 
-    const ccf = latestRecords(row.ccf_records);
+    const isConference = row.venueType === "conference";
+    const ccf = latestRecords((Array.isArray(row.ccf_records) ? row.ccf_records : []).filter((record) => isConference
+      ? !String(record?.category || "").includes("刊物")
+      : !String(record?.category || "").includes("会议")));
     for (const value of [...new Set(ccf.records.map((record) => String(record?.level || "").trim()).filter(Boolean))]) {
-      push("ccf", `CCF ${value}`, "ccf", `CCF：中国计算机学会推荐目录中的期刊等级。${ccf.year ? ` 目录年份：${ccf.year}。` : ""}`);
+      push("ccf", `CCF ${value}${isConference ? "会议" : ""}`, "ccf", `CCF：中国计算机学会推荐目录中的${isConference ? "会议" : "期刊"}等级。${ccf.year ? ` 目录年份：${ccf.year}。` : ""}`);
     }
     if (!badges.some((badge) => badge.key === "ccf")) {
       const value = findTag(/^CCF-[ABC](?:类)?$/i);

@@ -1,0 +1,7 @@
+.conference-eyebrow { margin: 0 0 0.5rem; color: var(--muted, #668276); font-size: 0.9rem; }
+.conference-main { width: min(900px, calc(100% - 2rem)); margin: 1.5rem auto 4rem; }
+.conference-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+.conference-note { margin-top: 1.5rem; color: var(--muted, #668276); line-height: 1.7; }
+.conference-links { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 1.25rem; }
+.conference-links a { color: #246f5d; font-weight: 600; }
+@media (max-width: 600px) { .conference-grid { grid-template-columns: 1fr; } }

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Journal Scout - 会议详情</title>
+  <link rel="icon" type="image/svg+xml" href="./assets/journal-scout-logo.svg?v=20261104-brand" />
+  <link rel="stylesheet" href="./styles.css?v=20261103-badge-parity" />
+  <link rel="stylesheet" href="./extension-install.css?v=20261112-products" />
+  <link rel="stylesheet" href="./conference.css?v=20261112-ccf" />
+</head>
+<body class="detail-page with-global-nav">
+  <header class="scansci-global-nav">
+    <div class="brand-cluster">
+      <a class="brand" href="https://www.scansci.com/" aria-label="ScanSci 首页">
+        <img class="brand-logo" src="./assets/brand/scansci-app-icon-64.webp" alt="" width="30" height="30">
+        <span>ScanSci</span>
+      </a>
+      <a class="product-brand" href="./index.html">Journal Scout</a>
+    </div>
+    <nav class="product-links" aria-label="Journal Scout 插件产品">
+      <a class="extension-install-link" href="./extension-install.html">浏览器插件</a>
+      <a class="extension-install-link" href="./extension-install.html#zotero-install">Zotero 插件</a>
+    </nav>
+  </header>
+  <header class="hero hero--detail">
+    <div class="hero__content">
+      <p class="conference-eyebrow">CCF 推荐国际学术会议</p>
+      <h1 id="title">正在读取会议信息…</h1>
+      <p class="subtitle" id="subtitle"></p>
+      <div class="tags"><span class="tag tag--ccf" id="level" hidden></span></div>
+    </div>
+  </header>
+  <main class="conference-main">
+    <section class="panel panel--wide">
+      <h2>会议目录信息</h2>
+      <div class="conference-grid">
+        <div class="kv"><div class="k">会议简称</div><div class="v" id="acronym">—</div></div>
+        <div class="kv"><div class="k">所属领域</div><div class="v" id="area">—</div></div>
+        <div class="kv"><div class="k">目录版本</div><div class="v" id="edition">—</div></div>
+        <div class="kv"><div class="k">目录页码</div><div class="v" id="page">—</div></div>
+      </div>
+      <p class="conference-note">此等级表示会议在 CCF 目录中的推荐类别。正式长文和其他论文类型的适用范围，请以 CCF 官方说明为准。</p>
+      <p class="conference-links"><a href="https://www.ccf.org.cn/Academic_Evaluation/By_category/2026-03-31/870181.shtml" target="_blank" rel="noopener noreferrer">查看 CCF 官方目录 ↗</a><a href="./index.html">返回搜索</a></p>
+    </section>
+  </main>
+  <script src="./ccf-conferences.js?v=20261112-ccf"></script>
+  <script src="./conference.js?v=20261112-ccf"></script>
+</body>
+</html>
