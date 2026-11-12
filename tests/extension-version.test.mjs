@@ -17,6 +17,8 @@ test('update-check metadata matches the displayed manual version and both packag
   }
   const zoteroVersion = html.match(/downloads\/journal-scout-zotero-([\d.]+)\.xpi/)?.[1];
   assert.match(zoteroVersion || '', /^\d+(?:\.\d+){1,3}$/);
+  const zoteroRelease = JSON.parse(await readFile(new URL('../data/zotero-data-release.json', import.meta.url), 'utf8'));
+  assert.equal(zoteroRelease.pluginVersion, zoteroVersion, 'Zotero update notice matches the published download');
   const zoteroPage = await readFile(new URL('../zotero.html', import.meta.url), 'utf8');
   assert.match(zoteroPage, /http-equiv="refresh" content="0; url=\.\/extension-install\.html#zotero-install"/);
   assert.ok(html.includes(`XPI · v${zoteroVersion}`));

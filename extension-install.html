@@ -283,10 +283,10 @@
           <div class="zotero-install-entry__copy">
             <strong>Journal Scout for Zotero</strong>
             <p>下载后，在 Zotero 中打开「工具 → 插件」，通过齿轮菜单从文件安装。</p>
-            <small>安装清单声明支持 Zotero 7–10；已在 10.0.8 实测，7–9 尚未逐版测试。Zotero 6 不支持；旧版 v0.1.0 可重新安装以获取独立指标筛选、影响因子数值比较、新版侧栏及显示设置。</small>
+            <small>安装清单声明支持 Zotero 7–10；已在 10.0.8 实测，7–9 尚未逐版测试。Zotero 6 不支持；v0.1.0 可升级至 v0.1.1，获取独立指标筛选、影响因子数值比较、新版侧栏及显示设置。</small>
           </div>
           <div class="zotero-install-entry__actions">
-            <a class="extension-download" href="./downloads/journal-scout-zotero-0.1.0.xpi?build=20261112-zotero-palette-spacing" download="journal-scout-zotero-0.1.0.xpi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg><span>下载 Zotero 插件<small>XPI · v0.1.0</small></span></a>
+            <a class="extension-download" href="./downloads/journal-scout-zotero-0.1.1.xpi?build=20261112-zotero-0.1.1" download="journal-scout-zotero-0.1.1.xpi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg><span>下载 Zotero 插件<small>XPI · v0.1.1</small></span></a>
             <button class="install-option__toggle" id="zotero-steps-toggle" type="button" aria-label="查看 Zotero 插件安装步骤与说明" aria-expanded="false" aria-controls="zotero-install-details" data-open-label="查看步骤与说明" data-close-label="收起步骤与说明"><span class="install-option__hint">查看步骤与说明</span><span class="install-option__chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span></button>
           </div>
         </div>
@@ -315,7 +315,7 @@
             <p><strong>查询数据：</strong>插件使用条目的期刊名或 ISSN 查询 ScanSci 期刊服务，不发送论文全文或附件。会议论文按会议名称匹配 CCF 目录；插件内置 ABS / AJG、UTD24、FMS 和 ABDC 商科名单。未收录或无法确认的条目不会显示对应等级。</p>
             <p><strong>显示设置：</strong>侧栏按指标分项列出，标签保留所选配色、字号和圆角。点击侧栏的「显示设置」，或进入 Zotero「设置 → Journal Scout」，可选择「列表列与侧边栏」或「仅侧边栏」，并逐项勾选需要显示的标签。仅侧边栏模式会隐藏 Journal Scout 列；选择立即生效并保存在本机，完整指标仍归档到 Extra 和原生标签。「标签样式」中可调整配色、字号、圆角和间距。配色选框采用彩色圆角样式，文字间距与字号、圆角选项保持一致。</p>
             <p><strong>数据更新：</strong>已确认的期刊和会议记录会在本地复用；网站发布数据更新后，插件错峰优先更新当前查看的文献。</p>
-            <p><strong>插件更新：</strong>发现更高的插件版本时，右侧面板会提示前往下载；下载后通过插件管理器从文件安装。已经安装过旧的 v0.1.0 的用户，可重新下载本页安装包并手动安装一次。</p>
+            <p><strong>插件更新：</strong>发现更高的插件版本时，右侧面板会提示前往下载；下载后通过插件管理器从文件安装。已经安装 v0.1.0 的用户，可下载 v0.1.1 安装包，通过插件管理器从文件安装升级。</p>
             <p>插件由 ScanSci 提供，Zotero 标识用于指示适用的软件。</p>
           </div>
         </section>
@@ -345,7 +345,8 @@
       </ol>
       <h3 class="release-history__product">Zotero 插件</h3>
       <ol class="release-history__list">
-        <li><div><strong>v0.1.0</strong><small>2026.11.12 · 当前版本</small></div><p>在文献列表显示期刊指标与 CCF 会议等级，将已确认信息存入条目；高级搜索提供独立 Journal Scout 指标菜单，影响因子支持完整小数比较、组合条件和保存搜索，并兼容原生标签入口；改进 IEEE 重复 ISSN 匹配及更名期刊显示，补全 CVPR、NeurIPS 论文集名称识别，升级后按需重新核对旧缓存，恢复遗漏的分区、Top 和 CCF 标签；改进缺失电子 ISSN 时的完整刊名回退，提供数据版本刷新、插件更新提示和标签样式设置，查询失败后可自动重试。侧栏采用指标清单布局，保留标签实际样式；显示设置支持逐项选择标签，以及「列表列与侧边栏」「仅侧边栏」两种模式。完整归档和原生搜索标签继续保留，安装步骤与筛选说明配图紧随对应正文。批量补全入口移入「设置 → Journal Scout」，运行时显示进度与取消按钮，工具菜单不再保留两个常驻入口。已安装旧版 v0.1.0 的用户可重新下载安装包以获取最新改进。</p></li>
+        <li><div><strong>v0.1.1</strong><small>2026.11.12 · 当前版本</small></div><p>高级搜索新增独立的 Journal Scout 指标菜单，影响因子支持完整小数比较、组合条件及保存搜索。修复 IEEE 重复 ISSN、电子 ISSN 缺失时的匹配，补全 CVPR、NeurIPS 论文集名称识别，并按需重新核对旧缓存。侧栏采用指标清单布局，支持逐项选择显示指标、列表列与侧边栏模式切换，以及彩色圆角配色选框；文字间距与其他设置项一致。将「补全文库期刊指标」移入设置，运行时显示进度与取消按钮。保留完整归档、兼容原生标签筛选及数据版本更新提示。v0.1.0 用户可下载安装新版升级。</p></li>
+        <li><div><strong>v0.1.0</strong><small>2026.11.12</small></div><p>发布 Zotero 插件，在文献列表和右侧面板显示期刊指标及 CCF 会议等级，将确认的信息保存到条目，支持本地复用和随 Zotero 同步。</p></li>
       </ol>
     </section>
 
