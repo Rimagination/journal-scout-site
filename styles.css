@@ -2,6 +2,7 @@
 
 :root {
   --scansci-header-height: 60px;
+  --scansci-side-gutter: 5.2%;
   --bg: #eef2f8;
   --paper: #fdfdff;
   --ink: #152036;
@@ -50,7 +51,7 @@ body {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  padding: 0 5.2%;
+  padding: 0 var(--scansci-side-gutter);
   font-family: "DM Sans", "Noto Sans SC", sans-serif;
   line-height: normal;
   letter-spacing: 0;
@@ -101,7 +102,7 @@ body {
 }
 
 @media (max-width: 720px) {
-  .scansci-global-nav { padding: 0 18px; }
+  :root { --scansci-side-gutter: 18px; }
   .product-brand { font-size: 13px; }
 }
 
@@ -537,10 +538,9 @@ h1 {
 }
 
 .detail-page .hero__content {
-  box-sizing: border-box;
-  max-width: 1320px;
-  width: calc(100vw - 48px);
-  padding: 16px 8px 12px;
+  max-width: none;
+  width: 100%;
+  padding: 16px var(--scansci-side-gutter) 12px;
 }
 
 .detail-page .eyebrow {
@@ -689,9 +689,10 @@ h1 {
 }
 
 .detail-page .detail-main {
-  max-width: 1320px;
-  width: calc(100vw - 24px);
+  max-width: none;
+  width: 100%;
   margin: 12px auto 22px;
+  padding-inline: var(--scansci-side-gutter);
   gap: 12px;
   grid-template-columns: minmax(280px, 330px) minmax(0, 1fr);
   align-items: start;
@@ -3790,7 +3791,6 @@ h1 {
 
 @media (max-width: 1120px) {
   .detail-page .detail-main {
-    width: calc(100vw - 24px);
     grid-template-columns: minmax(260px, 300px) minmax(0, 1fr);
   }
 
@@ -3827,10 +3827,6 @@ h1 {
 @media (max-width: 840px) {
   h1 {
     font-size: clamp(24px, 8vw, 40px);
-  }
-
-  .detail-page .hero__content {
-    width: calc(100vw - 56px);
   }
 
   .single-title {
