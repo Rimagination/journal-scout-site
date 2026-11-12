@@ -13,4 +13,9 @@ test('update-check metadata matches the displayed manual version and both packag
   for (const file of [`scansci-chromium-${version}.zip`, `scansci-firefox-${version}.xpi`, `journal-scout-safari-mac-test-${version}.zip`]) {
     await access(new URL(`../downloads/${file}`, import.meta.url));
   }
+  const zoteroVersion = html.match(/downloads\/journal-scout-zotero-([\d.]+)\.xpi/)?.[1];
+  assert.match(zoteroVersion || '', /^\d+(?:\.\d+){1,3}$/);
+  const zoteroPage = await readFile(new URL('../zotero.html', import.meta.url), 'utf8');
+  assert.ok(zoteroPage.includes(`downloads/journal-scout-zotero-${zoteroVersion}.xpi`));
+  await access(new URL(`../downloads/journal-scout-zotero-${zoteroVersion}.xpi`, import.meta.url));
 });

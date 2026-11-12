@@ -36,7 +36,7 @@ try {
     page.on('pageerror', error => errors.push(error.message));
     await page.goto(url, { waitUntil: 'load' });
     assert.equal(requests, 0, 'coverage data should not load at the top of the page');
-    assert.deepEqual(await page.locator('main h2').allTextContents(), ['效果展示', '选择你的浏览器', '更新说明', '网站覆盖']);
+    assert.deepEqual(await page.locator('main h2').allTextContents(), ['效果展示', '选择你的浏览器', '安装 Zotero 插件', '更新说明', '网站覆盖']);
     const nav = page.locator('.extension-section-nav');
     assert.equal(await nav.locator('[href="#install-guide"]').getAttribute('aria-current'), 'page');
     assert.equal(await page.locator('#release-history').isVisible(), false);
@@ -47,6 +47,11 @@ try {
     assert.ok((await page.locator('#showcase').boundingBox()).y < (await page.locator('#install-guide').boundingBox()).y, 'showcase comes before installation options');
     assert.equal(await page.locator('.extension-actions [href="#release-history"], .extension-actions [href="#site-coverage"]').count(), 0);
     assert.equal(await page.locator('.browser-guide').count(), 4);
+    const zoteroEntry = page.locator('#zotero-install');
+    assert.ok((await zoteroEntry.boundingBox()).y > (await page.locator('.browser-guides').boundingBox()).y);
+    assert.equal(await zoteroEntry.locator('img').evaluate(img => img.complete && img.naturalWidth > 0), true);
+    assert.equal(await zoteroEntry.locator('a[download]').getAttribute('href'), './downloads/journal-scout-zotero-0.1.5.xpi');
+    assert.equal(await zoteroEntry.locator('.zotero-install-entry__guide').getAttribute('href'), './zotero.html#install');
     const guides = page.locator('.browser-guide');
     const boxes = await Promise.all([0, 1, 2, 3].map(index => guides.nth(index).boundingBox()));
     if (viewport.width > 1050) {

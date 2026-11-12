@@ -120,6 +120,16 @@
 .extension-help p + p { margin-top: 9px; }
 .extension-help code { overflow-wrap: anywhere; }
 .extension-help a { flex: 0 0 auto; color: #176b59; font-size: 12px; font-weight: 700; text-decoration: none; }
+.zotero-install-entry { margin-top: 32px; padding-top: 28px; border-top: 1px solid #dce7dc; }
+.zotero-install-entry__card { display: flex; align-items: center; gap: 16px; padding: 18px; border: 1px solid #dde9de; border-radius: 11px; background: #fff; }
+.zotero-install-entry__icon { flex: none; width: 48px; height: 48px; object-fit: contain; }
+.zotero-install-entry__copy { flex: 1; min-width: 0; }
+.zotero-install-entry__copy strong { color: #24443b; font-size: 15px; }
+.zotero-install-entry__copy p { margin: 5px 0; color: #60786c; font-size: 12px; line-height: 1.7; }
+.zotero-install-entry__copy small { color: #81948a; font-size: 11px; line-height: 1.6; }
+.zotero-install-entry__actions { display: grid; justify-items: start; gap: 9px; flex: none; }
+.zotero-install-entry__guide { color: #176b59; font-size: 12px; font-weight: 700; text-decoration: none; }
+.zotero-install-entry__guide:focus-visible { outline: 3px solid #87c9b8; outline-offset: 3px; }
 .extension-footer { display: flex; justify-content: space-between; width: min(1100px, calc(100% - 48px)); margin: 0 auto; padding: 13px 0 18px; border-top: 1px solid #e0eae0; color: #688076; font-family: Georgia, serif; font-size: 12px; font-weight: 700; }
 .install-page .extension-footer { font-family: var(--font-sans); }
 .extension-footer i { color: #9aaca1; font-family: var(--font-sans); font-size: 10px; font-style: normal; font-weight: 500; }
@@ -182,6 +192,9 @@
   .browser-guides { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 760px) {
+  .zotero-install-entry__card { flex-wrap: wrap; }
+  .zotero-install-entry__copy { flex-basis: calc(100% - 64px); }
+  .zotero-install-entry__actions { display: flex; flex: 1 1 0; flex-wrap: wrap; align-items: center; min-width: 0; margin-left: 64px; }
   .extension-hero { grid-template-columns: minmax(0, 1fr) minmax(95px, 32%); gap: 14px; padding: 22px 0; }
   .extension-guide__heading { display: block; }
   .extension-guide__heading > p { margin-top: 5px; }
