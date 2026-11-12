@@ -35,6 +35,8 @@ Keep earlier published version records when updating the current release. The cu
 0.1.10 entry consolidates the browser extension changes into one release. Browser and
 Zotero releases are recorded separately.
 Run `node --test tests/extension-version.test.mjs` to check that the published versions match.
+`updates.html` is the major-update timeline for the website, data, and plugins. Add only
+released, dated changes there; keep the full per-version plugin history on the install page.
 The install guide's searchable coverage table reads `data/extension-site-coverage.json`
 only when needed. Its list describes the actual published manual package, groups Chinese
 and English sites, and distinguishes list adapters from metadata-based article recognition.
