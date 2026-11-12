@@ -1,26 +1,6 @@
 {
-  "manualVersion": "0.1.11",
+  "manualVersion": "0.1.12",
   "sites": [
-    {
-      "name": "AMS Journals（气象学会）",
-      "hosts": [
-        "journals.ametsoc.org"
-      ],
-      "pages": "论文详情",
-      "note": "论文详情按页面元数据识别；真实页面尚未逐一验证。",
-      "keywords": "Ametsoc",
-      "language": "zh"
-    },
-    {
-      "name": "Elsevier 期刊目录",
-      "hosts": [
-        "www.elsevier.com"
-      ],
-      "pages": "论文详情",
-      "note": "期刊目录页按页面链接识别；真实页面尚未验证。",
-      "keywords": "Elsevier catalog",
-      "language": "zh"
-    },
     {
       "name": "GeenMedical",
       "hosts": [
@@ -69,16 +49,6 @@
       "pages": "期刊介绍页",
       "note": "搜索列表尚未适配。",
       "keywords": "医学期刊",
-      "language": "zh"
-    },
-    {
-      "name": "NCBI 其他页面",
-      "hosts": [
-        "www.ncbi.nlm.nih.gov"
-      ],
-      "pages": "论文详情",
-      "note": "NCBI 图书等页面的元数据识别；PubMed/PMC 已单独列出。",
-      "keywords": "Ncbi books gene",
       "language": "zh"
     },
     {
@@ -321,6 +291,66 @@
       "pages": "论文详情",
       "note": "论文详情按页面元数据识别；真实页面尚未逐一验证。",
       "keywords": "Qikan",
+      "language": "zh"
+    },
+    {
+      "name": "IvySCI",
+      "hosts": [
+        "www.ivysci.com"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据尝试识别；真实页面尚未逐一验证。",
+      "keywords": "IvySCI",
+      "language": "zh"
+    },
+    {
+      "name": "中国光学期刊网",
+      "hosts": [
+        "www.opticsjournal.net"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据尝试识别；真实页面尚未逐一验证。",
+      "keywords": "中国光学期刊网",
+      "language": "zh"
+    },
+    {
+      "name": "中国化学会",
+      "hosts": [
+        "www.chinesechemsoc.org"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据尝试识别；真实页面尚未逐一验证。",
+      "keywords": "中国化学会",
+      "language": "zh"
+    },
+    {
+      "name": "中国物理学会期刊网",
+      "hosts": [
+        "cpsjournals.cn"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据尝试识别；真实页面尚未逐一验证。",
+      "keywords": "中国物理学会期刊网",
+      "language": "zh"
+    },
+    {
+      "name": "国家科技图书文献中心 NSTL",
+      "hosts": [
+        "www.nstl.gov.cn"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据尝试识别；真实页面尚未逐一验证。",
+      "keywords": "国家科技图书文献中心 NSTL",
+      "language": "zh"
+    },
+    {
+      "name": "汉斯出版社",
+      "hosts": [
+        "www.hanspub.org"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据尝试识别；真实页面尚未逐一验证。",
+      "keywords": "汉斯出版社",
       "language": "zh"
     },
     {
@@ -2215,6 +2245,540 @@
       "pages": "论文详情",
       "note": "论文详情按页面元数据识别；真实页面尚未逐一验证。",
       "keywords": "Erudit",
+      "language": "en"
+    },
+    {
+      "name": "AMS Journals（气象学会）",
+      "hosts": [
+        "journals.ametsoc.org"
+      ],
+      "pages": "论文详情",
+      "note": "论文详情按页面元数据识别；真实页面尚未逐一验证。",
+      "keywords": "Ametsoc",
+      "language": "en"
+    },
+    {
+      "name": "Elsevier 期刊目录",
+      "hosts": [
+        "www.elsevier.com"
+      ],
+      "pages": "论文详情",
+      "note": "期刊目录页按页面链接识别；真实页面尚未验证。",
+      "keywords": "Elsevier catalog",
+      "language": "en"
+    },
+    {
+      "name": "NCBI 其他页面",
+      "hosts": [
+        "www.ncbi.nlm.nih.gov"
+      ],
+      "pages": "论文详情",
+      "note": "NCBI 图书等页面的元数据识别；PubMed/PMC 已单独列出。",
+      "keywords": "Ncbi books gene",
+      "language": "en"
+    },
+    {
+      "name": "AACN Journals",
+      "hosts": [
+        "www.aacnjournals.org"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据尝试识别；真实页面尚未逐一验证。",
+      "keywords": "AACN Journals",
+      "language": "en"
+    },
+    {
+      "name": "Academy of Management",
+      "hosts": [
+        "aom.org",
+        "journals.aom.org"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据尝试识别；真实页面尚未逐一验证。",
+      "keywords": "Academy of Management",
+      "language": "en"
+    },
+    {
+      "name": "African Journals",
+      "hosts": [
+        "journals.co.za"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据尝试识别；真实页面尚未逐一验证。",
+      "keywords": "African Journals",
+      "language": "en"
+    },
+    {
+      "name": "AIS Electronic Library",
+      "hosts": [
+        "aisel.aisnet.org"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据尝试识别；真实页面尚未逐一验证。",
+      "keywords": "AIS Electronic Library",
+      "language": "en"
+    },
+    {
+      "name": "Akadémiai Kiadó",
+      "hosts": [
+        "www.akjournals.com"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据尝试识别；真实页面尚未逐一验证。",
+      "keywords": "Akadémiai Kiadó",
+      "language": "en"
+    },
+    {
+      "name": "American Accounting Association",
+      "hosts": [
+        "publications.aaahq.org"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据尝试识别；真实页面尚未逐一验证。",
+      "keywords": "American Accounting Association",
+      "language": "en"
+    },
+    {
+      "name": "American Association of Immunologists",
+      "hosts": [
+        "journals.aai.org"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据尝试识别；真实页面尚未逐一验证。",
+      "keywords": "American Association of Immunologists",
+      "language": "en"
+    },
+    {
+      "name": "American Economic Association",
+      "hosts": [
+        "www.aeaweb.org"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据尝试识别；真实页面尚未逐一验证。",
+      "keywords": "American Economic Association",
+      "language": "en"
+    },
+    {
+      "name": "American Mathematical Society",
+      "hosts": [
+        "www.ams.org"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据尝试识别；真实页面尚未逐一验证。",
+      "keywords": "American Mathematical Society",
+      "language": "en"
+    },
+    {
+      "name": "American Psychiatric Association Publishing",
+      "hosts": [
+        "www.appi.org"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据尝试识别；真实页面尚未逐一验证。",
+      "keywords": "American Psychiatric Association Publishing",
+      "language": "en"
+    },
+    {
+      "name": "ASABE",
+      "hosts": [
+        "www.asabe.org"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据尝试识别；真实页面尚未逐一验证。",
+      "keywords": "ASABE",
+      "language": "en"
+    },
+    {
+      "name": "ASHA Publications",
+      "hosts": [
+        "pubs.asha.org"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据尝试识别；真实页面尚未逐一验证。",
+      "keywords": "ASHA Publications",
+      "language": "en"
+    },
+    {
+      "name": "CABI Digital Library",
+      "hosts": [
+        "cabidigitallibrary.org",
+        "www.cabi.org"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据尝试识别；真实页面尚未逐一验证。",
+      "keywords": "CABI Digital Library",
+      "language": "en"
+    },
+    {
+      "name": "CAS CASSI",
+      "hosts": [
+        "cassi.cas.org",
+        "www.cassi.cas.org"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据尝试识别；真实页面尚未逐一验证。",
+      "keywords": "CAS CASSI",
+      "language": "en"
+    },
+    {
+      "name": "Central and Eastern European Online Library",
+      "hosts": [
+        "www.ceeol.com"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据尝试识别；真实页面尚未逐一验证。",
+      "keywords": "Central and Eastern European Online Library",
+      "language": "en"
+    },
+    {
+      "name": "CSIRO Publishing",
+      "hosts": [
+        "publish.csiro.au"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据尝试识别；真实页面尚未逐一验证。",
+      "keywords": "CSIRO Publishing",
+      "language": "en"
+    },
+    {
+      "name": "Edinburgh University Press",
+      "hosts": [
+        "www.euppublishing.com"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据尝试识别；真实页面尚未逐一验证。",
+      "keywords": "Edinburgh University Press",
+      "language": "en"
+    },
+    {
+      "name": "Elmer Press",
+      "hosts": [
+        "www.elmerpress.com"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据尝试识别；真实页面尚未逐一验证。",
+      "keywords": "Elmer Press",
+      "language": "en"
+    },
+    {
+      "name": "EMBO Press",
+      "hosts": [
+        "embopress.org"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据尝试识别；真实页面尚未逐一验证。",
+      "keywords": "EMBO Press",
+      "language": "en"
+    },
+    {
+      "name": "European Respiratory Society Journals",
+      "hosts": [
+        "www.ersjournals.com"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据尝试识别；真实页面尚未逐一验证。",
+      "keywords": "European Respiratory Society Journals",
+      "language": "en"
+    },
+    {
+      "name": "Exploration Publishing",
+      "hosts": [
+        "www.explorationpub.com"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据尝试识别；真实页面尚未逐一验证。",
+      "keywords": "Exploration Publishing",
+      "language": "en"
+    },
+    {
+      "name": "Fatcat",
+      "hosts": [
+        "fatcat.wiki"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据尝试识别；真实页面尚未逐一验证。",
+      "keywords": "Fatcat",
+      "language": "en"
+    },
+    {
+      "name": "German Medical Science",
+      "hosts": [
+        "www.egms.de"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据尝试识别；真实页面尚未逐一验证。",
+      "keywords": "German Medical Science",
+      "language": "en"
+    },
+    {
+      "name": "Guilford Journals",
+      "hosts": [
+        "guilfordjournals.com"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据尝试识别；真实页面尚未逐一验证。",
+      "keywords": "Guilford Journals",
+      "language": "en"
+    },
+    {
+      "name": "Health Affairs",
+      "hosts": [
+        "www.healthaffairs.org"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据尝试识别；真实页面尚未逐一验证。",
+      "keywords": "Health Affairs",
+      "language": "en"
+    },
+    {
+      "name": "Human Kinetics Journals",
+      "hosts": [
+        "journals.humankinetics.com"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据尝试识别；真实页面尚未逐一验证。",
+      "keywords": "Human Kinetics Journals",
+      "language": "en"
+    },
+    {
+      "name": "IntechOpen",
+      "hosts": [
+        "www.intechopen.com"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据尝试识别；真实页面尚未逐一验证。",
+      "keywords": "IntechOpen",
+      "language": "en"
+    },
+    {
+      "name": "Internet Archive Scholar",
+      "hosts": [
+        "scholar.archive.org"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据尝试识别；真实页面尚未逐一验证。",
+      "keywords": "Internet Archive Scholar",
+      "language": "en"
+    },
+    {
+      "name": "John Libbey Eurotext",
+      "hosts": [
+        "www.jle.com"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据尝试识别；真实页面尚未逐一验证。",
+      "keywords": "John Libbey Eurotext",
+      "language": "en"
+    },
+    {
+      "name": "Journal of Investigative Dermatology",
+      "hosts": [
+        "www.jidonline.org"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据尝试识别；真实页面尚未逐一验证。",
+      "keywords": "Journal of Investigative Dermatology",
+      "language": "en"
+    },
+    {
+      "name": "Longwoods Publishing",
+      "hosts": [
+        "www.longwoods.com"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据尝试识别；真实页面尚未逐一验证。",
+      "keywords": "Longwoods Publishing",
+      "language": "en"
+    },
+    {
+      "name": "Medknow",
+      "hosts": [
+        "www.medknow.com"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据尝试识别；真实页面尚未逐一验证。",
+      "keywords": "Medknow",
+      "language": "en"
+    },
+    {
+      "name": "Mednexus",
+      "hosts": [
+        "www.mednexus.org"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据尝试识别；真实页面尚未逐一验证。",
+      "keywords": "Mednexus",
+      "language": "en"
+    },
+    {
+      "name": "Microbiology Society",
+      "hosts": [
+        "www.microbiologyresearch.org"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据尝试识别；真实页面尚未逐一验证。",
+      "keywords": "Microbiology Society",
+      "language": "en"
+    },
+    {
+      "name": "Minerva Medica",
+      "hosts": [
+        "www.minervamedica.it"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据尝试识别；真实页面尚未逐一验证。",
+      "keywords": "Minerva Medica",
+      "language": "en"
+    },
+    {
+      "name": "Neurology",
+      "hosts": [
+        "www.neurology.org"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据尝试识别；真实页面尚未逐一验证。",
+      "keywords": "Neurology",
+      "language": "en"
+    },
+    {
+      "name": "OAE Publishing",
+      "hosts": [
+        "www.oaepublish.com"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据尝试识别；真实页面尚未逐一验证。",
+      "keywords": "OAE Publishing",
+      "language": "en"
+    },
+    {
+      "name": "Online Journals",
+      "hosts": [
+        "www.online-journals.org"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据尝试识别；真实页面尚未逐一验证。",
+      "keywords": "Online Journals",
+      "language": "en"
+    },
+    {
+      "name": "Open Access Library",
+      "hosts": [
+        "www.oalib.com"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据尝试识别；真实页面尚未逐一验证。",
+      "keywords": "Open Access Library",
+      "language": "en"
+    },
+    {
+      "name": "Psychiatry Online",
+      "hosts": [
+        "psychiatryonline.org"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据尝试识别；真实页面尚未逐一验证。",
+      "keywords": "Psychiatry Online",
+      "language": "en"
+    },
+    {
+      "name": "Quintessence Publishing",
+      "hosts": [
+        "www.quintpub.com"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据尝试识别；真实页面尚未逐一验证。",
+      "keywords": "Quintessence Publishing",
+      "language": "en"
+    },
+    {
+      "name": "ReadCube",
+      "hosts": [
+        "www.readcube.com"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据尝试识别；真实页面尚未逐一验证。",
+      "keywords": "ReadCube",
+      "language": "en"
+    },
+    {
+      "name": "Royal College of Surgeons Publishing",
+      "hosts": [
+        "publishing.rcseng.ac.uk"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据尝试识别；真实页面尚未逐一验证。",
+      "keywords": "Royal College of Surgeons Publishing",
+      "language": "en"
+    },
+    {
+      "name": "ScienceGate",
+      "hosts": [
+        "sciencegate.app",
+        "www.sciencegate.app"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据尝试识别；真实页面尚未逐一验证。",
+      "keywords": "ScienceGate",
+      "language": "en"
+    },
+    {
+      "name": "SciProfiles",
+      "hosts": [
+        "www.sciprofiles.com"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据尝试识别；真实页面尚未逐一验证。",
+      "keywords": "SciProfiles",
+      "language": "en"
+    },
+    {
+      "name": "SCOAP3 Repository",
+      "hosts": [
+        "repo.scoap3.org"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据尝试识别；真实页面尚未逐一验证。",
+      "keywords": "SCOAP3 Repository",
+      "language": "en"
+    },
+    {
+      "name": "SEG Digital Library",
+      "hosts": [
+        "library.seg.org"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据尝试识别；真实页面尚未逐一验证。",
+      "keywords": "SEG Digital Library",
+      "language": "en"
+    },
+    {
+      "name": "University of Toronto Press Journals",
+      "hosts": [
+        "utpjournals.press"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据尝试识别；真实页面尚未逐一验证。",
+      "keywords": "University of Toronto Press Journals",
+      "language": "en"
+    },
+    {
+      "name": "Wageningen Academic",
+      "hosts": [
+        "www.wageningenacademic.com"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据尝试识别；真实页面尚未逐一验证。",
+      "keywords": "Wageningen Academic",
+      "language": "en"
+    },
+    {
+      "name": "Xia & He Publishing",
+      "hosts": [
+        "www.xiahepublishing.com"
+      ],
+      "pages": "论文详情",
+      "note": "按页面元数据尝试识别；真实页面尚未逐一验证。",
+      "keywords": "Xia & He Publishing",
       "language": "en"
     }
   ]

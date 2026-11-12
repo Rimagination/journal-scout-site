@@ -9,7 +9,8 @@ test('update-check metadata matches the displayed manual version and both packag
   assert.ok(html.includes(`手动安装包 v${version}`));
   assert.equal((html.match(new RegExp(`downloads/scansci-chromium-${version.replaceAll('.', '\\.')}\\.zip`, 'g')) || []).length, 2);
   assert.ok(html.includes(`downloads/scansci-firefox-${version}.xpi`));
-  for (const file of [`scansci-chromium-${version}.zip`, `scansci-firefox-${version}.xpi`]) {
+  assert.ok(html.includes(`downloads/journal-scout-safari-mac-test-${version}.zip`));
+  for (const file of [`scansci-chromium-${version}.zip`, `scansci-firefox-${version}.xpi`, `journal-scout-safari-mac-test-${version}.zip`]) {
     await access(new URL(`../downloads/${file}`, import.meta.url));
   }
 });

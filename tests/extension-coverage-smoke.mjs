@@ -27,7 +27,7 @@ const url = `http://127.0.0.1:${server.address().port}/extension-install.html`;
 const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_EXECUTABLE, headless: true });
 const siteData = JSON.parse(await readFile(path.join(root, 'data', 'extension-site-coverage.json'), 'utf8'));
 try {
-  for (const viewport of [{ width: 1440, height: 800 }, { width: 1366, height: 768 }, { width: 390, height: 844 }, { width: 320, height: 700 }]) {
+  for (const viewport of [{ width: 1440, height: 800 }, { width: 1366, height: 768 }, { width: 900, height: 768 }, { width: 390, height: 844 }, { width: 320, height: 700 }]) {
     const page = await browser.newPage({ viewport });
     await page.route('https://**/*', route => route.abort());
     let requests = 0;
@@ -46,17 +46,22 @@ try {
     assert.ok((await page.locator('#showcase .extension-showcase-card').first().boundingBox()).y < viewport.height, 'showcase begins within the first screen');
     assert.ok((await page.locator('#showcase').boundingBox()).y < (await page.locator('#install-guide').boundingBox()).y, 'showcase comes before installation options');
     assert.equal(await page.locator('.extension-actions [href="#release-history"], .extension-actions [href="#site-coverage"]').count(), 0);
-    assert.equal(await page.locator('.browser-guide').count(), 3);
+    assert.equal(await page.locator('.browser-guide').count(), 4);
     const guides = page.locator('.browser-guide');
-    const boxes = await Promise.all([0, 1, 2].map(index => guides.nth(index).boundingBox()));
-    if (viewport.width > 760) {
+    const boxes = await Promise.all([0, 1, 2, 3].map(index => guides.nth(index).boundingBox()));
+    if (viewport.width > 1050) {
       assert.equal(boxes[0].y, boxes[1].y);
       assert.equal(boxes[1].y, boxes[2].y);
+      assert.equal(boxes[2].y, boxes[3].y);
       assert.ok(boxes[0].width < (await page.locator('.browser-guides').boundingBox()).width / 2);
+    } else if (viewport.width > 760) {
+      assert.equal(boxes[0].y, boxes[1].y);
+      assert.equal(boxes[2].y, boxes[3].y);
+      assert.ok(boxes[0].y < boxes[2].y);
     } else {
-      assert.ok(boxes[0].y < boxes[1].y && boxes[1].y < boxes[2].y);
+      assert.ok(boxes[0].y < boxes[1].y && boxes[1].y < boxes[2].y && boxes[2].y < boxes[3].y);
     }
-    for (const index of [0, 1, 2]) {
+    for (const index of [0, 1, 2, 3]) {
       const icon = await guides.nth(index).locator('.browser-chevron').boundingBox();
       assert.ok(Math.abs((icon.y + icon.height / 2) - (boxes[index].y + boxes[index].height / 2)) < 1, 'chevrons are vertically centered');
       assert.equal(await guides.nth(index).getAttribute('aria-expanded'), 'false');
@@ -101,6 +106,12 @@ try {
     }
     await page.locator('#firefox-install').click();
     assert.equal(await page.locator('#firefox-install-panel').isVisible(), false);
+    await page.locator('#safari-install').click();
+    assert.equal(await page.locator('#safari-install-panel').isVisible(), true);
+    assert.ok((await page.locator('#safari-install-panel a.extension-download').getAttribute('href')).includes(siteData.manualVersion));
+    assert.match(await page.locator('#safari-install-panel').innerText(), /iPhone 和 iPad 不能直接安装/);
+    await page.locator('#safari-install').click();
+    assert.equal(await page.locator('#safari-install-panel').isVisible(), false);
     await page.locator('#edge-install').focus();
     await page.keyboard.press('Enter');
     assert.equal(await page.locator('#edge-install-panel').isVisible(), true);
@@ -215,7 +226,7 @@ try {
   const noScriptPage = await browser.newPage({ javaScriptEnabled: false });
   await noScriptPage.route('https://**/*', route => route.abort());
   await noScriptPage.goto(url, { waitUntil: 'load' });
-  for (const selector of ['#edge-store-details', '#edge-offline-details', '#chrome-store-details', '#chrome-offline-details', '#firefox-store-details', '#firefox-test-details']) {
+  for (const selector of ['#edge-store-details', '#edge-offline-details', '#chrome-store-details', '#chrome-offline-details', '#firefox-store-details', '#firefox-test-details', '#safari-install-panel']) {
     assert.equal(await noScriptPage.locator(selector).isVisible(), true, `${selector} works without JavaScript`);
   }
   await noScriptPage.close();

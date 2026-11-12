@@ -49,7 +49,7 @@
 .extension-guide__heading .extension-eyebrow { margin-bottom: 8px; }
 .extension-guide__heading h2 { margin: 0; color: #183a32; font-family: var(--font-display); font-size: 26px; }
 .extension-guide__heading > p { margin: 0 0 3px; color: #6c8075; font-size: 12px; }
-.browser-guides { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.browser-guides { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
 .browser-guide { appearance: none; display: grid; grid-template-columns: 36px minmax(0, 1fr) 28px; align-items: center; gap: 11px; min-width: 0; padding: 15px; border: 1px solid #dde9de; border-radius: 11px; background: #fff; font: inherit; text-align: left; cursor: pointer; transition: border-color .15s ease, background-color .15s ease; }
 .browser-guide:hover { border-color: #a8d1bf; background: #f8fcf9; }
 .browser-guide[aria-expanded="true"] { border-color: #83bba5; background: #f1f8f3; }
@@ -166,6 +166,9 @@
 @media (min-width: 761px) {
   body[data-active-extension-view="install-guide"] .extension-showcase__grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
+@media (min-width: 761px) and (max-width: 1050px) {
+  .browser-guides { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
 @media (max-width: 760px) {
   .extension-hero { grid-template-columns: minmax(0, 1fr) minmax(95px, 32%); gap: 14px; padding: 22px 0; }
   .extension-guide__heading { display: block; }
@@ -180,6 +183,8 @@
   #chrome-install-panel { order: 4; }
   #firefox-install { order: 5; }
   #firefox-install-panel { order: 6; }
+  #safari-install { order: 7; }
+  #safari-install-panel { order: 8; }
   .install-options { grid-template-columns: 1fr; }
   .release-history__heading { display: block; }
   .release-history__heading p { margin-top: 9px; }
