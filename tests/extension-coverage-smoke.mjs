@@ -10,7 +10,7 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const { chromium } = await import(pathToFileURL(process.env.PLAYWRIGHT_MODULE).href);
 const mime = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=utf-8',
   '.js': 'application/javascript; charset=utf-8', '.json': 'application/json; charset=utf-8',
-  '.png': 'image/png', '.svg': 'image/svg+xml' };
+  '.png': 'image/png', '.webp': 'image/webp', '.svg': 'image/svg+xml' };
 const server = createServer(async (request, response) => {
   try {
     const name = decodeURIComponent(new URL(request.url, 'http://localhost').pathname);
@@ -43,16 +43,27 @@ try {
     assert.equal(await page.locator('#release-history').isVisible(), false);
     assert.equal(await page.locator('#site-coverage').isVisible(), false);
     assert.equal(await page.locator('#showcase').isVisible(), true);
-    assert.equal(await page.locator('#showcase .extension-showcase-card').count(), 5);
+    assert.equal(await page.locator('#showcase .extension-showcase-card').count(), 6);
     assert.ok((await page.locator('#showcase .extension-showcase-card').first().boundingBox()).y < viewport.height, 'showcase begins within the first screen');
     assert.ok((await page.locator('#showcase').boundingBox()).y < (await page.locator('#install-guide').boundingBox()).y, 'showcase comes before installation options');
+    if (viewport.width === 1440) {
+      const pubpeer = page.locator('#showcase img[src$="/pubpeer-results.webp"]');
+      await pubpeer.scrollIntoViewIfNeeded();
+      assert.equal(await pubpeer.evaluate(async image => { await image.decode(); return image.naturalWidth === 1534 && image.naturalHeight === 1120; }), true);
+      assert.equal(await pubpeer.locator('..').getAttribute('href'), './assets/showcase/pubpeer-results.webp');
+      if (process.env.COVERAGE_SCREENSHOT_DIR) await page.locator('#showcase').screenshot({ path: path.join(process.env.COVERAGE_SCREENSHOT_DIR, 'showcase-webp.png') });
+    }
     assert.equal(await page.locator('.extension-actions [href="#release-history"], .extension-actions [href="#site-coverage"]').count(), 0);
     assert.equal(await page.locator('.browser-guide').count(), 4);
     assert.equal(await page.locator('.product-switch').count(), 0);
     const help = page.locator('.extension-help');
+    const updateNote = page.locator('.extension-guide__note > p');
+    assert.ok((await help.boundingBox()).x >= (await updateNote.boundingBox()).x + (await updateNote.boundingBox()).width, 'help follows the update note');
     assert.equal(await help.locator('.extension-help__content').isVisible(), false);
     await help.locator('summary').click();
     assert.equal(await help.locator('.extension-help__content').isVisible(), true);
+    const helpBox = await help.locator('.extension-help__content').boundingBox();
+    assert.ok(helpBox.x >= 0 && helpBox.x + helpBox.width <= viewport.width, 'help fits within the viewport');
     await help.locator('summary').click();
     assert.equal(await help.locator('.extension-help__content').isVisible(), false);
     const zoteroEntry = page.locator('#zotero-install');

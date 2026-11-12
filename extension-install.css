@@ -50,7 +50,8 @@
 .extension-guide__title { display: flex; align-items: center; gap: 9px; }
 .extension-guide__heading .extension-eyebrow { margin-bottom: 8px; }
 .extension-guide__heading h2 { margin: 0; color: #183a32; font-family: var(--font-display); font-size: 26px; }
-.extension-guide__heading > p { margin: 0 0 3px; color: #6c8075; font-size: 12px; }
+.extension-guide__note { display: flex; align-items: center; gap: 5px; margin-bottom: 3px; }
+.extension-guide__note > p { margin: 0; color: #6c8075; font-size: 12px; }
 .browser-guides { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
 .browser-guide { appearance: none; display: grid; grid-template-columns: 36px minmax(0, 1fr) 28px; align-items: center; gap: 11px; min-width: 0; padding: 15px; border: 1px solid #dde9de; border-radius: 11px; background: #fff; font: inherit; text-align: left; cursor: pointer; transition: border-color .15s ease, background-color .15s ease; }
 .browser-guide:hover { border-color: #a8d1bf; background: #f8fcf9; }
@@ -108,11 +109,12 @@
 .install-screenshot figcaption strong { color: #315d4b; }
 .extension-note { margin: 20px 0 0; padding: 12px 14px; border-radius: 7px; background: #f9f6eb; color: #7d7050; font-size: 12px; line-height: 1.7; }
 .extension-note strong { display: block; color: #6b5a32; }
-.extension-help summary { display: grid; place-items: center; width: 24px; height: 24px; border: 1px solid #bcd7c7; border-radius: 50%; background: #f0f6f0; color: #57816d; font: 700 14px/1 var(--font-sans); list-style: none; cursor: pointer; }
+.extension-help summary { display: grid; place-items: center; width: 26px; height: 26px; border: 0; background: transparent; color: #829d8e; font: 600 11px/1 var(--font-sans); list-style: none; cursor: pointer; }
+.extension-help summary span { display: grid; place-items: center; width: 18px; height: 18px; border: 1px solid #cbded1; border-radius: 50%; }
 .extension-help summary::-webkit-details-marker { display: none; }
-.extension-help summary:hover, .extension-help[open] summary { border-color: #83bba5; background: #e1f2e7; }
+.extension-help summary:hover span, .extension-help[open] summary span { border-color: #83bba5; background: #e1f2e7; }
 .extension-help summary:focus-visible { outline: 3px solid #87c9b8; outline-offset: 3px; }
-.extension-help__content { position: absolute; z-index: 5; top: calc(100% + 8px); left: 0; width: min(460px, 100%); padding: 14px 16px; border: 1px solid #d8e8da; border-radius: 10px; background: #f7fbf7; box-shadow: 0 12px 28px rgba(32,63,48,.14); }
+.extension-help__content { position: absolute; z-index: 5; top: calc(100% + 8px); right: 0; width: min(460px, 100%); padding: 14px 16px; border: 1px solid #d8e8da; border-radius: 10px; background: #f7fbf7; box-shadow: 0 12px 28px rgba(32,63,48,.14); }
 .extension-help h3 { margin: 0 0 5px; color: #345b4e; font-size: 13px; }
 .extension-help p { max-width: 700px; margin: 0; color: #71887b; font-size: 12px; line-height: 1.7; }
 .extension-help p + p { margin-top: 9px; }
@@ -199,7 +201,7 @@
   .zotero-install-entry__actions { display: flex; flex: 1 1 0; flex-wrap: wrap; align-items: center; min-width: 0; margin-left: 64px; }
   .extension-hero { grid-template-columns: minmax(0, 1fr) minmax(95px, 32%); gap: 14px; padding: 22px 0; }
   .extension-guide__heading { display: block; }
-  .extension-guide__heading > p { margin-top: 5px; }
+  .extension-guide__note { margin: 5px 0 0; }
   .extension-showcase__heading { display: block; }
   .extension-showcase__heading > p { margin-top: 8px; }
   .extension-showcase__grid { grid-template-columns: minmax(0, 1fr); }
