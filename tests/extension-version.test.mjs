@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { access, readFile } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
 
 test('update-check metadata matches the displayed manual version and both packages', async () => {
   const html = await readFile(new URL('../extension-install.html', import.meta.url), 'utf8');
@@ -38,4 +39,11 @@ test('update-check metadata matches the displayed manual version and both packag
   assert.ok(zoteroHistory.includes(`<strong>v${zoteroVersion}</strong>`));
   assert.ok(!zoteroPage.includes('class="product-switch"'));
   await access(new URL(`../downloads/journal-scout-zotero-${zoteroVersion}.xpi`, import.meta.url));
+  const nativeUpdates = JSON.parse(await readFile(new URL('../updates/zotero.json', import.meta.url), 'utf8'));
+  const nativeUpdate = nativeUpdates.addons['journal-scout@scansci.com'].updates.find(update => update.version === zoteroVersion);
+  assert.ok(nativeUpdate, 'Native Zotero updater offers the current published version');
+  assert.equal(nativeUpdate.update_link, `https://journal.scansci.com/downloads/journal-scout-zotero-${zoteroVersion}.xpi`);
+  const packageBytes = await readFile(new URL(`../downloads/journal-scout-zotero-${zoteroVersion}.xpi`, import.meta.url));
+  assert.equal(nativeUpdate.update_hash, `sha256:${createHash('sha256').update(packageBytes).digest('hex')}`);
+  assert.deepEqual(nativeUpdate.applications.zotero, { strict_min_version: '7.0', strict_max_version: '10.0.*' });
 });

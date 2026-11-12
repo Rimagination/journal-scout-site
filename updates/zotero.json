@@ -1,0 +1,19 @@
+{
+  "addons": {
+    "journal-scout@scansci.com": {
+      "updates": [
+        {
+          "version": "0.1.1",
+          "update_link": "https://journal.scansci.com/downloads/journal-scout-zotero-0.1.1.xpi",
+          "update_hash": "sha256:f933fd4c35cc1c14226015dba1c53be3b8d70f5cbd1a96f273d6ceb43011a63f",
+          "applications": {
+            "zotero": {
+              "strict_min_version": "7.0",
+              "strict_max_version": "10.0.*"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
