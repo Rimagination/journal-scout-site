@@ -99,9 +99,9 @@
 .install-offline-update { margin: 16px 0 0; padding: 11px 12px; border-radius: 7px; background: #f0f6f0; color: #647a70; font-size: 12px; line-height: 1.7; }
 .install-offline-update strong { color: #315d4b; }
 .extension-steps { display: grid; gap: 14px; margin: 24px 0 0; padding: 0; list-style: none; counter-reset: extension-step; }
-.extension-steps li { display: grid; grid-template-columns: 25px 1fr; column-gap: 10px; align-items: start; counter-increment: extension-step; }
+.extension-steps li { display: grid; grid-template-columns: 25px minmax(0, 1fr); column-gap: 10px; align-items: start; counter-increment: extension-step; }
 .extension-steps li::before { display: grid; grid-row: span 2; place-items: center; width: 23px; height: 23px; border-radius: 50%; background: #edf5ef; color: #4a7d68; content: counter(extension-step); font-size: 11px; font-weight: 800; }
-.extension-steps strong { color: #29453c; font-size: 13px; }
+.extension-steps > li > strong { color: #29453c; font-size: 13px; }
 .extension-steps li > span { margin-top: 3px; color: #697c71; font-size: 12px; line-height: 1.7; }
 .extension-steps code { padding: 2px 5px; border-radius: 4px; background: #f1f5f0; color: #365c4f; overflow-wrap: anywhere; font-size: 11px; }
 .install-screenshot { overflow: hidden; max-width: 800px; margin: 22px auto 0; border: 1px solid #dce9df; border-radius: 9px; background: #fff; box-shadow: 0 5px 18px rgba(32,63,48,.045); }
@@ -109,6 +109,8 @@
 .install-screenshot img { display: block; width: 100%; height: auto; }
 .install-screenshot figcaption { padding: 10px 13px; border-top: 1px solid #e9f0e9; color: #6c8075; font-size: 11px; line-height: 1.7; }
 .install-screenshot figcaption strong { color: #315d4b; }
+.extension-steps > li > .install-screenshot { grid-column: 2; justify-self: start; width: 100%; margin: 12px 0 8px; }
+.zotero-guide-info > .install-screenshot { width: 100%; margin: 12px 0 26px; }
 .extension-note { margin: 20px 0 0; padding: 12px 14px; border-radius: 7px; background: #f9f6eb; color: #7d7050; font-size: 12px; line-height: 1.7; }
 .extension-note strong { display: block; color: #6b5a32; }
 .extension-help summary { display: grid; place-items: center; width: 26px; height: 26px; border: 0; background: transparent; color: #829d8e; font: 600 11px/1 var(--font-sans); list-style: none; cursor: pointer; }
@@ -135,8 +137,6 @@
 .zotero-guide-info h3 { margin: 0 0 10px; color: #29453c; }
 .zotero-guide-info p { margin: 8px 0 0; color: #60786c; line-height: 1.7; }
 .zotero-guide-info strong { color: #315d4b; }
-.zotero-guide-images { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 20px; }
-.zotero-guide-images .install-screenshot { width: 100%; margin: 0; }
 .zotero-guide-images__focus { display: block; overflow: hidden; height: clamp(160px, 25vw, 240px); }
 .zotero-guide-images__focus img { width: 250%; max-width: none; transform: translate(-60%, -12%); }
 .extension-footer { display: flex; justify-content: space-between; width: min(1100px, calc(100% - 48px)); margin: 0 auto; padding: 13px 0 18px; border-top: 1px solid #e0eae0; color: #688076; font-family: Georgia, serif; font-size: 12px; font-weight: 700; }
@@ -209,7 +209,7 @@
 .extension-install-page .extension-hero h1 { font-size: var(--type-page-title); }
 .extension-install-page .extension-main h2 { font-size: var(--type-section-title); line-height: 1.3; }
 .extension-install-page :is(.extension-main h3, .browser-name strong, .install-option__copy strong,
-  .extension-steps strong, .zotero-install-entry__copy strong, .release-history__list strong) {
+  .extension-steps > li > strong, .zotero-install-entry__copy strong, .release-history__list strong) {
   font-size: var(--type-item-title); line-height: 1.4;
 }
 .extension-install-page :is(.extension-section-nav a, .extension-back, .extension-intro,
@@ -280,7 +280,6 @@
   .browser-guide__body { padding: 16px; }
   .install-option { grid-template-areas: "copy toggle" "action action"; grid-template-columns: minmax(0, 1fr) auto; }
   .install-option__action { justify-self: start; }
-  .zotero-guide-images { grid-template-columns: minmax(0, 1fr); }
   .release-history { padding: 35px 0 48px; }
   .release-history__list li { grid-template-columns: 1fr; gap: 7px; }
   .release-history__list li > div { display: flex; align-items: baseline; gap: 10px; }

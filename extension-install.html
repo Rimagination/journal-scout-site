@@ -8,7 +8,7 @@
   <title>浏览器插件 · Journal Scout</title>
   <link rel="icon" type="image/webp" href="./assets/journal-logo-home-288.webp" />
   <link rel="stylesheet" href="./styles.css?v=20261029-header" />
-  <link rel="stylesheet" href="./extension-install.css?v=20261112-zotero-guide" />
+  <link rel="stylesheet" href="./extension-install.css?v=20261112-zotero-inline-guide" />
   <noscript><style>.browser-guide, .install-option__toggle, .install-choice-note { display: none !important; } .browser-guide__body[hidden], .install-details[hidden] { display: block !important; }</style></noscript>
 </head>
 <body class="extension-page install-page extension-install-page with-global-nav">
@@ -144,26 +144,30 @@
               <noscript><h4>官方商店 · 自动更新</h4></noscript>
               <h3 class="install-subtitle">安装步骤</h3>
               <ol class="extension-steps">
-                <li><strong>点击「获取」</strong><span>确认发布者是 ScanSci，点击「获取」并添加。</span></li>
-                <li><strong>固定图标</strong><span>在工具栏的扩展菜单中固定 Journal Scout。</span></li>
-                <li><strong>刷新论文页面</strong><span>刷新支持的学术页面；点击插件图标可调整设置。</span></li>
-              </ol>
-              <figure class="install-screenshot">
+                <li><strong>点击「获取」</strong><span>确认发布者是 ScanSci，点击「获取」并添加。</span>
+                  <figure class="install-screenshot">
                 <a href="./assets/install-guide/edge-store-listing.webp" target="_blank" rel="noopener noreferrer" aria-label="打开 Edge 商店安装截图原图">
                   <img src="./assets/install-guide/edge-store-listing.webp" alt="Microsoft Edge 扩展商店里的 Journal Scout 详情页，显示 ScanSci 发布者和获取按钮" width="1024" height="760" loading="lazy" decoding="async">
                 </a>
                 <figcaption><strong>Edge 商店安装</strong> 点击图片查看原图。</figcaption>
               </figure>
+                </li>
+                <li><strong>固定图标</strong><span>在工具栏的扩展菜单中固定 Journal Scout。</span></li>
+                <li><strong>刷新论文页面</strong><span>刷新支持的学术页面；点击插件图标可调整设置。</span></li>
+              </ol>
+
             </section>
             <section class="install-details" id="edge-offline-details" aria-labelledby="edge-offline-toggle" hidden>
               <noscript><h4>离线安装包 · 手动更新</h4></noscript>
               <h3 class="install-subtitle">安装步骤</h3>
               <ol class="extension-steps">
                 <li><strong>下载并解压</strong><span>下载上方 ZIP，解压后保留文件夹。</span></li>
-                <li><strong>打开 Edge 扩展页</strong><span>在地址栏输入 <code>edge://extensions</code>，打开「开发人员模式」。</span></li>
+                <li><strong>打开 Edge 扩展页</strong><span>在地址栏输入 <code>edge://extensions</code>，打开「开发人员模式」。</span>
+                  <figure class="install-screenshot"><a href="./assets/install-guide/edge-developer-mode.webp" target="_blank" rel="noopener noreferrer" aria-label="打开 Edge 离线安装截图原图"><img src="./assets/install-guide/edge-developer-mode.webp" alt="Edge 扩展页面已启用开发人员模式，并显示加载解压缩的扩展按钮" width="1200" height="800" loading="lazy" decoding="async"></a><figcaption><strong>Edge 离线安装</strong> 打开开发人员模式后，选择「加载解压缩的扩展」。点击图片查看原图。</figcaption></figure>
+                </li>
                 <li><strong>加载插件</strong><span>点击「加载解压缩的扩展」，选择解压后的文件夹（里面有 <code>manifest.json</code>）。</span></li>
               </ol>
-              <figure class="install-screenshot"><a href="./assets/install-guide/edge-developer-mode.webp" target="_blank" rel="noopener noreferrer" aria-label="打开 Edge 离线安装截图原图"><img src="./assets/install-guide/edge-developer-mode.webp" alt="Edge 扩展页面已启用开发人员模式，并显示加载解压缩的扩展按钮" width="1200" height="800" loading="lazy" decoding="async"></a><figcaption><strong>Edge 离线安装</strong> 打开开发人员模式后，选择「加载解压缩的扩展」。点击图片查看原图。</figcaption></figure>
+
               <p class="install-offline-update"><strong>手动更新：</strong>新版本发布后下载新版 ZIP，解压并覆盖原文件，再到 <code>edge://extensions</code> 点击「重新加载」。</p>
             </section>
         </section>
@@ -196,16 +200,18 @@
               <h3 class="install-subtitle">安装步骤</h3>
               <ol class="extension-steps">
                 <li><strong>下载并解压</strong><span>下载上方 ZIP，解压后保留文件夹。</span></li>
-                <li><strong>打开 Chrome 扩展页</strong><span>在地址栏输入 <code>chrome://extensions</code>，打开右上角的「开发者模式」。</span></li>
-                <li><strong>加载插件</strong><span>点击「加载已解压的扩展程序」，选择解压后的文件夹（里面有 <code>manifest.json</code>）。</span></li>
-                <li><strong>开始使用</strong><span>在工具栏扩展菜单中固定 Journal Scout，再刷新已打开的论文页面。</span></li>
-              </ol>
-              <figure class="install-screenshot">
+                <li><strong>打开 Chrome 扩展页</strong><span>在地址栏输入 <code>chrome://extensions</code>，打开右上角的「开发者模式」。</span>
+                  <figure class="install-screenshot">
                 <a href="./assets/install-guide/chrome-developer-mode.webp" target="_blank" rel="noopener noreferrer" aria-label="打开 Chrome 离线安装截图原图">
                   <img src="./assets/install-guide/chrome-developer-mode.webp" alt="Chrome 扩展程序页面，开发者模式已开启，并显示加载未打包的扩展程序按钮" width="1024" height="720" loading="lazy" decoding="async">
                 </a>
                 <figcaption><strong>Chrome 离线安装</strong> 点击图片查看原图。</figcaption>
               </figure>
+                </li>
+                <li><strong>加载插件</strong><span>点击「加载已解压的扩展程序」，选择解压后的文件夹（里面有 <code>manifest.json</code>）。</span></li>
+                <li><strong>开始使用</strong><span>在工具栏扩展菜单中固定 Journal Scout，再刷新已打开的论文页面。</span></li>
+              </ol>
+
               <p class="install-offline-update"><strong>手动更新：</strong>新版本发布后下载新版 ZIP，解压并覆盖原文件，再到 <code>chrome://extensions</code> 点击「重新加载」。</p>
             </section>
         </section>
@@ -238,9 +244,10 @@
               <ol class="extension-steps">
                 <li><strong>下载测试包</strong><span>下载上面的 XPI 文件，无需解压。</span></li>
                 <li><strong>打开调试页面</strong><span>在 Firefox 地址栏输入 <code>about:debugging#/runtime/this-firefox</code> 并回车。</span></li>
-                <li><strong>临时载入</strong><span>点击「临时载入附加组件」（Load Temporary Add-on），选择刚才下载的 XPI 文件，然后刷新论文页面。</span></li>
+                <li><strong>临时载入</strong><span>点击「临时载入附加组件」（Load Temporary Add-on），选择刚才下载的 XPI 文件，然后刷新论文页面。</span>
+                  <figure class="install-screenshot"><a href="./assets/install-guide/firefox-temporary-addon.webp" target="_blank" rel="noopener noreferrer" aria-label="打开 Firefox 临时安装截图原图"><img src="./assets/install-guide/firefox-temporary-addon.webp" alt="Firefox 调试页面显示 Load Temporary Add-on 按钮" width="1200" height="765" loading="lazy" decoding="async"></a><figcaption><strong>Firefox 临时安装</strong> 英文界面示例，点击图片查看原图。</figcaption></figure>
+                </li>
               </ol>
-              <figure class="install-screenshot"><a href="./assets/install-guide/firefox-temporary-addon.webp" target="_blank" rel="noopener noreferrer" aria-label="打开 Firefox 临时安装截图原图"><img src="./assets/install-guide/firefox-temporary-addon.webp" alt="Firefox 调试页面显示 Load Temporary Add-on 按钮" width="1200" height="765" loading="lazy" decoding="async"></a><figcaption><strong>Firefox 临时安装</strong> 英文界面示例，点击图片查看原图。</figcaption></figure>
               <p class="extension-note"><strong>Firefox 测试包</strong>官网测试包尚未签名，只能临时载入；退出 Firefox 后需要重新载入。</p>
             </section>
         </section>
@@ -276,10 +283,10 @@
           <div class="zotero-install-entry__copy">
             <strong>Journal Scout for Zotero</strong>
             <p>下载后，在 Zotero 中打开「工具 → 插件」，通过齿轮菜单从文件安装。</p>
-            <small>安装清单声明支持 Zotero 7–10；已在 10.0.8 实测，7–9 尚未逐版测试。Zotero 6 不支持；旧版 v0.1.0 可重新安装以获取标签显示选择、会议功能和查询失败自动重试。</small>
+            <small>安装清单声明支持 Zotero 7–10；已在 10.0.8 实测，7–9 尚未逐版测试。Zotero 6 不支持；旧版 v0.1.0 可重新安装以获取新版侧栏、显示位置切换和标签显示选择。</small>
           </div>
           <div class="zotero-install-entry__actions">
-            <a class="extension-download" href="./downloads/journal-scout-zotero-0.1.0.xpi?build=20261112-zotero-label-visibility" download="journal-scout-zotero-0.1.0.xpi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg><span>下载 Zotero 插件<small>XPI · v0.1.0</small></span></a>
+            <a class="extension-download" href="./downloads/journal-scout-zotero-0.1.0.xpi?build=20261112-zotero-sidebar-modes" download="journal-scout-zotero-0.1.0.xpi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg><span>下载 Zotero 插件<small>XPI · v0.1.0</small></span></a>
             <button class="install-option__toggle" id="zotero-steps-toggle" type="button" aria-label="查看 Zotero 插件安装步骤与说明" aria-expanded="false" aria-controls="zotero-install-details" data-open-label="查看步骤与说明" data-close-label="收起步骤与说明"><span class="install-option__hint">查看步骤与说明</span><span class="install-option__chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span></button>
           </div>
         </div>
@@ -288,21 +295,23 @@
           <h3 class="install-subtitle">安装步骤</h3>
           <ol class="extension-steps">
             <li><strong>下载插件</strong><span>点击上方按钮保存 Zotero XPI 文件，无需解压。</span></li>
-            <li><strong>打开插件管理</strong><span>在 Zotero 顶部选择「工具 → 插件」。</span></li>
-            <li><strong>从文件安装</strong><span>点击右上角齿轮，选择「Install Plugin From File…」，选中下载的 XPI；如有提示，重启 Zotero。</span></li>
+            <li><strong>打开插件管理</strong><span>在 Zotero 顶部选择「工具 → 插件」。</span>
+              <figure class="install-screenshot"><a href="./assets/install-guide/zotero-tools-menu.webp" target="_blank" rel="noopener noreferrer" aria-label="放大查看 Zotero 工具菜单截图"><img src="./assets/install-guide/zotero-tools-menu.webp" alt="Zotero 工具菜单中选择插件" width="776" height="366" loading="lazy"></a><figcaption>在「工具」菜单中选择「插件」。点击图片可查看原图。</figcaption></figure>
+            </li>
+            <li><strong>从文件安装</strong><span>点击右上角齿轮，选择「Install Plugin From File…」，选中下载的 XPI；如有提示，重启 Zotero。</span>
+              <figure class="install-screenshot"><a href="./assets/install-guide/zotero-install-from-file.webp" target="_blank" rel="noopener noreferrer" aria-label="放大查看 Zotero 从文件安装插件截图"><span class="zotero-guide-images__focus"><img src="./assets/install-guide/zotero-install-from-file.webp" alt="Zotero 插件管理器的齿轮菜单中选择 Install Plugin From File" width="1982" height="1070" loading="lazy"></span></a><figcaption>点击齿轮，然后选择「Install Plugin From File…」。点击图片可查看原图。</figcaption></figure>
+            </li>
             <li><strong>查看期刊或会议信息</strong><span>选择期刊论文或会议论文，查看列表中的 Journal Scout 列；如未显示，可在表头的列菜单中启用。</span></li>
           </ol>
-          <div class="zotero-guide-images">
-            <figure class="install-screenshot"><a href="./assets/install-guide/zotero-tools-menu.webp" target="_blank" rel="noopener noreferrer" aria-label="放大查看 Zotero 工具菜单截图"><img src="./assets/install-guide/zotero-tools-menu.webp" alt="Zotero 工具菜单中选择插件" width="776" height="366" loading="lazy"></a><figcaption>在「工具」菜单中选择「插件」。点击图片可查看原图。</figcaption></figure>
-            <figure class="install-screenshot"><a href="./assets/install-guide/zotero-install-from-file.webp" target="_blank" rel="noopener noreferrer" aria-label="放大查看 Zotero 从文件安装插件截图"><span class="zotero-guide-images__focus"><img src="./assets/install-guide/zotero-install-from-file.webp" alt="Zotero 插件管理器的齿轮菜单中选择 Install Plugin From File" width="1982" height="1070" loading="lazy"></span></a><figcaption>点击齿轮，然后选择「Install Plugin From File…」。点击图片可查看原图。</figcaption></figure>
-          </div>
+
           <div class="zotero-guide-info">
             <h3>功能与数据说明</h3>
             <p><strong>查看与筛选：</strong>在文献表格的 Journal Scout 列查看影响因子、分区等已匹配指标，选中文献后也可在右侧查看详情。指标写入 Zotero 原生标签，可在左侧标签栏筛选，或在高级搜索中使用「标签」条件。影响因子标签是文本，暂不支持按数值范围筛选。</p>
+            <figure class="install-screenshot"><a href="./assets/install-guide/zotero-tag-filter.webp" target="_blank" rel="noopener noreferrer" aria-label="放大查看 Zotero 原生标签筛选截图"><img src="./assets/install-guide/zotero-tag-filter.webp" alt="Zotero 高级搜索中选择标签、包含和北大核心，搜索结果的 Journal Scout 列显示北大核心标签" width="1444" height="554" loading="lazy" decoding="async"></a><figcaption>高级搜索选择「标签 → 包含 → 北大核心」，即可筛选相应文献。点击图片查看原图。</figcaption></figure>
             <p><strong>保存与同步：</strong>已确认的结果自动写入条目的 Extra（附加信息）区块及 Zotero 标签，并保留区块以外的原有内容和用户标签。条目的更改可能随 Zotero 同步，也可能出现在部分导出文件中；本地缓存可供同一期刊复用。</p>
             <p><strong>处理文库：</strong>默认逐步处理当前显示或选中的期刊和会议论文。要处理整个文库，请选择文库后点击「工具 → Journal Scout：为当前文库建立筛选标签」；可通过停止菜单中断。插件优先复用已有归档和本地缓存，无法确认刊物或会议、只读或正在编辑的条目可能被跳过，未匹配或跳过的条目可稍后重试。</p>
             <p><strong>查询数据：</strong>插件使用条目的期刊名或 ISSN 查询 ScanSci 期刊服务，不发送论文全文或附件。会议论文按会议名称匹配 CCF 目录；插件内置 ABS / AJG、UTD24、FMS 和 ABDC 商科名单。未收录或无法确认的条目不会显示对应等级。</p>
-            <p><strong>显示设置：</strong>在 Zotero 的「设置 → Journal Scout」中勾选需要显示的标签，或使用全选、全不选；右侧「选择显示标签…」按钮可直接打开设置。选择立即应用于文献列表和右侧面板，并保存在本机；完整指标仍归档到 Extra 和原生标签，可继续搜索、筛选及同步。右侧「标签样式」可选择配色、字号和圆角。</p>
+            <p><strong>显示设置：</strong>侧栏按指标分项列出，标签保留所选配色、字号和圆角。点击侧栏的「显示设置」，或进入 Zotero「设置 → Journal Scout」，可选择「列表列与侧边栏」或「仅侧边栏」，并逐项勾选需要显示的标签。仅侧边栏模式会隐藏 Journal Scout 列；选择立即生效并保存在本机，完整指标仍归档到 Extra 和原生标签。「标签样式」中可调整配色、字号、圆角和间距。</p>
             <p><strong>数据更新：</strong>已确认的期刊和会议记录会在本地复用；网站发布数据更新后，插件错峰优先更新当前查看的文献。</p>
             <p><strong>插件更新：</strong>发现更高的插件版本时，右侧面板会提示前往下载；下载后通过插件管理器从文件安装。已经安装过旧的 v0.1.0 的用户，可重新下载本页安装包并手动安装一次。</p>
             <p>插件由 ScanSci 提供，Zotero 标识用于指示适用的软件。</p>
@@ -334,7 +343,7 @@
       </ol>
       <h3 class="release-history__product">Zotero 插件</h3>
       <ol class="release-history__list">
-        <li><div><strong>v0.1.0</strong><small>2026.11.12 · 当前版本</small></div><p>在文献列表显示期刊指标与 CCF 会议等级，将已确认信息存入条目，并通过 Zotero 原生标签筛选和搜索；改进 IEEE 重复 ISSN 匹配及更名期刊显示；提供数据版本刷新、插件更新提示和标签样式设置，查询失败后可自动重试。在 Zotero 设置中可逐项选择显示哪些标签，列表与面板立即同步，完整归档和原生搜索标签继续保留。已安装旧版 v0.1.0 的用户可重新下载安装包以获取最新改进。</p></li>
+        <li><div><strong>v0.1.0</strong><small>2026.11.12 · 当前版本</small></div><p>在文献列表显示期刊指标与 CCF 会议等级，将已确认信息存入条目，并通过 Zotero 原生标签筛选和搜索；改进 IEEE 重复 ISSN 匹配及更名期刊显示，补全 CVPR、NeurIPS 论文集名称识别，升级后按需重新核对旧缓存，恢复遗漏的分区、Top 和 CCF 标签；提供数据版本刷新、插件更新提示和标签样式设置，查询失败后可自动重试。侧栏采用指标清单布局，保留标签实际样式；显示设置支持逐项选择标签，以及「列表列与侧边栏」「仅侧边栏」两种模式。完整归档和原生搜索标签继续保留，安装步骤与筛选说明配图紧随对应正文。已安装旧版 v0.1.0 的用户可重新下载安装包以获取最新改进。</p></li>
       </ol>
     </section>
 
