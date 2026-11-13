@@ -97,9 +97,10 @@
     }
     if (row.ei_indexed === true || tags.some((value) => /^EI$/i.test(value))) push("ei", "EI", "ei", "EI：该期刊被标记为工程索引（Engineering Index）收录。");
 
+    badges.push(...(window.JournalScoutCustomBadges?.(row) || []));
     const order = new Map(BADGE_ORDER.map((key, index) => [key, index]));
     return badges.map((badge, index) => ({ ...badge, index }))
-      .sort((a, b) => order.get(a.key) - order.get(b.key) || a.index - b.index)
+      .sort((a, b) => (order.get(a.key) ?? 100) - (order.get(b.key) ?? 100) || a.index - b.index)
       .map(({ index, ...badge }) => badge);
   }
 

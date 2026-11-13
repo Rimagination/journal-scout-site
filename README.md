@@ -17,6 +17,15 @@ The public compact APC catalog lives in `data/official_apc_issns.json`,
 GitHub Actions workflow refreshes it from publisher price lists every Monday and
 commits changed runtime assets, which triggers the legacy GitHub Pages deployment.
 
+The university/custom catalog library is `catalogs.html`: static school references,
+school category browsing, and local XLSX/CSV preview and package download without
+login. Emblems reuse published ScanSci Logos WebP assets. Online submissions and
+subscriptions are disabled until the authenticated API and migration are deployed;
+the public page makes no directory API requests. Browser and Zotero development
+builds import the same package file; imported files stay offline. See
+[catalog operation and rollout](docs/catalogs.md). Current public plugin downloads
+are not replaced by development builds automatically.
+
 Do not commit row-level journal datasets such as `data/journals.json`,
 `data/search_index.json`, `data/related_index.json`, `data/journal_chunks/`, or the
 full maintenance catalog `data/official_apc_prices.json`.

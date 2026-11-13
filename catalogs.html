@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>高校与自定义目录 · Journal Scout</title>
+  <link rel="icon" type="image/webp" href="./assets/journal-logo-home-288.webp">
+  <link rel="stylesheet" href="./styles.css?v=20261113-if5">
+  <link rel="stylesheet" href="./extension-install.css?v=20261112-nav">
+  <link rel="stylesheet" href="./catalogs.css?v=20261113-books">
+</head>
+<body class="with-global-nav catalogs-page" data-online-catalogs="false">
+  <header class="scansci-global-nav">
+    <div class="brand-cluster"><a class="brand" href="https://www.scansci.com/"><img class="brand-logo" src="./assets/brand/scansci-app-icon-64.webp" alt="" width="30" height="30"><span>ScanSci</span></a><a class="product-brand" href="./index.html">Journal Scout</a></div>
+    <nav class="product-links" aria-label="Journal Scout 导航"><a href="./extension-install.html">插件下载</a><a href="./index.html">返回查询 ↗</a></nav>
+  </header>
+  <main class="catalog-shell">
+    <header class="catalog-heading"><div><p class="catalog-kicker">JOURNAL SCOUT / 资料库</p><h1>高校与自定义目录</h1><p class="catalog-subtle">查阅学校资料，下载原始文件，制作自己的目录包。</p></div><button id="openUpload" class="catalog-primary" type="button">＋ 制作自定义目录</button></header>
+    <div class="catalog-toolbar"><label class="catalog-search"><span class="sr-only">搜索学校或目录</span><input id="catalogSearch" type="search" placeholder="搜索学校、学院或目录名称"><button id="searchCatalogs" type="button">搜索</button></label><span id="selectedCount" class="catalog-subtle">已启用 0 个</span></div>
+    <div class="catalog-library-layout">
+      <aside class="catalog-sidebar">
+        <p class="catalog-sidebar-label">按高校浏览</p>
+        <nav aria-label="高校类别" id="schoolCategories">
+          <button type="button" data-category="all" aria-pressed="true"><span>全部目录</span><span class="catalog-category-count"></span></button>
+          <button type="button" data-category="985" aria-pressed="false"><span>985 高校</span><span class="catalog-category-count"></span></button>
+          <button type="button" data-category="211" aria-pressed="false" title="211 高校（不含已列入上方的 985 高校）"><span>211 高校</span><span class="catalog-category-count"></span></button>
+          <button type="button" data-category="other" aria-pressed="false"><span>其他高校</span><span class="catalog-category-count"></span></button>
+        </nav>
+        <p class="catalog-sidebar-note">211 分类不重复列出 985 高校。<br>各目录保留原版本与适用范围。</p>
+      </aside>
+      <div class="catalog-library-content">
+    <section aria-labelledby="referenceHeading"><div class="catalog-section-head"><div><p class="catalog-kicker">UNIVERSITY COLLECTION</p><h2 id="referenceHeading">全部目录</h2><p class="catalog-subtle">原始资料供查阅；可导入的目录包单独列出。</p></div><span id="referenceTotal" class="catalog-subtle"></span></div><div id="referenceList" class="catalog-book-list" aria-live="polite"></div><button id="moreReferences" class="catalog-button" type="button" hidden>加载更多目录</button><p id="referenceStatus" class="catalog-subtle" role="status"></p></section>
+    <section id="onlineCatalogs" hidden aria-label="可启用的插件目录">
+    <div class="catalog-section-head"><h2>可启用的插件目录</h2></div>
+    <p id="catalogStatus" class="catalog-status" role="status" aria-live="polite">正在读取目录…</p>
+    <div id="catalogList" class="catalog-list"></div>
+    <button id="moreCatalogs" class="catalog-button" type="button" hidden>加载更多目录</button>
+    <aside class="catalog-footnote"><span id="pluginStatus">勾选结果保存在当前网站；新版浏览器插件可直接接收。</span><p>Zotero：在「设置 → Journal Scout → 高校与自定义目录」中勾选。同一目录只下载一次，之后在本机匹配。</p></aside>
+    </section>
+      </div>
+    </div>
+
+    <section id="uploadSection" class="catalog-upload" hidden aria-labelledby="uploadHeading">
+      <div class="catalog-section-head"><div><p class="catalog-kicker">自己的分级，也可以带走</p><h2 id="uploadHeading">制作目录包</h2></div><button id="closeUpload" class="catalog-button" type="button">收起</button></div>
+      <p class="catalog-subtle">填写表格并预览，即可免费下载目录包。文件在本机处理，无需登录或上传。目录包可在支持“高校与自定义目录”的插件版本中导入。</p>
+      <p id="accountStatus" class="catalog-account" hidden>正在读取登录状态…</p>
+      <form id="uploadForm">
+        <div class="catalog-form-grid">
+          <label>目录名称<input name="name" required maxlength="120" placeholder="例如：中国药科大学共识期刊及会议目录"></label>
+          <label>学校 / 机构<input name="institution" maxlength="120" placeholder="高校、学院、课题组或自定名称"></label>
+          <label>标签名称<input name="label" required maxlength="24" placeholder="例如：药大；显示为“药大 顶尖期刊”"></label>
+          <label>目录版本<input name="edition" required maxlength="60" placeholder="例如：2026版、2025年修订"></label>
+          <label class="catalog-wide">适用范围<input name="scope" required maxlength="300" placeholder="例如：自然科学类；或具体学院、学科、适用对象"></label>
+          <label>官方来源网址<input name="sourceUrl" type="url" maxlength="1500" placeholder="自定义目录可留空"></label>
+          <label>生效日期（选填）<input name="effectiveDate" type="date"></label>
+        </div>
+        <details class="catalog-extra"><summary>适用条件与补充说明</summary><label>规则说明<textarea name="notes" maxlength="3000" rows="3" placeholder="如仅适用于 Full paper、投稿时间限制、过渡期规则。这里的文字只作说明。"></textarea></label></details>
+        <div class="catalog-file-box"><label for="catalogFile"><strong>选择 Excel 或 CSV</strong><span>最多 5,000 行、文件不超过 1 MB；会议请填写类型。</span></label><input id="catalogFile" type="file" accept=".xlsx,.csv" required><a href="./assets/templates/catalog-upload-v1.xlsx" download>下载填写模板 ↓</a></div>
+        <div class="catalog-form-actions"><button id="previewCatalog" class="catalog-primary" type="button">检查并预览</button><button id="downloadLocalCatalog" class="catalog-button" type="button" disabled>下载本地目录包 ↓</button><button id="submitCatalog" class="catalog-button" type="submit" disabled hidden>分享并提交审核</button><span id="uploadStatus" class="catalog-subtle" role="status" aria-live="polite"></span></div>
+      </form>
+      <div id="uploadPreview" class="catalog-preview" hidden></div>
+    </section>
+
+    <section id="reviewSection" class="catalog-upload" hidden aria-labelledby="reviewHeading"><div class="catalog-section-head"><h2 id="reviewHeading">待审核目录</h2><button id="refreshReview" class="catalog-button" type="button">刷新</button></div><div id="reviewList"></div></section>
+  </main>
+  <script src="./catalogs-core.js?v=1"></script>
+  <script src="./catalogs-library.js?v=20261113-books"></script>
+  <script src="./catalogs-page.js?v=20261113-static-release"></script>
+</body>
+</html>

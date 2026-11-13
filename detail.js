@@ -5406,3 +5406,5 @@ bootstrap().catch((err) => {
   if (els.paperEvidencePanel) els.paperEvidencePanel.innerHTML = "<p class='placeholder'>无数据</p>";
 });
 
+
+window.addEventListener?.("journal-scout:catalogs-changed", () => { if (pageState.journal) renderTopTags(pageState.journal); });

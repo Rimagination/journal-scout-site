@@ -1099,3 +1099,5 @@ async function bootstrap() {
 }
 
 bootstrap().catch(showLoadError);
+
+window.addEventListener?.("journal-scout:catalogs-changed", () => { if (state.suggestions.length) renderSuggestionRows(els.searchInput.value, state.suggestions); });

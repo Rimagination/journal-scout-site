@@ -1,0 +1,271 @@
+{
+  "library": "https://www.scansci.com/logos/",
+  "schools": {
+    "中南大学": {
+      "id": "ror-00f1zfq44",
+      "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-00f1zfq44/8376a29e2bf34b83ac32977bdb4c6c5c/512.webp",
+      "variant": "emblem",
+      "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E4%B8%AD%E5%8D%97%E5%A4%A7%E5%AD%A6%20CSU.svg",
+      "revision": "8376a29e2bf34b83ac32977bdb4c6c5c"
+    },
+    "中南财经政法大学": {
+      "id": "ror-04yqxxq63",
+      "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-04yqxxq63/eb452fe78ba843538137de537c5c95d9/512.webp?v=black-v1",
+      "variant": "lockup_horizontal",
+      "sourceUrl": "https://www.zuel.edu.cn",
+      "revision": "eb452fe78ba843538137de537c5c95d9"
+    },
+    "中国人民大学": {
+      "id": "ror-041pakw92",
+      "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-041pakw92/91a6319ab37d4addbe5088112aeac978/512.webp",
+      "variant": "emblem",
+      "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E4%B8%AD%E5%9B%BD%E4%BA%BA%E6%B0%91%E5%A4%A7%E5%AD%A6%20RUC.svg",
+      "revision": "91a6319ab37d4addbe5088112aeac978"
+    },
+    "中国海洋大学": {
+      "id": "ror-04rdtx186",
+      "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-04rdtx186/eaf19fb9b7b3457a8eebab2b1b78d28d/512.webp",
+      "variant": "emblem",
+      "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E4%B8%AD%E5%9B%BD%E6%B5%B7%E6%B4%8B%E5%A4%A7%E5%AD%A6%20OUC.svg",
+      "revision": "eaf19fb9b7b3457a8eebab2b1b78d28d"
+    },
+    "中国石油大学（北京）": {
+      "id": "ror-041qf4r12",
+      "url": "https://www.scansci.com/logo-assets/01/logos/images/ror-041qf4r12/2754101169d044ab95e5a5cd50b33c96/325.webp?v=black-v1",
+      "variant": "lockup_horizontal",
+      "sourceUrl": "https://www.cup.edu.cn/",
+      "revision": "2754101169d044ab95e5a5cd50b33c96"
+    },
+    "中国药科大学": {
+      "id": "ror-01sfm2718",
+      "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-01sfm2718/862c8f9940d6432996d105bd4f0ff05e/512.webp",
+      "variant": "emblem",
+      "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E4%B8%AD%E5%9B%BD%E8%8D%AF%E7%A7%91%E5%A4%A7%E5%AD%A6%20CPU.svg",
+      "revision": "862c8f9940d6432996d105bd4f0ff05e"
+    },
+    "中央民族大学": {
+      "id": "ror-0044e2g62",
+      "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-0044e2g62/fa254c80614c412a9850e9715b556c6d/512.webp",
+      "variant": "emblem",
+      "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E4%B8%AD%E5%A4%AE%E6%B0%91%E6%97%8F%E5%A4%A7%E5%AD%A6%20MUC.svg",
+      "revision": "fa254c80614c412a9850e9715b556c6d"
+    },
+    "北京师范大学": {
+      "id": "ror-022k4wk35",
+      "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-022k4wk35/be431c7b7acf4da3a7a3e13cf072d684/512.webp",
+      "variant": "emblem",
+      "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E5%8C%97%E4%BA%AC%E5%B8%88%E8%8C%83%E5%A4%A7%E5%AD%A6%20BNU.svg",
+      "revision": "be431c7b7acf4da3a7a3e13cf072d684"
+    },
+    "华东师范大学": {
+      "id": "ror-02n96ep67",
+      "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-02n96ep67/94c8235e52614929ad8d173da2f2c0f2/512.webp",
+      "variant": "emblem",
+      "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E5%8D%8E%E4%B8%9C%E5%B8%88%E8%8C%83%E5%A4%A7%E5%AD%A6%20ECNU.svg",
+      "revision": "94c8235e52614929ad8d173da2f2c0f2"
+    },
+    "华中农业大学": {
+      "id": "ror-023b72294",
+      "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-023b72294/dc7f0e1bcbbf4fea9930113933b832f9/512.webp",
+      "variant": "emblem",
+      "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E5%8D%8E%E4%B8%AD%E5%86%9C%E4%B8%9A%E5%A4%A7%E5%AD%A6%20HZAU.svg",
+      "revision": "dc7f0e1bcbbf4fea9930113933b832f9"
+    },
+    "华北电力大学": {
+      "id": "ror-04qr5t414",
+      "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-04qr5t414/263ec4c6989b4f13a7cace18702b6fb0/512.webp",
+      "variant": "emblem",
+      "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E5%8D%8E%E5%8C%97%E7%94%B5%E5%8A%9B%E5%A4%A7%E5%AD%A6%20NCEPU.svg",
+      "revision": "263ec4c6989b4f13a7cace18702b6fb0"
+    },
+    "南京农业大学": {
+      "id": "ror-05td3s095",
+      "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-05td3s095/dd8902cbea554894a0ae49a379ca6c3d/512.webp",
+      "variant": "emblem",
+      "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E5%8D%97%E4%BA%AC%E5%86%9C%E4%B8%9A%E5%A4%A7%E5%AD%A6%20NJAU.svg",
+      "revision": "dd8902cbea554894a0ae49a379ca6c3d"
+    },
+    "南京大学": {
+      "id": "ror-01rxvg760",
+      "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-01rxvg760/b725ded64ed347b3b2c7f50b8d6a1c31/512.webp",
+      "variant": "emblem",
+      "sourceUrl": "https://en.wikipedia.org/wiki/File:Nanjing_University_Logo.svg",
+      "revision": "b725ded64ed347b3b2c7f50b8d6a1c31"
+    },
+    "厦门大学": {
+      "id": "ror-00mcjh785",
+      "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-00mcjh785/fdca7cc95f4c4a3ebc724abbf9ab5897/512.webp",
+      "variant": "emblem",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Xiamen_University_logo.svg",
+      "revision": "fdca7cc95f4c4a3ebc724abbf9ab5897"
+    },
+    "吉林大学": {
+      "id": "ror-00js3aw79",
+      "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-00js3aw79/eb070539689f4440858d2c737db7e25d/512.webp",
+      "variant": "emblem",
+      "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E5%90%89%E6%9E%97%E5%A4%A7%E5%AD%A6%20JLU.svg",
+      "revision": "eb070539689f4440858d2c737db7e25d"
+    },
+    "哈尔滨工业大学": {
+      "id": "ror-01yqg2h08",
+      "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-01yqg2h08/922f71a1ce0d44a5a8551fad53878236/512.webp",
+      "variant": "emblem",
+      "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E5%93%88%E5%B0%94%E6%BB%A8%E5%B7%A5%E4%B8%9A%E5%A4%A7%E5%AD%A6%20HIT.svg",
+      "revision": "922f71a1ce0d44a5a8551fad53878236"
+    },
+    "四川农业大学": {
+      "id": "ror-0388c3403",
+      "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-0388c3403/0e3b8909aa134f9ebee3fa3a7d098714/512.webp",
+      "variant": "emblem",
+      "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E5%9B%9B%E5%B7%9D%E5%86%9C%E4%B8%9A%E5%A4%A7%E5%AD%A6%20SICAU.svg",
+      "revision": "0e3b8909aa134f9ebee3fa3a7d098714"
+    },
+    "安徽大学": {
+      "id": "ror-05th6yx34",
+      "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-05th6yx34/c8f8ad0a24d04192ade79002b0b9f43b/512.webp",
+      "variant": "emblem",
+      "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E5%AE%89%E5%BE%BD%E5%A4%A7%E5%AD%A6%20AHU.svg",
+      "revision": "c8f8ad0a24d04192ade79002b0b9f43b"
+    },
+    "对外经济贸易大学": {
+      "id": "ror-05khqpb71",
+      "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-05khqpb71/4680970b5d644b39b543b250e560074e/512.webp",
+      "variant": "emblem",
+      "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E5%AF%B9%E5%A4%96%E7%BB%8F%E6%B5%8E%E8%B4%B8%E6%98%93%E5%A4%A7%E5%AD%A6%20UIBE.svg",
+      "revision": "4680970b5d644b39b543b250e560074e"
+    },
+    "河北工业大学": {
+      "id": "ror-018hded08",
+      "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-018hded08/a2841bac80aa4ea686124cd825400ade/512.webp",
+      "variant": "emblem",
+      "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E6%B2%B3%E5%8C%97%E5%B7%A5%E4%B8%9A%E5%A4%A7%E5%AD%A6%20HEBUT.svg",
+      "revision": "a2841bac80aa4ea686124cd825400ade"
+    },
+    "河海大学": {
+      "id": "ror-01wd4xt90",
+      "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-01wd4xt90/5ba7753ac7ee489a816d6beed2269da8/512.webp?v=black-v1",
+      "variant": "lockup_horizontal",
+      "sourceUrl": "https://www.hhu.edu.cn",
+      "revision": "5ba7753ac7ee489a816d6beed2269da8"
+    },
+    "浙江大学": {
+      "id": "ror-00a2xv884",
+      "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-00a2xv884/77279400ad564e1893a3858ece88360c/512.webp",
+      "variant": "emblem",
+      "sourceUrl": "https://en.wikipedia.org/wiki/File:Zhejiang_University_Logo.svg",
+      "revision": "77279400ad564e1893a3858ece88360c"
+    },
+    "石河子大学": {
+      "id": "ror-04x0kvm78",
+      "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-04x0kvm78/b8b7255ed13e4d3a9b79f243ae11c4ee/512.webp",
+      "variant": "emblem",
+      "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E7%9F%B3%E6%B2%B3%E5%AD%90%E5%A4%A7%E5%AD%A6%20SHZU.png",
+      "revision": "b8b7255ed13e4d3a9b79f243ae11c4ee"
+    },
+    "福州大学": {
+      "id": "ror-011xvna82",
+      "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-011xvna82/12a17a82a2574b8fbfd04a07c1937605/512.webp",
+      "variant": "emblem",
+      "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E7%A6%8F%E5%B7%9E%E5%A4%A7%E5%AD%A6%20FZU.svg",
+      "revision": "12a17a82a2574b8fbfd04a07c1937605"
+    },
+    "西北农林科技大学": {
+      "id": "ror-0051rme32",
+      "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-0051rme32/2746a1d364034342a45341380023ab59/512.webp",
+      "variant": "emblem",
+      "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E8%A5%BF%E5%8C%97%E5%86%9C%E6%9E%97%E7%A7%91%E6%8A%80%E5%A4%A7%E5%AD%A6%20NWAFU.svg",
+      "revision": "2746a1d364034342a45341380023ab59"
+    },
+    "西北大学": {
+      "id": "ror-00z3td547",
+      "url": "https://www.scansci.com/logo-assets/01/logos/images/ror-00z3td547/38094fa38c334f67a381b1e6b24e48e0/83.webp?v=black-v2",
+      "variant": "emblem",
+      "sourceUrl": "https://english.nwu.edu.cn/",
+      "revision": "38094fa38c334f67a381b1e6b24e48e0"
+    },
+    "西南交通大学": {
+      "id": "ror-00hn7w693",
+      "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-00hn7w693/281f0716b6254cad9831aec42d634231/512.webp?v=black-v1",
+      "variant": "emblem",
+      "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E8%A5%BF%E5%8D%97%E4%BA%A4%E9%80%9A%E5%A4%A7%E5%AD%A6%20SWJTU.svg",
+      "revision": "281f0716b6254cad9831aec42d634231"
+    },
+    "西南财经大学": {
+      "id": "ror-04ewct822",
+      "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-04ewct822/340104be67204c9dbac8df3f1cbb985a/512.webp",
+      "variant": "emblem",
+      "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E8%A5%BF%E5%8D%97%E8%B4%A2%E7%BB%8F%E5%A4%A7%E5%AD%A6%20SWUFE.svg",
+      "revision": "340104be67204c9dbac8df3f1cbb985a"
+    },
+    "西安交通大学": {
+      "id": "ror-017zhmm22",
+      "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-017zhmm22/b9423588fb8c486eb0fcbc8211639e50/512.webp",
+      "variant": "emblem",
+      "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E8%A5%BF%E5%AE%89%E4%BA%A4%E9%80%9A%E5%A4%A7%E5%AD%A6%20XJTU.svg",
+      "revision": "b9423588fb8c486eb0fcbc8211639e50"
+    },
+    "长安大学": {
+      "id": "ror-05mxya461",
+      "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-05mxya461/3b7ca75bcf5142409f65f956f9d6779f/512.webp",
+      "variant": "emblem",
+      "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E9%95%BF%E5%AE%89%E5%A4%A7%E5%AD%A6%20CHD.svg",
+      "revision": "3b7ca75bcf5142409f65f956f9d6779f"
+    },
+    "中国传媒大学": {
+      "id": "ror-04facbs33",
+      "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-04facbs33/65f47b49695b44b1863b9f5b045a08ff/512.webp?v=black-v1",
+      "variant": "emblem",
+      "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E4%B8%AD%E5%9B%BD%E4%BC%A0%E5%AA%92%E5%A4%A7%E5%AD%A6%20CUC.svg",
+      "revision": "65f47b49695b44b1863b9f5b045a08ff"
+    },
+    "中国地质大学（武汉）": {
+      "id": "ror-04gcegc37",
+      "url": "https://www.scansci.com/logo-assets/01/logos/images/ror-04gcegc37/4751c70e1be94d79b11f742ec5936412/345.webp?v=black-v1",
+      "variant": "wordmark",
+      "sourceUrl": "https://www.cug.edu.cn/",
+      "revision": "4751c70e1be94d79b11f742ec5936412"
+    },
+    "中央财经大学": {
+      "id": "ror-008e3hf02",
+      "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-008e3hf02/a7edcb02447942638996ed3c6ee5c03d/512.webp",
+      "variant": "emblem",
+      "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E4%B8%AD%E5%A4%AE%E8%B4%A2%E7%BB%8F%E5%A4%A7%E5%AD%A6%20CUFE.svg",
+      "revision": "a7edcb02447942638996ed3c6ee5c03d"
+    },
+    "华中科技大学": {
+      "id": "ror-00p991c53",
+      "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-00p991c53/cbe43b2a8ccb420aa5927525e6afeae8/512.webp",
+      "variant": "emblem",
+      "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E5%8D%8E%E4%B8%AD%E7%A7%91%E6%8A%80%E5%A4%A7%E5%AD%A6%20HUST.svg",
+      "revision": "cbe43b2a8ccb420aa5927525e6afeae8"
+    },
+    "南京理工大学": {
+      "id": "ror-00xp9wg62",
+      "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-00xp9wg62/eb79ef7b6cd64bd0bdccde0ab82232cb/512.webp",
+      "variant": "emblem",
+      "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E5%8D%97%E4%BA%AC%E7%90%86%E5%B7%A5%E5%A4%A7%E5%AD%A6%20NJUST.svg",
+      "revision": "eb79ef7b6cd64bd0bdccde0ab82232cb"
+    },
+    "湖南大学": {
+      "id": "ror-05htk5m33",
+      "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-05htk5m33/e2a6f7329cd843c4bbdc5c9be57de65e/512.webp",
+      "variant": "emblem",
+      "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E6%B9%96%E5%8D%97%E5%A4%A7%E5%AD%A6%20HNU.svg",
+      "revision": "e2a6f7329cd843c4bbdc5c9be57de65e"
+    },
+    "苏州大学": {
+      "id": "ror-05t8y2r12",
+      "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-05t8y2r12/05eacb33be064459a3feb4e09df6b3a1/512.webp",
+      "variant": "emblem",
+      "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E8%8B%8F%E5%B7%9E%E5%A4%A7%E5%AD%A6%20SUDA.svg",
+      "revision": "05eacb33be064459a3feb4e09df6b3a1"
+    },
+    "西安电子科技大学": {
+      "id": "ror-05s92vm98",
+      "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-05s92vm98/4f49b0a7079641fdbd45c4cbdc5ddf09/512.webp",
+      "variant": "emblem",
+      "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E8%A5%BF%E5%AE%89%E7%94%B5%E5%AD%90%E7%A7%91%E6%8A%80%E5%A4%A7%E5%AD%A6%20XDU.svg",
+      "revision": "4f49b0a7079641fdbd45c4cbdc5ddf09"
+    }
+  }
+}

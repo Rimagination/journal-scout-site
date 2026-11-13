@@ -1,0 +1,1046 @@
+{
+  "schemaVersion": 1,
+  "updated": "2026-11-13",
+  "schools": [
+    {
+      "institution": "中南大学",
+      "is985": true,
+      "summary": "1项资料 · 原始文件已归档；插件目录包待整理核对",
+      "download": "./downloads/catalogs/references/csu-references-20261113.zip",
+      "catalogs": [
+        {
+          "name": "商学院学术期刊分级方案",
+          "edition": "2017版（中商办字〔2017〕02号）",
+          "scope": "仅商学院",
+          "status": "历史名单",
+          "currentness": "未确认最新",
+          "note": "全校适用性不作推定。",
+          "sourceUrl": "https://bs.csu.edu.cn/__local/8/46/F6/EB0FD53160417DD679B287E4948_E5F040DA_1B08F.pdf"
+        }
+      ],
+      "is211": true,
+      "logo": {
+        "id": "ror-00f1zfq44",
+        "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-00f1zfq44/8376a29e2bf34b83ac32977bdb4c6c5c/512.webp",
+        "variant": "emblem",
+        "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E4%B8%AD%E5%8D%97%E5%A4%A7%E5%AD%A6%20CSU.svg",
+        "revision": "8376a29e2bf34b83ac32977bdb4c6c5c"
+      }
+    },
+    {
+      "institution": "中南财经政法大学",
+      "is985": false,
+      "summary": "1项资料 · 原始文件已归档；插件目录包待整理核对",
+      "download": "./downloads/catalogs/references/zuel-references-20261113.zip",
+      "catalogs": [
+        {
+          "name": "学术期刊指引",
+          "edition": "2025版",
+          "scope": "分中外文、学科；公安学科仅限刑事司法学院",
+          "status": "已取得名单",
+          "currentness": "2025版原件已核对",
+          "note": "发表时CCF A主会长文、JCR Q1、ABS等附加规则须单独处理；预警与退出索引条款优先。2025年底前存在旧版过渡条件。",
+          "sourceUrl": "https://zhxmt.zuel.edu.cn/_upload/article/files/76/77/ac5d9e2344d7aa80ceaf2568c94d/0bb65257-6e41-49bf-9f12-35f221c035fa.pdf"
+        }
+      ],
+      "is211": true,
+      "logo": {
+        "id": "ror-04yqxxq63",
+        "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-04yqxxq63/eb452fe78ba843538137de537c5c95d9/512.webp?v=black-v1",
+        "variant": "lockup_horizontal",
+        "sourceUrl": "https://www.zuel.edu.cn",
+        "revision": "eb452fe78ba843538137de537c5c95d9"
+      }
+    },
+    {
+      "institution": "中国人民大学",
+      "is985": true,
+      "summary": "1项资料 · 原始文件已归档；插件目录包待整理核对",
+      "download": "./downloads/catalogs/references/ruc-references-20261113.zip",
+      "catalogs": [
+        {
+          "name": "核心期刊目录",
+          "edition": "2017年修订试行",
+          "scope": "按学科、中外文分表",
+          "status": "历史名单",
+          "currentness": "官网仍提供；未核实全校最新统一版",
+          "note": "有2026院系引用的线索，不能因此认定全部现行；动态索引C类规则不预先展开。",
+          "sourceUrl": "https://lib.ruc.edu.cn/docs/2023-11/6e83e72e2492425294dece57eb0138da.pdf"
+        }
+      ],
+      "is211": true,
+      "logo": {
+        "id": "ror-041pakw92",
+        "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-041pakw92/91a6319ab37d4addbe5088112aeac978/512.webp",
+        "variant": "emblem",
+        "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E4%B8%AD%E5%9B%BD%E4%BA%BA%E6%B0%91%E5%A4%A7%E5%AD%A6%20RUC.svg",
+        "revision": "91a6319ab37d4addbe5088112aeac978"
+      }
+    },
+    {
+      "institution": "中国海洋大学",
+      "is985": true,
+      "summary": "1项资料 · 原始文件已归档；插件目录包待整理核对",
+      "download": "./downloads/catalogs/references/ouc-references-20261113.zip",
+      "catalogs": [
+        {
+          "name": "人文社会科学中文核心期刊目录",
+          "edition": "原附件未注明版本年",
+          "scope": "人文社会科学中文",
+          "status": "已取得名单",
+          "currentness": "未确认最新",
+          "note": "目录注释引用2019—2020扩展版和2017—2018集刊；不得据2026下载时间称2026版。",
+          "sourceUrl": "https://wkc.ouc.edu.cn/_upload/article/files/ec/d9/a3efd432458c9e51e98050c263a9/47320f76-5e07-41b4-b56e-e6723a820f87.pdf"
+        }
+      ],
+      "is211": true,
+      "logo": {
+        "id": "ror-04rdtx186",
+        "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-04rdtx186/eaf19fb9b7b3457a8eebab2b1b78d28d/512.webp",
+        "variant": "emblem",
+        "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E4%B8%AD%E5%9B%BD%E6%B5%B7%E6%B4%8B%E5%A4%A7%E5%AD%A6%20OUC.svg",
+        "revision": "eaf19fb9b7b3457a8eebab2b1b78d28d"
+      }
+    },
+    {
+      "institution": "中国石油大学（北京）",
+      "is985": false,
+      "summary": "1项资料 · 原始文件已归档；插件目录包待整理核对",
+      "download": "./downloads/catalogs/references/cup-references-20261113.zip",
+      "catalogs": [
+        {
+          "name": "各学院博士生在学期间发表创新性成果基本要求及附件",
+          "edition": "2026通知",
+          "scope": "12个学院分别适用；博士学位要求",
+          "status": "已取得名单",
+          "currentness": "2026通知已核对",
+          "note": "不能当作全校统一期刊分级；保留学院、年级与成果条件。",
+          "sourceUrl": "https://grs.cup.edu.cn/wenku/www/202606/090933074knf.pdf"
+        }
+      ],
+      "is211": true,
+      "logo": {
+        "id": "ror-041qf4r12",
+        "url": "https://www.scansci.com/logo-assets/01/logos/images/ror-041qf4r12/2754101169d044ab95e5a5cd50b33c96/325.webp?v=black-v1",
+        "variant": "lockup_horizontal",
+        "sourceUrl": "https://www.cup.edu.cn/",
+        "revision": "2754101169d044ab95e5a5cd50b33c96"
+      }
+    },
+    {
+      "institution": "中国药科大学",
+      "is985": false,
+      "summary": "1项资料 · 原始文件已归档；插件目录包待整理核对",
+      "download": "./downloads/catalogs/references/cpu-references-20261113.zip",
+      "catalogs": [
+        {
+          "name": "共识期刊及会议目录",
+          "edition": "2026版",
+          "scope": "自然科学、人文社科及计算机会议分表",
+          "status": "已取得名单",
+          "currentness": "2026版已核对",
+          "note": "保留各学科的原分类；有过渡期与预警排除条件。",
+          "sourceUrl": "https://ist.cpu.edu.cn/zcwj/qkml.htm"
+        }
+      ],
+      "is211": true,
+      "logo": {
+        "id": "ror-01sfm2718",
+        "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-01sfm2718/862c8f9940d6432996d105bd4f0ff05e/512.webp",
+        "variant": "emblem",
+        "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E4%B8%AD%E5%9B%BD%E8%8D%AF%E7%A7%91%E5%A4%A7%E5%AD%A6%20CPU.svg",
+        "revision": "862c8f9940d6432996d105bd4f0ff05e"
+      }
+    },
+    {
+      "institution": "中央民族大学",
+      "is985": true,
+      "summary": "1项资料 · 原始文件已归档；插件目录包待整理核对",
+      "download": "./downloads/catalogs/references/muc-references-20261113.zip",
+      "catalogs": [
+        {
+          "name": "奖励办法及人文社科类奖励期刊目录附件",
+          "edition": "民大校发〔2015〕356号",
+          "scope": "以原办法为准",
+          "status": "扫描原件已归档",
+          "currentness": "历史文件；未核最新",
+          "note": "PDF无可用文字层，尚未OCR核对，不纳入可导入明细。",
+          "sourceUrl": "https://grs.muc.edu.cn/__local/F/55/36/32FAC4077DA968258C091B5CF66_FA0CD7D6_2F161A.pdf?e=.pdf"
+        }
+      ],
+      "is211": true,
+      "logo": {
+        "id": "ror-0044e2g62",
+        "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-0044e2g62/fa254c80614c412a9850e9715b556c6d/512.webp",
+        "variant": "emblem",
+        "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E4%B8%AD%E5%A4%AE%E6%B0%91%E6%97%8F%E5%A4%A7%E5%AD%A6%20MUC.svg",
+        "revision": "fa254c80614c412a9850e9715b556c6d"
+      }
+    },
+    {
+      "institution": "北京师范大学",
+      "is985": true,
+      "summary": "2项资料 · 原始文件已归档；插件目录包待整理核对",
+      "download": "./downloads/catalogs/references/bnu-references-20261113.zip",
+      "catalogs": [
+        {
+          "name": "人工智能学院推荐学术会议和期刊目录",
+          "edition": "2026年7月",
+          "scope": "仅人工智能学院；期刊与会议",
+          "status": "已取得名单",
+          "currentness": "官网2026-07-27新目录已核对",
+          "note": "原件为图片；Full/Regular Paper、Oral等条件须保留。2023试行表不作为最新版本。",
+          "sourceUrl": "https://ai.bnu.edu.cn/ggjxz/cywj2/1ec6a3f1533a4befaf920e28a9ef4979.htm"
+        },
+        {
+          "name": "人工智能学院学术论文发表期刊与会议目录（试行）",
+          "edition": "2023试行",
+          "scope": "仅学院学术评价参考",
+          "status": "历史名单",
+          "currentness": "已找到2026新目录",
+          "note": "历史材料；2023公告声明暂不用于职称评审和毕业要求，不能直接套到新版。",
+          "sourceUrl": "https://ai.bnu.edu.cn/ggjxz/xyxw/64c26d2d268b4f349c8f61ee7aff9953.htm"
+        }
+      ],
+      "is211": true,
+      "logo": {
+        "id": "ror-022k4wk35",
+        "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-022k4wk35/be431c7b7acf4da3a7a3e13cf072d684/512.webp",
+        "variant": "emblem",
+        "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E5%8C%97%E4%BA%AC%E5%B8%88%E8%8C%83%E5%A4%A7%E5%AD%A6%20BNU.svg",
+        "revision": "be431c7b7acf4da3a7a3e13cf072d684"
+      }
+    },
+    {
+      "institution": "华东师范大学",
+      "is985": true,
+      "summary": "1项资料 · 原始文件已归档；插件目录包待整理核对",
+      "download": "./downloads/catalogs/references/ecnu-references-20261113.zip",
+      "catalogs": [
+        {
+          "name": "文科论文刊载期刊目录及范围（附录四）",
+          "edition": "原附件未注明；URL为2024-09",
+          "scope": "文科；附录节选",
+          "status": "已取得范围名单",
+          "currentness": "未确认最新",
+          "note": "保留原刊号CN；这是一段附录，不扩写为完整全校等级目录。",
+          "sourceUrl": "https://polis.ecnu.edu.cn/u/article/user_79/202409/4492-14nC.pdf"
+        }
+      ],
+      "is211": true,
+      "logo": {
+        "id": "ror-02n96ep67",
+        "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-02n96ep67/94c8235e52614929ad8d173da2f2c0f2/512.webp",
+        "variant": "emblem",
+        "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E5%8D%8E%E4%B8%9C%E5%B8%88%E8%8C%83%E5%A4%A7%E5%AD%A6%20ECNU.svg",
+        "revision": "94c8235e52614929ad8d173da2f2c0f2"
+      }
+    },
+    {
+      "institution": "华中农业大学",
+      "is985": false,
+      "summary": "1项资料 · 原始文件已归档；插件目录包待整理核对",
+      "download": "./downloads/catalogs/references/hzau-references-20261113.zip",
+      "catalogs": [
+        {
+          "name": "植物科学技术学院学术期刊分级目录（试行）",
+          "edition": "院发〔2026〕3号",
+          "scope": "仅植物科学技术学院",
+          "status": "已取得名单",
+          "currentness": "2026版原件已核对",
+          "note": "正文确认校级2021版已废止，改由学院制定；未列入高等级但属中科院大类一区的C刊规则不自动展开。",
+          "sourceUrl": "https://cpst.hzau.edu.cn/info/1033/11578.htm"
+        }
+      ],
+      "is211": true,
+      "logo": {
+        "id": "ror-023b72294",
+        "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-023b72294/dc7f0e1bcbbf4fea9930113933b832f9/512.webp",
+        "variant": "emblem",
+        "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E5%8D%8E%E4%B8%AD%E5%86%9C%E4%B8%9A%E5%A4%A7%E5%AD%A6%20HZAU.svg",
+        "revision": "dc7f0e1bcbbf4fea9930113933b832f9"
+      }
+    },
+    {
+      "institution": "华北电力大学",
+      "is985": false,
+      "summary": "1项资料 · 原始文件已归档；插件目录包待整理核对",
+      "download": "./downloads/catalogs/references/ncepu-references-20261113.zip",
+      "catalogs": [
+        {
+          "name": "高质量学术期刊分级目录",
+          "edition": "2025版；2026起执行",
+          "scope": "仅科学研究类绩效奖励",
+          "status": "已取得名单",
+          "currentness": "2025-12-31发布通知已核对",
+          "note": "原试行版同时废止；含预警整改/再次预警及Article/Review条件。",
+          "sourceUrl": "https://keyan.ncepu.edu.cn/tzgg/872eafe92e2344f997778821d188360a.htm"
+        }
+      ],
+      "is211": true,
+      "logo": {
+        "id": "ror-04qr5t414",
+        "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-04qr5t414/263ec4c6989b4f13a7cace18702b6fb0/512.webp",
+        "variant": "emblem",
+        "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E5%8D%8E%E5%8C%97%E7%94%B5%E5%8A%9B%E5%A4%A7%E5%AD%A6%20NCEPU.svg",
+        "revision": "263ec4c6989b4f13a7cace18702b6fb0"
+      }
+    },
+    {
+      "institution": "南京农业大学",
+      "is985": false,
+      "summary": "2项资料 · 原始文件已归档；插件目录包待整理核对",
+      "download": "./downloads/catalogs/references/njau-references-20261113.zip",
+      "catalogs": [
+        {
+          "name": "经济管理学院学术期刊分类目录（招聘条件附件）",
+          "edition": "2022-12附件",
+          "scope": "仅经济管理学院钟山青年研究员招聘",
+          "status": "历史名单",
+          "currentness": "未确认最新",
+          "note": "不代表全校统一目录；校级高质量期刊查询系统另列。",
+          "sourceUrl": "https://economy.njau.edu.cn/__local/7/43/1E/31DD0A2944879C6540ECD8FB766_8B86E797_3BF03.pdf"
+        },
+        {
+          "name": "高质量论文发表期刊目录查询系统通知",
+          "edition": "2024通知入口",
+          "scope": "学校网上办事大厅查询",
+          "status": "系统入口；未取得全表",
+          "currentness": "仅核对公开入口",
+          "note": "附件下载要求验证码；不把招聘附件代替校级目录。",
+          "sourceUrl": "https://cos.njau.edu.cn/info/1082/2723.htm"
+        }
+      ],
+      "is211": true,
+      "logo": {
+        "id": "ror-05td3s095",
+        "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-05td3s095/dd8902cbea554894a0ae49a379ca6c3d/512.webp",
+        "variant": "emblem",
+        "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E5%8D%97%E4%BA%AC%E5%86%9C%E4%B8%9A%E5%A4%A7%E5%AD%A6%20NJAU.svg",
+        "revision": "dd8902cbea554894a0ae49a379ca6c3d"
+      }
+    },
+    {
+      "institution": "南京大学",
+      "is985": true,
+      "summary": "3项资料 · 原始文件已归档；插件目录包待整理核对",
+      "download": "./downloads/catalogs/references/nju-references-20261113.zip",
+      "catalogs": [
+        {
+          "name": "高质量人文社会科学中文期刊推荐目录（前三等级）",
+          "edition": "2024配套表；页面称同2021高水平期刊",
+          "scope": "人文社会科学中文期刊；100条",
+          "status": "已取得名单",
+          "currentness": "2024配套页已核对",
+          "note": "只取得该页提供的前三等级表，不等于全校全部中英文目录；页面保留2021发布日期，不能据此否定2024附件。",
+          "sourceUrl": "https://public.nju.edu.cn/jszlsqyd/kygl/20210826/i205245.html"
+        },
+        {
+          "name": "科研创新激励办法实施细则",
+          "edition": "2024修订版",
+          "scope": "人文社会科学科研激励",
+          "status": "仅规则",
+          "currentness": "2024修订原件已核对",
+          "note": "与中文目录配套；不得把激励分值当期刊等级。",
+          "sourceUrl": "https://public.nju.edu.cn/jszlsqyd/kygl/20210826/i205245.html"
+        },
+        {
+          "name": "网页配套SSCI/A&HCI分区表",
+          "edition": "原页面注明按中信所2019",
+          "scope": "外文期刊辅助资料",
+          "status": "历史辅助材料",
+          "currentness": "不是2024/2026新分区",
+          "note": "仅归档，不作为南京大学当前校本等级或当前JCR数据导入。",
+          "sourceUrl": "https://public.nju.edu.cn/jszlsqyd/kygl/20210826/i205245.html"
+        }
+      ],
+      "is211": true,
+      "logo": {
+        "id": "ror-01rxvg760",
+        "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-01rxvg760/b725ded64ed347b3b2c7f50b8d6a1c31/512.webp",
+        "variant": "emblem",
+        "sourceUrl": "https://en.wikipedia.org/wiki/File:Nanjing_University_Logo.svg",
+        "revision": "b725ded64ed347b3b2c7f50b8d6a1c31"
+      }
+    },
+    {
+      "institution": "厦门大学",
+      "is985": true,
+      "summary": "1项资料 · 原始文件已归档；插件目录包待整理核对",
+      "download": "./downloads/catalogs/references/xmu-references-20261113.zip",
+      "catalogs": [
+        {
+          "name": "人文社科核心学术刊物目录及相关规定",
+          "edition": "2017版",
+          "scope": "人文社科；部分国际等级另按学院",
+          "status": "历史名单",
+          "currentness": "2025研究生通知仍附2017版",
+          "note": "旧版仍被引用不等于2025新修订；适用场景须核对。",
+          "sourceUrl": "https://skc.xmu.edu.cn/qkzx/hxxsqk.htm"
+        }
+      ],
+      "is211": true,
+      "logo": {
+        "id": "ror-00mcjh785",
+        "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-00mcjh785/fdca7cc95f4c4a3ebc724abbf9ab5897/512.webp",
+        "variant": "emblem",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Xiamen_University_logo.svg",
+        "revision": "fdca7cc95f4c4a3ebc724abbf9ab5897"
+      }
+    },
+    {
+      "institution": "吉林大学",
+      "is985": true,
+      "summary": "1项资料 · 原始文件已归档；插件目录包待整理核对",
+      "download": "./downloads/catalogs/references/jlu-references-20261113.zip",
+      "catalogs": [
+        {
+          "name": "哲学社会科学高水平中文学术刊物参考目录（试行）",
+          "edition": "2022起执行的试行目录",
+          "scope": "哲学社会科学中文期刊",
+          "status": "已取得名单",
+          "currentness": "未确认最新",
+          "note": "2022全年为过渡期；CSSCI动态退出不保留级别。不能按下载网页年份标成新版。",
+          "sourceUrl": "https://pro.jlu.edu.cn/__local/0/3D/93/3FBB2758FB8722A0D7BEDFEF6EB_4B188FC1_2F1CD.pdf?e=.pdf"
+        }
+      ],
+      "is211": true,
+      "logo": {
+        "id": "ror-00js3aw79",
+        "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-00js3aw79/eb070539689f4440858d2c737db7e25d/512.webp",
+        "variant": "emblem",
+        "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E5%90%89%E6%9E%97%E5%A4%A7%E5%AD%A6%20JLU.svg",
+        "revision": "eb070539689f4440858d2c737db7e25d"
+      }
+    },
+    {
+      "institution": "哈尔滨工业大学",
+      "is985": true,
+      "summary": "1项资料 · 原始文件已归档；插件目录包待整理核对",
+      "download": "./downloads/catalogs/references/hit-references-20261113.zip",
+      "catalogs": [
+        {
+          "name": "深圳未来设计学院研究生学业奖学金评定细则",
+          "edition": "2025年文件（非2026版）",
+          "scope": "仅深圳未来设计学院奖学金评定",
+          "status": "仅规则",
+          "currentness": "2025细则；非完整期刊表",
+          "note": "只列若干具名期刊及JCR/非开源等条件，引用的全校哲社目录未附完整。",
+          "sourceUrl": "https://sisd.hit.edu.cn/_upload/article/files/bd/8e/2aa3f41e48b0901e61b02412e7b4/55c1e0a8-dbb0-4dde-8b9e-58a75ae5ee26.pdf"
+        }
+      ],
+      "is211": true,
+      "logo": {
+        "id": "ror-01yqg2h08",
+        "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-01yqg2h08/922f71a1ce0d44a5a8551fad53878236/512.webp",
+        "variant": "emblem",
+        "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E5%93%88%E5%B0%94%E6%BB%A8%E5%B7%A5%E4%B8%9A%E5%A4%A7%E5%AD%A6%20HIT.svg",
+        "revision": "922f71a1ce0d44a5a8551fad53878236"
+      }
+    },
+    {
+      "institution": "四川农业大学",
+      "is985": false,
+      "summary": "1项资料 · 原始文件已归档；插件目录包待整理核对",
+      "download": "./downloads/catalogs/references/sicau-references-20261113.zip",
+      "catalogs": [
+        {
+          "name": "学科建设双支计划及人文社科中文期刊分类附件",
+          "edition": "校发〔2020〕15号",
+          "scope": "人文社科中文；双支计划范围",
+          "status": "历史名单",
+          "currentness": "未确认最新",
+          "note": "政策、资助层次与期刊等级分别保留，不混作等级。",
+          "sourceUrl": "https://www.sicau.edu.cn/__local/D/FD/CE/C7EB14C147C452D46E9C40D77E3_269F70E9_90CA1.pdf"
+        }
+      ],
+      "is211": true,
+      "logo": {
+        "id": "ror-0388c3403",
+        "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-0388c3403/0e3b8909aa134f9ebee3fa3a7d098714/512.webp",
+        "variant": "emblem",
+        "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E5%9B%9B%E5%B7%9D%E5%86%9C%E4%B8%9A%E5%A4%A7%E5%AD%A6%20SICAU.svg",
+        "revision": "0e3b8909aa134f9ebee3fa3a7d098714"
+      }
+    },
+    {
+      "institution": "安徽大学",
+      "is985": false,
+      "summary": "1项资料 · 原始文件已归档；插件目录包待整理核对",
+      "download": "./downloads/catalogs/references/ahu-references-20261113.zip",
+      "catalogs": [
+        {
+          "name": "顶级期刊目录",
+          "edition": "2022通知；各表2021—2022版",
+          "scope": "引进人才首聘期论文要求，分学科",
+          "status": "历史名单",
+          "currentness": "未确认最新",
+          "note": "原文件称每1—2年动态更新，当前不能默认仍有效。",
+          "sourceUrl": "https://math.ahu.edu.cn/_upload/article/files/63/77/dfc57065420da16afb496b9a9964/71ca0222-4ec3-471e-8f17-a40004c1a156.pdf"
+        }
+      ],
+      "is211": true,
+      "logo": {
+        "id": "ror-05th6yx34",
+        "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-05th6yx34/c8f8ad0a24d04192ade79002b0b9f43b/512.webp",
+        "variant": "emblem",
+        "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E5%AE%89%E5%BE%BD%E5%A4%A7%E5%AD%A6%20AHU.svg",
+        "revision": "c8f8ad0a24d04192ade79002b0b9f43b"
+      }
+    },
+    {
+      "institution": "对外经济贸易大学",
+      "is985": false,
+      "summary": "2项资料 · 原始文件已归档；插件目录包待整理核对",
+      "download": "./downloads/catalogs/references/uibe-references-20261113.zip",
+      "catalogs": [
+        {
+          "name": "中文高水平期刊分类目录",
+          "edition": "2026版",
+          "scope": "29个分类；721条目录记录",
+          "status": "已取得名单",
+          "currentness": "2026版原件已核对",
+          "note": "2026-07-09审议；中文与外文等级体系不同。成果类型仅论文。",
+          "sourceUrl": "https://kyc.uibe.edu.cn/zlxz/index.htm"
+        },
+        {
+          "name": "外文高水平期刊分类目录",
+          "edition": "2026版",
+          "scope": "19个分类；2215条目录记录",
+          "status": "已取得名单",
+          "currentness": "2026版原件已核对",
+          "note": "同刊跨分类按就高认定；期刊须Article，会议须Full/Regular Paper；Nature、Science仅正刊。记录数不是去重刊数。",
+          "sourceUrl": "https://kyc.uibe.edu.cn/zlxz/index.htm"
+        }
+      ],
+      "is211": true,
+      "logo": {
+        "id": "ror-05khqpb71",
+        "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-05khqpb71/4680970b5d644b39b543b250e560074e/512.webp",
+        "variant": "emblem",
+        "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E5%AF%B9%E5%A4%96%E7%BB%8F%E6%B5%8E%E8%B4%B8%E6%98%93%E5%A4%A7%E5%AD%A6%20UIBE.svg",
+        "revision": "4680970b5d644b39b543b250e560074e"
+      }
+    },
+    {
+      "institution": "河北工业大学",
+      "is985": false,
+      "summary": "1项资料 · 原始文件已归档；插件目录包待整理核对",
+      "download": "./downloads/catalogs/references/hebut-references-20261113.zip",
+      "catalogs": [
+        {
+          "name": "有关学科建议期刊目录（顶级期刊认定）",
+          "edition": "河北工大〔2019〕25号",
+          "scope": "相关学院学科建议；包含会议",
+          "status": "历史名单",
+          "currentness": "未确认最新",
+          "note": "文件要求不唯论文、目录并非穷尽；不能当全校固定A区。",
+          "sourceUrl": "https://ee.hebut.edu.cn/docs/2022-06/0ed3f1bdd8b7412bbc0af325531aef03.pdf"
+        }
+      ],
+      "is211": true,
+      "logo": {
+        "id": "ror-018hded08",
+        "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-018hded08/a2841bac80aa4ea686124cd825400ade/512.webp",
+        "variant": "emblem",
+        "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E6%B2%B3%E5%8C%97%E5%B7%A5%E4%B8%9A%E5%A4%A7%E5%AD%A6%20HEBUT.svg",
+        "revision": "a2841bac80aa4ea686124cd825400ade"
+      }
+    },
+    {
+      "institution": "河海大学",
+      "is985": false,
+      "summary": "2项资料 · 原始文件已归档；插件目录包待整理核对",
+      "download": "./downloads/catalogs/references/hhu-references-20261113.zip",
+      "catalogs": [
+        {
+          "name": "公布高质量论文期刊及学术会议目录通知",
+          "edition": "河海校政〔2022〕69号",
+          "scope": "自然科学、计算机/软件、人文社科分别",
+          "status": "仅规则",
+          "currentness": "原件2022；未核最新",
+          "note": "通知仅2页；名单另存114页附件。按SCI/SSCI/CSSCI版本动态更新。",
+          "sourceUrl": "https://skc.hhu.edu.cn/_upload/article/files/bc/9c/38940a3b48519e8ac3c069996688/9b63778b-b94f-44c1-b49c-7ca80ca6d413.pdf"
+        },
+        {
+          "name": "高质量论文期刊及学术会议目录",
+          "edition": "原表未署版年；配套2022通知待校核",
+          "scope": "自然科学、计算机/软件、人文社科",
+          "status": "已取得名单",
+          "currentness": "未确认最新",
+          "note": "原PDF共114页，含完整多段名单；文件名中的内部采集ID不作版年依据。",
+          "sourceUrl": "https://spd.hhu.edu.cn/_upload/article/files/26/44/71fa485b41959cd72790151bfe16/9bab0e50-d209-4466-ab1c-020fcaba0f8f.pdf"
+        }
+      ],
+      "is211": true,
+      "logo": {
+        "id": "ror-01wd4xt90",
+        "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-01wd4xt90/5ba7753ac7ee489a816d6beed2269da8/512.webp?v=black-v1",
+        "variant": "lockup_horizontal",
+        "sourceUrl": "https://www.hhu.edu.cn",
+        "revision": "5ba7753ac7ee489a816d6beed2269da8"
+      }
+    },
+    {
+      "institution": "浙江大学",
+      "is985": true,
+      "summary": "1项资料 · 原始文件已归档；插件目录包待整理核对",
+      "download": "./downloads/catalogs/references/zju-references-20261113.zip",
+      "catalogs": [
+        {
+          "name": "国内学术期刊分级目录指南",
+          "edition": "2024版",
+          "scope": "国内期刊",
+          "status": "取得官网转载名单",
+          "currentness": "浙大官网确认2024版；全文入口需登录",
+          "note": "本地完整DOCX来自丽水学院科研处官方转载，非浙大公开直链；浙大原始通知： https://hr.zju.edu.cn/cn/2025/0728/c28843a3077295/page.htm 。转载时间不能当修订时间。",
+          "sourceUrl": "https://kyc.lsu.edu.cn/2025/1009/c1772a359166/page.htm"
+        }
+      ],
+      "is211": true,
+      "logo": {
+        "id": "ror-00a2xv884",
+        "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-00a2xv884/77279400ad564e1893a3858ece88360c/512.webp",
+        "variant": "emblem",
+        "sourceUrl": "https://en.wikipedia.org/wiki/File:Zhejiang_University_Logo.svg",
+        "revision": "77279400ad564e1893a3858ece88360c"
+      }
+    },
+    {
+      "institution": "石河子大学",
+      "is985": false,
+      "summary": "1项资料 · 原始文件已归档；插件目录包待整理核对",
+      "download": "./downloads/catalogs/references/shzu-references-20261113.zip",
+      "catalogs": [
+        {
+          "name": "水利建筑工程学院申请博士研究生高水平期刊目录",
+          "edition": "2025-12文件",
+          "scope": "仅该学院博士招生科研成果评价",
+          "status": "仅规则",
+          "currentness": "原件条件已核对",
+          "note": "由SCI中科院分区、中国科技期刊卓越行动、科协T1等条件认定，并非完整具名刊表。",
+          "sourceUrl": "https://sjxy.shzu.edu.cn/_upload/article/files/1d/27/693a7a8f473da067497c4c756664/4e88293b-5487-4de9-81fb-f0be07d63da3.pdf"
+        }
+      ],
+      "is211": true,
+      "logo": {
+        "id": "ror-04x0kvm78",
+        "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-04x0kvm78/b8b7255ed13e4d3a9b79f243ae11c4ee/512.webp",
+        "variant": "emblem",
+        "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E7%9F%B3%E6%B2%B3%E5%AD%90%E5%A4%A7%E5%AD%A6%20SHZU.png",
+        "revision": "b8b7255ed13e4d3a9b79f243ae11c4ee"
+      }
+    },
+    {
+      "institution": "福州大学",
+      "is985": false,
+      "summary": "1项资料 · 原始文件已归档；插件目录包待整理核对",
+      "download": "./downloads/catalogs/references/fzu-references-20261113.zip",
+      "catalogs": [
+        {
+          "name": "核心学术期刊目录及相关规定（试行）",
+          "edition": "2021版（福大人〔2021〕59号）",
+          "scope": "全校相关职务评聘；含学科差异",
+          "status": "已取得名单",
+          "currentness": "2026职评通知确认沿用并叠加2025补充",
+          "note": "需同时适用福大人〔2025〕14号文科补充规定，后者未取得全文。",
+          "sourceUrl": "https://rsc.fzu.edu.cn/info/1019/2635.htm"
+        }
+      ],
+      "is211": true,
+      "logo": {
+        "id": "ror-011xvna82",
+        "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-011xvna82/12a17a82a2574b8fbfd04a07c1937605/512.webp",
+        "variant": "emblem",
+        "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E7%A6%8F%E5%B7%9E%E5%A4%A7%E5%AD%A6%20FZU.svg",
+        "revision": "12a17a82a2574b8fbfd04a07c1937605"
+      }
+    },
+    {
+      "institution": "西北农林科技大学",
+      "is985": true,
+      "summary": "3项资料 · 原始文件已归档；插件目录包待整理核对",
+      "download": "./downloads/catalogs/references/nwafu-references-20261113.zip",
+      "catalogs": [
+        {
+          "name": "食品学院高质量期刊指导目录（A刊）",
+          "edition": "附件未注明版本年；2025-03路径",
+          "scope": "仅食品科学与工程学院",
+          "status": "已取得名单",
+          "currentness": "未确认最新",
+          "note": "101条；上传路径时间不等于修订年份。",
+          "sourceUrl": "https://food.nwsuaf.edu.cn/docs/2025-03/95124a4540304e0e9305ea0fd8d69b3c.pdf"
+        },
+        {
+          "name": "食品学院高质量期刊指导目录（B刊）",
+          "edition": "附件未注明版本年；2025-03路径",
+          "scope": "仅食品科学与工程学院",
+          "status": "已取得名单",
+          "currentness": "未确认最新",
+          "note": "55条；与经管学院目录分别保管。",
+          "sourceUrl": "https://food.nwsuaf.edu.cn/docs/2025-03/16d5487f193d478b99513bdc2b4d7672.pdf"
+        },
+        {
+          "name": "经管学院认定的学术期刊目录（试行）",
+          "edition": "2018版（经管〔2018〕9号）",
+          "scope": "仅经济管理学院",
+          "status": "历史名单",
+          "currentness": "未确认最新",
+          "note": "虽然下载路径为2025-11，正文明确2018年，不能标2025版。",
+          "sourceUrl": "https://cem.nwafu.edu.cn/docs/2025-11/555ab5cecb51436e8f443d39ea6fd883.pdf"
+        }
+      ],
+      "is211": true,
+      "logo": {
+        "id": "ror-0051rme32",
+        "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-0051rme32/2746a1d364034342a45341380023ab59/512.webp",
+        "variant": "emblem",
+        "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E8%A5%BF%E5%8C%97%E5%86%9C%E6%9E%97%E7%A7%91%E6%8A%80%E5%A4%A7%E5%AD%A6%20NWAFU.svg",
+        "revision": "2746a1d364034342a45341380023ab59"
+      }
+    },
+    {
+      "institution": "西北大学",
+      "is985": false,
+      "summary": "2项资料 · 原始文件已归档；插件目录包待整理核对",
+      "download": "./downloads/catalogs/references/nwu-references-20261113.zip",
+      "catalogs": [
+        {
+          "name": "优秀学术期刊目录（人文社科类）",
+          "edition": "2018旧目录",
+          "scope": "2025-01-01前论文认定",
+          "status": "历史名单",
+          "currentness": "2026通知明确新旧适用边界",
+          "note": "2025-01-01后论文按西大社科〔2024〕10号新指导目录；不能让旧目录覆盖新论文。",
+          "sourceUrl": "https://skc.nwu.edu.cn/info/1006/4602.htm"
+        },
+        {
+          "name": "2026科研成果认定通知所引新指导目录",
+          "edition": "西大社科〔2024〕10号",
+          "scope": "人文社会科学；发表日期分界",
+          "status": "仅确认新目录存在",
+          "currentness": "2026-08-18通知已核对",
+          "note": "新目录完整文件未取得；通知用“2025年1月1日后”，边界日严格按学校认定。",
+          "sourceUrl": "https://skc.nwu.edu.cn/info/1006/4602.htm"
+        }
+      ],
+      "is211": true,
+      "logo": {
+        "id": "ror-00z3td547",
+        "url": "https://www.scansci.com/logo-assets/01/logos/images/ror-00z3td547/38094fa38c334f67a381b1e6b24e48e0/83.webp?v=black-v2",
+        "variant": "emblem",
+        "sourceUrl": "https://english.nwu.edu.cn/",
+        "revision": "38094fa38c334f67a381b1e6b24e48e0"
+      }
+    },
+    {
+      "institution": "西南交通大学",
+      "is985": false,
+      "summary": "1项资料 · 原始文件已归档；插件目录包待整理核对",
+      "download": "./downloads/catalogs/references/swjtu-references-20261113.zip",
+      "catalogs": [
+        {
+          "name": "学术期刊分级目录",
+          "edition": "2026版",
+          "scope": "T类、工科、理科、生命医学、人文社科分表",
+          "status": "已取得名单",
+          "currentness": "2026官方通知附件已核对",
+          "note": "官方XLSX有大量格式空行；仅提取有值记录。预警期刊暂剔除名单单独保存，不作为有效等级。",
+          "sourceUrl": "https://scai.swjtu.edu.cn/web/page-newsDetail.html?nid=8f70b6dd-4279-4a93-86cb-ddbc4aa43ab2"
+        }
+      ],
+      "is211": true,
+      "logo": {
+        "id": "ror-00hn7w693",
+        "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-00hn7w693/281f0716b6254cad9831aec42d634231/512.webp?v=black-v1",
+        "variant": "emblem",
+        "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E8%A5%BF%E5%8D%97%E4%BA%A4%E9%80%9A%E5%A4%A7%E5%AD%A6%20SWJTU.svg",
+        "revision": "281f0716b6254cad9831aec42d634231"
+      }
+    },
+    {
+      "institution": "西南财经大学",
+      "is985": false,
+      "summary": "2项资料 · 原始文件已归档；插件目录包待整理核对",
+      "download": "./downloads/catalogs/references/swufe-references-20261113.zip",
+      "catalogs": [
+        {
+          "name": "高水平学术期刊目录",
+          "edition": "2025年修订",
+          "scope": "中外文按学科分表",
+          "status": "已取得名单",
+          "currentness": "2026官方通知仍附此版",
+          "note": "部分中文CN号栏实际为ISSN格式；原值保留并标记。NATURE/SCIENCE其他子刊为集合规则，不能当成一个刊名。",
+          "sourceUrl": "https://graduate.swufe.edu.cn/info/1016/13743.htm"
+        },
+        {
+          "name": "B级学术期刊目录",
+          "edition": "2025年修订",
+          "scope": "中外文按学科分表",
+          "status": "已取得名单",
+          "currentness": "2025年修订原件已核对",
+          "note": "独立于高水平目录；若同刊多学科出现，保留各行。",
+          "sourceUrl": "https://sib.swufe.edu.cn/"
+        }
+      ],
+      "is211": true,
+      "logo": {
+        "id": "ror-04ewct822",
+        "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-04ewct822/340104be67204c9dbac8df3f1cbb985a/512.webp",
+        "variant": "emblem",
+        "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E8%A5%BF%E5%8D%97%E8%B4%A2%E7%BB%8F%E5%A4%A7%E5%AD%A6%20SWUFE.svg",
+        "revision": "340104be67204c9dbac8df3f1cbb985a"
+      }
+    },
+    {
+      "institution": "西安交通大学",
+      "is985": true,
+      "summary": "1项资料 · 原始文件已归档；插件目录包待整理核对",
+      "download": "./downloads/catalogs/references/xjtu-references-20261113.zip",
+      "catalogs": [
+        {
+          "name": "马克思主义学院博士学位申请实施细则及期刊附件",
+          "edition": "2025-04-20修订",
+          "scope": "仅马克思主义学院博士学位申请",
+          "status": "已取得名单",
+          "currentness": "2025修订原件已核对",
+          "note": "外文相关目录须以研究生院公布为准；保留作者顺位、专家认定等条件。",
+          "sourceUrl": "https://marx.xjtu.edu.cn/__local/4/BF/F0/F6828BDE86E17511E26B0C4A527_5DBB2E64_5B595.pdf"
+        }
+      ],
+      "is211": true,
+      "logo": {
+        "id": "ror-017zhmm22",
+        "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-017zhmm22/b9423588fb8c486eb0fcbc8211639e50/512.webp",
+        "variant": "emblem",
+        "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E8%A5%BF%E5%AE%89%E4%BA%A4%E9%80%9A%E5%A4%A7%E5%AD%A6%20XJTU.svg",
+        "revision": "b9423588fb8c486eb0fcbc8211639e50"
+      }
+    },
+    {
+      "institution": "长安大学",
+      "is985": false,
+      "summary": "1项资料 · 原始文件已归档；插件目录包待整理核对",
+      "download": "./downloads/catalogs/references/chd-references-20261113.zip",
+      "catalogs": [
+        {
+          "name": "学术期刊目录（试行）",
+          "edition": "长大重〔2020〕158号",
+          "scope": "中外文；中文有名单、英文动态规则",
+          "status": "历史名单",
+          "currentness": "2025官网转载；未核最新",
+          "note": "英文对应中科院大类分区；保留发表时版本，不能用现在的分区重判旧论文。",
+          "sourceUrl": "https://qiche.chd.edu.cn/_upload/article/files/3e/71/e01b7a774febad72f18c93fc9fc3/8cdee0d3-471c-4f00-8cdc-bc172e6e0791.pdf"
+        }
+      ],
+      "is211": true,
+      "logo": {
+        "id": "ror-05mxya461",
+        "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-05mxya461/3b7ca75bcf5142409f65f956f9d6779f/512.webp",
+        "variant": "emblem",
+        "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E9%95%BF%E5%AE%89%E5%A4%A7%E5%AD%A6%20CHD.svg",
+        "revision": "3b7ca75bcf5142409f65f956f9d6779f"
+      }
+    },
+    {
+      "institution": "中国传媒大学",
+      "is985": false,
+      "summary": "1项资料 · 已确认官网入口，原件暂不提供下载",
+      "download": "",
+      "catalogs": [
+        {
+          "name": "三类高质量论文期刊和学术会议目录（试行）通知",
+          "edition": "2024通知",
+          "scope": "原通知适用范围",
+          "status": "仅确认附件入口",
+          "currentness": "2024公开通知已核对",
+          "note": "页面正文含图片/附件；完整校本条件及附件未逐项转录。",
+          "sourceUrl": "https://research.cuc.edu.cn/2024/0712/c5668a234852/page.htm"
+        }
+      ],
+      "is211": true,
+      "logo": {
+        "id": "ror-04facbs33",
+        "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-04facbs33/65f47b49695b44b1863b9f5b045a08ff/512.webp?v=black-v1",
+        "variant": "emblem",
+        "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E4%B8%AD%E5%9B%BD%E4%BC%A0%E5%AA%92%E5%A4%A7%E5%AD%A6%20CUC.svg",
+        "revision": "65f47b49695b44b1863b9f5b045a08ff"
+      }
+    },
+    {
+      "institution": "中国地质大学（武汉）",
+      "is985": false,
+      "summary": "1项资料 · 已确认官网入口，原件暂不提供下载",
+      "download": "",
+      "catalogs": [
+        {
+          "name": "各学科期刊分类目录",
+          "edition": "2023版；2026-06-05官方发布页",
+          "scope": "各学科分别适用",
+          "status": "仅确认附件入口",
+          "currentness": "2026公开页列2023版",
+          "note": "原始ZIP尚未取得；不把2026网页日期当2026目录。",
+          "sourceUrl": "https://eniec.cug.edu.cn/info/1029/9421.htm"
+        }
+      ],
+      "is211": true,
+      "logo": {
+        "id": "ror-04gcegc37",
+        "url": "https://www.scansci.com/logo-assets/01/logos/images/ror-04gcegc37/4751c70e1be94d79b11f742ec5936412/345.webp?v=black-v1",
+        "variant": "wordmark",
+        "sourceUrl": "https://www.cug.edu.cn/",
+        "revision": "4751c70e1be94d79b11f742ec5936412"
+      }
+    },
+    {
+      "institution": "中央财经大学",
+      "is985": false,
+      "summary": "1项资料 · 已确认官网入口，原件暂不提供下载",
+      "download": "",
+      "catalogs": [
+        {
+          "name": "期刊目录2026年7月增补通知",
+          "edition": "2025版的2026年7月增补",
+          "scope": "全校目录增补",
+          "status": "公开增补；全表受限",
+          "currentness": "2026-07正文已核对",
+          "note": "索引页2026-11-03与正文2026-07-08不一致；Full/Regular限制；完整目录需校内权限。",
+          "sourceUrl": "https://kyc.cufe.edu.cn/info/1081/5802.htm"
+        }
+      ],
+      "is211": true,
+      "logo": {
+        "id": "ror-008e3hf02",
+        "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-008e3hf02/a7edcb02447942638996ed3c6ee5c03d/512.webp",
+        "variant": "emblem",
+        "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E4%B8%AD%E5%A4%AE%E8%B4%A2%E7%BB%8F%E5%A4%A7%E5%AD%A6%20CUFE.svg",
+        "revision": "a7edcb02447942638996ed3c6ee5c03d"
+      }
+    },
+    {
+      "institution": "华中科技大学",
+      "is985": true,
+      "summary": "1项资料 · 已确认官网入口，原件暂不提供下载",
+      "download": "",
+      "catalogs": [
+        {
+          "name": "期刊分类办法及A—D类目录",
+          "edition": "办法校人〔2008〕28号；表版本未核实",
+          "scope": "原文件适用范围",
+          "status": "附件下载受限",
+          "currentness": "页面2025-12-22；非版年",
+          "note": "目录XLS未取得；不能称2025新目录。",
+          "sourceUrl": "https://design.hust.edu.cn/info/1020/1376.htm"
+        }
+      ],
+      "is211": true,
+      "logo": {
+        "id": "ror-00p991c53",
+        "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-00p991c53/cbe43b2a8ccb420aa5927525e6afeae8/512.webp",
+        "variant": "emblem",
+        "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E5%8D%8E%E4%B8%AD%E7%A7%91%E6%8A%80%E5%A4%A7%E5%AD%A6%20HUST.svg",
+        "revision": "cbe43b2a8ccb420aa5927525e6afeae8"
+      }
+    },
+    {
+      "institution": "南京理工大学",
+      "is985": false,
+      "summary": "1项资料 · 已确认官网入口，原件暂不提供下载",
+      "download": "",
+      "catalogs": [
+        {
+          "name": "高质量学术期刊及会议目录",
+          "edition": "版本未核实",
+          "scope": "待核对",
+          "status": "附件返回网页；未取得名单",
+          "currentness": "仅搜索线索及下载状态",
+          "note": "原PDF地址未返回PDF，不参与完整目录统计。",
+          "sourceUrl": "https://gs.njust.edu.cn/_upload/article/files/8b/18/e894ec9c42ee9ee3853116c990a2/7c3ff327-760c-4ea7-a728-3aaa1b6a0161.pdf"
+        }
+      ],
+      "is211": true,
+      "logo": {
+        "id": "ror-00xp9wg62",
+        "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-00xp9wg62/eb79ef7b6cd64bd0bdccde0ab82232cb/512.webp",
+        "variant": "emblem",
+        "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E5%8D%97%E4%BA%AC%E7%90%86%E5%B7%A5%E5%A4%A7%E5%AD%A6%20NJUST.svg",
+        "revision": "eb79ef7b6cd64bd0bdccde0ab82232cb"
+      }
+    },
+    {
+      "institution": "湖南大学",
+      "is985": true,
+      "summary": "1项资料 · 已确认官网入口，原件暂不提供下载",
+      "download": "",
+      "catalogs": [
+        {
+          "name": "半导体学院高水平期刊目录",
+          "edition": "2026-03-20附件",
+          "scope": "仅半导体学院（集成电路学院）",
+          "status": "附件下载受限",
+          "currentness": "2026-03-24公开页已核对",
+          "note": "下载返回安全校验页，不计为取得PDF。",
+          "sourceUrl": "https://sic.hnu.edu.cn/info/1128/2320.htm"
+        }
+      ],
+      "is211": true,
+      "logo": {
+        "id": "ror-05htk5m33",
+        "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-05htk5m33/e2a6f7329cd843c4bbdc5c9be57de65e/512.webp",
+        "variant": "emblem",
+        "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E6%B9%96%E5%8D%97%E5%A4%A7%E5%AD%A6%20HNU.svg",
+        "revision": "e2a6f7329cd843c4bbdc5c9be57de65e"
+      }
+    },
+    {
+      "institution": "苏州大学",
+      "is985": false,
+      "summary": "1项资料 · 已确认官网入口，原件暂不提供下载",
+      "download": "",
+      "catalogs": [
+        {
+          "name": "人文社会科学高质量期刊推荐目录",
+          "edition": "2025-12-03目录入口",
+          "scope": "人文社会科学",
+          "status": "需统一身份认证",
+          "currentness": "仅确认目录存在",
+          "note": "未取得完整名单，不沿用2017表冒充新表。",
+          "sourceUrl": "https://skc.suda.edu.cn/_s213/7509/list.psp"
+        }
+      ],
+      "is211": true,
+      "logo": {
+        "id": "ror-05t8y2r12",
+        "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-05t8y2r12/05eacb33be064459a3feb4e09df6b3a1/512.webp",
+        "variant": "emblem",
+        "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E8%8B%8F%E5%B7%9E%E5%A4%A7%E5%AD%A6%20SUDA.svg",
+        "revision": "05eacb33be064459a3feb4e09df6b3a1"
+      }
+    },
+    {
+      "institution": "西安电子科技大学",
+      "is985": false,
+      "summary": "1项资料 · 已确认官网入口，原件暂不提供下载",
+      "download": "",
+      "catalogs": [
+        {
+          "name": "研究生学术成果相关期刊与会议目录",
+          "edition": "2025版（西电学科〔2025〕1号）",
+          "scope": "分学科、研究生学术成果认定",
+          "status": "已取得名单",
+          "currentness": "2026通知确认适用",
+          "note": "2025-01-01起正式发表的论文适用；此前按历史版本。原PDF含个人水印，仅供本地核验，不作公开配图。",
+          "sourceUrl": "https://gr.xidian.edu.cn/info/1044/18524.htm"
+        }
+      ],
+      "is211": true,
+      "logo": {
+        "id": "ror-05s92vm98",
+        "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-05s92vm98/4f49b0a7079641fdbd45c4cbdc5ddf09/512.webp",
+        "variant": "emblem",
+        "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E8%A5%BF%E5%AE%89%E7%94%B5%E5%AD%90%E7%A7%91%E6%8A%80%E5%A4%A7%E5%AD%A6%20XDU.svg",
+        "revision": "4f49b0a7079641fdbd45c4cbdc5ddf09"
+      }
+    }
+  ]
+}

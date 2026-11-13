@@ -1,3 +1,6 @@
 data/official_apc_prices.json
 __pycache__/
+.local/
+.playwright-cli/
+output/
 
