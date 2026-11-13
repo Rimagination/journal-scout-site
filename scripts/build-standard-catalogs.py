@@ -221,6 +221,15 @@ def template(target):
     sheet = book.active
     sheet.title = '目录'
     sheet.append(['名称', '等级', '类型'])
+    for row in [
+        ['Nature', 'A（示例）', '期刊'],
+        ['Science', 'B（示例）', '期刊'],
+        ['IEEE/CVF Computer Vision and Pattern Recognition Conference', 'A+（示例）', '会议']
+    ]:
+        append_text(sheet, row)
+        for cell in sheet[sheet.max_row]:
+            cell.fill = PatternFill('solid', fgColor='F2F7F3')
+        sheet.row_dimensions[sheet.max_row].height = 24
     sheet.freeze_panes = 'A2'
     sheet.row_dimensions[1].height = 28
     for cell in sheet[1]:
@@ -230,7 +239,7 @@ def template(target):
     for column, width in [('A', 65), ('B', 18), ('C', 14)]:
         sheet.column_dimensions[column].width = width
         sheet.column_dimensions[column].number_format = '@'
-    sheet['A1'].comment = Comment('每行填写一个期刊或会议的全称，等级照原目录填写，类型从下拉框选择。', 'Journal Scout')
+    sheet['A1'].comment = Comment('每行填写一个期刊或会议全称，类型从下拉框选择。下方三行仅演示格式，等级不代表高校实际认定；请替换或删除示例后上传。', 'Journal Scout')
     types = DataValidation(type='list', formula1='"期刊,会议"', allow_blank=False)
     types.errorTitle = '请选择类型'
     types.error = '请选择“期刊”或“会议”。'

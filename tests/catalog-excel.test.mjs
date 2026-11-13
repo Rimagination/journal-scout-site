@@ -23,15 +23,17 @@ test('Excel export preserves exact values, metadata and leading-zero ISSNs',()=>
   const literal=excel.read(excel.write(metadata,[{...rows[0],grade:'=A+',notes:'=1+2'}],xlsx),xlsx);
   assert.equal(literal.entries[0].grade,'=A+');assert.equal(literal.entries[0].notes,'=1+2');
 });
-test('the fill-in template has one sheet and only three required columns',async()=>{
+test('the three-column template has three clearly marked examples, including a conference',async()=>{
   const file=await readFile(new URL('../assets/templates/catalog-upload-v1.xlsx',import.meta.url));
   const book=xlsx.read(file,{type:'buffer'});
   assert.deepEqual(book.SheetNames,['目录']);
   const table=xlsx.utils.sheet_to_json(book.Sheets['目录'],{header:1});
-  assert.equal(table.length,1);assert.deepEqual(table[0],['名称','等级','类型']);
-  book.Sheets['目录']=xlsx.utils.aoa_to_sheet([...table,['Nature','A','期刊'],['IEEE/CVF Computer Vision and Pattern Recognition Conference','A','会议']]);
+  assert.equal(table.length,4);assert.deepEqual(table[0],['名称','等级','类型']);
+  assert.equal(table.slice(1).filter(row=>row[2]==='期刊').length,2);
+  assert.equal(table.slice(1).filter(row=>row[2]==='会议').length,1);
+  assert.ok(table.slice(1).every(row=>row[1].includes('示例')));
   const checked=excel.read(xlsx.write(book,{type:'array',bookType:'xlsx',compression:true}),xlsx);
-  assert.deepEqual(checked.errors,[]);assert.equal(checked.entries.length,2);assert.deepEqual(checked.metadata,{});
+  assert.deepEqual(checked.errors,[]);assert.equal(checked.entries.length,3);assert.deepEqual(checked.metadata,{});
 });
 test('renamed PDF/text, missing headers, merged cells, formulas and excessive rows are refused',()=>{
   assert.throws(()=>excel.read(new TextEncoder().encode('%PDF-1.7 This is not a spreadsheet').buffer,xlsx),/xlsx|Excel/);

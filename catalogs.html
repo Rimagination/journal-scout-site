@@ -58,7 +58,7 @@
           <label>生效日期（选填）<input name="effectiveDate" type="date"></label>
         </div>
         <details class="catalog-extra"><summary>适用条件与补充说明</summary><label>规则说明<textarea name="notes" maxlength="3000" rows="3" placeholder="如仅适用于 Full paper、投稿时间限制、过渡期规则。这里的文字只作说明。"></textarea></label></details>
-        <div class="catalog-file-box"><label for="catalogFile"><strong>2. 选择期刊 / 会议名单（Excel）</strong><span>模板只需填写名称、等级、类型三列；每行一个条目。最多 5,000 行、1 MB。</span></label><input id="catalogFile" type="file" accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" required><a href="./assets/templates/catalog-upload-v1.xlsx?v=20261113-simple-template" download>下载三列 Excel 模板 ↓</a></div>
+        <div class="catalog-file-box"><label for="catalogFile"><strong>2. 选择期刊 / 会议名单（Excel）</strong><span>模板含 3 行示例，请替换或删除后上传。只填名称、等级、类型三列；最多 5,000 行、1 MB。</span></label><input id="catalogFile" type="file" accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" required><a href="./assets/templates/catalog-upload-v1.xlsx?v=20261113-three-examples" download>下载三列 Excel 模板 ↓</a></div>
         <div class="catalog-form-actions"><button id="previewCatalog" class="catalog-primary" type="button">检查并预览</button><button id="downloadLocalCatalog" class="catalog-button" type="button" disabled>下载标准 Excel ↓</button><button id="submitCatalog" class="catalog-button" type="submit" disabled hidden>分享并提交审核</button><span id="uploadStatus" class="catalog-subtle" role="status" aria-live="polite"></span></div>
       </form>
       <div id="uploadPreview" class="catalog-preview" hidden></div>
