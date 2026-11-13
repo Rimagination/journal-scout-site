@@ -285,7 +285,7 @@
             <p>在文献库中查看、筛选和保存期刊指标。</p>
             <details class="extension-help">
               <summary aria-label="查看 Zotero 插件兼容与升级说明" title="Zotero 插件兼容与升级"><span aria-hidden="true">!</span></summary>
-              <div class="extension-help__content"><h3>兼容与升级说明</h3><p>安装清单声明支持 Zotero 7–10；已在 10.0.8 实测，7–9 尚未逐版测试。Zotero 6 不支持。</p><p>v0.1.0 / v0.1.1 可升级至 v0.1.2，新增 Excel 高校目录导入与学科分区显示，并修复侧栏重复刷新闪烁。</p></div>
+              <div class="extension-help__content"><h3>兼容与升级说明</h3><p>安装清单声明支持 Zotero 7–10；已在 10.0.8 实测，7–9 尚未逐版测试。Zotero 6 不支持。</p><p>v0.1.0–v0.1.2 可升级至 v0.1.3，修复重复期刊、刊名写法差异和旧缓存导致的漏显示；保留 Excel 高校目录与学科分区显示。</p></div>
             </details>
           </div>
         </div>
@@ -304,8 +304,8 @@
             <button class="install-option__toggle" id="zotero-community-toggle" type="button" aria-label="查看 Zotero 中文社区下载与安装步骤" aria-expanded="false" aria-controls="zotero-install-details"><span class="install-option__hint">查看步骤</span><span class="install-option__chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span></button>
           </div>
           <div class="install-option install-option--offline">
-            <span class="install-option__copy"><strong>官网安装包</strong><span>XPI · v0.1.2</span></span>
-            <a class="install-option__action" href="./downloads/journal-scout-zotero-0.1.2.xpi" download="journal-scout-zotero-0.1.2.xpi">下载 XPI <svg class="link-icon lucide lucide-download" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="./assets/icons/lucide-download.svg#download"></use></svg></a>
+            <span class="install-option__copy"><strong>官网安装包</strong><span>XPI · v0.1.3</span></span>
+            <a class="install-option__action" href="./downloads/journal-scout-zotero-0.1.3.xpi" download="journal-scout-zotero-0.1.3.xpi">下载 XPI <svg class="link-icon lucide lucide-download" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="./assets/icons/lucide-download.svg#download"></use></svg></a>
             <button class="install-option__toggle" id="zotero-download-toggle" type="button" aria-label="查看 Zotero 官网下载与安装步骤" aria-expanded="false" aria-controls="zotero-install-details"><span class="install-option__hint">查看步骤</span><span class="install-option__chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span></button>
           </div>
         </div>
@@ -355,13 +355,13 @@
             <details class="zotero-guide-more">
               <summary>数据来源、保存与隐私</summary>
               <p>插件以刊名或 ISSN 查询 ScanSci，不发送论文全文或附件。会议按名称匹配 CCF 目录；商科指标采用内置 ABS / AJG、UTD24、FMS 和 ABDC 名单。无法确认的指标保留为空。</p>
-              <p>确认结果写入 Extra 的插件区块及插件管理的标签，保留原有内容和用户标签。条目更改可能随 Zotero 同步，也可能出现在导出文件中；同一期刊可复用本地缓存。</p>
+              <p>确认结果写入 Extra 的插件区块及插件管理的标签，保留原有内容和用户标签。条目更改可能随 Zotero 同步，也可能出现在导出文件中；同一期刊可复用本地缓存。遇到同名异刊且条目缺少 ISSN 时，使用该文献 DOI 向 Crossref 核对刊号，不上传全文或附件。</p>
               <p>插件由 ScanSci 提供，Zotero 标识用于指示适用的软件。</p>
             </details>
             <details class="zotero-guide-more">
               <summary>数据与插件更新</summary>
               <p>网站发布数据版本后，插件错峰更新当前查看的文献。插件版本由 Zotero 原生更新机制管理。</p>
-              <p>立即检查新版：在「工具 → 插件」的齿轮菜单中选择「检查更新 / Check for Updates」；插件详情中的自动更新可设为 On。v0.1.0 / v0.1.1 可直接升级至 v0.1.2。更新失败时，可下载本页 XPI 从文件安装。</p>
+              <p>立即检查新版：在「工具 → 插件」的齿轮菜单中选择「检查更新 / Check for Updates」；插件详情中的自动更新可设为 On。v0.1.0–v0.1.2 可直接升级至 v0.1.3。更新失败时，可下载本页 XPI 从文件安装。</p>
             </details>
           </section>
         </section>
@@ -394,7 +394,8 @@
       </ol>
       <h3 class="release-history__product">Zotero 插件</h3>
       <ol class="release-history__list">
-        <li><div><strong>v0.1.2</strong><small>2026.11.13 · 当前版本</small></div><p>补齐官网安装包中的高校与自定义目录模块：在侧栏「显示设置」或「设置 → Journal Scout」导入标准 Excel，通过核验后加入上方标签列表，统一勾选；目录只在本机保存和匹配。JCR、中科院与新锐可选择显示学科及对应分区。修复侧栏因重复渲染而清空重建的问题，保留当前设置页和文件选择状态，并合并同一条目的并发查询。保留 IF5、独立数值筛选和原生自动更新；v0.1.1 用户可检查更新升级。</p></li>
+        <li><div><strong>v0.1.3</strong><small>2026.11.14 · 当前版本</small></div><p>核验并整理重复期刊、印刷与电子 ISSN 和刊名别名，补齐学科分级并纠正错误刊号。旧缓存随当前查看文献自动重新核对；真正同名期刊按 ISSN、必要时按文献 DOI 区分。同刊查询共享缓存，避免重复请求；后台指标更新保留正在操作的显示设置。保留 Excel 自定义目录、数值筛选与原生自动更新。</p></li>
+        <li><div><strong>v0.1.2</strong><small>2026.11.13</small></div><p>补齐官网安装包中的高校与自定义目录模块：在侧栏「显示设置」或「设置 → Journal Scout」导入标准 Excel，通过核验后加入上方标签列表，统一勾选；目录只在本机保存和匹配。JCR、中科院与新锐可选择显示学科及对应分区。修复侧栏因重复渲染而清空重建的问题，保留当前设置页和文件选择状态，并合并同一条目的并发查询。保留 IF5、独立数值筛选和原生自动更新；v0.1.1 用户可检查更新升级。</p></li>
         <li><div><strong>v0.1.1</strong><small>2026.11.12</small></div><p>同版本官网修订：新增五年影响因子 IF5 的显示、开关、归档和数值比较；已安装同版本需覆盖安装官网 XPI。高级搜索新增独立的 Journal Scout 指标菜单，影响因子与五年影响因子 IF5 支持完整小数比较、组合条件及保存搜索。修复 IEEE 重复 ISSN、电子 ISSN 缺失时的匹配，补全 CVPR、NeurIPS 论文集名称识别，并按需重新核对旧缓存。侧栏采用指标清单布局，支持逐项选择显示指标、列表列与侧边栏模式切换，以及彩色圆角配色选框；文字间距与其他设置项一致。将「补全文库期刊指标」移入设置，运行时显示进度与取消按钮。保留完整归档、兼容原生标签筛选及数据版本更新提示，接入 Zotero 原生自动更新。v0.1.0 用户可下载安装新版升级。</p></li>
         <li><div><strong>v0.1.0</strong><small>2026.11.12</small></div><p>发布 Zotero 插件，在文献列表和右侧面板显示期刊指标及 CCF 会议等级，将确认的信息保存到条目，支持本地复用和随 Zotero 同步。</p></li>
       </ol>
