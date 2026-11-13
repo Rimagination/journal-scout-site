@@ -101,6 +101,61 @@ body {
   border-radius: 4px;
 }
 
+.scansci-global-nav .product-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: none;
+}
+
+.scansci-global-nav .product-links > a,
+.scansci-global-nav > .extension-back {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 34px;
+  padding: 7px 10px;
+  border: 1px solid #c8e1d8;
+  border-radius: 10px;
+  background: #f4faf7;
+  color: #17635f;
+  font-family: "DM Sans", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  font-style: normal;
+  line-height: 18px;
+  letter-spacing: 0;
+  text-decoration: none;
+  white-space: nowrap;
+  box-shadow: none;
+}
+
+.scansci-global-nav .product-links > a:is(:hover, :focus-visible, [aria-current="page"]),
+.scansci-global-nav > .extension-back:is(:hover, :focus-visible) {
+  border-color: #6da996;
+  background: #eaf6f0;
+  color: #0b5148;
+  outline: none;
+}
+
+.scansci-global-nav .product-links > a svg,
+.scansci-global-nav > .extension-back svg {
+  width: 15px;
+  height: 15px;
+  flex: none;
+}
+
+@media (max-width: 520px) {
+  .scansci-global-nav .product-brand { display: none; }
+  .scansci-global-nav .product-links { gap: 6px; }
+}
+
+@media (max-width: 360px) {
+  .scansci-global-nav { gap: 8px; padding-inline: 12px; }
+  .scansci-global-nav .brand { gap: 8px; font-size: 17px; }
+}
+
 @media (max-width: 720px) {
   :root { --scansci-side-gutter: 18px; }
   .product-brand { font-size: 13px; }

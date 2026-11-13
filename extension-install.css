@@ -1,17 +1,8 @@
-.extension-install-link, .extension-back { display: inline-flex; align-items: center; gap: 5px; color: #17635f; font-size: 12px; font-weight: 700; line-height: 1; text-decoration: none; white-space: nowrap; }
-.extension-install-link { flex: none; padding: 7px 9px; border: 1px solid #c8e1d8; border-radius: 8px; background: #f4faf7; }
-.extension-install-link:hover { border-color: #86bcae; background: #eaf6f0; }
-.product-links { display: flex; align-items: center; gap: 6px; flex: none; }
-.updates-nav-link { padding: 7px 3px; color: #61776b; font-size: 12px; font-weight: 600; line-height: 1; text-decoration: none; white-space: nowrap; }
-.updates-nav-link:hover { color: #17635f; }
 .extension-install-link svg, .extension-primary svg, .extension-download svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.extension-install-link:focus-visible, .updates-nav-link:focus-visible, .extension-back:focus-visible, .extension-primary:focus-visible, .extension-download:focus-visible, .browser-guide:focus-visible, .extension-help a:focus-visible { outline: 1px solid currentColor; outline-offset: -1px; }
+.extension-primary:focus-visible, .extension-download:focus-visible, .browser-guide:focus-visible, .extension-help a:focus-visible { outline: 1px solid currentColor; outline-offset: -1px; }
 
 .extension-page { background: #f7f9f6; color: #18302f; font-family: var(--font-sans); }
 .install-page { --font-sans: "Times New Roman", SimSun, "宋体", "Songti SC", serif; --font-display: var(--font-sans); }
-.install-page .scansci-global-nav { font-family: var(--font-sans); }
-.extension-back { padding: 8px; }
-.extension-back:hover { color: #0b443e; }
 .extension-main { width: min(1100px, calc(100% - 48px)); margin: 0 auto; }
 .extension-section-nav { display: flex; align-items: center; gap: 8px; border-bottom: 1px solid #dce7dc; }
 .extension-section-nav a { display: block; padding: 16px 14px 14px; border-bottom: 2px solid transparent; color: #6c8075; font-size: 14px; font-weight: 700; text-decoration: none; }
@@ -226,7 +217,7 @@
   .extension-steps > li > strong, .zotero-install-entry__copy strong, .release-history__list strong) {
   font-size: var(--type-item-title); line-height: 1.4;
 }
-.extension-install-page :is(.extension-section-nav a, .extension-back, .extension-intro,
+.extension-install-page :is(.extension-section-nav a, .extension-intro,
   .extension-primary, .extension-download > span, .install-option__action,
   .extension-steps li > span, .install-offline-update, .extension-note, .extension-help p,
   .extension-help a, .zotero-install-entry__copy p, .zotero-guide-info p, .extension-showcase-card figcaption strong,
@@ -307,14 +298,5 @@
   .site-coverage__table { min-width: 460px; table-layout: fixed; }
   .site-coverage__table thead th:first-child { width: 120px; }
   .site-coverage__table thead th:nth-child(2) { width: 170px; }
-}
-@media (max-width: 420px) {
-  .extension-install-link { padding: 8px; }
-}
-@media (max-width: 520px) {
-  .scansci-global-nav:has(.product-links) .product-brand { display: none; }
-  .product-links { gap: 4px; }
-  .product-links .extension-install-link { padding: 7px; font-size: 11px; }
-  .product-links .updates-nav-link { font-size: 11px; }
 }
 @media (prefers-reduced-motion: reduce) { .browser-guide, .browser-chevron svg, .install-option, .install-option__chevron svg { transition: none; } }

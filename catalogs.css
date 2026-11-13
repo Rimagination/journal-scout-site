@@ -1,6 +1,4 @@
 .catalogs-page { background:#fdfefd; color:#1b3b34; font-family:var(--font-sans); font-size:14px; font-weight:400; }
-.catalogs-page .product-links { display:flex; gap:18px; align-items:center; }
-.catalogs-page .product-links a { color:#276d5c; text-decoration:none; font-size:13px; }
 .catalog-shell { margin:0 auto; padding:48px var(--scansci-side-gutter) 72px; }
 .catalog-heading,.catalog-section-head,.catalog-toolbar,.catalog-form-actions { display:flex; justify-content:space-between; align-items:center; gap:20px; }
 .catalog-heading { margin-bottom:24px; }
