@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { access, readFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 
-test('update-check metadata matches the displayed manual version and both packages', async () => {
+test('update-check metadata matches Chromium/Safari releases and the separately versioned signed Firefox package', async () => {
   const html = await readFile(new URL('../extension-install.html', import.meta.url), 'utf8');
   const version = html.match(/<meta name="journal-scout-manual-version" content="([\d.]+)"/i)?.[1];
   assert.match(version || '', /^\d+(?:\.\d+){1,3}$/);
@@ -11,9 +11,12 @@ test('update-check metadata matches the displayed manual version and both packag
   const coverage = JSON.parse(await readFile(new URL('../data/extension-site-coverage.json', import.meta.url), 'utf8'));
   assert.equal(coverage.manualVersion, version, 'coverage data matches the published manual version');
   assert.equal((html.match(new RegExp(`downloads/scansci-chromium-${version.replaceAll('.', '\\.')}\\.zip`, 'g')) || []).length, 2);
-  assert.ok(html.includes(`downloads/journal-scout-firefox-signed-${version}.xpi`));
+  const firefoxVersion = html.match(/<meta name="journal-scout-firefox-version" content="([\d.]+)"/i)?.[1];
+  assert.match(firefoxVersion || '', /^\d+(?:\.\d+){1,3}$/);
+  assert.ok(html.includes(`Mozilla 已签名 · v${firefoxVersion}`));
+  assert.ok(html.includes(`downloads/journal-scout-firefox-signed-${firefoxVersion}.xpi`));
   assert.ok(html.includes(`downloads/journal-scout-safari-mac-test-${version}.zip`));
-  for (const file of [`scansci-chromium-${version}.zip`, `journal-scout-firefox-signed-${version}.xpi`, `journal-scout-safari-mac-test-${version}.zip`]) {
+  for (const file of [`scansci-chromium-${version}.zip`, `journal-scout-firefox-signed-${firefoxVersion}.xpi`, `journal-scout-safari-mac-test-${version}.zip`]) {
     await access(new URL(`../downloads/${file}`, import.meta.url));
   }
   const zoteroVersion = html.match(/downloads\/journal-scout-zotero-([\d.]+)\.xpi/)?.[1];

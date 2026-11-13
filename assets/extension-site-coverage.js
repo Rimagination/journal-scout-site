@@ -101,7 +101,7 @@
     if (loading) return loading;
     status.textContent = '正在加载网站目录…';
     retry.hidden = true;
-    loading = fetch('./data/extension-site-coverage.json?v=20261113-v0102')
+    loading = fetch('./data/extension-site-coverage.json?v=20261113-v0111')
       .then(response => {
         if (!response.ok) throw new Error('Coverage data unavailable');
         return response.json();

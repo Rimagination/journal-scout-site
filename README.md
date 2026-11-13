@@ -54,7 +54,7 @@ manifest and implementation; update the table's displayed version and the covera
 cache key together. Do not add unreleased sites as covered.
 Users switching between store and offline installations should disable the old installation
 to avoid duplicate badges; settings do not automatically transfer between separate extension
-IDs. The Firefox package is currently unsigned and is offered only for temporary installation.
+IDs. The current website release is 0.1.11 for Chromium and Safari test resources; Firefox remains on the signed 0.1.10.2 package until a newer signed artifact is available. Each Firefox download explicitly states its version.
 
 `zotero.html` redirects to the Zotero section of `extension-install.html`, which contains
 the Zotero installation, compatibility, features and data guidance. Its public XPI is
