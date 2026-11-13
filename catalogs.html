@@ -6,7 +6,7 @@
   <link rel="icon" type="image/webp" href="./assets/journal-logo-home-288.webp">
   <link rel="stylesheet" href="./styles.css?v=20261113-if5">
   <link rel="stylesheet" href="./extension-install.css?v=20261112-nav">
-  <link rel="stylesheet" href="./catalogs.css?v=20261113-books">
+  <link rel="stylesheet" href="./catalogs.css?v=20261113-standard-catalogs">
   <link rel="stylesheet" href="./assets/link-icons.css?v=20261113-lucide">
 </head>
 <body class="with-global-nav catalogs-page" data-online-catalogs="false">
@@ -15,8 +15,8 @@
     <nav class="product-links" aria-label="Journal Scout 导航"><a href="./extension-install.html">插件下载</a><a href="./index.html">返回查询 <svg class="link-icon lucide lucide-arrow-up-right" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="./assets/icons/lucide-arrow-up-right.svg#arrow-up-right"></use></svg></a></nav>
   </header>
   <main class="catalog-shell">
-    <header class="catalog-heading"><div><p class="catalog-kicker">JOURNAL SCOUT / 资料库</p><h1>高校与自定义目录</h1><p class="catalog-subtle">查阅学校资料，下载原始文件，制作自己的目录包。</p></div><button id="openUpload" class="catalog-primary" type="button">＋ 制作自定义目录</button></header>
-    <div class="catalog-toolbar"><label class="catalog-search"><span class="sr-only">搜索学校或目录</span><input id="catalogSearch" type="search" placeholder="搜索学校、学院或目录名称"><button id="searchCatalogs" type="button">搜索</button></label><span id="selectedCount" class="catalog-subtle">已启用 0 个</span></div>
+    <header class="catalog-heading"><div><p class="catalog-kicker">JOURNAL SCOUT / 资料库</p><h1>高校与自定义目录</h1><p class="catalog-subtle">选择学校目录，下载标准格式目录包，也可以制作自己的目录。</p></div></header>
+    <div class="catalog-toolbar"><div class="catalog-search" role="search"><label class="sr-only" for="catalogSearch">搜索学校或目录</label><input id="catalogSearch" type="search" placeholder="搜索学校、学院或目录名称"><button id="searchCatalogs" type="button">搜索</button></div><button id="openUpload" class="catalog-primary" type="button">＋ 制作自定义目录</button><span id="selectedCount" class="catalog-subtle">已启用 0 个</span></div>
     <div class="catalog-library-layout">
       <aside class="catalog-sidebar">
         <p class="catalog-sidebar-label">按高校浏览</p>
@@ -29,7 +29,7 @@
         <p class="catalog-sidebar-note">211 分类不重复列出 985 高校。<br>各目录保留原版本与适用范围。</p>
       </aside>
       <div class="catalog-library-content">
-    <section aria-labelledby="referenceHeading"><div class="catalog-section-head"><div><p class="catalog-kicker">UNIVERSITY COLLECTION</p><h2 id="referenceHeading">全部目录</h2><p class="catalog-subtle">原始资料供查阅；可导入的目录包单独列出。</p></div><span id="referenceTotal" class="catalog-subtle"></span></div><div id="referenceList" class="catalog-book-list" aria-live="polite"></div><button id="moreReferences" class="catalog-button" type="button" hidden>加载更多目录</button><p id="referenceStatus" class="catalog-subtle" role="status"></p></section>
+    <section aria-labelledby="referenceHeading"><div class="catalog-section-head"><div><p class="catalog-kicker">UNIVERSITY COLLECTION</p><h2 id="referenceHeading">全部目录</h2><p class="catalog-subtle">下载包含标准表格与 JSON 目录；尚未整理好的目录暂不开放下载。</p></div><span id="referenceTotal" class="catalog-subtle"></span></div><div id="referenceList" class="catalog-book-list" aria-live="polite"></div><button id="moreReferences" class="catalog-button" type="button" hidden>加载更多目录</button><p id="referenceStatus" class="catalog-subtle" role="status"></p></section>
     <section id="onlineCatalogs" hidden aria-label="可启用的插件目录">
     <div class="catalog-section-head"><h2>可启用的插件目录</h2></div>
     <p id="catalogStatus" class="catalog-status" role="status" aria-live="polite">正在读取目录…</p>
@@ -65,7 +65,7 @@
   </main>
   <script src="./assets/link-icons.js?v=20261113-lucide"></script>
   <script src="./catalogs-core.js?v=1"></script>
-  <script src="./catalogs-library.js?v=20261113-lucide"></script>
+  <script src="./catalogs-library.js?v=20261113-standard-catalogs"></script>
   <script src="./catalogs-page.js?v=20261113-lucide"></script>
 </body>
 </html>

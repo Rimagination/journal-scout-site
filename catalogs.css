@@ -14,7 +14,9 @@
 .catalog-source-row { padding:14px 0; border-bottom:1px solid #e2eae4; }
 .catalog-source-row:last-child { border-bottom:0; }
 .catalog-source-row p { margin:7px 0; line-height:1.65; }
-.catalog-toolbar { padding-bottom:32px; margin-bottom:0; border-bottom:1px solid #e2eae4; }
+.catalog-toolbar { display:grid; grid-template-columns:minmax(0,1fr) auto; align-items:center; padding-bottom:32px; margin-bottom:0; border-bottom:1px solid #e2eae4; }
+.catalog-toolbar #selectedCount { grid-column:1/-1; }
+#openUpload { height:46px; padding:0 18px; white-space:nowrap; }
 #referenceStatus { margin-bottom:40px; }
 .catalog-subtle,.catalog-status,.catalog-footnote { color:#637b72; font-size:13px; }
 .catalog-status { min-height:22px; }
@@ -23,10 +25,12 @@
 .catalog-button,.catalog-primary,.catalog-search button { border:1px solid #c3d8ce; border-radius:9px; padding:10px 16px; background:white; color:#176650; font-weight:600; text-decoration:none; }
 .catalog-primary { background:#176650; color:white; border-color:#176650; }
 .catalogs-page input:focus-visible,.catalogs-page button:focus-visible,.catalogs-page a:focus-visible,.catalogs-page textarea:focus-visible { outline:2px solid #176650; outline-offset:3px; }
-.catalog-search { display:flex; background:#f2f6f3; border:1px solid transparent; border-radius:12px; padding:7px; width:min(100%,760px); gap:8px; }
-.catalog-search:focus-within { border-color:#71ad96; }
-.catalog-search input { flex:1; min-width:0; padding:8px 10px; border:0; background:transparent; font:inherit; color:inherit; }
-.catalog-search button { padding:7px 18px; background:#edf5ef; border:0; }
+.catalog-search { display:flex; height:46px; width:100%; padding:0; background:white; border:1px solid #cedcd3; border-radius:8px; box-shadow:none; overflow:hidden; }
+.catalog-search:focus-within { border-color:#176650; }
+.catalog-search input { flex:1; min-width:0; height:100%; padding:0 14px; border:0; border-radius:0; background:transparent; font:inherit; color:inherit; box-shadow:none; }
+.catalogs-page .catalog-search input:focus,.catalogs-page .catalog-search input:focus-visible { outline:none; border:0; box-shadow:none; }
+.catalog-search button { align-self:stretch; padding:0 18px; border:0; border-radius:0; background:transparent; }
+.catalog-search button:focus-visible { outline-offset:-4px; }
 .catalog-list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; margin:22px 0; }
 .catalog-card { border:1px solid #d5e2da; border-radius:14px; background:white; padding:24px; position:relative; }
 .catalog-card:has(input:checked) { border-color:#71ad96; background:#f1f9f4; }
@@ -97,6 +101,7 @@
 .catalog-book h3 { font-family:var(--font-display); font-size:21px; line-height:1.5; font-weight:600; margin:0 0 12px; overflow-wrap:anywhere; }
 .catalog-book-meta { display:flex; flex-wrap:wrap; align-items:center; gap:10px; color:#63776d; font-size:13px; line-height:1.6; }
 .catalog-history-badge { font-size:11px; background:#f5eee1; color:#967039; border-radius:4px; padding:1px 6px; white-space:nowrap; }
+.catalog-pending { color:#8a968e; font-size:12px; }
 .catalog-book-scope { font-size:14px; color:#61736a; line-height:1.7; margin:12px 0 16px; }
 .catalog-book-actions { display:flex; flex-wrap:wrap; align-items:center; gap:12px 16px; }
 .catalog-book-actions .catalog-button { font-size:13px; font-weight:500; padding:8px 12px; border-radius:7px; background:#f6faf7; }
@@ -109,6 +114,10 @@
 @media(max-width:950px) { .catalog-library-layout { grid-template-columns:155px minmax(0,1fr); gap:26px; } .catalog-sidebar { padding-right:16px; } .catalog-book { gap:24px; } #referenceTotal { white-space:normal; text-align:right; max-width:110px; } }
 @media(max-width:720px) { .catalog-shell { padding:28px 18px; } .catalog-heading { align-items:flex-start; } .catalog-heading h1 { font-size:25px; } .catalog-heading { flex-direction:column; gap:18px; } .catalog-list,.catalog-form-grid { grid-template-columns:1fr; } .catalog-upload { padding:20px 16px; } .catalog-toolbar { gap:12px; flex-wrap:wrap; } .catalog-wide { grid-column:auto; } .catalog-card { padding:20px; } }
 @media(max-width:720px) {
+  .catalog-toolbar { gap:10px; }
+  #openUpload { padding:0 11px; font-size:12px; }
+  .catalog-search input { padding:0 10px; font-size:12px; }
+  .catalog-search button { padding:0 10px; font-size:12px; }
   .catalog-library-layout { display:block; }
   .catalog-sidebar { border:0; padding:20px 0 0; }
   .catalog-sidebar-label,.catalog-sidebar-note { display:none; }

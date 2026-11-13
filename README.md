@@ -17,7 +17,7 @@ The public compact APC catalog lives in `data/official_apc_issns.json`,
 GitHub Actions workflow refreshes it from publisher price lists every Monday and
 commits changed runtime assets, which triggers the legacy GitHub Pages deployment.
 
-The university/custom catalog library is `catalogs.html`: static school references,
+The university/custom catalog library is `catalogs.html`: standardized school catalogs,
 school category browsing, and local XLSX/CSV preview and package download without
 login. Emblems reuse published ScanSci Logos WebP assets. Online submissions and
 subscriptions are disabled until the authenticated API and migration are deployed;
