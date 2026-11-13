@@ -1,7 +1,7 @@
 .catalogs-page { background:#fdfefd; color:#1b3b34; font-family:var(--font-sans); font-size:14px; font-weight:400; }
 .catalogs-page .product-links { display:flex; gap:18px; align-items:center; }
 .catalogs-page .product-links a { color:#276d5c; text-decoration:none; font-size:13px; }
-.catalog-shell { max-width:1280px; margin:0 auto; padding:48px 36px 72px; }
+.catalog-shell { margin:0 auto; padding:48px var(--scansci-side-gutter) 72px; }
 .catalog-heading,.catalog-section-head,.catalog-toolbar,.catalog-form-actions { display:flex; justify-content:space-between; align-items:center; gap:20px; }
 .catalog-heading { margin-bottom:24px; }
 .catalog-heading h1 { font-family:var(--font-display); font-size:32px; line-height:1.35; margin:8px 0 12px; }
@@ -114,7 +114,7 @@
 .catalog-book details p { margin:8px 0 0; }
 .catalog-book-list .catalog-empty { margin:32px 0; }
 @media(max-width:950px) { .catalog-library-layout { grid-template-columns:155px minmax(0,1fr); gap:26px; } .catalog-sidebar { padding-right:16px; } .catalog-book { gap:24px; } #referenceTotal { white-space:normal; text-align:right; max-width:110px; } }
-@media(max-width:720px) { .catalog-shell { padding:28px 18px; } .catalog-heading { align-items:flex-start; } .catalog-heading h1 { font-size:25px; } .catalog-heading { flex-direction:column; gap:18px; } .catalog-list,.catalog-form-grid { grid-template-columns:1fr; } .catalog-upload { padding:20px 16px; } .catalog-toolbar { gap:12px; flex-wrap:wrap; } .catalog-wide { grid-column:auto; } .catalog-card { padding:20px; } }
+@media(max-width:720px) { .catalog-shell { padding:28px var(--scansci-side-gutter); } .catalog-heading { align-items:flex-start; } .catalog-heading h1 { font-size:25px; } .catalog-heading { flex-direction:column; gap:18px; } .catalog-list,.catalog-form-grid { grid-template-columns:1fr; } .catalog-upload { padding:20px 16px; } .catalog-toolbar { gap:12px; flex-wrap:wrap; } .catalog-wide { grid-column:auto; } .catalog-card { padding:20px; } }
 @media(max-width:720px) {
   .catalog-toolbar { gap:10px; }
   #openUpload { padding:0 11px; font-size:12px; }
