@@ -6,7 +6,7 @@
   <link rel="icon" type="image/webp" href="./assets/journal-logo-home-288.webp">
   <link rel="stylesheet" href="./styles.css?v=20261113-single-focus">
   <link rel="stylesheet" href="./extension-install.css?v=20261113-single-focus">
-  <link rel="stylesheet" href="./catalogs.css?v=20261113-excel-dialog">
+  <link rel="stylesheet" href="./catalogs.css?v=20261113-catalog-info">
   <link rel="stylesheet" href="./assets/link-icons.css?v=20261113-lucide">
 </head>
 <body class="with-global-nav catalogs-page" data-online-catalogs="false">
@@ -42,9 +42,12 @@
 
     <dialog id="uploadSection" class="catalog-upload catalog-dialog" aria-labelledby="uploadHeading" aria-describedby="uploadHelp">
       <div class="catalog-section-head"><div><p class="catalog-kicker">自己的分级，也可以带走</p><h2 id="uploadHeading">制作自定义目录</h2></div><button id="closeUpload" class="catalog-button" type="button" aria-label="关闭制作自定义目录">关闭</button></div>
-      <p id="uploadHelp" class="catalog-subtle">下载模板 → 逐行填写 → 选择 Excel 并检查 → 下载标准目录。文件只在本机处理。</p>
+      <p id="uploadHelp" class="catalog-subtle">弹窗填写目录资料，Excel 提供期刊 / 会议名单；生成的文件会保存这两部分。全部在本机处理。</p>
       <p id="accountStatus" class="catalog-account" hidden>正在读取登录状态…</p>
       <form id="uploadForm">
+        <h3 class="catalog-form-heading">1. 填写并确认目录信息</h3>
+        <p id="metadataHelp" class="catalog-subtle">这里的内容为最终版本，不必在 Excel 中重复填写。若文件附带“目录信息”工作表，检查时只预填尚未填写的项目，不覆盖你的修改。</p>
+        <p id="metadataStatus" class="catalog-subtle" role="status" aria-live="polite"></p>
         <div class="catalog-form-grid">
           <label>目录名称<input name="name" required maxlength="120" placeholder="例如：中国药科大学共识期刊及会议目录"></label>
           <label>学校 / 机构<input name="institution" maxlength="120" placeholder="高校、学院、课题组或自定名称"></label>
@@ -55,7 +58,7 @@
           <label>生效日期（选填）<input name="effectiveDate" type="date"></label>
         </div>
         <details class="catalog-extra"><summary>适用条件与补充说明</summary><label>规则说明<textarea name="notes" maxlength="3000" rows="3" placeholder="如仅适用于 Full paper、投稿时间限制、过渡期规则。这里的文字只作说明。"></textarea></label></details>
-        <div class="catalog-file-box"><label for="catalogFile"><strong>选择 Excel（.xlsx）</strong><span>首行使用模板列名；名称、等级、类型必填。每行一个期刊或会议，最多 5,000 行、1 MB。</span></label><input id="catalogFile" type="file" accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" required><a href="./assets/templates/catalog-upload-v1.xlsx?v=20261113-excel" download>下载 Excel 模板 ↓</a></div>
+        <div class="catalog-file-box"><label for="catalogFile"><strong>2. 选择期刊 / 会议名单（Excel）</strong><span>只需填写“目录”工作表：名称、等级、类型必填，每行一个条目。最多 5,000 行、1 MB。</span></label><input id="catalogFile" type="file" accept=".xlsx,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" required><a href="./assets/templates/catalog-upload-v1.xlsx?v=20261113-excel" download>下载 Excel 模板 ↓</a></div>
         <div class="catalog-form-actions"><button id="previewCatalog" class="catalog-primary" type="button">检查并预览</button><button id="downloadLocalCatalog" class="catalog-button" type="button" disabled>下载标准 Excel ↓</button><button id="submitCatalog" class="catalog-button" type="submit" disabled hidden>分享并提交审核</button><span id="uploadStatus" class="catalog-subtle" role="status" aria-live="polite"></span></div>
       </form>
       <div id="uploadPreview" class="catalog-preview" hidden></div>
@@ -67,6 +70,6 @@
   <script src="./catalogs-core.js?v=1"></script>
   <script src="./catalogs-excel.js?v=20261113-excel-dialog"></script>
   <script src="./catalogs-library.js?v=20261113-excel-dialog"></script>
-  <script src="./catalogs-page.js?v=20261113-excel-dialog"></script>
+  <script src="./catalogs-page.js?v=20261113-catalog-info"></script>
 </body>
 </html>

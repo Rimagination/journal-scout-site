@@ -105,11 +105,11 @@
   dialog.addEventListener('close',()=>{document.body.classList.remove('catalog-modal-open');$('openUpload').focus();});
   dialog.addEventListener('click',event=>{if(event.target!==dialog)return;const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)dialog.close();});
   function invalidate() { draft=null; previewSerial++; $('uploadPreview').hidden=true; $('submitCatalog').disabled=true; $('downloadLocalCatalog').disabled=true; $('uploadStatus').textContent='修改后请重新检查预览。'; }
-  let importedValues={};
-  $('uploadForm').addEventListener('input',invalidate);
+  let importedValues={};const editedFields=new Set();
+  $('uploadForm').addEventListener('input',event=>{if(event.target.name)editedFields.add(event.target.name);invalidate();});
   $('catalogFile').addEventListener('change',()=>{
-    for(const [key,value] of Object.entries(importedValues)){const field=$('uploadForm').elements.namedItem(key);if(field?.value===value)field.value='';}
-    importedValues={};invalidate();
+    for(const [key,value] of Object.entries(importedValues)){const field=$('uploadForm').elements.namedItem(key);if(field?.value===value&&!editedFields.has(key))field.value='';}
+    importedValues={};$('metadataStatus').textContent='';invalidate();
   });
   let xlsxPromise;
   function xlsxLibrary() {
@@ -131,7 +131,9 @@
       if(!file || file.size>1024*1024 || !/\.xlsx$/i.test(file.name)) throw new Error('仅接受不超过 1 MB 的 Excel（.xlsx）文件。PDF、CSV、JSON 和文字说明请先整理到模板中。');
       const buffer=await file.arrayBuffer(),xlsx=await xlsxLibrary(),checked=excel.read(buffer,xlsx);
       if(serial!==previewSerial) return;
-      for(const [key,value] of Object.entries(checked.metadata))if(form.elements.namedItem(key)&&!form.elements.namedItem(key).value){form.elements.namedItem(key).value=value;importedValues[key]=value;}
+      let filled=0;
+      for(const [key,value] of Object.entries(checked.metadata))if(value&&form.elements.namedItem(key)&&!form.elements.namedItem(key).value&&!editedFields.has(key)){form.elements.namedItem(key).value=value;importedValues[key]=value;filled++;}
+      $('metadataStatus').textContent=filled?`已从 Excel 预填 ${filled} 项目录信息，请核对。最终下载以弹窗内容为准。`:Object.keys(checked.metadata).length?'Excel 附带的目录信息未覆盖你的填写；最终下载以弹窗内容为准。':'Excel 提供名单；目录信息使用上方弹窗中填写的内容。';
       previewTable(checked.entries,checked.errors);
       if(checked.errors.length) throw new Error(`发现${checked.errors.length}处问题，请修改后重新预览。`);
       if(!form.reportValidity())throw new Error('表格格式通过，请补全目录名称、标签名称、版本和适用范围后重新检查。');
@@ -152,7 +154,7 @@
       const xlsx=await xlsxLibrary();
       if(draft!==current)return;
       saveExcel(excel.write(current.metadata,current.entries,xlsx),`${current.metadata.label}-${current.metadata.edition}.xlsx`);
-      $('uploadStatus').textContent='标准 Excel 已下载，包含“目录”和“目录信息”工作表。';
+      $('uploadStatus').textContent='已下载：名单保存在“目录”工作表，弹窗中的资料保存在“目录信息”工作表。';
     }catch(error){$('uploadStatus').textContent=error.message;}
     finally{$('downloadLocalCatalog').disabled=!draft;}
   });
