@@ -31,14 +31,18 @@ test('update-check metadata matches Chromium/Safari releases and the separately 
     const source = await readFile(new URL(`../${page}`, import.meta.url), 'utf8');
     const navigation = source.match(/<nav class="product-links"[^>]*>([\s\S]*?)<\/nav>/)?.[1] || '';
     const links = [...navigation.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/g)];
-    assert.equal(links.length, page === 'index.html' ? 3 : 2);
+    assert.equal(links.length, 2);
     assert.match(links[0][1], /class="extension-install-link" href="\.\/extension-install\.html"/);
     assert.match(links[0][2], /<svg\b[^>]*aria-hidden="true"/);
     assert.match(links[0][2], /插件下载/);
-    if (page === 'index.html') assert.match(links[1][1], /href="\.\/catalogs\.html"/);
+    if (page === 'index.html') assert.ok(!navigation.includes('./catalogs.html'));
     assert.match(links.at(-1)[1], /class="updates-nav-link" href="\.\/updates\.html"/);
     assert.equal(links.at(-1)[2], '更新说明');
   }
+  const installNavigation = html.match(/<nav class="product-links"[^>]*>([\s\S]*?)<\/nav>/)?.[1] || '';
+  assert.match(installNavigation, /href="\.\/catalogs\.html"[^>]*>自定义分级<\/a>/);
+  assert.match(installNavigation, /href="\.\/index\.html">在线查询 /);
+  assert.ok(!installNavigation.includes('返回查询'));
   const zoteroHistory = html.split('<h3 class="release-history__product">Zotero 插件</h3>')[1]?.split('</ol>')[0] || '';
   assert.ok(zoteroHistory.includes(`<strong>v${zoteroVersion}</strong>`));
   assert.ok(!zoteroPage.includes('class="product-switch"'));
