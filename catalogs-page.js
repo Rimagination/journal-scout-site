@@ -47,7 +47,7 @@
       details.append(make('p','由用户提交并经平台审核；具体认定条件以原文件为准。'));
       if(item.effectiveDate) details.append(make('p','生效日期：'+item.effectiveDate));
       if(item.notes) details.append(make('p',item.notes));
-      if(item.sourceUrl) { const a=make('a','查看来源 ↗'); a.href=item.sourceUrl; a.target='_blank'; a.rel='noopener noreferrer'; details.append(a); }
+      if(item.sourceUrl) { const a=make('a','查看来源'); a.append(globalThis.JournalScoutLinkIcon()); a.href=item.sourceUrl; a.target='_blank'; a.rel='noopener noreferrer'; details.append(a); }
       const download=make('button','下载目录包 ↓','catalog-button'); download.type='button'; download.addEventListener('click',async()=>{
         download.disabled=true;
         try { const result=await api(`/${item.id}/versions/${item.version}`); downloadJson(core.pack(result.pack),`${item.label}-${item.edition}.json`); }
@@ -93,7 +93,7 @@
       if(admin) { $('reviewSection').hidden=false; await loadReview(); }
     } catch(e) {
       loggedIn=false; accountLoaded=true; $('accountStatus').textContent=e.message+' ';
-      const a=make('a','前往 ScanSci 登录 ↗'); a.href='https://www.scansci.com/'; a.target='_blank'; a.rel='noopener';
+      const a=make('a','前往 ScanSci 登录'); a.append(globalThis.JournalScoutLinkIcon()); a.href='https://www.scansci.com/'; a.target='_blank'; a.rel='noopener';
       const retry=make('button','我已登录','catalog-button'); retry.type='button'; retry.addEventListener('click',account); $('accountStatus').append(a,document.createTextNode(' '),retry);
     }
     $('submitCatalog').disabled=!draft || !loggedIn;

@@ -39,7 +39,7 @@
         if(school.catalogs.length>1)actions.append(make('span',`学校资料包 · 含 ${school.catalogs.length} 项`,'catalog-subtle'));
       } else actions.append(make('span','原件暂不提供下载','catalog-subtle'));
       if(/^https?:\/\//.test(item.sourceUrl)) {
-        const a=make('a','官网来源 ↗','catalog-source-link');a.href=item.sourceUrl;a.target='_blank';a.rel='noopener noreferrer';actions.append(a);
+        const a=make('a','官网来源','catalog-source-link');a.append(globalThis.JournalScoutLinkIcon());a.href=item.sourceUrl;a.target='_blank';a.rel='noopener noreferrer';actions.append(a);
       }
       content.append(actions);
       const detail=make('details');detail.append(make('summary','版本与适用说明'),make('p',item.status+' · '+item.currentness));
