@@ -8,7 +8,7 @@
   <title>浏览器插件 · Journal Scout</title>
   <link rel="icon" type="image/webp" href="./assets/journal-logo-home-288.webp" />
   <link rel="stylesheet" href="./styles.css?v=20261029-header" />
-  <link rel="stylesheet" href="./extension-install.css?v=20261113-zotero-download-sources" />
+  <link rel="stylesheet" href="./extension-install.css?v=20261113-zotero-community-logo" />
   <noscript><style>.browser-guide, .install-option__toggle, .install-choice-note { display: none !important; } .browser-guide__body[hidden], .install-details[hidden] { display: block !important; }</style></noscript>
 </head>
 <body class="extension-page install-page extension-install-page with-global-nav">
@@ -276,20 +276,25 @@
       <section class="zotero-install-entry" id="zotero-install" aria-labelledby="zotero-install-title">
         <div class="extension-guide__heading">
           <h2 id="zotero-install-title">安装 Zotero 插件</h2>
-          <p>在文献库中查看、筛选和保存期刊指标。</p>
+          <div class="extension-guide__note">
+            <p>在文献库中查看、筛选和保存期刊指标。</p>
+            <details class="extension-help">
+              <summary aria-label="查看 Zotero 插件兼容与升级说明" title="Zotero 插件兼容与升级"><span aria-hidden="true">!</span></summary>
+              <div class="extension-help__content"><h3>兼容与升级说明</h3><p>安装清单声明支持 Zotero 7–10；已在 10.0.8 实测，7–9 尚未逐版测试。Zotero 6 不支持。</p><p>v0.1.0 可升级至 v0.1.1，获取独立指标筛选、影响因子数值比较、新版侧栏及显示设置。</p></div>
+            </details>
+          </div>
         </div>
         <div class="zotero-install-entry__card">
           <img class="zotero-install-entry__icon" src="./assets/zotero-icon.webp" alt="" width="48" height="48">
           <div class="zotero-install-entry__copy">
             <strong>Journal Scout for Zotero</strong>
             <p>选择一种来源下载 XPI，在 Zotero 中从文件安装。两种来源均支持插件原生自动更新。</p>
-            <small>安装清单声明支持 Zotero 7–10；已在 10.0.8 实测，7–9 尚未逐版测试。Zotero 6 不支持；v0.1.0 可升级至 v0.1.1，获取独立指标筛选、影响因子数值比较、新版侧栏及显示设置。</small>
           </div>
         </div>
         <div class="install-options zotero-install-entry__sources" role="group" aria-label="选择 Zotero 插件下载来源">
           <div class="install-option">
-            <span class="install-option__copy"><strong>中文社区插件市场</strong><span>搜索 Journal Scout</span></span>
-            <a class="install-option__action" href="https://zotero-chinese.com/plugins/" target="_blank" rel="noopener noreferrer">前往市场 ↗</a>
+            <span class="install-option__copy"><strong class="install-option__brand"><img src="./assets/zotero-chinese-logo.webp" alt="" width="24" height="24">中文社区插件市场</strong><span>Journal Scout 搜索结果</span></span>
+            <a class="install-option__action" href="https://zotero-chinese.com/plugins/#search=Journal+scout" target="_blank" rel="noopener noreferrer">前往市场 ↗</a>
             <button class="install-option__toggle" id="zotero-community-toggle" type="button" aria-label="查看 Zotero 中文社区下载与安装步骤" aria-expanded="false" aria-controls="zotero-install-details"><span class="install-option__hint">查看步骤</span><span class="install-option__chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span></button>
           </div>
           <div class="install-option install-option--offline">
@@ -303,7 +308,7 @@
           <noscript><h3>安装 Zotero 插件</h3></noscript>
           <h3 class="install-subtitle">安装步骤</h3>
           <ol class="extension-steps">
-            <li><strong>下载插件</strong><span>在中文社区插件市场搜索「Journal Scout」，选择对应的 Zotero 版本并下载 XPI；也可点击上方「官网安装包」卡片中的「下载 XPI」。无需解压。</span></li>
+            <li><strong>下载插件</strong><span>点击「前往市场」直接查看 Journal Scout，选择对应的 Zotero 版本并下载 XPI；也可点击上方「官网安装包」卡片中的「下载 XPI」。无需解压。</span></li>
             <li><strong>打开插件管理</strong><span>在 Zotero 顶部选择「工具 → 插件」。</span>
               <figure class="install-screenshot"><a href="./assets/install-guide/zotero-tools-menu.webp" target="_blank" rel="noopener noreferrer" aria-label="放大查看 Zotero 工具菜单截图"><img src="./assets/install-guide/zotero-tools-menu.webp" alt="Zotero 工具菜单中选择插件" width="776" height="366" loading="lazy"></a><figcaption>在「工具」菜单中选择「插件」。点击图片可查看原图。</figcaption></figure>
             </li>
