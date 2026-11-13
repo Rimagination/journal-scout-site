@@ -1,5 +1,29 @@
 const browserGuides = document.querySelectorAll(".browser-guide[aria-controls]");
 
+// Compare version components numerically: 0.1.11 is newer than 0.1.10.2.
+function compareChannelVersions(left, right) {
+  const valid = /^\d+(?:\.\d+){1,3}$/;
+  if (!valid.test(left) || !valid.test(right)) return null;
+  const a = left.split(".").map(Number);
+  const b = right.split(".").map(Number);
+  for (let index = 0; index < Math.max(a.length, b.length); index++) {
+    const difference = (a[index] || 0) - (b[index] || 0);
+    if (difference) return Math.sign(difference);
+  }
+  return 0;
+}
+
+for (const group of document.querySelectorAll(".browser-guide__body .install-options")) {
+  const channels = [...group.querySelectorAll(".install-option[data-channel-version]")];
+  for (const channel of channels) {
+    const others = channels.filter(other => other !== channel);
+    const isNewer = others.length > 0 && others.every(other =>
+      compareChannelVersions(channel.dataset.channelVersion, other.dataset.channelVersion) === 1);
+    const badge = channel.querySelector(".install-option__new");
+    if (badge) badge.hidden = !isNewer;
+  }
+}
+
 function setBrowserGuide(guide) {
   for (const otherGuide of browserGuides) {
     const panel = document.getElementById(otherGuide.getAttribute("aria-controls"));

@@ -9,7 +9,7 @@
   <title>浏览器插件 · Journal Scout</title>
   <link rel="icon" type="image/webp" href="./assets/journal-logo-home-288.webp" />
   <link rel="stylesheet" href="./styles.css?v=20261113-unified-header" />
-  <link rel="stylesheet" href="./extension-install.css?v=20261113-unified-header" />
+  <link rel="stylesheet" href="./extension-install.css?v=20261113-channel-versions" />
   <link rel="stylesheet" href="./assets/link-icons.css?v=20261113-lucide">
   <noscript><style>.browser-guide, .install-option__toggle, .install-choice-note { display: none !important; } .browser-guide__body[hidden], .install-details[hidden] { display: block !important; }</style></noscript>
 </head>
@@ -133,13 +133,13 @@
         <section class="browser-guide__body" id="edge-install-panel" aria-labelledby="edge-install" hidden>
             <noscript><h3>Microsoft Edge</h3></noscript>
             <div class="install-options" role="group" aria-label="选择 Edge 安装方式">
-              <div class="install-option">
-                <span class="install-option__copy"><strong>官方商店</strong><span>自动更新</span></span>
+              <div class="install-option" data-channel-version="0.1.10.2">
+                <span class="install-option__copy"><strong>官方商店 <span class="install-option__new" aria-label="较新版本" hidden>NEW</span></strong><span>v0.1.10.2 · 自动更新</span></span>
                 <a class="install-option__action" href="https://microsoftedge.microsoft.com/addons/detail/journal-scout-%E6%9C%9F%E5%88%8A%E5%88%86%E5%8C%BA%E4%B8%8E%E5%BD%B1%E5%93%8D%E5%9B%A0%E5%AD%90/jehpajedcihlfkcichdodghfigadcmbk" target="_blank" rel="noopener noreferrer">前往商店 <svg class="link-icon lucide lucide-arrow-up-right" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="./assets/icons/lucide-arrow-up-right.svg#arrow-up-right"></use></svg></a>
                 <button class="install-option__toggle" id="edge-store-toggle" type="button" aria-label="查看Edge 官方商店步骤" aria-expanded="false" aria-controls="edge-store-details"><span class="install-option__hint">查看步骤</span><span class="install-option__chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span></button>
               </div>
-              <div class="install-option install-option--offline">
-                <span class="install-option__copy"><strong>离线安装包</strong><span>手动更新</span></span>
+              <div class="install-option install-option--offline" data-channel-version="0.1.11">
+                <span class="install-option__copy"><strong>离线安装包 <span class="install-option__new" aria-label="较新版本" hidden>NEW</span></strong><span>v0.1.11 · 手动更新</span></span>
                 <a class="install-option__action" href="./downloads/scansci-chromium-0.1.11.zip?build=20261113-release-0111" download="Journal-Scout-Edge-Offline-0.1.11.zip">下载 ZIP ↓</a>
                 <button class="install-option__toggle" id="edge-offline-toggle" type="button" aria-label="查看Edge 离线安装步骤" aria-expanded="false" aria-controls="edge-offline-details"><span class="install-option__hint">查看步骤</span><span class="install-option__chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span></button>
               </div>
@@ -180,13 +180,13 @@
         <section class="browser-guide__body" id="chrome-install-panel" aria-labelledby="chrome-install" hidden>
             <noscript><h3>Google Chrome</h3></noscript>
             <div class="install-options" role="group" aria-label="选择 Chrome 安装方式">
-              <div class="install-option">
-                <span class="install-option__copy"><strong>官方商店</strong><span>自动更新</span></span>
+              <div class="install-option" data-channel-version="0.1.10.2">
+                <span class="install-option__copy"><strong>官方商店 <span class="install-option__new" aria-label="较新版本" hidden>NEW</span></strong><span>v0.1.10.2 · 自动更新</span></span>
                 <a class="install-option__action" href="https://chromewebstore.google.com/detail/journal-scout-%E6%9C%9F%E5%88%8A%E5%88%86%E5%8C%BA%E4%B8%8E%E5%BD%B1%E5%93%8D%E5%9B%A0%E5%AD%90/mnoflinhlbochdphhmjogjfnokncpoec" target="_blank" rel="noopener noreferrer">前往商店 <svg class="link-icon lucide lucide-arrow-up-right" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="./assets/icons/lucide-arrow-up-right.svg#arrow-up-right"></use></svg></a>
                 <button class="install-option__toggle" id="chrome-store-toggle" type="button" aria-label="查看Chrome 官方商店步骤" aria-expanded="false" aria-controls="chrome-store-details"><span class="install-option__hint">查看步骤</span><span class="install-option__chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span></button>
               </div>
-              <div class="install-option install-option--offline">
-                <span class="install-option__copy"><strong>离线安装包</strong><span>手动更新</span></span>
+              <div class="install-option install-option--offline" data-channel-version="0.1.11">
+                <span class="install-option__copy"><strong>离线安装包 <span class="install-option__new" aria-label="较新版本" hidden>NEW</span></strong><span>v0.1.11 · 手动更新</span></span>
                 <a class="install-option__action" href="./downloads/scansci-chromium-0.1.11.zip?build=20261113-release-0111" download="Journal-Scout-Chrome-Offline-0.1.11.zip">下载 ZIP ↓</a>
                 <button class="install-option__toggle" id="chrome-offline-toggle" type="button" aria-label="查看Chrome 离线安装步骤" aria-expanded="false" aria-controls="chrome-offline-details"><span class="install-option__hint">查看步骤</span><span class="install-option__chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span></button>
               </div>
@@ -224,13 +224,13 @@
         <section class="browser-guide__body" id="firefox-install-panel" aria-labelledby="firefox-install" hidden>
             <noscript><h3>Firefox</h3></noscript>
             <div class="install-options" role="group" aria-label="选择 Firefox 安装方式">
-              <div class="install-option">
-                <span class="install-option__copy"><strong>官方商店</strong><span>自动更新</span></span>
+              <div class="install-option" data-channel-version="0.1.10.2">
+                <span class="install-option__copy"><strong>官方商店 <span class="install-option__new" aria-label="较新版本" hidden>NEW</span></strong><span>v0.1.10.2 · 自动更新</span></span>
                 <a class="install-option__action" href="https://addons.mozilla.org/zh-CN/firefox/addon/journal-scout-%E6%9C%9F%E5%88%8A%E5%88%86%E5%8C%BA%E4%B8%8E%E5%BD%B1%E5%93%8D%E5%9B%A0%E5%AD%90/" target="_blank" rel="noopener noreferrer">前往商店 <svg class="link-icon lucide lucide-arrow-up-right" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="./assets/icons/lucide-arrow-up-right.svg#arrow-up-right"></use></svg></a>
                 <button class="install-option__toggle" id="firefox-store-toggle" type="button" aria-label="查看Firefox 官方商店步骤" aria-expanded="false" aria-controls="firefox-store-details"><span class="install-option__hint">查看步骤</span><span class="install-option__chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span></button>
               </div>
-              <div class="install-option install-option--offline">
-                <span class="install-option__copy"><strong>离线安装包</strong><span>Mozilla 已签名 · v0.1.10.2（待新版签名后更新）</span></span>
+              <div class="install-option install-option--offline" data-channel-version="0.1.10.2">
+                <span class="install-option__copy"><strong>离线安装包 <span class="install-option__new" aria-label="较新版本" hidden>NEW</span></strong><span>Mozilla 已签名 · v0.1.10.2</span></span>
                 <a class="install-option__action" href="./downloads/journal-scout-firefox-signed-0.1.10.2.xpi" download="Journal-Scout-Firefox-0.1.10.2.xpi">下载 XPI ↓</a>
                 <button class="install-option__toggle" id="firefox-offline-toggle" type="button" aria-label="查看 Firefox 离线安装步骤" aria-expanded="false" aria-controls="firefox-offline-details"><span class="install-option__hint">查看步骤</span><span class="install-option__chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span></button>
               </div>
@@ -260,7 +260,7 @@
           <noscript><h3>Safari · Mac 临时测试</h3></noscript>
           <div class="install-options install-options--single" role="group" aria-label="Safari 安装方式">
             <div class="install-option install-option--offline">
-              <span class="install-option__copy"><strong>Mac 临时测试包</strong><span>需 Safari 18.4+ · 尚未实机验证</span></span>
+              <span class="install-option__copy"><strong>Mac 临时测试包</strong><span>v0.1.11 · Safari 18.4+ · 尚未实机验证</span></span>
               <a class="install-option__action" href="./downloads/journal-scout-safari-mac-test-0.1.11.zip?build=20261113-release-0111" download="Journal-Scout-Safari-Mac-Test-0.1.11.zip">下载 ZIP ↓</a>
               <button class="install-option__toggle" id="safari-test-toggle" type="button" aria-label="查看 Safari 临时安装步骤" aria-expanded="false" aria-controls="safari-test-details"><span class="install-option__hint">查看步骤</span><span class="install-option__chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></span></button>
             </div>
@@ -434,7 +434,7 @@
 
   </main>
   <footer class="extension-footer"><span>Journal Scout <i>by ScanSci</i></span><a href="./extension-privacy.html">插件隐私政策</a><a href="https://github.com/Rimagination/journal-scout-site/issues">问题反馈</a><a href="./index.html">期刊查询</a></footer>
-  <script src="./assets/browser-install-options.js?v=20261113-zotero-download-sources" defer></script>
+  <script src="./assets/browser-install-options.js?v=20261113-channel-versions" defer></script>
   <script src="./assets/extension-section-nav.js?v=20261112-home-showcase" defer></script>
   <script src="./assets/extension-site-coverage.js?v=20261113-v0111" defer></script>
 </body>

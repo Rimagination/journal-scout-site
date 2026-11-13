@@ -44,6 +44,12 @@ Keep earlier published version records when updating the current release. The cu
 0.1.10 entry consolidates the browser extension changes into one release. Browser and
 Zotero releases are recorded separately.
 Run `node --test tests/extension-version.test.mjs` to check that the published versions match.
+Browser install cards show the public store version and the downloadable offline version.
+After checking the official store listing, update both the card's `data-channel-version`
+and visible version label. Pending review versions are not public versions. The install
+script compares numeric components and marks only the newer channel with NEW; matching
+or unknown versions show no badge. Run `node --test tests/browser-install-options.test.mjs`.
+Store versions were verified on 2026-11-13: Chrome, Edge and Firefox are all 0.1.10.2.
 `updates.html` is the major-update timeline for the website, data, and plugins. Add only
 released, dated changes there; keep the full per-version plugin history on the install page.
 The install guide's searchable coverage table reads `data/extension-site-coverage.json`
