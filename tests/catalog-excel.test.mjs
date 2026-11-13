@@ -23,12 +23,15 @@ test('Excel export preserves exact values, metadata and leading-zero ISSNs',()=>
   const literal=excel.read(excel.write(metadata,[{...rows[0],grade:'=A+',notes:'=1+2'}],xlsx),xlsx);
   assert.equal(literal.entries[0].grade,'=A+');assert.equal(literal.entries[0].notes,'=1+2');
 });
-test('the template is a blank standard workbook, not a list containing sample journals',async()=>{
+test('the fill-in template has one sheet and only three required columns',async()=>{
   const file=await readFile(new URL('../assets/templates/catalog-upload-v1.xlsx',import.meta.url));
   const book=xlsx.read(file,{type:'buffer'});
-  assert.ok(book.Sheets['目录信息']);assert.ok(book.Sheets['填写说明']);
+  assert.deepEqual(book.SheetNames,['目录']);
   const table=xlsx.utils.sheet_to_json(book.Sheets['目录'],{header:1});
-  assert.equal(table.length,1);assert.deepEqual(table[0],excel.fields.map(([name])=>name));
+  assert.equal(table.length,1);assert.deepEqual(table[0],['名称','等级','类型']);
+  book.Sheets['目录']=xlsx.utils.aoa_to_sheet([...table,['Nature','A','期刊'],['IEEE/CVF Computer Vision and Pattern Recognition Conference','A','会议']]);
+  const checked=excel.read(xlsx.write(book,{type:'array',bookType:'xlsx',compression:true}),xlsx);
+  assert.deepEqual(checked.errors,[]);assert.equal(checked.entries.length,2);assert.deepEqual(checked.metadata,{});
 });
 test('renamed PDF/text, missing headers, merged cells, formulas and excessive rows are refused',()=>{
   assert.throws(()=>excel.read(new TextEncoder().encode('%PDF-1.7 This is not a spreadsheet').buffer,xlsx),/xlsx|Excel/);

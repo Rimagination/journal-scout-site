@@ -13,6 +13,7 @@ import sys
 
 import openpyxl
 from openpyxl.styles import Alignment, Font, PatternFill
+from openpyxl.comments import Comment
 from openpyxl.worksheet.datavalidation import DataValidation
 import pymupdf
 
@@ -163,6 +164,9 @@ def workbook(pack, target, review=None):
 
 
 def main():
+    if '--template-only' in sys.argv:
+        template(SITE / 'assets/templates/catalog-upload-v1.xlsx')
+        return
     if '--prepared' in sys.argv:
         data = json.loads((WORK / 'input.json').read_text(encoding='utf-8'))
         # Resume packaging only when the source bytes and section checks agree.
@@ -204,11 +208,37 @@ def publish():
         package = json.loads((folder / 'catalog.json').read_text(encoding='utf-8'))
         review = json.loads((folder / '整理记录.json').read_text(encoding='utf-8'))
         workbook(package, downloads / Path(item['download']).name, review)
-    workbook({'entries': []}, SITE / 'assets/templates/catalog-upload-v1.xlsx')
+    template(SITE / 'assets/templates/catalog-upload-v1.xlsx')
     (SITE / 'assets/catalogs/standard-index.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding='utf-8')
     subprocess.run(['python', str(SITE / 'scripts/build-reference-library.py')], cwd=SITE, check=True)
     print(json.dumps({'standardCatalogs': len(manifest['sources']), 'rows': sum(s['count'] for s in manifest['sources'].values()),
                       'scopeChecks': json.loads((WORK / 'input.json').read_text(encoding='utf-8'))['scopeChecks']}, ensure_ascii=False))
+
+
+def template(target):
+    """The fill-in template contains only the three required list fields."""
+    book = openpyxl.Workbook()
+    sheet = book.active
+    sheet.title = '目录'
+    sheet.append(['名称', '等级', '类型'])
+    sheet.freeze_panes = 'A2'
+    sheet.row_dimensions[1].height = 28
+    for cell in sheet[1]:
+        cell.font = Font(color='FFFFFF', bold=True, size=12)
+        cell.fill = PatternFill('solid', fgColor='176650')
+        cell.alignment = Alignment(vertical='center')
+    for column, width in [('A', 65), ('B', 18), ('C', 14)]:
+        sheet.column_dimensions[column].width = width
+        sheet.column_dimensions[column].number_format = '@'
+    sheet['A1'].comment = Comment('每行填写一个期刊或会议的全称，等级照原目录填写，类型从下拉框选择。', 'Journal Scout')
+    types = DataValidation(type='list', formula1='"期刊,会议"', allow_blank=False)
+    types.errorTitle = '请选择类型'
+    types.error = '请选择“期刊”或“会议”。'
+    types.showErrorMessage = True
+    types.errorStyle = 'stop'
+    sheet.add_data_validation(types)
+    types.add('C2:C5001')
+    book.save(target)
 
 
 if __name__ == '__main__':
