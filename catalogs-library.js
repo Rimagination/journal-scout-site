@@ -44,6 +44,10 @@
       content.append(actions);
       const detail=make('details');detail.append(make('summary','版本与适用说明'),make('p',item.status+' · '+item.currentness));
       if(item.note)detail.append(make('p',item.note));
+      for(const source of item.sources||[]) {
+        if(!/^https?:\/\//.test(source.url))continue;
+        const p=make('p'),a=make('a',source.name,'catalog-source-link');a.href=source.url;a.target='_blank';a.rel='noopener noreferrer';a.append(globalThis.JournalScoutLinkIcon());p.append(a);detail.append(p);
+      }
       if(item.standard)detail.append(make('p','已按标准字段整理，保留原等级、学科范围与来源位置；重复项、集合规则和暂剔除项的处理记录随目录提供。'));
       if(item.standard&&item.standard.originalCount!==item.standard.count)detail.append(make('p',`原表 ${item.standard.originalCount.toLocaleString()} 条，标准目录 ${item.standard.count.toLocaleString()} 条；差异详见包内整理记录。`));
       content.append(detail);card.append(cover,content);list.append(card);
@@ -57,7 +61,7 @@
   search.addEventListener('input',()=>{limit=12;render();});
   buttons.forEach(button=>button.addEventListener('click',()=>{category=button.dataset.category;limit=12;render();}));
   document.getElementById('moreReferences').addEventListener('click',()=>{limit+=12;render();});
-  fetch('./assets/catalogs/library-index.json?v=20261113-standard-v1',{credentials:'omit'}).then(r=>{if(!r.ok)throw Error();return r.json();}).then(data=>{
+  fetch('./assets/catalogs/library-index.json?v=20261113-food-ab',{credentials:'omit'}).then(r=>{if(!r.ok)throw Error();return r.json();}).then(data=>{
     if(data.schemaVersion!==1 || !Array.isArray(data.schools))throw Error();
     directories=data.schools.flatMap(school=>school.catalogs.map(item=>({school,item,category:school.is985?'985':school.is211?'211':'other'}))).map((d,index)=>({...d,index})).sort((a,b)=>Number(!a.item.standard)-Number(!b.item.standard));render();
   }).catch(()=>{status.textContent='学校资料暂时无法加载，请稍后重试。';});

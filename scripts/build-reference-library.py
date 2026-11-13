@@ -11,8 +11,16 @@ data=json.loads(MANIFEST.read_text(encoding='utf-8'))
 logos=json.loads((ASSETS/'university-logos.json').read_text(encoding='utf-8'))['schools']
 standard_path=ASSETS/'standard-index.json'
 standards=json.loads(standard_path.read_text(encoding='utf-8'))['sources'] if standard_path.exists() else {}
+sources={item['id']:item for item in data['sources']}
+merges=json.loads((ASSETS/'catalog-groups.json').read_text(encoding='utf-8'))['groups']
+for merge in merges:
+    members=[sources.pop(source_id) for source_id in merge['sourceIds']]
+    assert all(all(item[key]==members[0][key] for key in ['school','scope','edition']) for item in members)
+    sources[merge['id']]={**members[0],'id':merge['id'],'title':merge['name'],
+                          'note':'A刊101条、B刊55条合并为同一目录，保留各条目的原等级；上传路径时间不等于修订年份。',
+                          'sources':[{'name':item['title'],'url':item['page_url']} for item in members]}
 grouped=defaultdict(list)
-for item in data['sources']:
+for item in sources.values():
     grouped[item['school']].append(item)
 schools=[]
 for school,items in grouped.items():
@@ -21,7 +29,7 @@ for school,items in grouped.items():
         package=standards.get(item['id'])
         catalogs.append({'sourceId':item['id'],'name':item['title'],'edition':item['edition'],'scope':item['scope'],
                          'status':item['status'],'currentness':item['currentness'],'note':item['note'],
-                         'sourceUrl':item['page_url'],'availability':'ready' if package else 'pending',
+                         'sourceUrl':item['page_url'],'sources':item.get('sources',[]),'availability':'ready' if package else 'pending',
                          'standard':{key:package[key] for key in ['download','count','originalCount','parts','conferenceCount']} if package else None})
     schools.append({'institution':school,'is985':items[0]['is985'],'is211':True,
                     'summary':f'{len(items)}份资料，{sum(c["availability"]=="ready" for c in catalogs)}份标准目录可下载',

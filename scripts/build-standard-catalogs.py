@@ -135,7 +135,13 @@ def publish():
     manifest = json.loads((WORK / 'manifest.json').read_text(encoding='utf-8'))
     downloads = SITE / 'downloads/catalogs/standard'
     downloads.mkdir(parents=True, exist_ok=True)
+    only = sys.argv[sys.argv.index('--only') + 1] if '--only' in sys.argv else None
+    if only:
+        assert only in manifest['sources']
     for item in manifest['sources'].values():
+        if only and item['sourceId'] != only:
+            assert (downloads / Path(item['download']).name).is_file()
+            continue
         folder = WORK / item['sourceId']
         for name in item['files']:
             package = json.loads((folder / name).read_text(encoding='utf-8'))

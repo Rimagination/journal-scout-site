@@ -27,7 +27,10 @@ test('library links only to standardized catalogs and marks other sources as pen
       }else{assert.equal(catalog.availability,'pending');pending++;}
     }
   }
-  assert.equal(downloads,9);assert.equal(pending,39);
+  assert.equal(downloads,8);assert.equal(pending,39);
+  const food=index.schools.find(s=>s.institution==='西北农林科技大学').catalogs.filter(c=>c.name.includes('食品学院'));
+  assert.equal(food.length,1);assert.equal(food[0].name,'食品学院高质量期刊指导目录');
+  assert.equal(food[0].standard.count,156);assert.equal(food[0].standard.parts,1);
 });
 
 test('every downloadable JSON catalog imports correctly and round-trips through its standard Excel table',async()=>{
@@ -74,11 +77,19 @@ print(json.dumps(out,ensure_ascii=False))
       assert.equal(cvpr.type,'conference');assert.match(cvpr.subject,/ARTIFICIAL INTELLIGENCE/);
     }
     if(source.index.sourceId==='swufe-2025')assert.ok(!entries.some(r=>r.name.includes('其他子刊')));
+    if(source.index.sourceId==='nwafu-food-2025'){
+      assert.equal(source.packs.length,1);
+      assert.equal(entries.filter(r=>r.grade==='A').length,101);
+      assert.equal(entries.filter(r=>r.grade==='B').length,55);
+      assert.deepEqual(source.review.sources.map(s=>s.id),['nwafu-food-a-2025','nwafu-food-b-2025']);
+      for(const doc of source.review.sources)assert.match(doc.sha256,/^[a-f0-9]{64}$/);
+      for(const row of entries)assert.ok(row.sourceLocation.includes(`（${row.grade}刊）`));
+    }
     if(source.index.sourceId==='swjtu-2026-public'){
       const names=new Set(source.review.exclusions.map(r=>core.key(r.name)));
       const ids=new Set(source.review.exclusions.map(r=>core.issn(r.identifier)));
       assert.ok(!entries.some(r=>r.type==='journal'&&(names.has(core.key(r.name))||[r.issn,r.eissn].filter(Boolean).some(id=>ids.has(core.issn(id))))));
     }
   }
-  assert.equal(total,11773);assert.equal(files,15);
+  assert.equal(total,11773);assert.equal(files,14);
 });

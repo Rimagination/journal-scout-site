@@ -24,6 +24,7 @@
           "currentness": "2026版原件已核对",
           "note": "正文确认校级2021版已废止，改由学院制定；未列入高等级但属中科院大类一区的C刊规则不自动展开。",
           "sourceUrl": "https://cpst.hzau.edu.cn/info/1033/11578.htm",
+          "sources": [],
           "availability": "ready",
           "standard": {
             "download": "./downloads/catalogs/standard/hzau-cpst-2026-20261113.zip",
@@ -57,6 +58,7 @@
           "currentness": "2024配套页已核对",
           "note": "只取得该页提供的前三等级表，不等于全校全部中英文目录；页面保留2021发布日期，不能据此否定2024附件。",
           "sourceUrl": "https://public.nju.edu.cn/jszlsqyd/kygl/20210826/i205245.html",
+          "sources": [],
           "availability": "ready",
           "standard": {
             "download": "./downloads/catalogs/standard/nju-cssci-2024-20261113.zip",
@@ -75,6 +77,7 @@
           "currentness": "2024修订原件已核对",
           "note": "与中文目录配套；不得把激励分值当期刊等级。",
           "sourceUrl": "https://public.nju.edu.cn/jszlsqyd/kygl/20210826/i205245.html",
+          "sources": [],
           "availability": "pending",
           "standard": null
         },
@@ -87,6 +90,7 @@
           "currentness": "不是2024/2026新分区",
           "note": "仅归档，不作为南京大学当前校本等级或当前JCR数据导入。",
           "sourceUrl": "https://public.nju.edu.cn/jszlsqyd/kygl/20210826/i205245.html",
+          "sources": [],
           "availability": "pending",
           "standard": null
         }
@@ -114,6 +118,7 @@
           "currentness": "2026版原件已核对",
           "note": "2026-07-09审议；中文与外文等级体系不同。成果类型仅论文。",
           "sourceUrl": "https://kyc.uibe.edu.cn/zlxz/index.htm",
+          "sources": [],
           "availability": "ready",
           "standard": {
             "download": "./downloads/catalogs/standard/uibe-cn-2026-20261113.zip",
@@ -132,6 +137,7 @@
           "currentness": "2026版原件已核对",
           "note": "同刊跨分类按就高认定；期刊须Article，会议须Full/Regular Paper；Nature、Science仅正刊。记录数不是去重刊数。",
           "sourceUrl": "https://kyc.uibe.edu.cn/zlxz/index.htm",
+          "sources": [],
           "availability": "ready",
           "standard": {
             "download": "./downloads/catalogs/standard/uibe-en-2026-20261113.zip",
@@ -147,7 +153,7 @@
       "institution": "西北农林科技大学",
       "is985": true,
       "is211": true,
-      "summary": "3份资料，2份标准目录可下载",
+      "summary": "2份资料，1份标准目录可下载",
       "logo": {
         "id": "ror-0051rme32",
         "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-0051rme32/2746a1d364034342a45341380023ab59/512.webp",
@@ -157,42 +163,6 @@
       },
       "catalogs": [
         {
-          "sourceId": "nwafu-food-a-2025",
-          "name": "食品学院高质量期刊指导目录（A刊）",
-          "edition": "附件未注明版本年；2025-03路径",
-          "scope": "仅食品科学与工程学院",
-          "status": "已取得名单",
-          "currentness": "未确认最新",
-          "note": "101条；上传路径时间不等于修订年份。",
-          "sourceUrl": "https://food.nwsuaf.edu.cn/docs/2025-03/95124a4540304e0e9305ea0fd8d69b3c.pdf",
-          "availability": "ready",
-          "standard": {
-            "download": "./downloads/catalogs/standard/nwafu-food-a-2025-20261113.zip",
-            "count": 101,
-            "originalCount": 101,
-            "parts": 1,
-            "conferenceCount": 0
-          }
-        },
-        {
-          "sourceId": "nwafu-food-b-2025",
-          "name": "食品学院高质量期刊指导目录（B刊）",
-          "edition": "附件未注明版本年；2025-03路径",
-          "scope": "仅食品科学与工程学院",
-          "status": "已取得名单",
-          "currentness": "未确认最新",
-          "note": "55条；与经管学院目录分别保管。",
-          "sourceUrl": "https://food.nwsuaf.edu.cn/docs/2025-03/16d5487f193d478b99513bdc2b4d7672.pdf",
-          "availability": "ready",
-          "standard": {
-            "download": "./downloads/catalogs/standard/nwafu-food-b-2025-20261113.zip",
-            "count": 55,
-            "originalCount": 55,
-            "parts": 1,
-            "conferenceCount": 0
-          }
-        },
-        {
           "sourceId": "nwafu-cem-2025",
           "name": "经管学院认定的学术期刊目录（试行）",
           "edition": "2018版（经管〔2018〕9号）",
@@ -201,8 +171,37 @@
           "currentness": "未确认最新",
           "note": "虽然下载路径为2025-11，正文明确2018年，不能标2025版。",
           "sourceUrl": "https://cem.nwafu.edu.cn/docs/2025-11/555ab5cecb51436e8f443d39ea6fd883.pdf",
+          "sources": [],
           "availability": "pending",
           "standard": null
+        },
+        {
+          "sourceId": "nwafu-food-2025",
+          "name": "食品学院高质量期刊指导目录",
+          "edition": "附件未注明版本年；2025-03路径",
+          "scope": "仅食品科学与工程学院",
+          "status": "已取得名单",
+          "currentness": "未确认最新",
+          "note": "A刊101条、B刊55条合并为同一目录，保留各条目的原等级；上传路径时间不等于修订年份。",
+          "sourceUrl": "https://food.nwsuaf.edu.cn/docs/2025-03/95124a4540304e0e9305ea0fd8d69b3c.pdf",
+          "sources": [
+            {
+              "name": "食品学院高质量期刊指导目录（A刊）",
+              "url": "https://food.nwsuaf.edu.cn/docs/2025-03/95124a4540304e0e9305ea0fd8d69b3c.pdf"
+            },
+            {
+              "name": "食品学院高质量期刊指导目录（B刊）",
+              "url": "https://food.nwsuaf.edu.cn/docs/2025-03/16d5487f193d478b99513bdc2b4d7672.pdf"
+            }
+          ],
+          "availability": "ready",
+          "standard": {
+            "download": "./downloads/catalogs/standard/nwafu-food-2025-20261113.zip",
+            "count": 156,
+            "originalCount": 156,
+            "parts": 1,
+            "conferenceCount": 0
+          }
         }
       ]
     },
@@ -228,6 +227,7 @@
           "currentness": "2026官方通知附件已核对",
           "note": "官方XLSX有大量格式空行；仅提取有值记录。预警期刊暂剔除名单单独保存，不作为有效等级。",
           "sourceUrl": "https://scai.swjtu.edu.cn/web/page-newsDetail.html?nid=8f70b6dd-4279-4a93-86cb-ddbc4aa43ab2",
+          "sources": [],
           "availability": "ready",
           "standard": {
             "download": "./downloads/catalogs/standard/swjtu-2026-public-20261113.zip",
@@ -261,6 +261,7 @@
           "currentness": "2026官方通知仍附此版",
           "note": "部分中文CN号栏实际为ISSN格式；原值保留并标记。NATURE/SCIENCE其他子刊为集合规则，不能当成一个刊名。",
           "sourceUrl": "https://graduate.swufe.edu.cn/info/1016/13743.htm",
+          "sources": [],
           "availability": "ready",
           "standard": {
             "download": "./downloads/catalogs/standard/swufe-2025-20261113.zip",
@@ -279,6 +280,7 @@
           "currentness": "2025年修订原件已核对",
           "note": "独立于高水平目录；若同刊多学科出现，保留各行。",
           "sourceUrl": "https://sib.swufe.edu.cn/",
+          "sources": [],
           "availability": "ready",
           "standard": {
             "download": "./downloads/catalogs/standard/swufe-b-2025-20261113.zip",
@@ -312,6 +314,7 @@
           "currentness": "未确认最新",
           "note": "全校适用性不作推定。",
           "sourceUrl": "https://bs.csu.edu.cn/__local/8/46/F6/EB0FD53160417DD679B287E4948_E5F040DA_1B08F.pdf",
+          "sources": [],
           "availability": "pending",
           "standard": null
         }
@@ -339,6 +342,7 @@
           "currentness": "2025版原件已核对",
           "note": "发表时CCF A主会长文、JCR Q1、ABS等附加规则须单独处理；预警与退出索引条款优先。2025年底前存在旧版过渡条件。",
           "sourceUrl": "https://zhxmt.zuel.edu.cn/_upload/article/files/76/77/ac5d9e2344d7aa80ceaf2568c94d/0bb65257-6e41-49bf-9f12-35f221c035fa.pdf",
+          "sources": [],
           "availability": "pending",
           "standard": null
         }
@@ -366,6 +370,7 @@
           "currentness": "官网仍提供；未核实全校最新统一版",
           "note": "有2026院系引用的线索，不能因此认定全部现行；动态索引C类规则不预先展开。",
           "sourceUrl": "https://lib.ruc.edu.cn/docs/2023-11/6e83e72e2492425294dece57eb0138da.pdf",
+          "sources": [],
           "availability": "pending",
           "standard": null
         }
@@ -393,6 +398,7 @@
           "currentness": "2024公开通知已核对",
           "note": "页面正文含图片/附件；完整校本条件及附件未逐项转录。",
           "sourceUrl": "https://research.cuc.edu.cn/2024/0712/c5668a234852/page.htm",
+          "sources": [],
           "availability": "pending",
           "standard": null
         }
@@ -420,6 +426,7 @@
           "currentness": "2026公开页列2023版",
           "note": "原始ZIP尚未取得；不把2026网页日期当2026目录。",
           "sourceUrl": "https://eniec.cug.edu.cn/info/1029/9421.htm",
+          "sources": [],
           "availability": "pending",
           "standard": null
         }
@@ -447,6 +454,7 @@
           "currentness": "未确认最新",
           "note": "目录注释引用2019—2020扩展版和2017—2018集刊；不得据2026下载时间称2026版。",
           "sourceUrl": "https://wkc.ouc.edu.cn/_upload/article/files/ec/d9/a3efd432458c9e51e98050c263a9/47320f76-5e07-41b4-b56e-e6723a820f87.pdf",
+          "sources": [],
           "availability": "pending",
           "standard": null
         }
@@ -474,6 +482,7 @@
           "currentness": "2026通知已核对",
           "note": "不能当作全校统一期刊分级；保留学院、年级与成果条件。",
           "sourceUrl": "https://grs.cup.edu.cn/wenku/www/202606/090933074knf.pdf",
+          "sources": [],
           "availability": "pending",
           "standard": null
         }
@@ -501,6 +510,7 @@
           "currentness": "2026版已核对",
           "note": "保留各学科的原分类；有过渡期与预警排除条件。",
           "sourceUrl": "https://ist.cpu.edu.cn/zcwj/qkml.htm",
+          "sources": [],
           "availability": "pending",
           "standard": null
         }
@@ -528,6 +538,7 @@
           "currentness": "历史文件；未核最新",
           "note": "PDF无可用文字层，尚未OCR核对，不纳入可导入明细。",
           "sourceUrl": "https://grs.muc.edu.cn/__local/F/55/36/32FAC4077DA968258C091B5CF66_FA0CD7D6_2F161A.pdf?e=.pdf",
+          "sources": [],
           "availability": "pending",
           "standard": null
         }
@@ -555,6 +566,7 @@
           "currentness": "2026-07正文已核对",
           "note": "索引页2026-11-03与正文2026-07-08不一致；Full/Regular限制；完整目录需校内权限。",
           "sourceUrl": "https://kyc.cufe.edu.cn/info/1081/5802.htm",
+          "sources": [],
           "availability": "pending",
           "standard": null
         }
@@ -582,6 +594,7 @@
           "currentness": "官网2026-07-27新目录已核对",
           "note": "原件为图片；Full/Regular Paper、Oral等条件须保留。2023试行表不作为最新版本。",
           "sourceUrl": "https://ai.bnu.edu.cn/ggjxz/cywj2/1ec6a3f1533a4befaf920e28a9ef4979.htm",
+          "sources": [],
           "availability": "pending",
           "standard": null
         },
@@ -594,6 +607,7 @@
           "currentness": "已找到2026新目录",
           "note": "历史材料；2023公告声明暂不用于职称评审和毕业要求，不能直接套到新版。",
           "sourceUrl": "https://ai.bnu.edu.cn/ggjxz/xyxw/64c26d2d268b4f349c8f61ee7aff9953.htm",
+          "sources": [],
           "availability": "pending",
           "standard": null
         }
@@ -621,6 +635,7 @@
           "currentness": "未确认最新",
           "note": "保留原刊号CN；这是一段附录，不扩写为完整全校等级目录。",
           "sourceUrl": "https://polis.ecnu.edu.cn/u/article/user_79/202409/4492-14nC.pdf",
+          "sources": [],
           "availability": "pending",
           "standard": null
         }
@@ -648,6 +663,7 @@
           "currentness": "页面2025-12-22；非版年",
           "note": "目录XLS未取得；不能称2025新目录。",
           "sourceUrl": "https://design.hust.edu.cn/info/1020/1376.htm",
+          "sources": [],
           "availability": "pending",
           "standard": null
         }
@@ -675,6 +691,7 @@
           "currentness": "2025-12-31发布通知已核对",
           "note": "原试行版同时废止；含预警整改/再次预警及Article/Review条件。",
           "sourceUrl": "https://keyan.ncepu.edu.cn/tzgg/872eafe92e2344f997778821d188360a.htm",
+          "sources": [],
           "availability": "pending",
           "standard": null
         }
@@ -702,6 +719,7 @@
           "currentness": "未确认最新",
           "note": "不代表全校统一目录；校级高质量期刊查询系统另列。",
           "sourceUrl": "https://economy.njau.edu.cn/__local/7/43/1E/31DD0A2944879C6540ECD8FB766_8B86E797_3BF03.pdf",
+          "sources": [],
           "availability": "pending",
           "standard": null
         },
@@ -714,6 +732,7 @@
           "currentness": "仅核对公开入口",
           "note": "附件下载要求验证码；不把招聘附件代替校级目录。",
           "sourceUrl": "https://cos.njau.edu.cn/info/1082/2723.htm",
+          "sources": [],
           "availability": "pending",
           "standard": null
         }
@@ -741,6 +760,7 @@
           "currentness": "仅搜索线索及下载状态",
           "note": "原PDF地址未返回PDF，不参与完整目录统计。",
           "sourceUrl": "https://gs.njust.edu.cn/_upload/article/files/8b/18/e894ec9c42ee9ee3853116c990a2/7c3ff327-760c-4ea7-a728-3aaa1b6a0161.pdf",
+          "sources": [],
           "availability": "pending",
           "standard": null
         }
@@ -768,6 +788,7 @@
           "currentness": "2025研究生通知仍附2017版",
           "note": "旧版仍被引用不等于2025新修订；适用场景须核对。",
           "sourceUrl": "https://skc.xmu.edu.cn/qkzx/hxxsqk.htm",
+          "sources": [],
           "availability": "pending",
           "standard": null
         }
@@ -795,6 +816,7 @@
           "currentness": "未确认最新",
           "note": "2022全年为过渡期；CSSCI动态退出不保留级别。不能按下载网页年份标成新版。",
           "sourceUrl": "https://pro.jlu.edu.cn/__local/0/3D/93/3FBB2758FB8722A0D7BEDFEF6EB_4B188FC1_2F1CD.pdf?e=.pdf",
+          "sources": [],
           "availability": "pending",
           "standard": null
         }
@@ -822,6 +844,7 @@
           "currentness": "2025细则；非完整期刊表",
           "note": "只列若干具名期刊及JCR/非开源等条件，引用的全校哲社目录未附完整。",
           "sourceUrl": "https://sisd.hit.edu.cn/_upload/article/files/bd/8e/2aa3f41e48b0901e61b02412e7b4/55c1e0a8-dbb0-4dde-8b9e-58a75ae5ee26.pdf",
+          "sources": [],
           "availability": "pending",
           "standard": null
         }
@@ -849,6 +872,7 @@
           "currentness": "未确认最新",
           "note": "政策、资助层次与期刊等级分别保留，不混作等级。",
           "sourceUrl": "https://www.sicau.edu.cn/__local/D/FD/CE/C7EB14C147C452D46E9C40D77E3_269F70E9_90CA1.pdf",
+          "sources": [],
           "availability": "pending",
           "standard": null
         }
@@ -876,6 +900,7 @@
           "currentness": "未确认最新",
           "note": "原文件称每1—2年动态更新，当前不能默认仍有效。",
           "sourceUrl": "https://math.ahu.edu.cn/_upload/article/files/63/77/dfc57065420da16afb496b9a9964/71ca0222-4ec3-471e-8f17-a40004c1a156.pdf",
+          "sources": [],
           "availability": "pending",
           "standard": null
         }
@@ -903,6 +928,7 @@
           "currentness": "未确认最新",
           "note": "文件要求不唯论文、目录并非穷尽；不能当全校固定A区。",
           "sourceUrl": "https://ee.hebut.edu.cn/docs/2022-06/0ed3f1bdd8b7412bbc0af325531aef03.pdf",
+          "sources": [],
           "availability": "pending",
           "standard": null
         }
@@ -930,6 +956,7 @@
           "currentness": "原件2022；未核最新",
           "note": "通知仅2页；名单另存114页附件。按SCI/SSCI/CSSCI版本动态更新。",
           "sourceUrl": "https://skc.hhu.edu.cn/_upload/article/files/bc/9c/38940a3b48519e8ac3c069996688/9b63778b-b94f-44c1-b49c-7ca80ca6d413.pdf",
+          "sources": [],
           "availability": "pending",
           "standard": null
         },
@@ -942,6 +969,7 @@
           "currentness": "未确认最新",
           "note": "原PDF共114页，含完整多段名单；文件名中的内部采集ID不作版年依据。",
           "sourceUrl": "https://spd.hhu.edu.cn/_upload/article/files/26/44/71fa485b41959cd72790151bfe16/9bab0e50-d209-4466-ab1c-020fcaba0f8f.pdf",
+          "sources": [],
           "availability": "pending",
           "standard": null
         }
@@ -969,6 +997,7 @@
           "currentness": "浙大官网确认2024版；全文入口需登录",
           "note": "本地完整DOCX来自丽水学院科研处官方转载，非浙大公开直链；浙大原始通知： https://hr.zju.edu.cn/cn/2025/0728/c28843a3077295/page.htm 。转载时间不能当修订时间。",
           "sourceUrl": "https://kyc.lsu.edu.cn/2025/1009/c1772a359166/page.htm",
+          "sources": [],
           "availability": "pending",
           "standard": null
         }
@@ -996,6 +1025,7 @@
           "currentness": "2026-03-24公开页已核对",
           "note": "下载返回安全校验页，不计为取得PDF。",
           "sourceUrl": "https://sic.hnu.edu.cn/info/1128/2320.htm",
+          "sources": [],
           "availability": "pending",
           "standard": null
         }
@@ -1023,6 +1053,7 @@
           "currentness": "原件条件已核对",
           "note": "由SCI中科院分区、中国科技期刊卓越行动、科协T1等条件认定，并非完整具名刊表。",
           "sourceUrl": "https://sjxy.shzu.edu.cn/_upload/article/files/1d/27/693a7a8f473da067497c4c756664/4e88293b-5487-4de9-81fb-f0be07d63da3.pdf",
+          "sources": [],
           "availability": "pending",
           "standard": null
         }
@@ -1050,6 +1081,7 @@
           "currentness": "2026职评通知确认沿用并叠加2025补充",
           "note": "需同时适用福大人〔2025〕14号文科补充规定，后者未取得全文。",
           "sourceUrl": "https://rsc.fzu.edu.cn/info/1019/2635.htm",
+          "sources": [],
           "availability": "pending",
           "standard": null
         }
@@ -1077,6 +1109,7 @@
           "currentness": "仅确认目录存在",
           "note": "未取得完整名单，不沿用2017表冒充新表。",
           "sourceUrl": "https://skc.suda.edu.cn/_s213/7509/list.psp",
+          "sources": [],
           "availability": "pending",
           "standard": null
         }
@@ -1104,6 +1137,7 @@
           "currentness": "2026通知明确新旧适用边界",
           "note": "2025-01-01后论文按西大社科〔2024〕10号新指导目录；不能让旧目录覆盖新论文。",
           "sourceUrl": "https://skc.nwu.edu.cn/info/1006/4602.htm",
+          "sources": [],
           "availability": "pending",
           "standard": null
         },
@@ -1116,6 +1150,7 @@
           "currentness": "2026-08-18通知已核对",
           "note": "新目录完整文件未取得；通知用“2025年1月1日后”，边界日严格按学校认定。",
           "sourceUrl": "https://skc.nwu.edu.cn/info/1006/4602.htm",
+          "sources": [],
           "availability": "pending",
           "standard": null
         }
@@ -1143,6 +1178,7 @@
           "currentness": "2025修订原件已核对",
           "note": "外文相关目录须以研究生院公布为准；保留作者顺位、专家认定等条件。",
           "sourceUrl": "https://marx.xjtu.edu.cn/__local/4/BF/F0/F6828BDE86E17511E26B0C4A527_5DBB2E64_5B595.pdf",
+          "sources": [],
           "availability": "pending",
           "standard": null
         }
@@ -1170,6 +1206,7 @@
           "currentness": "2026通知确认适用",
           "note": "2025-01-01起正式发表的论文适用；此前按历史版本。原PDF含个人水印，仅供本地核验，不作公开配图。",
           "sourceUrl": "https://gr.xidian.edu.cn/info/1044/18524.htm",
+          "sources": [],
           "availability": "pending",
           "standard": null
         }
@@ -1197,6 +1234,7 @@
           "currentness": "2025官网转载；未核最新",
           "note": "英文对应中科院大类分区；保留发表时版本，不能用现在的分区重判旧论文。",
           "sourceUrl": "https://qiche.chd.edu.cn/_upload/article/files/3e/71/e01b7a774febad72f18c93fc9fc3/8cdee0d3-471c-4f00-8cdc-bc172e6e0791.pdf",
+          "sources": [],
           "availability": "pending",
           "standard": null
         }

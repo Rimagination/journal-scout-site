@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "groups": [
+    {
+      "id": "nwafu-food-2025",
+      "name": "食品学院高质量期刊指导目录",
+      "sourceIds": ["nwafu-food-a-2025", "nwafu-food-b-2025"]
+    }
+  ]
+}
