@@ -8,7 +8,7 @@
   <title>浏览器插件 · Journal Scout</title>
   <link rel="icon" type="image/webp" href="./assets/journal-logo-home-288.webp" />
   <link rel="stylesheet" href="./styles.css?v=20261029-header" />
-  <link rel="stylesheet" href="./extension-install.css?v=20261113-zotero-community-logo" />
+  <link rel="stylesheet" href="./extension-install.css?v=20261113-zotero-guide-sections" />
   <noscript><style>.browser-guide, .install-option__toggle, .install-choice-note { display: none !important; } .browser-guide__body[hidden], .install-details[hidden] { display: block !important; }</style></noscript>
 </head>
 <body class="extension-page install-page extension-install-page with-global-nav">
@@ -304,34 +304,55 @@
           </div>
         </div>
         <p class="install-choice-note">请选择一种来源，安装步骤相同，无需重复安装。</p>
-        <section class="install-details zotero-install-entry__details" id="zotero-install-details" aria-labelledby="zotero-install-title" hidden>
+        <section class="zotero-install-entry__details" id="zotero-install-details" aria-labelledby="zotero-install-title" hidden>
           <noscript><h3>安装 Zotero 插件</h3></noscript>
-          <h3 class="install-subtitle">安装步骤</h3>
+          <section class="zotero-guide-section" aria-labelledby="zotero-install-steps-title">
+          <h3 class="zotero-guide-section__title" id="zotero-install-steps-title">安装步骤</h3>
           <ol class="extension-steps">
-            <li><strong>下载插件</strong><span>点击「前往市场」直接查看 Journal Scout，选择对应的 Zotero 版本并下载 XPI；也可点击上方「官网安装包」卡片中的「下载 XPI」。无需解压。</span></li>
+            <li><strong>下载插件</strong><span>从上方任一来源下载 XPI 文件，无需解压。</span></li>
             <li><strong>打开插件管理</strong><span>在 Zotero 顶部选择「工具 → 插件」。</span>
-              <figure class="install-screenshot"><a href="./assets/install-guide/zotero-tools-menu.webp" target="_blank" rel="noopener noreferrer" aria-label="放大查看 Zotero 工具菜单截图"><img src="./assets/install-guide/zotero-tools-menu.webp" alt="Zotero 工具菜单中选择插件" width="776" height="366" loading="lazy"></a><figcaption>在「工具」菜单中选择「插件」。点击图片可查看原图。</figcaption></figure>
+              <figure class="install-screenshot install-screenshot--compact"><a href="./assets/install-guide/zotero-tools-menu.webp" target="_blank" rel="noopener noreferrer" aria-label="放大查看 Zotero 工具菜单截图"><img src="./assets/install-guide/zotero-tools-menu.webp" alt="Zotero 工具菜单中选择插件" width="776" height="366" loading="lazy"></a><figcaption>「工具 → 插件」。点击查看原图。</figcaption></figure>
             </li>
-            <li><strong>从文件安装</strong><span>点击右上角齿轮，选择「Install Plugin From File…」，选中下载的 XPI；如有提示，重启 Zotero。</span>
-              <figure class="install-screenshot"><a href="./assets/install-guide/zotero-install-from-file.webp" target="_blank" rel="noopener noreferrer" aria-label="放大查看 Zotero 从文件安装插件截图"><span class="zotero-guide-images__focus"><img src="./assets/install-guide/zotero-install-from-file.webp" alt="Zotero 插件管理器的齿轮菜单中选择 Install Plugin From File" width="1982" height="1070" loading="lazy"></span></a><figcaption>点击齿轮，然后选择「Install Plugin From File…」。点击图片可查看原图。</figcaption></figure>
+            <li><strong>从文件安装</strong><span>点击右上角齿轮 →「Install Plugin From File…」，选择 XPI；按提示重启 Zotero。</span>
+              <figure class="install-screenshot install-screenshot--compact"><a href="./assets/install-guide/zotero-install-from-file.webp" target="_blank" rel="noopener noreferrer" aria-label="放大查看 Zotero 从文件安装插件截图"><span class="zotero-guide-images__focus"><img src="./assets/install-guide/zotero-install-from-file.webp" alt="Zotero 插件管理器的齿轮菜单中选择 Install Plugin From File" width="1982" height="1070" loading="lazy"></span></a><figcaption>齿轮菜单中选择从文件安装。点击查看原图。</figcaption></figure>
             </li>
             <li><strong>查看期刊或会议信息</strong><span>选择期刊论文或会议论文，查看列表中的 Journal Scout 列；如未显示，可在表头的列菜单中启用。</span></li>
           </ol>
+          </section>
 
-          <div class="zotero-guide-info">
-            <h3>功能与数据说明</h3>
-            <p><strong>查看与筛选：</strong>在文献表格的 Journal Scout 列查看期刊和会议指标，选中文献后也可在右侧查看详情。在 Zotero 高级搜索的字段菜单中，先选择「Journal Scout」大类，再选择「JCR 分区」「中科院分区」「影响因子」或「CCF 等级」等小类，即可像使用 Zotero 原生字段一样设置筛选条件。</p>
-            <p><strong>示例：只看 JCR Q1：</strong>在高级搜索中选择「Journal Scout → JCR 分区」，中间条件选择「是」，右侧选择「Q1」，然后点击「搜索」，即可只显示归档指标中 JCR 分区为 Q1 的期刊文献。可添加其他条件并选择匹配「全部」或「任一」，也可点击「保存搜索…」保留筛选。</p>
+          <section class="zotero-guide-section zotero-guide-info" aria-labelledby="zotero-guide-info-title">
+            <h3 class="zotero-guide-section__title" id="zotero-guide-info-title">功能与数据说明</h3>
+            <p>在文献列表的 Journal Scout 列或右侧面板查看指标。高级搜索中先选「Journal Scout」，再选 JCR 分区、影响因子等小类。</p>
+            <p class="zotero-guide-example"><strong>只看 JCR Q1：</strong>Journal Scout → JCR 分区 → 是 → Q1 → 搜索。</p>
             <figure class="install-screenshot"><a href="./assets/install-guide/zotero-native-search.webp" target="_blank" rel="noopener noreferrer" aria-label="放大查看 Zotero Journal Scout 原生式高级搜索截图"><img src="./assets/install-guide/zotero-native-search.webp" alt="Zotero 高级搜索展开 Journal Scout 大类及影响因子、中科院分区、JCR 分区、CCF 等级等指标小类，右侧显示插件设置" width="2560" height="1506" loading="lazy" decoding="async"></a><figcaption>先选择 Journal Scout 大类，再选择指标小类。筛选 Q1 时使用「JCR 分区 → 是 → Q1」。点击图片查看原图。</figcaption></figure>
-            <p><strong>影响因子数值筛选：</strong>选择「Journal Scout → 影响因子」，中间可选「等于」「不等于」「大于」「小于」，右侧输入数字，例如 10.5。小数按完整数值比较；要筛选 10 到 20 之间的文献，可添加「大于 10」和「小于 20」两条条件并匹配全部，也能与分区组合后保存搜索。没有影响因子的文献不会被当作 0。</p>
-            <p><strong>保存与同步：</strong>已确认的结果自动写入条目的 Extra（附加信息）区块及 Zotero 标签，并保留区块以外的原有内容和用户标签。条目的更改可能随 Zotero 同步，也可能出现在部分导出文件中；本地缓存可供同一期刊复用。</p>
-            <p><strong>处理文库：</strong>筛选读取已归档到本地的指标，执行搜索不会重新请求网站。日常查看会逐步补全当前显示或选中的期刊和会议论文；需要完整筛选整个文库时，请先在主窗口选择文库，再进入「设置 → Journal Scout」，点击「补全文库期刊指标」，覆盖该文库的全部分类。设置页会显示进度，运行时提供「取消」按钮；取消后保留已归档结果，关闭设置后重新打开也能继续查看进度。插件优先复用已有归档和本地缓存，无法确认刊物或会议、只读或正在编辑的条目可能被跳过，未匹配或跳过的条目可稍后重试。使用独立指标搜索时需保持 Journal Scout 插件启用。</p>
-            <p><strong>查询数据：</strong>插件使用条目的期刊名或 ISSN 查询 ScanSci 期刊服务，不发送论文全文或附件。会议论文按会议名称匹配 CCF 目录；插件内置 ABS / AJG、UTD24、FMS 和 ABDC 商科名单。未收录或无法确认的条目不会显示对应等级。</p>
-            <p><strong>显示设置：</strong>侧栏按指标分项列出，标签保留所选配色、字号和圆角。点击侧栏的「显示设置」，或进入 Zotero「设置 → Journal Scout」，可选择「列表列与侧边栏」或「仅侧边栏」，并逐项勾选需要显示的标签。仅侧边栏模式会隐藏 Journal Scout 列；选择立即生效并保存在本机，完整指标仍归档到 Extra 和原生标签。「标签样式」中可调整配色、字号、圆角和间距。配色选框采用彩色圆角样式，文字间距与字号、圆角选项保持一致。</p>
-            <p><strong>数据更新：</strong>已确认的期刊和会议记录会在本地复用；网站发布数据更新后，插件错峰优先更新当前查看的文献。</p>
-            <p><strong>插件更新：</strong>插件支持 Zotero 原生自动更新，并跟随插件管理器中的更新设置。需要立即检查时，在「工具 → 插件」中点击右上角齿轮，选择「检查更新 / Check for Updates」；也可将插件详情中的「允许自动更新」设为 On。v0.1.0 可通过该入口升级到 v0.1.1，无需重新安装。若网络或更新失败，仍可下载本页 XPI，通过「从文件安装插件」手动升级。</p>
-            <p>插件由 ScanSci 提供，Zotero 标识用于指示适用的软件。</p>
-          </div>
+            <p>确认的指标会保存到条目 Extra 和插件管理的标签，可随 Zotero 同步。筛选优先读取本地归档。</p>
+            <details class="zotero-guide-more">
+              <summary>数值筛选与组合条件</summary>
+              <p>选择「Journal Scout → 影响因子」，可设置等于、不等于、大于或小于，输入数字（如 10.5）。小数按完整数值比较，缺失值不会被当作 0。</p>
+              <p>筛选 10 到 20 之间的文献：添加「大于 10」和「小于 20」，匹配「全部」。可与分区等条件组合，或选择匹配「任一」，并通过「保存搜索…」保留条件。</p>
+            </details>
+            <details class="zotero-guide-more">
+              <summary>显示位置与标签样式</summary>
+              <p>点击侧栏「显示设置」，或进入「设置 → Journal Scout」，逐项选择指标，切换「列表列与侧边栏」或「仅侧边栏」。标签样式可调整配色、字号、圆角和间距。</p>
+              <p>选择立即生效并保存在本机，仅影响显示；完整指标仍归档到条目。</p>
+            </details>
+            <details class="zotero-guide-more">
+              <summary>补全文库指标</summary>
+              <p>日常查看会逐步补全当前文献。需要筛选整个文库时，先选中文库，再进入「设置 → Journal Scout → 补全文库期刊指标」，覆盖该文库的全部分类。</p>
+              <p>设置页显示进度并可取消；已归档结果会保留，重新打开设置可查看进度。插件优先复用本地记录；未匹配、只读或正在编辑的条目可能跳过，可稍后重试。使用指标搜索时需保持插件启用。</p>
+            </details>
+            <details class="zotero-guide-more">
+              <summary>数据来源、保存与隐私</summary>
+              <p>插件以刊名或 ISSN 查询 ScanSci，不发送论文全文或附件。会议按名称匹配 CCF 目录；商科指标采用内置 ABS / AJG、UTD24、FMS 和 ABDC 名单。无法确认的指标保留为空。</p>
+              <p>确认结果写入 Extra 的插件区块及插件管理的标签，保留原有内容和用户标签。条目更改可能随 Zotero 同步，也可能出现在导出文件中；同一期刊可复用本地缓存。</p>
+              <p>插件由 ScanSci 提供，Zotero 标识用于指示适用的软件。</p>
+            </details>
+            <details class="zotero-guide-more">
+              <summary>数据与插件更新</summary>
+              <p>网站发布数据版本后，插件错峰更新当前查看的文献。插件版本由 Zotero 原生更新机制管理。</p>
+              <p>立即检查新版：在「工具 → 插件」的齿轮菜单中选择「检查更新 / Check for Updates」；插件详情中的自动更新可设为 On。v0.1.0 可直接升级至 v0.1.1。更新失败时，可下载本页 XPI 从文件安装。</p>
+            </details>
+          </section>
         </section>
       </section>
     </section>

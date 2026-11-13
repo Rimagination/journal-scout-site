@@ -112,7 +112,7 @@
 .install-screenshot figcaption { padding: 10px 13px; border-top: 1px solid #e9f0e9; color: #6c8075; font-size: 11px; line-height: 1.7; }
 .install-screenshot figcaption strong { color: #315d4b; }
 .extension-steps > li > .install-screenshot { grid-column: 2; justify-self: start; width: 100%; margin: 12px 0 8px; }
-.zotero-guide-info > .install-screenshot { width: 100%; margin: 12px 0 26px; }
+.zotero-guide-info > .install-screenshot { width: 100%; margin: 12px auto 26px; }
 .extension-note { margin: 20px 0 0; padding: 12px 14px; border-radius: 7px; background: #f9f6eb; color: #7d7050; font-size: 12px; line-height: 1.7; }
 .extension-note strong { display: block; color: #6b5a32; }
 .extension-help summary { display: grid; place-items: center; width: 26px; height: 26px; border: 0; background: transparent; color: #829d8e; font: 600 11px/1 var(--font-sans); list-style: none; cursor: pointer; }
@@ -136,12 +136,22 @@
 .zotero-install-entry__actions { display: flex; align-items: center; gap: 10px; flex: none; }
 .zotero-install-entry__sources { margin-top: 10px; }
 .zotero-install-entry__details { margin-top: 10px; }
-.zotero-guide-info { margin-top: 24px; padding-top: 18px; border-top: 1px solid #e5eee5; }
-.zotero-guide-info h3 { margin: 0 0 10px; color: #29453c; }
+.zotero-guide-section { padding: 20px; border: 1px solid #e1ece2; border-radius: 9px; background: #fff; }
+.zotero-guide-section + .zotero-guide-section { margin-top: 20px; }
+.zotero-guide-section__title { margin: 0 0 18px; padding-bottom: 12px; border-bottom: 1px solid #e5eee5; color: #29453c; }
+.zotero-guide-section > .extension-steps { margin-top: 0; }
+.zotero-guide-section .extension-steps > li > .install-screenshot--compact { grid-column: 1 / -1; justify-self: center; width: min(50%, 400px); margin: 12px auto 8px; }
+.zotero-guide-section .extension-steps li > span { color: #4f665a; }
 .zotero-guide-info p { margin: 8px 0 0; color: #60786c; line-height: 1.7; }
 .zotero-guide-info strong { color: #315d4b; }
-.zotero-guide-images__focus { display: block; overflow: hidden; height: clamp(160px, 25vw, 240px); }
+.zotero-guide-images__focus { display: block; overflow: hidden; height: clamp(80px, 12.5vw, 120px); }
 .zotero-guide-images__focus img { width: 250%; max-width: none; transform: translate(-60%, -12%); }
+.zotero-guide-more { margin-top: 12px; border-top: 1px solid #e5eee5; }
+.zotero-guide-more > summary { padding: 12px 4px; color: #315d4b; font-weight: 700; cursor: pointer; }
+.zotero-guide-more > summary:hover { color: #176b59; }
+.zotero-guide-more > summary:focus-visible { outline: 3px solid #87c9b8; outline-offset: 2px; border-radius: 4px; }
+.zotero-guide-more p { max-width: 74ch; }
+.zotero-guide-more[open] { padding-bottom: 12px; }
 .extension-footer { display: flex; justify-content: space-between; width: min(1100px, calc(100% - 48px)); margin: 0 auto; padding: 13px 0 18px; border-top: 1px solid #e0eae0; color: #688076; font-family: Georgia, serif; font-size: 12px; font-weight: 700; }
 .install-page .extension-footer { font-family: var(--font-sans); }
 .extension-footer i { color: #9aaca1; font-family: var(--font-sans); font-size: 10px; font-style: normal; font-weight: 500; }
