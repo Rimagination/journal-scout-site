@@ -4,8 +4,8 @@
       "updates": [
         {
           "version": "0.1.1",
-          "update_link": "https://journal.scansci.com/downloads/journal-scout-zotero-0.1.1.xpi",
-          "update_hash": "sha256:f933fd4c35cc1c14226015dba1c53be3b8d70f5cbd1a96f273d6ceb43011a63f",
+          "update_link": "https://journal.scansci.com/downloads/journal-scout-zotero-0.1.1.xpi?build=20261113-if5",
+          "update_hash": "sha256:0faa271b13a52944128e1bd5f5da39f8a67a79b4b5e59eee11f4e93e1813810a",
           "applications": {
             "zotero": {
               "strict_min_version": "7.0",

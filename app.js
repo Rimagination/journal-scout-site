@@ -3,6 +3,7 @@ const state = {
   suggestions: [],
   activeIndex: -1,
   minIF: null,
+  minIF5: null,
   meta: null,
   isDataReady: false,
   isDataLoading: false,
@@ -334,9 +335,8 @@ function findSuggestions(query, limit = 12) {
       return getAbbrVariants(row).some((abbr) => abbr.startsWith(qAbbr));
     })
     .filter((row) => {
-      if (state.minIF === null) return true;
-      const v = Number(row.if_2023);
-      return Number.isFinite(v) && v >= state.minIF;
+      const passes = (value, minimum) => minimum === null || (value !== null && value !== undefined && value !== "" && Number.isFinite(Number(value)) && Number(value) >= minimum);
+      return passes(row.if_2023, state.minIF) && (passes(row.if5, state.minIF5) || (state.minIF5 === 0 && row.if5_display === "<0.1"));
     })
     .map((row) => ({ row, score: scoreRow(row, q) }))
     .filter((x) => x.score > 0)
@@ -346,6 +346,7 @@ function findSuggestions(query, limit = 12) {
 }
 
 function findSeedSuggestions(query, limit = 12) {
+  if (state.minIF5 !== null) return [];
   const q = query.trim();
   if (!q) return [];
   const qLower = q.toLowerCase();
@@ -366,9 +367,12 @@ function findSeedSuggestions(query, limit = 12) {
 
 async function fetchSearchApi(query, limit = 12) {
   const url = new URL(`${API_BASE}/journals/search`);
+  url.searchParams.set("metric_schema", "if5");
   url.searchParams.set("q", query);
   url.searchParams.set("limit", String(limit));
   if (state.minIF !== null) url.searchParams.set("min_if", String(state.minIF));
+
+  if (state.minIF5 !== null) url.searchParams.set("min_if5", String(state.minIF5));
 
   const controller = new AbortController();
   const timer = window.setTimeout(() => controller.abort(), SEARCH_API_TIMEOUT_MS);
@@ -470,7 +474,7 @@ async function findSuggestionsRemoteFirst(query, limit = 12) {
 }
 
 async function findConferenceSuggestions(query, limit = 12) {
-  if (state.minIF !== null || query.trim().length < 2 || !window.CCFConferences) return [];
+  if (state.minIF !== null || state.minIF5 !== null || query.trim().length < 2 || !window.CCFConferences) return [];
   if (!conferenceCatalogPromise) {
     conferenceCatalogPromise = fetch("./data/ccf-conferences.json?v=20261112-ccf", { cache: "default" })
       .then((response) => {
@@ -753,15 +757,9 @@ function warmSearchApi() {
 
 function applyFilterHint() {
   if (!els.activeFilter) return;
-  if (state.minIF === null) {
-    els.activeFilter.hidden = true;
-    els.activeFilter.textContent = "";
-    return;
-  }
-  els.activeFilter.hidden = false;
-  els.activeFilter.innerHTML = `<span class="status-badge status-badge--neutral">\u7b5b\u9009\u4e2d\uff1aIF &gt;= ${escapeHtml(String(
-    state.minIF
-  ))}</span>`;
+  const labels = [["IF", state.minIF], ["IF5", state.minIF5]].filter(([, value]) => value !== null).map(([key, value]) => `${key} ≥ ${value}`);
+  els.activeFilter.hidden = !labels.length;
+  els.activeFilter.textContent = labels.length ? `筛选中：${labels.join("；")}` : "";
 }
 
 function restoreQueryFromUrl() {
@@ -800,9 +798,9 @@ function runCommand(handler) {
 }
 
 function parseFilterCommand(input) {
-  const m = input.match(/^\s*>\s*filter\s+if\s*>\s*(\d+(?:\.\d+)?)\s*$/i);
+  const m = input.match(/^\s*>\s*filter\s+(if5?)\s*>\s*(\d+(?:\.\d+)?)\s*$/i);
   if (!m) return null;
-  return Number(m[1]);
+  return { key: m[1].toLowerCase() === "if5" ? "minIF5" : "minIF", label: m[1].toUpperCase(), value: Number(m[2]) };
 }
 
 function commandEntries() {
@@ -824,11 +822,15 @@ function commandEntries() {
       },
     },
     {
+      key: "if5", title: "筛选五年影响因子 IF5", desc: "输入 > filter IF5 > 10 设置最低 IF5",
+      run: () => { openCommandPalette(); els.cmdInput.value = "> filter IF5 > "; renderCommandList(els.cmdInput.value); els.cmdInput.focus(); },
+    },
+    {
       key: "reset-filter",
       title: "\u6e05\u9664 IF \u7b5b\u9009",
       desc: "\u6062\u590d\u4e0d\u5e26 IF \u9608\u503c\u7684\u8054\u60f3\u7ed3\u679c",
       run: () => {
-        state.minIF = null;
+        state.minIF = state.minIF5 = null;
         applyFilterHint();
         void renderSuggestions();
       },
@@ -855,10 +857,10 @@ function renderCommandList(input) {
     list = [
       {
         key: "filter-if",
-        title: `\u5e94\u7528\u7b5b\u9009\uff1aIF >= ${filterValue}`,
+        title: `\u5e94\u7528\u7b5b\u9009\uff1a${filterValue.label} >= ${filterValue.value}`,
         desc: "\u4ec5\u4fdd\u7559\u6ee1\u8db3\u9608\u503c\u7684\u671f\u520a\u8054\u60f3\u7ed3\u679c",
         run: () => {
-          state.minIF = filterValue;
+          state[filterValue.key] = filterValue.value;
           applyFilterHint();
           void renderSuggestions();
         },

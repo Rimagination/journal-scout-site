@@ -96,6 +96,8 @@ const els = {
   journalWebsite: document.getElementById("journalWebsite"),
   citeScoreCard: document.getElementById("citeScoreCard"),
   impactIfValue: document.getElementById("impactIfValue"),
+  impactIf5Value: document.getElementById("impactIf5Value"),
+  impactIf5Meta: document.getElementById("impactIf5Meta"),
   impactIfDelta: document.getElementById("impactIfDelta"),
   impactIfMeta: document.getElementById("impactIfMeta"),
   impactIfNewBadge: document.getElementById("impactIfNewBadge"),
@@ -673,6 +675,8 @@ function resetSpotlight(reason = "无数据") {
   setApcDisplay(null);
   setSoftValue(els.spotPublishYear, null);
   setSoftValue(els.spotAnnualArticles, null);
+  if (els.impactIf5Value) els.impactIf5Value.textContent = "-";
+  if (els.impactIf5Meta) els.impactIf5Meta.textContent = "-";
   if (els.impactIfValue) els.impactIfValue.textContent = "-";
   if (els.impactIfDelta) {
     els.impactIfDelta.hidden = true;
@@ -957,6 +961,9 @@ function renderIfDelta(j, currentYear = "") {
 
 function renderImpactFactor(j, ifYear = "") {
   if (!els.impactIfValue || !els.impactIfMeta) return;
+  const if5 = j?.if5 !== null && j?.if5 !== undefined && j?.if5 !== "" && Number.isFinite(Number(j.if5)) ? formatImpactFactorValue(Number(j.if5)) : j?.if5_display === "<0.1" ? "<0.1" : "-";
+  if (els.impactIf5Value) els.impactIf5Value.textContent = if5;
+  if (els.impactIf5Meta) els.impactIf5Meta.textContent = if5 === "-" ? "暂无 JCR 数据" : formatOfficialJifMeta(j.if5_year);
   const value = parseFloatLoose(j?.if_2023);
   els.impactIfValue.textContent = formatImpactFactorValue(value);
   const jifMeta = formatOfficialJifMeta(ifYear || j?.if_year);
@@ -5479,6 +5486,7 @@ function isTransientDetailApiError(error) {
 async function fetchJournalDetailFromApi(id) {
   const url = new URL(`${API_BASE}/journals/detail`);
   url.searchParams.set("id", String(id));
+  url.searchParams.set("metric_schema", "if5");
   for (let attempt = 0; attempt < 2; attempt += 1) {
     try {
       const payload = await fetchApiJsonWithTimeout(url.toString(), DETAIL_API_TIMEOUT_MS, {

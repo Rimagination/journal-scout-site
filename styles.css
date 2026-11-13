@@ -922,7 +922,7 @@ h1 {
 
 .detail-page .impact-card__numbers {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 0.82fr) minmax(0, 0.74fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 0;
   align-items: center;
   border: 1px solid #e4dece;
@@ -3932,7 +3932,7 @@ h1 {
   }
 
   .detail-page .impact-card__numbers {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 0.84fr) minmax(0, 0.72fr);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 0;
     padding: 6px 0;
     border: 0;
@@ -4117,7 +4117,7 @@ h1 {
   .detail-page .impact-card__numbers {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-template-areas:
-      "if if"
+      "if if5"
       "predicted citescore";
     padding: 7px 0;
     border-top: 1px solid #e4dece;
@@ -4553,3 +4553,8 @@ h1 {
 }
 
 
+
+.detail-page .impact-number--five-year strong { font-size: 28px; }
+@media (max-width: 560px) {
+  .detail-page .impact-number--five-year { grid-area: if5; min-height: 74px; padding-bottom: 8px; border-bottom: 1px solid #e7dfd2; }
+}

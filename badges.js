@@ -1,6 +1,6 @@
 (() => {
   const BADGE_ORDER = [
-    "impact", "indexing", "jcr", "xinrui", "cas", "top", "hq", "pku", "cssci", "cscd", "scd",
+    "impact", "if5", "indexing", "jcr", "xinrui", "cas", "top", "hq", "pku", "cssci", "cscd", "scd",
     "natureIndex", "warning", "xinruiWarning", "ccf", "ccft", "ei",
   ];
   const WOS_NAMES = {
@@ -34,6 +34,9 @@
     if (row.if_2023 !== null && row.if_2023 !== undefined && row.if_2023 !== "" && Number.isFinite(Number(row.if_2023))) {
       push("impact", `IF ${Number(row.if_2023)}`, "impact", `影响因子${row.if_year ? `；数据年份：${row.if_year}` : ""}。`);
     }
+
+    const if5 = row.if5 !== null && row.if5 !== undefined && row.if5 !== "" && Number.isFinite(Number(row.if5)) ? String(Number(row.if5)) : row.if5_display === "<0.1" ? "<0.1" : "";
+    if (if5) push("if5", `IF5 ${if5}`, "impact", `五年影响因子；数据年份：${row.if5_year || "未记录"}。独立于年度 IF。`);
 
     const wos = [...new Set(tags.filter((value) => /^(?:SCI|SCIE|SSCI|AHCI|ESCI)$/i.test(value)).map((value) => value.toUpperCase()))];
     for (const value of wos) push("indexing", value, "wos", `${value}：${WOS_NAMES[value]}，Web of Science 的期刊引文索引类型。`);
