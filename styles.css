@@ -96,8 +96,8 @@ body {
 }
 
 .scansci-global-nav a:focus-visible {
-  outline: 2px solid #316c58;
-  outline-offset: 4px;
+  outline: 1px solid currentColor;
+  outline-offset: -1px;
   border-radius: 4px;
 }
 
@@ -207,10 +207,12 @@ input {
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-input:focus {
+input:focus,
+select:focus,
+textarea:focus {
   outline: none;
-  border-color: #6ea9c0;
-  box-shadow: 0 0 0 4px rgba(96, 161, 188, 0.18);
+  border-color: #176650;
+  box-shadow: none;
 }
 
 .search-tip {
@@ -1865,8 +1867,8 @@ h1 {
 }
 
 .chart-zoom-btn:focus-visible {
-  outline: 2px solid #8eb0e2;
-  outline-offset: 2px;
+  outline: 1px solid currentColor;
+  outline-offset: -1px;
 }
 
 .chart-zoom-btn svg {
@@ -2211,8 +2213,8 @@ h1 {
 }
 
 .detail-page .trend-tab:focus-visible {
-  outline: 2px solid #9fd8cb;
-  outline-offset: 2px;
+  outline: 1px solid currentColor;
+  outline-offset: -1px;
 }
 
 .detail-page .trend-tab.is-active {
@@ -3498,8 +3500,8 @@ h1 {
 
 .submission-field select:focus {
   outline: none;
-  border-color: #6d9d82;
-  box-shadow: 0 0 0 4px rgba(95, 142, 112, 0.16);
+  border-color: #176650;
+  box-shadow: none;
 }
 
 .submission-rating-form__foot {
@@ -4275,6 +4277,11 @@ h1 {
   box-shadow: none;
 }
 
+.search-page .search-box--single:focus-within {
+  border-color: #176650;
+  box-shadow: none;
+}
+
 .search-page .search-box--single input::placeholder {
   color: transparent;
 }
@@ -4348,8 +4355,8 @@ h1 {
 }
 
 .search-box__clear:focus-visible {
-  outline: 3px solid rgba(76, 122, 175, 0.28);
-  outline-offset: 2px;
+  outline: 1px solid currentColor;
+  outline-offset: -1px;
 }
 
 .search-box__go {
@@ -4386,8 +4393,8 @@ h1 {
 }
 
 .search-box__go:focus-visible {
-  outline: 3px solid rgba(76, 122, 175, 0.35);
-  outline-offset: 2px;
+  outline: 1px solid currentColor;
+  outline-offset: -1px;
 }
 
 .search-page .search-tip {
@@ -4435,8 +4442,8 @@ h1 {
 }
 
 .home-quick-queries button:focus-visible {
-  outline: 3px solid rgba(76, 122, 175, 0.28);
-  outline-offset: 2px;
+  outline: 1px solid currentColor;
+  outline-offset: -1px;
 }
 
 .search-page .foot {

@@ -24,13 +24,15 @@
 .catalogs-page button:disabled { opacity:.5; cursor:default; }
 .catalog-button,.catalog-primary,.catalog-search button { border:1px solid #c3d8ce; border-radius:9px; padding:10px 16px; background:white; color:#176650; font-weight:600; text-decoration:none; }
 .catalog-primary { background:#176650; color:white; border-color:#176650; }
-.catalogs-page input:focus-visible,.catalogs-page button:focus-visible,.catalogs-page a:focus-visible,.catalogs-page textarea:focus-visible { outline:2px solid #176650; outline-offset:3px; }
+.catalogs-page input:focus,.catalogs-page input:focus-visible,.catalogs-page select:focus,.catalogs-page select:focus-visible,.catalogs-page textarea:focus,.catalogs-page textarea:focus-visible { outline:none; border-color:#176650; box-shadow:none; }
+.catalogs-page button:focus-visible,.catalogs-page a:focus-visible { outline:1px solid currentColor; outline-offset:-1px; }
+.catalogs-page input[type=checkbox]:focus-visible,.catalogs-page input[type=radio]:focus-visible { outline:1px solid currentColor; outline-offset:0; }
 .catalog-search { display:flex; height:46px; width:100%; padding:0; background:white; border:1px solid #cedcd3; border-radius:8px; box-shadow:none; overflow:hidden; }
 .catalog-search:focus-within { border-color:#176650; }
 .catalog-search input { flex:1; min-width:0; height:100%; padding:0 14px; border:0; border-radius:0; background:transparent; font:inherit; color:inherit; box-shadow:none; }
 .catalogs-page .catalog-search input:focus,.catalogs-page .catalog-search input:focus-visible { outline:none; border:0; box-shadow:none; }
 .catalog-search button { align-self:stretch; padding:0 18px; border:0; border-radius:0; background:transparent; }
-.catalog-search button:focus-visible { outline-offset:-4px; }
+.catalogs-page .catalog-search button:focus-visible { outline:none; background:#edf5ef; }
 .catalog-list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; margin:22px 0; }
 .catalog-card { border:1px solid #d5e2da; border-radius:14px; background:white; padding:24px; position:relative; }
 .catalog-card:has(input:checked) { border-color:#71ad96; background:#f1f9f4; }

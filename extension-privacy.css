@@ -4,7 +4,7 @@
 .privacy-main p, .privacy-main li { color: #405b50; font-size: 14px; line-height: 1.9; overflow-wrap: anywhere; }
 .privacy-main p[lang="en"] { color: #65796f; }
 .privacy-main a { color: #176b59; text-underline-offset: 3px; }
-.privacy-main a:focus-visible { outline: 3px solid #87c9b8; outline-offset: 3px; }
+.privacy-main a:focus-visible { outline: 1px solid currentColor; outline-offset: -1px; }
 .privacy-main code { border-radius: 3px; background: #eaf1eb; padding: 2px 4px; font-size: 12px; overflow-wrap: anywhere; }
 .privacy-main ul { padding-left: 22px; }
 .privacy-main li { margin: 8px 0; }

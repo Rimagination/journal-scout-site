@@ -24,7 +24,7 @@
 .timeline-entry p { max-width: 690px; margin: 7px 0 0; color: #5a7065; font-size: 14px; line-height: 1.8; }
 .updates-footer { display: flex; flex-wrap: wrap; gap: 20px; width: min(960px, calc(100% - 48px)); margin: 4px auto 0; padding: 24px 0 38px; border-top: 1px solid #dce7dc; }
 .updates-footer a { color: #54766a; font-size: 13px; text-decoration: none; }
-.updates-version-link:focus-visible, .updates-footer a:focus-visible { outline: 3px solid #87c9b8; outline-offset: 3px; }
+.updates-version-link:focus-visible, .updates-footer a:focus-visible { outline: 1px solid currentColor; outline-offset: -1px; }
 @media (max-width: 600px) {
   .updates-main, .updates-footer { width: calc(100% - 32px); }
   .updates-intro { padding: 38px 0 28px; }
