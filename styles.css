@@ -922,7 +922,7 @@ h1 {
 
 .detail-page .impact-card__numbers {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0;
   align-items: center;
   border: 1px solid #e4dece;
@@ -1001,7 +1001,7 @@ h1 {
   line-height: 1;
 }
 
-.detail-page .impact-number--predicted strong,
+.detail-page .impact-number--five-year strong,
 .detail-page .impact-number--secondary strong {
   margin-top: 3px;
 }
@@ -1016,17 +1016,13 @@ h1 {
   transform: translateY(-4px);
 }
 
+.detail-page .impact-number--five-year strong,
 .detail-page .impact-number--secondary strong {
   color: #7b8798;
   font-size: 22px;
   font-weight: 760;
 }
 
-.detail-page .impact-number--predicted strong {
-  color: #355775;
-  font-size: 27px;
-  font-weight: 800;
-}
 
 .detail-page .impact-number em {
   display: block;
@@ -1037,7 +1033,7 @@ h1 {
   line-height: 1.35;
 }
 
-.detail-page .impact-number--predicted,
+.detail-page .impact-number--five-year,
 .detail-page .impact-number--secondary {
   border-left: 1px solid #e7dfd2;
   padding-left: 0;
@@ -1046,13 +1042,7 @@ h1 {
   text-align: center;
 }
 
-.detail-page .impact-number--predicted .impact-number__label {
-  color: #4f6f89;
-}
 
-.detail-page .impact-number--predicted em {
-  color: #7a8799;
-}
 
 .detail-page .impact-number--secondary .impact-number__label {
   color: #78869a;
@@ -3932,7 +3922,7 @@ h1 {
   }
 
   .detail-page .impact-card__numbers {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 0;
     padding: 6px 0;
     border: 0;
@@ -3952,7 +3942,6 @@ h1 {
     padding-right: 8px;
   }
 
-  .detail-page .impact-number--predicted,
   .detail-page .impact-number--secondary {
     padding-left: 0;
   }
@@ -3961,13 +3950,11 @@ h1 {
     font-size: 31px;
   }
 
+  .detail-page .impact-number--five-year strong,
   .detail-page .impact-number--secondary strong {
     font-size: 18px;
   }
 
-  .detail-page .impact-number--predicted strong {
-    font-size: 21px;
-  }
 
   .detail-page .impact-number__label {
     font-size: 10px;
@@ -4118,7 +4105,7 @@ h1 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-template-areas:
       "if if5"
-      "predicted citescore";
+      "citescore citescore";
     padding: 7px 0;
     border-top: 1px solid #e4dece;
     border-bottom: 1px solid #e4dece;
@@ -4136,11 +4123,6 @@ h1 {
     border-bottom: 1px solid #e7dfd2;
   }
 
-  .detail-page .impact-number--predicted {
-    grid-area: predicted;
-    border-left: 0;
-    padding-top: 8px;
-  }
 
   .detail-page .impact-number--secondary {
     grid-area: citescore;
@@ -4162,10 +4144,8 @@ h1 {
     font-size: 35px;
   }
 
-  .detail-page .impact-number--predicted strong {
-    font-size: 24px;
-  }
 
+  .detail-page .impact-number--five-year strong,
   .detail-page .impact-number--secondary strong {
     font-size: 22px;
   }
@@ -4554,7 +4534,10 @@ h1 {
 
 
 
-.detail-page .impact-number--five-year strong { font-size: 28px; }
 @media (max-width: 560px) {
   .detail-page .impact-number--five-year { grid-area: if5; min-height: 74px; padding-bottom: 8px; border-bottom: 1px solid #e7dfd2; }
+}
+
+@media (max-width: 560px) {
+  .detail-page .impact-number--secondary { border-left: 0; }
 }

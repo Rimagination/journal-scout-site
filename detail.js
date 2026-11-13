@@ -41,15 +41,6 @@
       <p>当官方数据暂不可用时，页面只提示接口状态，不使用公开聚合数据替代官方 CiteScore。</p>
     `,
   },
-  predicted_if: {
-    title: "动态预测IF说明",
-    body: `
-      <p>“动态预测IF”是非官方估算值，不是 Clarivate / JCR 发布的正式影响因子。</p>
-      <p>本地服务会调用 OpenAlex 公开 Source 数据，比较目标年度前两年论文群与上一轮官方 IF 对应论文群的引用率变化，并用最新官方 IF 做收缩校准。</p>
-      <p>简化公式：预测 IF ≈ 最新官方 IF × 校准后的 OpenAlex 引用率变化；校准会降低近年累积引用不足带来的系统性低估。</p>
-      <p>它会受到 OpenAlex 覆盖范围、索引延迟、论文类型口径与 JCR 清洗规则影响，只适合早期选刊筛查，不建议用于正式评价。</p>
-    `,
-  },
   annual_articles: {
     title: "年发文量说明",
     body: `
@@ -101,8 +92,6 @@ const els = {
   impactIfDelta: document.getElementById("impactIfDelta"),
   impactIfMeta: document.getElementById("impactIfMeta"),
   impactIfNewBadge: document.getElementById("impactIfNewBadge"),
-  predictedIfValue: document.getElementById("predictedIfValue"),
-  predictedIfMeta: document.getElementById("predictedIfMeta"),
   citeScoreValue: document.getElementById("citeScoreValue"),
   citeScoreMetrics: document.getElementById("citeScoreMetrics"),
   citeScoreStars: document.getElementById("citeScoreStars"),
@@ -142,8 +131,6 @@ const els = {
 const homepagePreviewImageCache = new Map();
 const annualArticlesSeriesCache = new Map();
 const paperEvidenceCache = new Map();
-const predictedIfCache = new Map();
-const predictedIfRequestCache = new Map();
 const citeScoreMetricCache = new Map();
 const citeScoreRequestCache = new Map();
 const apcExchangeRateCache = new Map();
@@ -177,12 +164,9 @@ const STATIC_DATA_FALLBACK_ENABLED =
   new URLSearchParams(window.location.search).get("staticData") === "1";
 const STATIC_OFFICIAL_APC_ENABLED = window.JOURNAL_SCOUT_DISABLE_STATIC_APC !== true;
 const ELSEVIER_API_TIMEOUT_MS = 8000;
-const PREDICTED_IF_TIMEOUT_MS = 9000;
 const METRIC_CACHE_PREFIX = "journalScoutMetric";
 const CITESCORE_CACHE_TTL_MS = 6 * 60 * 60 * 1000;
 const CITESCORE_NEGATIVE_CACHE_TTL_MS = 5 * 60 * 1000;
-const PREDICTED_IF_CACHE_TTL_MS = 7 * 24 * 60 * 60 * 1000;
-const PREDICTED_IF_NEGATIVE_CACHE_TTL_MS = 60 * 60 * 1000;
 const SCHOLAR_EVIDENCE_TIMEOUT_MS = 5000;
 const SCHOLAR_EVIDENCE_ROWS = 8;
 const CAR_RISK_TIMEOUT_MS = 4500;
@@ -688,7 +672,6 @@ function resetSpotlight(reason = "无数据") {
     els.impactIfMeta.classList.add("is-muted");
   }
   if (els.impactIfNewBadge) els.impactIfNewBadge.hidden = true;
-  resetPredictedImpactFactor("暂无预测数据");
   setCiteScoreCardState({
     score: null,
     year: "",
@@ -976,224 +959,6 @@ function renderImpactFactor(j, ifYear = "") {
   }
   if (els.impactIfNewBadge) {
     els.impactIfNewBadge.hidden = value === null || !isLatestOfficialJifYear(ifYear || j?.if_year);
-  }
-}
-
-function formatPredictedImpactFactorValue(value) {
-  const n = Number(value);
-  if (!Number.isFinite(n) || n <= 0) return "-";
-  return n.toFixed(n >= 10 ? 1 : 2).replace(/\.?0+$/, "");
-}
-
-function resetPredictedImpactFactor(meta = "计算中") {
-  if (els.predictedIfValue) els.predictedIfValue.textContent = "-";
-  if (els.predictedIfMeta) {
-    els.predictedIfMeta.textContent = meta;
-    els.predictedIfMeta.classList.add("is-muted");
-  }
-}
-
-function setPredictedImpactFactorState(payload = {}) {
-  if (!els.predictedIfValue || !els.predictedIfMeta) return;
-  const value = parseFloatLoose(payload?.value ?? payload?.predicted_if);
-  if (value === null || String(payload?.status || "").toLowerCase() === "unavailable") {
-    els.predictedIfValue.textContent = "-";
-    els.predictedIfMeta.textContent = payload?.message || "预测暂不可用";
-    els.predictedIfMeta.classList.add("is-muted");
-    return;
-  }
-
-  els.predictedIfValue.textContent = formatPredictedImpactFactorValue(value);
-  els.predictedIfMeta.textContent = "基于OpenAlex实时估算，可能低估";
-  els.predictedIfMeta.classList.remove("is-muted");
-}
-
-function buildPredictedImpactFactorUrl(j, ifYear = "") {
-  const issn = normalizeIssnForQuery(j?.issn || j?.eissn || "");
-  if (!issn) return "";
-  const params = new URLSearchParams({ issn });
-  const officialIf = parseFloatLoose(j?.if_2023);
-  const officialYear = extractYearToken(ifYear || j?.if_year || "");
-  if (officialIf !== null) params.set("official_if", String(officialIf));
-  if (officialYear) params.set("official_year", String(officialYear));
-  const eissn = normalizeIssnForQuery(j?.eissn || "");
-  if (eissn && eissn !== issn) params.set("eissn", eissn);
-  return `${API_BASE}/impact/predicted-if?${params.toString()}`;
-}
-
-function getPredictedImpactFactorCacheTtl(payload) {
-  return String(payload?.status || "").toLowerCase() === "ok" ? PREDICTED_IF_CACHE_TTL_MS : PREDICTED_IF_NEGATIVE_CACHE_TTL_MS;
-}
-
-function buildOpenAlexPredictionSourceUrl(issn) {
-  const params = new URLSearchParams({
-    filter: `issn:${issn}`,
-    "per-page": "1",
-    select: "id,display_name,issn_l,issn,counts_by_year",
-  });
-  return `https://api.openalex.org/sources?${params.toString()}`;
-}
-
-async function fetchOpenAlexPredictionSource(j) {
-  const issns = [...new Set([j?.issn, j?.eissn].filter(Boolean).map(normalizeIssnForQuery).filter(Boolean))];
-  if (!issns.length) return null;
-  const results = await Promise.all(
-    issns.map(async (issn) => {
-      const payload = await fetchJsonWithTimeout(buildOpenAlexPredictionSourceUrl(issn), 8000, {
-        headers: { Accept: "application/json" },
-      });
-      return pickOpenAlexSource(payload?.results || [], j);
-    })
-  );
-  return results.find(Boolean) || null;
-}
-
-function getOpenAlexYearCounts(source) {
-  const rows = Array.isArray(source?.counts_by_year) ? source.counts_by_year : [];
-  const counts = new Map();
-  for (const row of rows) {
-    const year = Number(row?.year);
-    if (!Number.isFinite(year)) continue;
-    counts.set(Math.trunc(year), {
-      works_count: Math.max(0, Number(row?.works_count) || 0),
-      cited_by_count: Math.max(0, Number(row?.cited_by_count) || 0),
-    });
-  }
-  return counts;
-}
-
-function sumOpenAlexPredictionCounts(counts, years) {
-  let works = 0;
-  let cited = 0;
-  const presentYears = [];
-  for (const year of years) {
-    const row = counts.get(year);
-    if (!row) continue;
-    presentYears.push(year);
-    works += Number(row.works_count || 0);
-    cited += Number(row.cited_by_count || 0);
-  }
-  return {
-    years,
-    present_years: presentYears,
-    works_count: works,
-    cited_by_count: cited,
-    citation_rate: works > 0 ? cited / works : null,
-  };
-}
-
-async function estimatePredictedImpactFactorFromOpenAlex(j, ifYear = "") {
-  const officialIf = parseFloatLoose(j?.if_2023);
-  const currentYear = new Date().getFullYear();
-  const officialYear = extractYearToken(ifYear || j?.if_year || "") || currentYear - 2;
-  const targetYear = officialYear + 1;
-  const source = await fetchOpenAlexPredictionSource(j);
-  if (!source) {
-    return {
-      status: "unavailable",
-      error: "openalex_source_not_found",
-      message: "未找到可用于预测的 OpenAlex Source",
-      target_year: targetYear,
-    };
-  }
-
-  const counts = getOpenAlexYearCounts(source);
-  const baseline = sumOpenAlexPredictionCounts(counts, [officialYear - 1, officialYear - 2]);
-  const target = sumOpenAlexPredictionCounts(counts, [targetYear - 1, targetYear - 2]);
-  const baselineRate = baseline.citation_rate;
-  const targetRate = target.citation_rate;
-  if (!baselineRate || !targetRate) {
-    return {
-      status: "unavailable",
-      error: "insufficient_openalex_counts",
-      message: "OpenAlex 年度引用数据不足",
-      target_year: targetYear,
-      source_id: source.id,
-      source_name: source.display_name,
-      baseline,
-      target,
-    };
-  }
-
-  const rawRatio = Number(targetRate) / Number(baselineRate);
-  const shrinkage = 0.35;
-  let adjustedRatio = rawRatio;
-  let value = Number(targetRate);
-  let method = "openalex_cohort_rate";
-  if (officialIf !== null) {
-    adjustedRatio = 1 + (rawRatio - 1) * shrinkage;
-    value = officialIf * adjustedRatio;
-    method = "official_if_calibrated_openalex_cohort_shrunken";
-  }
-
-  const minWorks = Math.min(Number(baseline.works_count || 0), Number(target.works_count || 0));
-  return {
-    status: "ok",
-    metric: "predicted_if",
-    value: Number(value.toFixed(3)),
-    target_year: targetYear,
-    official_year: officialYear,
-    official_if: officialIf,
-    method,
-    confidence: officialIf !== null && minWorks >= 50 ? "medium" : "low",
-    source: "OpenAlex",
-    source_id: source.id,
-    source_name: source.display_name,
-    baseline,
-    target,
-    ratio: Number(adjustedRatio.toFixed(5)),
-    openalex_raw_ratio: Number(rawRatio.toFixed(5)),
-    openalex_shrinkage: shrinkage,
-    fetched_at: new Date().toISOString().slice(0, 10),
-    note: "非官方预测值，仅用于投稿前信息参考。",
-  };
-}
-
-async function fetchPredictedImpactFactorFromApi(url) {
-  if (!predictedIfRequestCache.has(url)) {
-    predictedIfRequestCache.set(
-      url,
-      fetchJsonWithTimeout(url, PREDICTED_IF_TIMEOUT_MS, {
-        headers: { Accept: "application/json" },
-      }).finally(() => predictedIfRequestCache.delete(url))
-    );
-  }
-  return predictedIfRequestCache.get(url);
-}
-
-async function loadPredictedImpactFactor(j, ifYear = "") {
-  const url = buildPredictedImpactFactorUrl(j, ifYear);
-  if (!url) {
-    resetPredictedImpactFactor("缺少 ISSN");
-    return;
-  }
-  const currentJournal = j;
-  const cachedPayload = readMetricCache(predictedIfCache, "predicted-if", url);
-  if (cachedPayload) {
-    setPredictedImpactFactorState(cachedPayload);
-    return;
-  }
-
-  resetPredictedImpactFactor("计算中");
-  try {
-    let payload = null;
-    if (!isLocalPreviewHost()) {
-      payload = await estimatePredictedImpactFactorFromOpenAlex(j, ifYear);
-    }
-    if (!payload || String(payload?.status || "").toLowerCase() === "unavailable") {
-      payload = payload || (await fetchPredictedImpactFactorFromApi(url));
-    }
-    if (!payload && isLocalPreviewHost()) {
-      payload = await estimatePredictedImpactFactorFromOpenAlex(j, ifYear);
-    }
-    if (pageState.journal !== currentJournal) return;
-    if (payload && typeof payload === "object") {
-      writeMetricCache(predictedIfCache, "predicted-if", url, payload, getPredictedImpactFactorCacheTtl(payload));
-    }
-    setPredictedImpactFactorState(payload);
-  } catch (_) {
-    if (pageState.journal !== currentJournal) return;
-    resetPredictedImpactFactor("预测暂不可用");
   }
 }
 
@@ -3391,7 +3156,6 @@ function renderSpotlight(j, latestCas, indexTypeText = "-") {
   refreshOfficialApcForCurrentJournal(j, null).catch(() => {});
   setPublicationStartYearDisplay(null);
   setSoftValue(els.spotAnnualArticles, null);
-  resetPredictedImpactFactor("计算中");
   setCiteScoreCardState({
     score: null,
     year: "",
@@ -3435,7 +3199,6 @@ function renderRow(j, meta) {
 
   renderImpactFactor(j, ifYear);
   renderSpotlight(j, latestCas, inclusionTypeText);
-  loadPredictedImpactFactor(j, ifYear);
   startCiteScoreMetricLoad(j);
   enrichSpotlightFromOpenAlex(j, latestCas).catch(() => {
     els.journalSummary.textContent = "暂无可用的公开期刊简介。";
