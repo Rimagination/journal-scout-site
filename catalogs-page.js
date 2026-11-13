@@ -1,5 +1,6 @@
 (() => {
   const core=globalThis.JournalScoutCatalogs;
+  const excel=globalThis.JournalScoutCatalogExcel;
   const ONLINE=document.body.dataset.onlineCatalogs==='true';
   const API=location.hostname==='localhost' || location.hostname==='127.0.0.1' ? (globalThis.JOURNAL_SCOUT_API_BASE || 'https://www.scansci.com/api') : 'https://www.scansci.com/api';
   const STORE='journal-scout-catalogs-v1';
@@ -48,9 +49,9 @@
       if(item.effectiveDate) details.append(make('p','生效日期：'+item.effectiveDate));
       if(item.notes) details.append(make('p',item.notes));
       if(item.sourceUrl) { const a=make('a','查看来源'); a.append(globalThis.JournalScoutLinkIcon()); a.href=item.sourceUrl; a.target='_blank'; a.rel='noopener noreferrer'; details.append(a); }
-      const download=make('button','下载目录包 ↓','catalog-button'); download.type='button'; download.addEventListener('click',async()=>{
+      const download=make('button','下载 Excel ↓','catalog-button'); download.type='button'; download.addEventListener('click',async()=>{
         download.disabled=true;
-        try { const result=await api(`/${item.id}/versions/${item.version}`); downloadJson(core.pack(result.pack),`${item.label}-${item.edition}.json`); }
+        try { const result=await api(`/${item.id}/versions/${item.version}`); const pack=core.pack(result.pack); await downloadExcel(pack,pack.entries,`${item.label}-${item.edition}.xlsx`); }
         catch(e) { $('catalogStatus').textContent=e.message; } finally { download.disabled=false; }
       });
       const p=make('p'); p.append(download); card.append(p,details); list.append(card);
@@ -98,24 +99,22 @@
     }
     $('submitCatalog').disabled=!draft || !loggedIn;
   }
-  $('openUpload').addEventListener('click',()=>{ $('uploadSection').hidden=false; $('uploadSection').scrollIntoView({behavior:'smooth',block:'start'}); if(ONLINE&&!accountLoaded) void account(); });
-  $('closeUpload').addEventListener('click',()=>{$('uploadSection').hidden=true; $('openUpload').focus();});
-  function invalidate() { draft=null; previewSerial++; $('submitCatalog').disabled=true; $('downloadLocalCatalog').disabled=true; $('uploadStatus').textContent='修改后请重新检查预览。'; }
-  $('uploadForm').addEventListener('input',invalidate); $('catalogFile').addEventListener('change',invalidate);
+  const dialog=$('uploadSection');
+  $('openUpload').addEventListener('click',()=>{dialog.showModal();document.body.classList.add('catalog-modal-open');if(ONLINE&&!accountLoaded)void account();});
+  $('closeUpload').addEventListener('click',()=>dialog.close());
+  dialog.addEventListener('close',()=>{document.body.classList.remove('catalog-modal-open');$('openUpload').focus();});
+  dialog.addEventListener('click',event=>{if(event.target!==dialog)return;const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)dialog.close();});
+  function invalidate() { draft=null; previewSerial++; $('uploadPreview').hidden=true; $('submitCatalog').disabled=true; $('downloadLocalCatalog').disabled=true; $('uploadStatus').textContent='修改后请重新检查预览。'; }
+  let importedValues={};
+  $('uploadForm').addEventListener('input',invalidate);
+  $('catalogFile').addEventListener('change',()=>{
+    for(const [key,value] of Object.entries(importedValues)){const field=$('uploadForm').elements.namedItem(key);if(field?.value===value)field.value='';}
+    importedValues={};invalidate();
+  });
   let xlsxPromise;
   function xlsxLibrary() {
-    if(!xlsxPromise) xlsxPromise=new Promise((resolve,reject)=>{const script=document.createElement('script'); script.src='./assets/vendor/xlsx-0.20.3.min.js'; script.onload=()=>resolve(globalThis.XLSX); script.onerror=()=>{xlsxPromise=null;reject(new Error('Excel 读取组件未能加载，请重试或改用 CSV。'));}; document.head.append(script);});
+    if(!xlsxPromise) xlsxPromise=new Promise((resolve,reject)=>{const script=document.createElement('script'); script.src='./assets/vendor/xlsx-0.20.3.min.js'; script.onload=()=>resolve(globalThis.XLSX); script.onerror=()=>{xlsxPromise=null;reject(new Error('Excel 组件未能加载，请重试。'));}; document.head.append(script);});
     return xlsxPromise;
-  }
-  function checkZip(buffer) {
-    const d=new DataView(buffer); let end=-1;
-    for(let p=d.byteLength-22;p>=Math.max(0,d.byteLength-65557);p--) if(d.getUint32(p,true)===0x06054b50){end=p;break;}
-    if(end<0) throw new Error('Excel 文件结构不正确');
-    const count=d.getUint16(end+10,true), size=d.getUint32(end+12,true), start=d.getUint32(end+16,true);
-    if(count>1000 || start+size>end) throw new Error('Excel 文件结构超出支持范围');
-    let total=0,p=start;
-    for(let n=0;n<count;n++) { if(p+46>end || d.getUint32(p,true)!==0x02014b50) throw new Error('Excel 目录损坏'); total+=d.getUint32(p+24,true); p+=46+d.getUint16(p+28,true)+d.getUint16(p+30,true)+d.getUint16(p+32,true); }
-    if(total>16*1024*1024) throw new Error('Excel 解压后过大，请只保留目录表格。');
   }
   function previewTable(entries,issues=[]) {
     const wrap=$('uploadPreview'); wrap.hidden=false; wrap.replaceChildren();
@@ -125,28 +124,19 @@
     wrap.append(make('p',`预览前${Math.min(40,entries.length)}行。格式检查通过不等于已确认所有刊物身份，发布前还需核对来源。`,'catalog-subtle'));
   }
   $('previewCatalog').addEventListener('click',async()=>{
-    const form=$('uploadForm'); if(!form.reportValidity()) return;
-    const serial=++previewSerial; draft=null; $('submitCatalog').disabled=true; $('downloadLocalCatalog').disabled=true; $('previewCatalog').disabled=true; $('uploadStatus').textContent='正在本机读取文件…';
+    const form=$('uploadForm');
+    const serial=++previewSerial; draft=null; $('uploadPreview').hidden=true; $('submitCatalog').disabled=true; $('downloadLocalCatalog').disabled=true; $('previewCatalog').disabled=true; $('uploadStatus').textContent='正在本机读取 Excel…';
     try {
-      const metadata=core.metadata(Object.fromEntries(new FormData(form))); const file=$('catalogFile').files[0];
-      if(!file || file.size>1024*1024 || !/\.(xlsx|csv)$/i.test(file.name)) throw new Error('请选择不超过1MB的 .xlsx 或 UTF-8 CSV 文件。');
-      const buffer=await file.arrayBuffer(); let table;
-      if(/\.csv$/i.test(file.name)) {let value; try {value=new TextDecoder('utf-8',{fatal:true}).decode(buffer);} catch {throw new Error('CSV 请保存为 UTF-8 编码。');} table=core.parseCsv(value);}
-      else {
-        checkZip(buffer); const xlsx=await xlsxLibrary(); const book=xlsx.read(buffer,{type:'array',sheetRows:5002,cellFormula:true,cellHTML:false});
-        const sheet=book.Sheets['目录'] || book.Sheets[book.SheetNames[0]];
-        if(!sheet || sheet['!merges']?.length) throw new Error('请取消合并单元格，每行填写一个条目。');
-        const range=xlsx.utils.decode_range(sheet['!fullref']||sheet['!ref']||'A1');
-        if(range.e.c>30 || range.e.r>5000) throw new Error('目录最多5000行、31列，请删除多余的行列。');
-        if(Object.entries(sheet).some(([name,value])=>!name.startsWith('!') && value?.f)) throw new Error('表格含公式，请粘贴为纯文本后上传。');
-        table=xlsx.utils.sheet_to_json(sheet,{header:1,raw:false,defval:'',blankrows:true});
-      }
-      const checked=core.fromTable(table);
-      if(checked.unknown.length) checked.errors.push({row:1,message:'未识别的列：'+checked.unknown.join('、')+'。请改用模板列名或删除这些列。'});
+      const file=$('catalogFile').files[0];
+      if(!file || file.size>1024*1024 || !/\.xlsx$/i.test(file.name)) throw new Error('仅接受不超过 1 MB 的 Excel（.xlsx）文件。PDF、CSV、JSON 和文字说明请先整理到模板中。');
+      const buffer=await file.arrayBuffer(),xlsx=await xlsxLibrary(),checked=excel.read(buffer,xlsx);
       if(serial!==previewSerial) return;
+      for(const [key,value] of Object.entries(checked.metadata))if(form.elements.namedItem(key)&&!form.elements.namedItem(key).value){form.elements.namedItem(key).value=value;importedValues[key]=value;}
       previewTable(checked.entries,checked.errors);
       if(checked.errors.length) throw new Error(`发现${checked.errors.length}处问题，请修改后重新预览。`);
-      if(new TextEncoder().encode(JSON.stringify(checked.entries)).length>900000) throw new Error('标准化目录超过900KB，请按适用范围分开上传。');
+      if(!form.reportValidity())throw new Error('表格格式通过，请补全目录名称、标签名称、版本和适用范围后重新检查。');
+      const metadata=core.metadata(Object.fromEntries(new FormData(form)));
+      excel.write(metadata,checked.entries,xlsx);
       let binary=''; const bytes=new Uint8Array(buffer); for(let i=0;i<bytes.length;i+=8192) binary+=String.fromCharCode(...bytes.subarray(i,i+8192));
       draft={metadata,entries:checked.entries,source:{name:file.name,base64:btoa(binary)}};
       $('downloadLocalCatalog').disabled=false;
@@ -159,10 +149,10 @@
     if(!draft)return;
     const current=draft;$('downloadLocalCatalog').disabled=true;
     try {
-      const pack=await core.localPackage(current.metadata,current.entries);
+      const xlsx=await xlsxLibrary();
       if(draft!==current)return;
-      downloadJson(pack,`${pack.label}-${pack.edition}.journal-scout.json`);
-      $('uploadStatus').textContent='目录包已生成。在浏览器插件或 Zotero 的“高校与自定义目录”设置中导入即可，无需上传。';
+      saveExcel(excel.write(current.metadata,current.entries,xlsx),`${current.metadata.label}-${current.metadata.edition}.xlsx`);
+      $('uploadStatus').textContent='标准 Excel 已下载，包含“目录”和“目录信息”工作表。';
     }catch(error){$('uploadStatus').textContent=error.message;}
     finally{$('downloadLocalCatalog').disabled=!draft;}
   });
@@ -173,7 +163,8 @@
     catch(error) { $('uploadStatus').textContent=error.message; $('submitCatalog').disabled=!draft; }
     finally { $('previewCatalog').disabled=false; }
   });
-  function downloadJson(data,name) { const url=URL.createObjectURL(new Blob([JSON.stringify(data)],{type:'application/json'})); const a=make('a'); a.href=url; a.download=name.replace(/[\\/:*?"<>|]/g,'-'); a.click(); setTimeout(()=>URL.revokeObjectURL(url),1000); }
+  function saveExcel(buffer,name) { const url=URL.createObjectURL(new Blob([buffer],{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'})); const a=make('a'); a.href=url; a.download=name.replace(/[\\/:*?"<>|]/g,'-'); a.click(); setTimeout(()=>URL.revokeObjectURL(url),1000); }
+  async function downloadExcel(metadata,entries,name) {saveExcel(excel.write(metadata,entries,await xlsxLibrary()),name);}
   async function loadReview() {
     const list=$('reviewList'); list.textContent='正在读取…';
     try {
@@ -182,7 +173,7 @@
       for(const item of result.submissions) {
         const row=make('article','','catalog-review-row'); row.append(make('strong',`${item.name} · ${item.edition} · ${item.count}项`),make('p',item.scope));
         const actions=make('div','','catalog-review-actions');
-        const preview=make('button','核对名单','catalog-button'); preview.type='button'; preview.addEventListener('click',async()=>{try {const r=await api(`/review/${item.version}/preview`,{private:true}); downloadJson(r.pack,`${item.name}-待审.json`);} catch(e){$('catalogStatus').textContent=e.message;}});
+        const preview=make('button','核对名单','catalog-button'); preview.type='button'; preview.addEventListener('click',async()=>{try {const r=await api(`/review/${item.version}/preview`,{private:true});await downloadExcel(r.pack,r.pack.entries,`${item.name}-待审.xlsx`);} catch(e){$('catalogStatus').textContent=e.message;}});
         const source=make('button','下载原文件','catalog-button'); source.type='button'; source.addEventListener('click',()=>{window.open(API+`/journal-catalogs/review/${item.version}/source`,'_blank','noopener');});
         const note=make('input'); note.placeholder='审核备注'; note.maxLength=500; note.setAttribute('aria-label','审核备注');
         actions.append(preview,source,note);

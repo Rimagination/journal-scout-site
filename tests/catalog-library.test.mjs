@@ -22,7 +22,7 @@ test('library links only to standardized catalogs and marks other sources as pen
       assert.ok(catalog.scope&&catalog.edition&&catalog.status&&catalog.sourceId);
       if(catalog.standard){
         assert.equal(catalog.availability,'ready');
-        assert.match(catalog.standard.download,/^\.\/downloads\/catalogs\/standard\/[a-z0-9-]+\.zip$/);
+        assert.match(catalog.standard.download,/^\.\/downloads\/catalogs\/standard\/[a-z0-9-]+\.xlsx$/);
         assert.ok((await stat(path.join(root,catalog.standard.download))).size>0);downloads++;
       }else{assert.equal(catalog.availability,'pending');pending++;}
     }
@@ -33,44 +33,47 @@ test('library links only to standardized catalogs and marks other sources as pen
   assert.equal(food[0].standard.count,156);assert.equal(food[0].standard.parts,1);
 });
 
-test('every downloadable JSON catalog imports correctly and round-trips through its standard Excel table',async()=>{
+test('all public Excel catalogs retain the reviewed rows, scopes and provenance',async()=>{
   const inspect=String.raw`
 import json,zipfile,io,sys
 from pathlib import Path
 import openpyxl
 root=Path(sys.argv[1]);index=json.loads((root/'assets/catalogs/standard-index.json').read_text(encoding='utf8'));out=[]
 for item in index['sources'].values():
- with zipfile.ZipFile(root/item['download']) as z:
-  assert len(z.namelist())==len(set(z.namelist()))
-  assert not any(n.lower().endswith(('.pdf','.doc','.docx','.png')) for n in z.namelist())
+ file=root/item['download'];assert file.stat().st_size<=1024*1024
+ book=openpyxl.load_workbook(file,data_only=False)
+ for sheet in book:
+  assert not sheet.merged_cells
+  assert all(c.data_type!='f' for row in sheet for c in row)
+ assert book['目录'].max_row<=5001
+ table=[[v if v is not None else '' for v in row] for row in book['目录'].values]
+ # Historical artifacts are a fixed baseline, never offered as new downloads.
+ with zipfile.ZipFile(file.with_suffix('.zip')) as z:
   review=json.loads(z.read('整理记录.json'))
-  packs=[]
-  for name in item['files']:
-   body=z.read(name);assert len(body)<=900000
-   book=openpyxl.load_workbook(io.BytesIO(z.read(name.replace('.json','.xlsx'))),data_only=False)
-   sheet=book['目录'];assert not sheet.merged_cells
-   assert all(c.data_type!='f' for row in sheet for c in row)
-   table=[[v if v is not None else '' for v in row] for row in sheet.values]
-   packs.append({'json':body.decode('utf8'),'table':table})
-  out.append({'index':item,'review':review,'packs':packs})
+  old=[entry for name in z.namelist() if name.endswith('.journal-scout.json') for entry in json.loads(z.read(name))['entries']]
+ out.append({'index':item,'review':review,'table':table,'previous':old,
+   'metadata':dict(list(book['目录信息'].values)[1:]),'sources':list(book['来源记录'].values)[1:],
+   'summary':dict(book['核对汇总'].values),'issues':list(book['整理记录'].values)[1:],'exclusions':list(book['排除项'].values)[1:]})
 print(json.dumps(out,ensure_ascii=False))
 `;
   const sources=JSON.parse(execFileSync('python',['-X','utf8','-c',inspect,root],{encoding:'utf8',maxBuffer:30*1024*1024}));
-  let total=0,files=0;
+  let total=0;
   for(const source of sources){
-    let count=0;const entries=[];
     assert.match(source.review.sourceSha256,/^[a-f0-9]{64}$/);
     assert.equal(source.review.sourceSha256,source.index.sourceSha256);
-    for(const part of source.packs){
-      const pack=core.importPackage(part.json),table=core.fromTable(part.table);
-      assert.equal(pack.updateMode,'manual');assert.equal(table.unknown.length,0);
-      assert.deepEqual(table.errors,[]);assert.deepEqual(table.entries,pack.entries);
-      assert.ok(pack.entries.length<=5000);
-      for(const row of pack.entries)if(row.type==='conference')assert.ok(!row.issn&&!row.eissn&&!row.cn);
-      count+=pack.entries.length;entries.push(...pack.entries);files++;
-    }
-    assert.equal(count,source.index.count);assert.equal(count,source.review.standardRows);
-    assert.equal(source.packs.length,source.index.parts);total+=count;
+    const table=core.fromTable(source.table),entries=table.entries;
+    assert.equal(table.unknown.length,0);assert.deepEqual(table.errors,[]);
+    const sorted=rows=>rows.map(row=>JSON.stringify(core.entry({...row,name:row.name.replace(/_x000[DA]_/gi,' ').replace(/\s+/g,' ').trim()}))).sort();
+    assert.deepEqual(sorted(entries),sorted(source.previous),'every original structured entry survives');
+    assert.ok(source.metadata['目录名称']&&source.metadata['标签名称']&&source.metadata['目录版本']);
+    assert.equal(Number(source.summary.standardRows),entries.length);
+    assert.equal(source.issues.length,source.review.issues.length+(source.index.sourceId==='swjtu-2026-public'?2:0));
+    assert.equal(source.exclusions.length,source.review.exclusions.length);
+    if(source.review.sources)assert.deepEqual(source.sources.map(r=>r[3]),source.review.sources.map(r=>r.sha256));
+    else assert.equal(source.sources[0][3],source.review.sourceSha256);
+    for(const row of entries)if(row.type==='conference')assert.ok(!row.issn&&!row.eissn&&!row.cn);
+    assert.equal(entries.length,source.index.count);assert.equal(entries.length,source.review.standardRows);
+    assert.equal(source.index.parts,1);assert.equal(source.index.files.length,1);total+=entries.length;
     if(source.index.sourceId==='uibe-en-2026'){
       assert.equal(source.review.scopeChecks[0].sections,19);
       const cvpr=entries.find(r=>r.name.includes('IEEE/CVF COMPUTER VISION AND PATTERN'));
@@ -78,7 +81,6 @@ print(json.dumps(out,ensure_ascii=False))
     }
     if(source.index.sourceId==='swufe-2025')assert.ok(!entries.some(r=>r.name.includes('其他子刊')));
     if(source.index.sourceId==='nwafu-food-2025'){
-      assert.equal(source.packs.length,1);
       assert.equal(entries.filter(r=>r.grade==='A').length,101);
       assert.equal(entries.filter(r=>r.grade==='B').length,55);
       assert.deepEqual(source.review.sources.map(s=>s.id),['nwafu-food-a-2025','nwafu-food-b-2025']);
@@ -91,5 +93,5 @@ print(json.dumps(out,ensure_ascii=False))
       assert.ok(!entries.some(r=>r.type==='journal'&&(names.has(core.key(r.name))||[r.issn,r.eissn].filter(Boolean).some(id=>ids.has(core.issn(id))))));
     }
   }
-  assert.equal(total,11773);assert.equal(files,14);
+  assert.equal(total,11773);assert.equal(sources.length,8);
 });

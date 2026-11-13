@@ -27,7 +27,7 @@
           "sources": [],
           "availability": "ready",
           "standard": {
-            "download": "./downloads/catalogs/standard/hzau-cpst-2026-20261113.zip",
+            "download": "./downloads/catalogs/standard/hzau-cpst-2026-20261113.xlsx",
             "count": 387,
             "originalCount": 388,
             "parts": 1,
@@ -61,7 +61,7 @@
           "sources": [],
           "availability": "ready",
           "standard": {
-            "download": "./downloads/catalogs/standard/nju-cssci-2024-20261113.zip",
+            "download": "./downloads/catalogs/standard/nju-cssci-2024-20261113.xlsx",
             "count": 100,
             "originalCount": 100,
             "parts": 1,
@@ -121,7 +121,7 @@
           "sources": [],
           "availability": "ready",
           "standard": {
-            "download": "./downloads/catalogs/standard/uibe-cn-2026-20261113.zip",
+            "download": "./downloads/catalogs/standard/uibe-cn-2026-20261113.xlsx",
             "count": 721,
             "originalCount": 721,
             "parts": 1,
@@ -140,7 +140,7 @@
           "sources": [],
           "availability": "ready",
           "standard": {
-            "download": "./downloads/catalogs/standard/uibe-en-2026-20261113.zip",
+            "download": "./downloads/catalogs/standard/uibe-en-2026-20261113.xlsx",
             "count": 2214,
             "originalCount": 2215,
             "parts": 1,
@@ -196,7 +196,7 @@
           ],
           "availability": "ready",
           "standard": {
-            "download": "./downloads/catalogs/standard/nwafu-food-2025-20261113.zip",
+            "download": "./downloads/catalogs/standard/nwafu-food-2025-20261113.xlsx",
             "count": 156,
             "originalCount": 156,
             "parts": 1,
@@ -230,10 +230,10 @@
           "sources": [],
           "availability": "ready",
           "standard": {
-            "download": "./downloads/catalogs/standard/swjtu-2026-public-20261113.zip",
+            "download": "./downloads/catalogs/standard/swjtu-2026-public-20261113.xlsx",
             "count": 4755,
             "originalCount": 4766,
-            "parts": 6,
+            "parts": 1,
             "conferenceCount": 101
           }
         }
@@ -264,7 +264,7 @@
           "sources": [],
           "availability": "ready",
           "standard": {
-            "download": "./downloads/catalogs/standard/swufe-2025-20261113.zip",
+            "download": "./downloads/catalogs/standard/swufe-2025-20261113.xlsx",
             "count": 656,
             "originalCount": 658,
             "parts": 1,
@@ -283,10 +283,10 @@
           "sources": [],
           "availability": "ready",
           "standard": {
-            "download": "./downloads/catalogs/standard/swufe-b-2025-20261113.zip",
+            "download": "./downloads/catalogs/standard/swufe-b-2025-20261113.xlsx",
             "count": 2784,
             "originalCount": 2784,
-            "parts": 2,
+            "parts": 1,
             "conferenceCount": 0
           }
         }

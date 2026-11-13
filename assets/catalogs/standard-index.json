@@ -8,14 +8,14 @@
       "originalCount": 721,
       "parts": 1,
       "files": [
-        "uibe-cn-2026.journal-scout.json"
+        "uibe-cn-2026-20261113.xlsx"
       ],
       "conferenceCount": 0,
       "sourceSha256": "9c4aed7a97cd16bd7913ad76da3ece4feafb7de1a1c3c9e56bacb5704243e2cf",
       "sourceIds": [
         "uibe-cn-2026"
       ],
-      "download": "./downloads/catalogs/standard/uibe-cn-2026-20261113.zip"
+      "download": "./downloads/catalogs/standard/uibe-cn-2026-20261113.xlsx"
     },
     "uibe-en-2026": {
       "sourceId": "uibe-en-2026",
@@ -23,14 +23,14 @@
       "originalCount": 2215,
       "parts": 1,
       "files": [
-        "uibe-en-2026.journal-scout.json"
+        "uibe-en-2026-20261113.xlsx"
       ],
       "conferenceCount": 11,
       "sourceSha256": "8b570b05a9624b0f5b8247f8f9f06328f91f19b68d33bdbcb471148d9a2e85f4",
       "sourceIds": [
         "uibe-en-2026"
       ],
-      "download": "./downloads/catalogs/standard/uibe-en-2026-20261113.zip"
+      "download": "./downloads/catalogs/standard/uibe-en-2026-20261113.xlsx"
     },
     "swufe-2025": {
       "sourceId": "swufe-2025",
@@ -38,30 +38,29 @@
       "originalCount": 658,
       "parts": 1,
       "files": [
-        "swufe-2025.journal-scout.json"
+        "swufe-2025-20261113.xlsx"
       ],
       "conferenceCount": 0,
       "sourceSha256": "5a138d8d2779f90211da27463a89dda0ba45a8a4d31dc3c675b74ebc879a07dd",
       "sourceIds": [
         "swufe-2025"
       ],
-      "download": "./downloads/catalogs/standard/swufe-2025-20261113.zip"
+      "download": "./downloads/catalogs/standard/swufe-2025-20261113.xlsx"
     },
     "swufe-b-2025": {
       "sourceId": "swufe-b-2025",
       "count": 2784,
       "originalCount": 2784,
-      "parts": 2,
+      "parts": 1,
       "files": [
-        "swufe-b-2025-1.journal-scout.json",
-        "swufe-b-2025-2.journal-scout.json"
+        "swufe-b-2025-20261113.xlsx"
       ],
       "conferenceCount": 0,
       "sourceSha256": "a75750afdc582c666663abb8bcb9edfc31cccc35c9b0ac8faf5c49cc455c2a85",
       "sourceIds": [
         "swufe-b-2025"
       ],
-      "download": "./downloads/catalogs/standard/swufe-b-2025-20261113.zip"
+      "download": "./downloads/catalogs/standard/swufe-b-2025-20261113.xlsx"
     },
     "nju-cssci-2024": {
       "sourceId": "nju-cssci-2024",
@@ -69,14 +68,14 @@
       "originalCount": 100,
       "parts": 1,
       "files": [
-        "nju-cssci-2024.journal-scout.json"
+        "nju-cssci-2024-20261113.xlsx"
       ],
       "conferenceCount": 0,
       "sourceSha256": "2b7d75eb68f220247e19388bf2d0ae8f1785e52fb13463b444052e504e08b8a9",
       "sourceIds": [
         "nju-cssci-2024"
       ],
-      "download": "./downloads/catalogs/standard/nju-cssci-2024-20261113.zip"
+      "download": "./downloads/catalogs/standard/nju-cssci-2024-20261113.xlsx"
     },
     "hzau-cpst-2026": {
       "sourceId": "hzau-cpst-2026",
@@ -84,34 +83,29 @@
       "originalCount": 388,
       "parts": 1,
       "files": [
-        "hzau-cpst-2026.journal-scout.json"
+        "hzau-cpst-2026-20261113.xlsx"
       ],
       "conferenceCount": 0,
       "sourceSha256": "ebbfa5a2682dcecec66fda700c28d24cf181a98e3122a0d3a862b8eec0a7eaab",
       "sourceIds": [
         "hzau-cpst-2026"
       ],
-      "download": "./downloads/catalogs/standard/hzau-cpst-2026-20261113.zip"
+      "download": "./downloads/catalogs/standard/hzau-cpst-2026-20261113.xlsx"
     },
     "swjtu-2026-public": {
       "sourceId": "swjtu-2026-public",
       "count": 4755,
       "originalCount": 4766,
-      "parts": 6,
+      "parts": 1,
       "files": [
-        "swjtu-2026-public-1.journal-scout.json",
-        "swjtu-2026-public-2.journal-scout.json",
-        "swjtu-2026-public-3.journal-scout.json",
-        "swjtu-2026-public-4.journal-scout.json",
-        "swjtu-2026-public-5.journal-scout.json",
-        "swjtu-2026-public-6.journal-scout.json"
+        "swjtu-2026-public-20261113.xlsx"
       ],
       "conferenceCount": 101,
       "sourceSha256": "d987a783fb2f258ea7c0b3e852f11419ccd87982630fd4efcac1a03d8102f891",
       "sourceIds": [
         "swjtu-2026-public"
       ],
-      "download": "./downloads/catalogs/standard/swjtu-2026-public-20261113.zip"
+      "download": "./downloads/catalogs/standard/swjtu-2026-public-20261113.xlsx"
     },
     "nwafu-food-2025": {
       "sourceId": "nwafu-food-2025",
@@ -119,7 +113,7 @@
       "originalCount": 156,
       "parts": 1,
       "files": [
-        "nwafu-food-2025.journal-scout.json"
+        "nwafu-food-2025-20261113.xlsx"
       ],
       "conferenceCount": 0,
       "sourceSha256": "10716c69c5cf9e2996caf832107ab6a7b40d0090c5a6247f93509ec593cc8593",
@@ -127,7 +121,7 @@
         "nwafu-food-a-2025",
         "nwafu-food-b-2025"
       ],
-      "download": "./downloads/catalogs/standard/nwafu-food-2025-20261113.zip"
+      "download": "./downloads/catalogs/standard/nwafu-food-2025-20261113.xlsx"
     }
   }
 }

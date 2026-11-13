@@ -34,9 +34,10 @@ for(const [sourceId,originals] of groups) {
   for(const raw of originals) {
     if(raw.rule_row) {log.push(issue(raw,'集合认定规则，不转换为单一期刊'));continue;}
     const isConference=clean(raw.title).startsWith('(会议)')||clean(raw.identifier)==='会议';
-    const row={name:raw.title.replace(/^[（(]会议[）)]\s*/,''),grade:raw.grade,type:isConference?'conference':'journal',
+    const row={name:raw.title.replace(/^[（(]会议[）)]\s*/,'').replace(/_x000[DA]_/gi,' ').replace(/\s+/g,' ').trim(),grade:raw.grade,type:isConference?'conference':'journal',
       scope:source.scope+' / '+raw.scope,subject:raw.scope,sourceLocation:(documents.length>1?sources.get(raw.source_id).title+' · ':'')+(typeof raw.pdf_page==='number'?`原 PDF 第${raw.pdf_page}页，序号${raw.source_sequence}`:String(raw.pdf_page)),notes:''};
     const identifier=clean(raw.identifier),notes=[];
+    if(/_x000[DA]_/i.test(raw.title))log.push(issue(raw,'原名称含 Excel 换行转义，已清理为可匹配的完整名称'));
     if(isConference) {
       if(identifier&&identifier!=='会议')notes.push('原表论文集标识：'+identifier+'（不作为会议 ISSN 匹配）');
     } else if(identifier) {
@@ -66,47 +67,21 @@ for(const [sourceId,originals] of groups) {
   }
   const entries=[...dedup.values()].map(x=>x.row),check=core.validateEntries(entries);
   if(check.errors.length)throw Error(sourceId+' '+JSON.stringify(check.errors.slice(0,5)));
-  const group=sourceId==='swjtu-2026-public'?Map.groupBy(entries,row=>row.subject.split(' / ')[0]):new Map([['',entries]]);
   const folder=path.join(work,sourceId);fs.mkdirSync(folder,{recursive:true});
-  const files=[];
   const notes=[source.note,'仅整理原表具名条目，保留原等级与学科范围；集合认定规则不自动展开。',
     '论文类型、发表日期、预警排除等认定条件以官网原文件为准。',
     sourceId==='swjtu-2026-public'?'官方暂剔除名单单独记录，不纳入可导入目录。':''].filter(Boolean).join('\n');
-  for(const [area,areaRows] of group) {
-    // Keep subject groups together and leave headroom for package metadata.
-    const chunks=[];let batch=[],bytes=0;
-    for(const rows of Map.groupBy(areaRows,row=>row.scope).values()) {
-      const size=Buffer.byteLength(JSON.stringify(rows));
-      if(size>750000)throw Error('A single subject needs explicit subdivision: '+sourceId+' '+rows[0].scope);
-      if(batch.length&&(bytes+size>750000||batch.length+rows.length>5000)){chunks.push(batch);batch=[];bytes=0;}
-      batch.push(...rows);bytes+=size;
-    }
-    if(batch.length)chunks.push(batch);
-    for(const [part,rows] of chunks.entries()) {
-    const section=area+(chunks.length>1?`（第${part+1}/${chunks.length}册）`:'');
-    const pack=await core.localPackage({name:source.title+(section?' · '+section:''),institution:source.school,label:labels[source.school],edition:source.edition,
-      scope:source.scope+(section?' / '+section:''),sourceUrl:source.page_url,effectiveDate:/^\d{4}-\d{2}-\d{2}$/.test(source.effective)?source.effective:'',notes},rows);
-    const text=JSON.stringify(pack);
-    if(Buffer.byteLength(text)>900000)throw Error('Package exceeds standard 900KB limit: '+sourceId+' '+area);
-    const name=sourceId+(group.size>1||chunks.length>1?'-'+String(files.length+1):'')+'.journal-scout.json';
-    fs.writeFileSync(path.join(folder,name),text);files.push(name);
-    }
-  }
+  // JSON is a private build intermediate; the public artifact is one Excel file.
+  const pack=await core.localPackage({name:source.title,institution:source.school,label:labels[source.school],edition:source.edition,
+    scope:source.scope,sourceUrl:source.page_url,effectiveDate:/^\d{4}-\d{2}-\d{2}$/.test(source.effective)?source.effective:'',notes},entries);
+  fs.writeFileSync(path.join(folder,'catalog.json'),JSON.stringify(pack));
   const review={sourceId,sourceUrl:source.page_url,originalUrl:source.file_url,sourceSha256:documents[0].sha256,sources:documents,
     originalRows:originals.length,standardRows:entries.length,conferenceRows:entries.filter(r=>r.type==='conference').length,
     issues:log,exclusions:exclusions.map(r=>({name:r.title,identifier:r.identifier,location:r.location})),
     scopeChecks:data.scopeChecks.filter(r=>r.sourceId===sourceId),checkedOn:'2026-11-13'};
   fs.writeFileSync(path.join(folder,'整理记录.json'),JSON.stringify(review,null,2));
-  fs.writeFileSync(path.join(folder,'整理说明.txt'),[
-    source.school+' · '+source.title,source.edition,'适用范围：'+source.scope,'标准具名条目：'+entries.length,
-    '使用：解压后在支持高校目录的插件版本中导入 .journal-scout.json。Excel 的“目录”工作表使用统一上传模板列名。',
-    '分册：'+(files.length>1?'按原表学科边界分册，分别导入；单册不超过5000行和900KB。':'本目录提供一份 JSON 及对应 Excel。'),
-    notes,'原表记录数：'+originals.length,'整理及合并记录详见“整理记录.json”。',
-    ...documents.flatMap(doc=>['原件：'+doc.title,'官方来源：'+doc.url,'原件 SHA-256：'+doc.sha256])
-  ].join('\n'));
-  manifest.sources[sourceId]={sourceId,count:entries.length,originalCount:originals.length,parts:files.length,files,
-    conferenceCount:review.conferenceRows,sourceSha256:documents[0].sha256,sourceIds,download:`./downloads/catalogs/standard/${sourceId}-20261113.zip`};
-  if(new Set(files).size!==files.length)throw Error('Duplicate package filenames: '+sourceId);
+  manifest.sources[sourceId]={sourceId,count:entries.length,originalCount:originals.length,parts:1,files:[`${sourceId}-20261113.xlsx`],
+    conferenceCount:review.conferenceRows,sourceSha256:documents[0].sha256,sourceIds,download:`./downloads/catalogs/standard/${sourceId}-20261113.xlsx`};
 }
 fs.writeFileSync(path.join(work,'manifest.json'),JSON.stringify(manifest,null,2));
 console.log(JSON.stringify({sources:Object.keys(manifest.sources).length,counts:Object.values(manifest.sources).map(s=>[s.sourceId,s.count,s.parts,s.conferenceCount])}));

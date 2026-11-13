@@ -10,10 +10,10 @@ import json
 import re
 import subprocess
 import sys
-import zipfile
 
 import openpyxl
 from openpyxl.styles import Alignment, Font, PatternFill
+from openpyxl.worksheet.datavalidation import DataValidation
 import pymupdf
 
 SITE = Path(__file__).resolve().parents[1]
@@ -57,7 +57,14 @@ def correct_uibe_scopes(rows, source_id):
     return {'sourceId': source_id, 'sections': len(counts), 'rows': len(records), 'sectionCountsVerified': True}
 
 
-def workbook(pack, target):
+def append_text(sheet, values):
+    sheet.append([str(value) if value is not None else '' for value in values])
+    for cell in sheet[sheet.max_row]:
+        cell.data_type = 's'
+        cell.alignment = Alignment(wrap_text=True, vertical='top')
+
+
+def workbook(pack, target, review=None):
     book = openpyxl.Workbook()
     sheet = book.active
     sheet.title = '目录'
@@ -79,6 +86,7 @@ def workbook(pack, target):
         for col, value in enumerate(values, 1):
             cell = sheet.cell(row_index, col, value)
             cell.data_type = 's'
+            cell.number_format = '@'
     sheet.freeze_panes = 'A2'
     sheet.auto_filter.ref = sheet.dimensions
     widths = [65, 18, 10, 16, 16, 20, 65, 70, 20, 65, 45, 35]
@@ -90,18 +98,68 @@ def workbook(pack, target):
     for row in sheet.iter_rows(min_row=2):
         for cell in row:
             cell.alignment = Alignment(vertical='top', wrap_text=True)
-    info = book.create_sheet('说明')
+    types = DataValidation(type='list', formula1='"期刊,会议"', allow_blank=False)
+    types.errorTitle = '请填写类型'
+    types.error = '只能选择“期刊”或“会议”。'
+    types.showErrorMessage = True
+    types.errorStyle = 'stop'
+    sheet.add_data_validation(types)
+    types.add('C2:C5001')
+    info = book.create_sheet('目录信息')
+    append_text(info, ['字段', '内容'])
     for key, label in [('name', '目录名称'), ('institution', '学校 / 机构'), ('label', '标签名称'),
-                       ('edition', '版本'), ('scope', '适用范围'), ('sourceUrl', '官方来源'),
-                       ('effectiveDate', '生效日期'), ('notes', '使用说明')]:
-        info.append([label, pack.get(key, '')])
+                       ('edition', '目录版本'), ('scope', '适用范围'), ('sourceUrl', '官方来源网址'),
+                       ('effectiveDate', '生效日期'), ('notes', '规则说明')]:
+        append_text(info, [label, pack.get(key, '')])
     info.column_dimensions['A'].width = 18
     info.column_dimensions['B'].width = 100
     for row in info:
         for cell in row:
             cell.data_type = 's'
             cell.alignment = Alignment(wrap_text=True, vertical='top')
+    instructions = book.create_sheet('填写说明')
+    for row in [
+        ['项目', '要求'], ['文件格式', '仅使用 .xlsx；不接受 PDF、CSV、JSON、截图或文字规则。'],
+        ['目录工作表', '保留“目录”工作表名和第一行列名；每行填写一个具名期刊或会议。'],
+        ['必填列', '名称、等级、类型；类型明确选择“期刊”或“会议”。其他列可留空。'],
+        ['名称与等级', '使用全称和原始等级；不可用“所有SCI期刊”等集合规则代替名单。'],
+        ['标识', 'ISSN / eISSN 可留空；填写时须通过校验。会议不填写论文集刊号。'],
+        ['别名', '多个别名用英文分号分隔；不能与同范围其他条目的名称或标识冲突。'],
+        ['限制', '最多5,000行、1 MB；禁止合并单元格、公式、宏和外部链接。'],
+        ['资料来源', '请保留来源网址、适用范围和版本；格式通过不代表认定规则已核实。']
+    ]:
+        append_text(instructions, row)
+    instructions.column_dimensions['A'].width = 20
+    instructions.column_dimensions['B'].width = 100
+    if review:
+        sources = book.create_sheet('来源记录')
+        append_text(sources, ['原件', '官方来源', '原件地址', 'SHA-256'])
+        for doc in review['sources']:
+            append_text(sources, [doc['title'], doc['url'], doc['originalUrl'], doc['sha256']])
+        stats = book.create_sheet('核对汇总')
+        for key in ['sourceId', 'originalRows', 'standardRows', 'conferenceRows', 'checkedOn']:
+            append_text(stats, [key, review[key]])
+        for check in review['scopeChecks']:
+            for key, value in check.items():
+                append_text(stats, ['scopeChecks.' + key, value])
+        issues = book.create_sheet('整理记录')
+        append_text(issues, ['名称', '原等级', '适用范围', '来源位置', '序号', '处理原因'])
+        for row in review['issues']:
+            append_text(issues, [row.get(key, '') for key in ['name', 'grade', 'scope', 'location', 'sequence', 'reason']])
+        exclusions = book.create_sheet('排除项')
+        append_text(exclusions, ['名称', '原始标识', '来源位置'])
+        for row in review['exclusions']:
+            append_text(exclusions, [row.get(key, '') for key in ['name', 'identifier', 'location']])
+    for ws in book:
+        ws.freeze_panes = 'A2'
+        for cell in ws[1]:
+            cell.font = Font(color='FFFFFF', bold=True)
+            cell.fill = PatternFill('solid', fgColor='176650')
+        if ws not in [sheet, info, instructions]:
+            for column in ws.columns:
+                ws.column_dimensions[column[0].column_letter].width = 50
     book.save(target)
+    assert target.stat().st_size <= 1024 * 1024, f'Excel exceeds 1 MB: {target}'
 
 
 def main():
@@ -143,18 +201,10 @@ def publish():
             assert (downloads / Path(item['download']).name).is_file()
             continue
         folder = WORK / item['sourceId']
-        for name in item['files']:
-            package = json.loads((folder / name).read_text(encoding='utf-8'))
-            workbook(package, (folder / name).with_suffix('.xlsx'))
-        with zipfile.ZipFile(downloads / Path(item['download']).name, 'w', zipfile.ZIP_DEFLATED) as z:
-            for name in item['files']:
-                z.write(folder / name, name)
-                z.write((folder / name).with_suffix('.xlsx'), name.replace('.json', '.xlsx'))
-            z.write(folder / '整理说明.txt', '整理说明.txt')
-            z.write(folder / '整理记录.json', '整理记录.json')
-        with zipfile.ZipFile(downloads / Path(item['download']).name) as z:
-            assert z.testzip() is None
-            assert len(z.namelist()) == len(set(z.namelist()))
+        package = json.loads((folder / 'catalog.json').read_text(encoding='utf-8'))
+        review = json.loads((folder / '整理记录.json').read_text(encoding='utf-8'))
+        workbook(package, downloads / Path(item['download']).name, review)
+    workbook({'entries': []}, SITE / 'assets/templates/catalog-upload-v1.xlsx')
     (SITE / 'assets/catalogs/standard-index.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding='utf-8')
     subprocess.run(['python', str(SITE / 'scripts/build-reference-library.py')], cwd=SITE, check=True)
     print(json.dumps({'standardCatalogs': len(manifest['sources']), 'rows': sum(s['count'] for s in manifest['sources'].values()),
