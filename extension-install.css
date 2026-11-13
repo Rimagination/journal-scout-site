@@ -132,6 +132,7 @@
 .zotero-install-entry__copy p { margin: 5px 0; color: #60786c; font-size: 12px; line-height: 1.7; }
 .zotero-install-entry__copy small { color: #81948a; font-size: 11px; line-height: 1.6; }
 .zotero-install-entry__actions { display: flex; align-items: center; gap: 10px; flex: none; }
+.zotero-install-entry__sources { margin-top: 10px; }
 .zotero-install-entry__details { margin-top: 10px; }
 .zotero-guide-info { margin-top: 24px; padding-top: 18px; border-top: 1px solid #e5eee5; }
 .zotero-guide-info h3 { margin: 0 0 10px; color: #29453c; }

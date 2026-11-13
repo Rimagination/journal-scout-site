@@ -30,6 +30,7 @@ for (const option of installOptions) {
     const group = option.closest(".browser-guide__body, .zotero-install-entry");
     const groupOptions = group?.querySelectorAll(".install-option__toggle[aria-controls]") ?? [option];
     const shouldOpen = option.getAttribute("aria-expanded") !== "true";
+    const panels = new Map();
 
     for (const otherOption of groupOptions) {
       const panel = document.getElementById(otherOption.getAttribute("aria-controls"));
@@ -39,7 +40,8 @@ for (const option of installOptions) {
       otherOption.setAttribute("aria-expanded", String(isOpen));
       otherOption.closest(".install-option, .zotero-install-entry__card")?.classList.toggle("is-open", isOpen);
       if (hint) hint.textContent = isOpen ? (otherOption.dataset.closeLabel || "收起步骤") : (otherOption.dataset.openLabel || "查看步骤");
-      if (panel) panel.hidden = !isOpen;
+      if (panel) panels.set(panel, panels.get(panel) || isOpen);
     }
+    for (const [panel, isOpen] of panels) panel.hidden = !isOpen;
   });
 }
