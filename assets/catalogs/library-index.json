@@ -3,6 +3,214 @@
   "updated": "2026-11-13",
   "schools": [
     {
+      "institution": "东北财经大学",
+      "is985": false,
+      "is211": false,
+      "summary": "1份资料，1份标准目录可下载",
+      "logo": {
+        "id": "ror-05db1pj03",
+        "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-05db1pj03/ac55f5fa711c4ee9a786b41a5b1c12be/512.webp",
+        "variant": "emblem",
+        "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E4%B8%9C%E5%8C%97%E8%B4%A2%E7%BB%8F%E5%A4%A7%E5%AD%A6%20DUFE.svg",
+        "revision": "ac55f5fa711c4ee9a786b41a5b1c12be"
+      },
+      "catalogs": [
+        {
+          "sourceId": "dufe-2025",
+          "name": "中文与外文学术期刊目录",
+          "edition": "2025年修订；2026-01-01起施行",
+          "scope": "中文与外文学术期刊分列",
+          "status": "已整理标准目录",
+          "currentness": "2025修订原件与2026-09-09研究生院执行通知已核对",
+          "note": "中文、英文分级原样保留；降档、预警自动剔除和其他动态认定条件以原文件为准。仅整理具名期刊，不展开D/E类集合规则。 只整理原表具名条目，论文类型、发表时间、预警排除及其他认定条件以原文件为准。",
+          "sourceUrl": "https://kyc.dufe.edu.cn/content_101111.html",
+          "sources": [
+            {
+              "name": "dufe-2025-primary.pdf",
+              "url": "https://kyc.dufe.edu.cn/file/0d184322-abf4-11f1-86fd-005056a49984/%E4%B8%9C%E5%8C%97%E8%B4%A2%E7%BB%8F%E5%A4%A7%E5%AD%A6%E5%AD%A6%E6%9C%9F%E5%88%8A%E7%9B%AE%E5%BD%95%EF%BC%882025%E5%B9%B4%E4%BF%AE%E8%AE%A2%EF%BC%89.pdf"
+            }
+          ],
+          "availability": "ready",
+          "standard": {
+            "download": "./downloads/catalogs/standard/dufe-2025-20261113.xlsx",
+            "count": 1172,
+            "originalCount": 1173,
+            "parts": 1,
+            "conferenceCount": 0
+          }
+        }
+      ]
+    },
+    {
+      "institution": "中南财经政法大学",
+      "is985": false,
+      "is211": true,
+      "summary": "1份资料，1份标准目录可下载",
+      "logo": {
+        "id": "ror-04yqxxq63",
+        "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-04yqxxq63/eb452fe78ba843538137de537c5c95d9/512.webp?v=black-v1",
+        "variant": "lockup_horizontal",
+        "sourceUrl": "https://www.zuel.edu.cn",
+        "revision": "eb452fe78ba843538137de537c5c95d9"
+      },
+      "catalogs": [
+        {
+          "sourceId": "zuel-2025",
+          "name": "学术期刊指引",
+          "edition": "2025版",
+          "scope": "中文与英文学术期刊，按原学科分别认定",
+          "status": "已整理标准目录",
+          "currentness": "2025版公开原件已核对",
+          "note": "发表时CCF A主会长文、JCR Q1、ABS等附加规则须单独处理；预警与退出索引条款优先。2025年底前存在旧版过渡条件。 只整理原表具名条目，论文类型、发表时间、预警排除及其他认定条件以原文件为准。",
+          "sourceUrl": "https://zhxmt.zuel.edu.cn/_upload/article/files/76/77/ac5d9e2344d7aa80ceaf2568c94d/0bb65257-6e41-49bf-9f12-35f221c035fa.pdf",
+          "sources": [
+            {
+              "name": "zuel-2025.pdf",
+              "url": "https://zhxmt.zuel.edu.cn/_upload/article/files/76/77/ac5d9e2344d7aa80ceaf2568c94d/0bb65257-6e41-49bf-9f12-35f221c035fa.pdf"
+            }
+          ],
+          "availability": "ready",
+          "standard": {
+            "download": "./downloads/catalogs/standard/zuel-2025-20261113.xlsx",
+            "count": 1685,
+            "originalCount": 1685,
+            "parts": 1,
+            "conferenceCount": 15
+          }
+        }
+      ]
+    },
+    {
+      "institution": "中国农业大学",
+      "is985": true,
+      "is211": true,
+      "summary": "1份资料，1份标准目录可下载",
+      "logo": {
+        "id": "ror-04v3ywz14",
+        "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-04v3ywz14/fba048f38ff640f9ab7b6b31c3371836/512.webp",
+        "variant": "emblem",
+        "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E4%B8%AD%E5%9B%BD%E5%86%9C%E4%B8%9A%E5%A4%A7%E5%AD%A6%20CAU.svg",
+        "revision": "fba048f38ff640f9ab7b6b31c3371836"
+      },
+      "catalogs": [
+        {
+          "sourceId": "cau-cem-2025",
+          "name": "经济管理学院高水平学术期刊目录",
+          "edition": "2025版",
+          "scope": "仅经济管理学院",
+          "status": "已整理标准目录",
+          "currentness": "当前可取得的完整公开名单为2025版；2026年会议另提及工商学科目录，尚未取得其公开完整名单",
+          "note": "保留A+、A、B+、B、C、D等级；未具名的其他SSCI/SCI认定规则不展开。原刊号错误仅记录，不猜测改号。 只整理原表具名条目，论文类型、发表时间、预警排除及其他认定条件以原文件为准。 2026年1月19日学院会议审议了工商学科高水平期刊目录，未取得其完整公开附件，不能宣称本包已包含该次修订。会议来源：https://cem.cau.edu.cn/art/2026/1/20/art_36255_1097377.html",
+          "sourceUrl": "https://cem.cau.edu.cn/art/2025/5/20/art_56824_1131144.html",
+          "sources": [
+            {
+              "name": "cau-cem-2025.pdf",
+              "url": "http://cem.cau.edu.cn/module/download/downfile.jsp?classid=0&filename=af9fd5de7ae741dba8756c7cf8be0c43.pdf"
+            }
+          ],
+          "availability": "ready",
+          "standard": {
+            "download": "./downloads/catalogs/standard/cau-cem-2025-20261113.xlsx",
+            "count": 314,
+            "originalCount": 314,
+            "parts": 1,
+            "conferenceCount": 0
+          }
+        }
+      ]
+    },
+    {
+      "institution": "中国石油大学（北京）",
+      "is985": false,
+      "is211": true,
+      "summary": "2份资料，1份标准目录可下载",
+      "logo": {
+        "id": "ror-041qf4r12",
+        "url": "https://www.scansci.com/logo-assets/01/logos/images/ror-041qf4r12/2754101169d044ab95e5a5cd50b33c96/325.webp?v=black-v1",
+        "variant": "lockup_horizontal",
+        "sourceUrl": "https://www.cup.edu.cn/",
+        "revision": "2754101169d044ab95e5a5cd50b33c96"
+      },
+      "catalogs": [
+        {
+          "sourceId": "cup-2026",
+          "name": "各学院博士生在学期间发表创新性成果基本要求及附件",
+          "edition": "2026通知",
+          "scope": "12个学院分别适用；博士学位要求",
+          "status": "已取得名单",
+          "currentness": "2026通知已核对",
+          "note": "不能当作全校统一期刊分级；保留学院、年级与成果条件。",
+          "sourceUrl": "https://grs.cup.edu.cn/wenku/www/202606/090933074knf.pdf",
+          "sources": [],
+          "availability": "pending",
+          "standard": null
+        },
+        {
+          "sourceId": "cup-science-2026",
+          "name": "理学院高水平期刊目录",
+          "edition": "2026版",
+          "scope": "仅理学院：化学、应用数学与能源数据科学、能源物理科学与技术",
+          "status": "已整理标准目录",
+          "currentness": "2026年博士生创新成果要求附件原件已核对",
+          "note": "仅提取原件PDF第72–85页理学院三专业的具名A/B期刊。仅服务相应博士学位创新成果认定；前置条件与署名要求须查看原件第70–85页。未展开中科院分区、学会目录及SCI/EI动态规则。 只整理原表具名条目，论文类型、发表时间、预警排除及其他认定条件以原文件为准。",
+          "sourceUrl": "https://grs.cup.edu.cn/wenku/www/202606/090933074knf.pdf",
+          "sources": [
+            {
+              "name": "cup-2026.pdf",
+              "url": "https://grs.cup.edu.cn/wenku/www/202606/090933074knf.pdf"
+            }
+          ],
+          "availability": "ready",
+          "standard": {
+            "download": "./downloads/catalogs/standard/cup-science-2026-20261113.xlsx",
+            "count": 260,
+            "originalCount": 260,
+            "parts": 1,
+            "conferenceCount": 0
+          }
+        }
+      ]
+    },
+    {
+      "institution": "中国药科大学",
+      "is985": false,
+      "is211": true,
+      "summary": "1份资料，1份标准目录可下载",
+      "logo": {
+        "id": "ror-01sfm2718",
+        "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-01sfm2718/862c8f9940d6432996d105bd4f0ff05e/512.webp",
+        "variant": "emblem",
+        "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E4%B8%AD%E5%9B%BD%E8%8D%AF%E7%A7%91%E5%A4%A7%E5%AD%A6%20CPU.svg",
+        "revision": "862c8f9940d6432996d105bd4f0ff05e"
+      },
+      "catalogs": [
+        {
+          "sourceId": "cpu-2026",
+          "name": "共识期刊及会议目录",
+          "edition": "2026版",
+          "scope": "自然科学、计算机会议、人文社科，逐项保留学科范围",
+          "status": "已整理标准目录",
+          "currentness": "2026版已核对",
+          "note": "保留各学科的原分类；有过渡期与预警排除条件。 只整理原表具名条目，论文类型、发表时间、预警排除及其他认定条件以原文件为准。",
+          "sourceUrl": "https://ist.cpu.edu.cn/zcwj/qkml.htm",
+          "sources": [
+            {
+              "name": "cpu-2026.pdf",
+              "url": "https://ist.cpu.edu.cn/__local/C/17/3A/3F844A87446577EF89D53A25842_D42DA90B_12452E.pdf"
+            }
+          ],
+          "availability": "ready",
+          "standard": {
+            "download": "./downloads/catalogs/standard/cpu-2026-20261113.xlsx",
+            "count": 3088,
+            "originalCount": 3089,
+            "parts": 1,
+            "conferenceCount": 59
+          }
+        }
+      ]
+    },
+    {
       "institution": "华中农业大学",
       "is985": false,
       "is211": true,
@@ -32,6 +240,45 @@
             "originalCount": 388,
             "parts": 1,
             "conferenceCount": 0
+          }
+        }
+      ]
+    },
+    {
+      "institution": "华北电力大学",
+      "is985": false,
+      "is211": true,
+      "summary": "1份资料，1份标准目录可下载",
+      "logo": {
+        "id": "ror-04qr5t414",
+        "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-04qr5t414/263ec4c6989b4f13a7cace18702b6fb0/512.webp",
+        "variant": "emblem",
+        "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E5%8D%8E%E5%8C%97%E7%94%B5%E5%8A%9B%E5%A4%A7%E5%AD%A6%20NCEPU.svg",
+        "revision": "263ec4c6989b4f13a7cace18702b6fb0"
+      },
+      "catalogs": [
+        {
+          "sourceId": "ncepu-2025",
+          "name": "高质量学术期刊分级目录",
+          "edition": "2025版；2026起执行",
+          "scope": "仅科学研究类绩效奖励",
+          "status": "已整理标准目录",
+          "currentness": "2025-12-31发布通知已核对",
+          "note": "原试行版同时废止；含预警整改/再次预警及Article/Review条件。 只整理原表具名条目，论文类型、发表时间、预警排除及其他认定条件以原文件为准。",
+          "sourceUrl": "https://keyan.ncepu.edu.cn/tzgg/872eafe92e2344f997778821d188360a.htm",
+          "sources": [
+            {
+              "name": "ncepu-2025.pdf",
+              "url": "https://keyan.ncepu.edu.cn/docs/2026-01/55feaee24a664011bac23dc8aaff5c02.pdf"
+            }
+          ],
+          "availability": "ready",
+          "standard": {
+            "download": "./downloads/catalogs/standard/ncepu-2025-20261113.xlsx",
+            "count": 2221,
+            "originalCount": 2221,
+            "parts": 1,
+            "conferenceCount": 32
           }
         }
       ]
@@ -97,6 +344,69 @@
       ]
     },
     {
+      "institution": "复旦大学",
+      "is985": true,
+      "is211": true,
+      "summary": "2份资料，2份标准目录可下载",
+      "logo": {
+        "id": "ror-013q1eq08",
+        "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-013q1eq08/12262c2e43a04f4daabbc53e0664a405/512.webp",
+        "variant": "emblem",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fudan_University_Logo.svg",
+        "revision": "12262c2e43a04f4daabbc53e0664a405"
+      },
+      "catalogs": [
+        {
+          "sourceId": "fdu-som-cn-2025",
+          "name": "管理学院国内期刊目录",
+          "edition": "2025修订版",
+          "scope": "仅管理学院国内期刊",
+          "status": "已整理标准目录",
+          "currentness": "2025-02-17审议通过，学院官网2025-07-01发布",
+          "note": "仅限复旦大学管理学院；原文中SCI/SSCI等括号说明不作为刊名。国内A+、A、A-、B按原件保留。 只整理原表具名条目，论文类型、发表时间、预警排除及其他认定条件以原文件为准。",
+          "sourceUrl": "https://www.fdsm.fudan.edu.cn/upec/download_upec/list2.htm",
+          "sources": [
+            {
+              "name": "fdu-som-cn-primary.pdf",
+              "url": "https://www.fdsm.fudan.edu.cn/_upload/article/files/d8/6c/cff700da4f08aa9205c0179f8de2/62358b19-7797-4642-8d59-642c624376c5.pdf"
+            }
+          ],
+          "availability": "ready",
+          "standard": {
+            "download": "./downloads/catalogs/standard/fdu-som-cn-2025-20261113.xlsx",
+            "count": 45,
+            "originalCount": 45,
+            "parts": 1,
+            "conferenceCount": 0
+          }
+        },
+        {
+          "sourceId": "fdu-som-en-2024",
+          "name": "管理学院国际期刊目录",
+          "edition": "2018版·2024-02-27修订",
+          "scope": "仅管理学院国际期刊，保留分学科等级",
+          "status": "已整理标准目录",
+          "currentness": "官网当前公开附件为2018版2024修订，2025-07-01发布",
+          "note": "网页公开时间不是版本年；按Finance、Accounting等原学科分组保留。不可作为全校通用分级。 只整理原表具名条目，论文类型、发表时间、预警排除及其他认定条件以原文件为准。",
+          "sourceUrl": "https://www.fdsm.fudan.edu.cn/upec/download_upec/list2.htm",
+          "sources": [
+            {
+              "name": "fdu-som-en-2024.pdf",
+              "url": "https://www.fdsm.fudan.edu.cn/_upload/article/files/03/fc/36b82da14342a170a5bdfc34ceb2/450e15c5-7ec3-4c8c-af4b-033f49618598.pdf"
+            }
+          ],
+          "availability": "ready",
+          "standard": {
+            "download": "./downloads/catalogs/standard/fdu-som-en-2024-20261113.xlsx",
+            "count": 242,
+            "originalCount": 242,
+            "parts": 1,
+            "conferenceCount": 0
+          }
+        }
+      ]
+    },
+    {
       "institution": "对外经济贸易大学",
       "is985": false,
       "is211": true,
@@ -145,6 +455,45 @@
             "originalCount": 2215,
             "parts": 1,
             "conferenceCount": 11
+          }
+        }
+      ]
+    },
+    {
+      "institution": "浙江大学",
+      "is985": true,
+      "is211": true,
+      "summary": "1份资料，1份标准目录可下载",
+      "logo": {
+        "id": "ror-00a2xv884",
+        "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-00a2xv884/77279400ad564e1893a3858ece88360c/512.webp",
+        "variant": "emblem",
+        "sourceUrl": "https://en.wikipedia.org/wiki/File:Zhejiang_University_Logo.svg",
+        "revision": "77279400ad564e1893a3858ece88360c"
+      },
+      "catalogs": [
+        {
+          "sourceId": "zju-2024-docx",
+          "name": "国内学术期刊分级目录指南",
+          "edition": "2024版",
+          "scope": "国内期刊",
+          "status": "已整理标准目录",
+          "currentness": "浙大官网确认2024版；全文入口需登录",
+          "note": "本地完整DOCX来自丽水学院科研处官方转载，非浙大公开直链；浙大原始通知： https://hr.zju.edu.cn/cn/2025/0728/c28843a3077295/page.htm 。转载时间不能当修订时间。 只整理原表具名条目，论文类型、发表时间、预警排除及其他认定条件以原文件为准。",
+          "sourceUrl": "https://kyc.lsu.edu.cn/2025/1009/c1772a359166/page.htm",
+          "sources": [
+            {
+              "name": "zju-2024-docx.docx",
+              "url": "https://kyc.lsu.edu.cn/_upload/article/files/d2/bd/5660f5cf444a8e97e059e002feaf/9945bef7-3a79-4fa4-8cf6-6d342f3e188f.docx"
+            }
+          ],
+          "availability": "ready",
+          "standard": {
+            "download": "./downloads/catalogs/standard/zju-2024-docx-20261113.xlsx",
+            "count": 1867,
+            "originalCount": 1867,
+            "parts": 1,
+            "conferenceCount": 0
           }
         }
       ]
@@ -293,6 +642,45 @@
       ]
     },
     {
+      "institution": "西安电子科技大学",
+      "is985": false,
+      "is211": true,
+      "summary": "1份资料，1份标准目录可下载",
+      "logo": {
+        "id": "ror-05s92vm98",
+        "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-05s92vm98/4f49b0a7079641fdbd45c4cbdc5ddf09/512.webp",
+        "variant": "emblem",
+        "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E8%A5%BF%E5%AE%89%E7%94%B5%E5%AD%90%E7%A7%91%E6%8A%80%E5%A4%A7%E5%AD%A6%20XDU.svg",
+        "revision": "4f49b0a7079641fdbd45c4cbdc5ddf09"
+      },
+      "catalogs": [
+        {
+          "sourceId": "xidian-2025",
+          "name": "高水平期刊与会议目录（具名条目）",
+          "edition": "2025版（西电学科〔2025〕1号）",
+          "scope": "分学科、研究生学术成果认定",
+          "status": "已整理标准目录",
+          "currentness": "2026通知确认适用",
+          "note": "2025-01-01起正式发表的论文适用；此前按历史版本。原PDF含个人水印，仅供本地核验，不作公开配图。 只整理原表具名条目，论文类型、发表时间、预警排除及其他认定条件以原文件为准。",
+          "sourceUrl": "https://gr.xidian.edu.cn/info/1044/18524.htm",
+          "sources": [
+            {
+              "name": "xidian-2025.pdf",
+              "url": "https://hz.xidian.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1735626794&wbfileid=34A5B5F242749621EF76CED1BE2D2AB3"
+            }
+          ],
+          "availability": "ready",
+          "standard": {
+            "download": "./downloads/catalogs/standard/xidian-2025-20261113.xlsx",
+            "count": 762,
+            "originalCount": 762,
+            "parts": 1,
+            "conferenceCount": 3
+          }
+        }
+      ]
+    },
+    {
       "institution": "中南大学",
       "is985": true,
       "is211": true,
@@ -314,34 +702,6 @@
           "currentness": "未确认最新",
           "note": "全校适用性不作推定。",
           "sourceUrl": "https://bs.csu.edu.cn/__local/8/46/F6/EB0FD53160417DD679B287E4948_E5F040DA_1B08F.pdf",
-          "sources": [],
-          "availability": "pending",
-          "standard": null
-        }
-      ]
-    },
-    {
-      "institution": "中南财经政法大学",
-      "is985": false,
-      "is211": true,
-      "summary": "1份资料，0份标准目录可下载",
-      "logo": {
-        "id": "ror-04yqxxq63",
-        "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-04yqxxq63/eb452fe78ba843538137de537c5c95d9/512.webp?v=black-v1",
-        "variant": "lockup_horizontal",
-        "sourceUrl": "https://www.zuel.edu.cn",
-        "revision": "eb452fe78ba843538137de537c5c95d9"
-      },
-      "catalogs": [
-        {
-          "sourceId": "zuel-2025",
-          "name": "学术期刊指引",
-          "edition": "2025版",
-          "scope": "分中外文、学科；公安学科仅限刑事司法学院",
-          "status": "已取得名单",
-          "currentness": "2025版原件已核对",
-          "note": "发表时CCF A主会长文、JCR Q1、ABS等附加规则须单独处理；预警与退出索引条款优先。2025年底前存在旧版过渡条件。",
-          "sourceUrl": "https://zhxmt.zuel.edu.cn/_upload/article/files/76/77/ac5d9e2344d7aa80ceaf2568c94d/0bb65257-6e41-49bf-9f12-35f221c035fa.pdf",
           "sources": [],
           "availability": "pending",
           "standard": null
@@ -454,62 +814,6 @@
           "currentness": "未确认最新",
           "note": "目录注释引用2019—2020扩展版和2017—2018集刊；不得据2026下载时间称2026版。",
           "sourceUrl": "https://wkc.ouc.edu.cn/_upload/article/files/ec/d9/a3efd432458c9e51e98050c263a9/47320f76-5e07-41b4-b56e-e6723a820f87.pdf",
-          "sources": [],
-          "availability": "pending",
-          "standard": null
-        }
-      ]
-    },
-    {
-      "institution": "中国石油大学（北京）",
-      "is985": false,
-      "is211": true,
-      "summary": "1份资料，0份标准目录可下载",
-      "logo": {
-        "id": "ror-041qf4r12",
-        "url": "https://www.scansci.com/logo-assets/01/logos/images/ror-041qf4r12/2754101169d044ab95e5a5cd50b33c96/325.webp?v=black-v1",
-        "variant": "lockup_horizontal",
-        "sourceUrl": "https://www.cup.edu.cn/",
-        "revision": "2754101169d044ab95e5a5cd50b33c96"
-      },
-      "catalogs": [
-        {
-          "sourceId": "cup-2026",
-          "name": "各学院博士生在学期间发表创新性成果基本要求及附件",
-          "edition": "2026通知",
-          "scope": "12个学院分别适用；博士学位要求",
-          "status": "已取得名单",
-          "currentness": "2026通知已核对",
-          "note": "不能当作全校统一期刊分级；保留学院、年级与成果条件。",
-          "sourceUrl": "https://grs.cup.edu.cn/wenku/www/202606/090933074knf.pdf",
-          "sources": [],
-          "availability": "pending",
-          "standard": null
-        }
-      ]
-    },
-    {
-      "institution": "中国药科大学",
-      "is985": false,
-      "is211": true,
-      "summary": "1份资料，0份标准目录可下载",
-      "logo": {
-        "id": "ror-01sfm2718",
-        "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-01sfm2718/862c8f9940d6432996d105bd4f0ff05e/512.webp",
-        "variant": "emblem",
-        "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E4%B8%AD%E5%9B%BD%E8%8D%AF%E7%A7%91%E5%A4%A7%E5%AD%A6%20CPU.svg",
-        "revision": "862c8f9940d6432996d105bd4f0ff05e"
-      },
-      "catalogs": [
-        {
-          "sourceId": "cpu-2026",
-          "name": "共识期刊及会议目录",
-          "edition": "2026版",
-          "scope": "自然科学、人文社科及计算机会议分表",
-          "status": "已取得名单",
-          "currentness": "2026版已核对",
-          "note": "保留各学科的原分类；有过渡期与预警排除条件。",
-          "sourceUrl": "https://ist.cpu.edu.cn/zcwj/qkml.htm",
           "sources": [],
           "availability": "pending",
           "standard": null
@@ -663,34 +967,6 @@
           "currentness": "页面2025-12-22；非版年",
           "note": "目录XLS未取得；不能称2025新目录。",
           "sourceUrl": "https://design.hust.edu.cn/info/1020/1376.htm",
-          "sources": [],
-          "availability": "pending",
-          "standard": null
-        }
-      ]
-    },
-    {
-      "institution": "华北电力大学",
-      "is985": false,
-      "is211": true,
-      "summary": "1份资料，0份标准目录可下载",
-      "logo": {
-        "id": "ror-04qr5t414",
-        "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-04qr5t414/263ec4c6989b4f13a7cace18702b6fb0/512.webp",
-        "variant": "emblem",
-        "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E5%8D%8E%E5%8C%97%E7%94%B5%E5%8A%9B%E5%A4%A7%E5%AD%A6%20NCEPU.svg",
-        "revision": "263ec4c6989b4f13a7cace18702b6fb0"
-      },
-      "catalogs": [
-        {
-          "sourceId": "ncepu-2025",
-          "name": "高质量学术期刊分级目录",
-          "edition": "2025版；2026起执行",
-          "scope": "仅科学研究类绩效奖励",
-          "status": "已取得名单",
-          "currentness": "2025-12-31发布通知已核对",
-          "note": "原试行版同时废止；含预警整改/再次预警及Article/Review条件。",
-          "sourceUrl": "https://keyan.ncepu.edu.cn/tzgg/872eafe92e2344f997778821d188360a.htm",
           "sources": [],
           "availability": "pending",
           "standard": null
@@ -976,34 +1252,6 @@
       ]
     },
     {
-      "institution": "浙江大学",
-      "is985": true,
-      "is211": true,
-      "summary": "1份资料，0份标准目录可下载",
-      "logo": {
-        "id": "ror-00a2xv884",
-        "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-00a2xv884/77279400ad564e1893a3858ece88360c/512.webp",
-        "variant": "emblem",
-        "sourceUrl": "https://en.wikipedia.org/wiki/File:Zhejiang_University_Logo.svg",
-        "revision": "77279400ad564e1893a3858ece88360c"
-      },
-      "catalogs": [
-        {
-          "sourceId": "zju-2024-docx",
-          "name": "国内学术期刊分级目录指南",
-          "edition": "2024版",
-          "scope": "国内期刊",
-          "status": "取得官网转载名单",
-          "currentness": "浙大官网确认2024版；全文入口需登录",
-          "note": "本地完整DOCX来自丽水学院科研处官方转载，非浙大公开直链；浙大原始通知： https://hr.zju.edu.cn/cn/2025/0728/c28843a3077295/page.htm 。转载时间不能当修订时间。",
-          "sourceUrl": "https://kyc.lsu.edu.cn/2025/1009/c1772a359166/page.htm",
-          "sources": [],
-          "availability": "pending",
-          "standard": null
-        }
-      ]
-    },
-    {
       "institution": "湖南大学",
       "is985": true,
       "is211": true,
@@ -1178,34 +1426,6 @@
           "currentness": "2025修订原件已核对",
           "note": "外文相关目录须以研究生院公布为准；保留作者顺位、专家认定等条件。",
           "sourceUrl": "https://marx.xjtu.edu.cn/__local/4/BF/F0/F6828BDE86E17511E26B0C4A527_5DBB2E64_5B595.pdf",
-          "sources": [],
-          "availability": "pending",
-          "standard": null
-        }
-      ]
-    },
-    {
-      "institution": "西安电子科技大学",
-      "is985": false,
-      "is211": true,
-      "summary": "1份资料，0份标准目录可下载",
-      "logo": {
-        "id": "ror-05s92vm98",
-        "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-05s92vm98/4f49b0a7079641fdbd45c4cbdc5ddf09/512.webp",
-        "variant": "emblem",
-        "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E8%A5%BF%E5%AE%89%E7%94%B5%E5%AD%90%E7%A7%91%E6%8A%80%E5%A4%A7%E5%AD%A6%20XDU.svg",
-        "revision": "4f49b0a7079641fdbd45c4cbdc5ddf09"
-      },
-      "catalogs": [
-        {
-          "sourceId": "xidian-2025",
-          "name": "研究生学术成果相关期刊与会议目录",
-          "edition": "2025版（西电学科〔2025〕1号）",
-          "scope": "分学科、研究生学术成果认定",
-          "status": "已取得名单",
-          "currentness": "2026通知确认适用",
-          "note": "2025-01-01起正式发表的论文适用；此前按历史版本。原PDF含个人水印，仅供本地核验，不作公开配图。",
-          "sourceUrl": "https://gr.xidian.edu.cn/info/1044/18524.htm",
           "sources": [],
           "availability": "pending",
           "standard": null

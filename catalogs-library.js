@@ -61,7 +61,7 @@
   search.addEventListener('input',()=>{limit=12;render();});
   buttons.forEach(button=>button.addEventListener('click',()=>{category=button.dataset.category;limit=12;render();}));
   document.getElementById('moreReferences').addEventListener('click',()=>{limit+=12;render();});
-  fetch('./assets/catalogs/library-index.json?v=20261113-excel-dialog',{credentials:'omit'}).then(r=>{if(!r.ok)throw Error();return r.json();}).then(data=>{
+  fetch('./assets/catalogs/library-index.json?v=20261113-catalog-expansion',{credentials:'omit'}).then(r=>{if(!r.ok)throw Error();return r.json();}).then(data=>{
     if(data.schemaVersion!==1 || !Array.isArray(data.schools))throw Error();
     directories=data.schools.flatMap(school=>school.catalogs.map(item=>({school,item,category:school.is985?'985':school.is211?'211':'other'}))).map((d,index)=>({...d,index})).sort((a,b)=>Number(!a.item.standard)-Number(!b.item.standard));render();
   }).catch(()=>{status.textContent='学校资料暂时无法加载，请稍后重试。';});

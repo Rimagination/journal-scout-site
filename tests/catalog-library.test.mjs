@@ -4,18 +4,21 @@ import {readFile,stat} from 'node:fs/promises';
 import {execFileSync} from 'node:child_process';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
+import {createHash} from 'node:crypto';
+import {createRequire} from 'node:module';
 await import('../catalogs-core.js');
 const core=globalThis.JournalScoutCatalogs;
 const root=fileURLToPath(new URL('../',import.meta.url));
 
 test('library links only to standardized catalogs and marks other sources as pending',async()=>{
   const text=await readFile(path.join(root,'assets/catalogs/library-index.json'),'utf8');
-  const index=JSON.parse(text);assert.equal(index.schools.length,38);
+  const index=JSON.parse(text);assert.equal(index.schools.length,41);
   assert.ok(!text.includes('D:\\')&&!text.includes('C:\\'));
   let downloads=0,pending=0;
   for(const school of index.schools){
     assert.ok(school.catalogs.length);assert.equal(school.download,undefined);
-    assert.equal(school.is211,true);
+    assert.equal(typeof school.is211,'boolean');
+    assert.equal(school.is211,school.institution!=='东北财经大学');
     const logo=new URL(school.logo.url);assert.equal(logo.origin,'https://www.scansci.com');
     assert.match(logo.pathname,/^\/logo-assets\/\d+\/logos\/images\/[a-z0-9-]+\/[a-z0-9]+\/\d+\.webp$/);
     for(const catalog of school.catalogs){
@@ -27,7 +30,7 @@ test('library links only to standardized catalogs and marks other sources as pen
       }else{assert.equal(catalog.availability,'pending');pending++;}
     }
   }
-  assert.equal(downloads,8);assert.equal(pending,39);
+  assert.equal(downloads,18);assert.equal(pending,34);
   const food=index.schools.find(s=>s.institution==='西北农林科技大学').catalogs.filter(c=>c.name.includes('食品学院'));
   assert.equal(food.length,1);assert.equal(food[0].name,'食品学院高质量期刊指导目录');
   assert.equal(food[0].standard.count,156);assert.equal(food[0].standard.parts,1);
@@ -40,6 +43,7 @@ from pathlib import Path
 import openpyxl
 root=Path(sys.argv[1]);index=json.loads((root/'assets/catalogs/standard-index.json').read_text(encoding='utf8'));out=[]
 for item in index['sources'].values():
+ if item.get('buildBatch')=='20261113-expansion': continue
  file=root/item['download'];assert file.stat().st_size<=1024*1024
  book=openpyxl.load_workbook(file,data_only=False)
  for sheet in book:
@@ -94,4 +98,48 @@ print(json.dumps(out,ensure_ascii=False))
     }
   }
   assert.equal(total,11773);assert.equal(sources.length,8);
+});
+
+test('ten added workbooks preserve pinned sources, original grades and exact validated rows',async()=>{
+  await import('../catalogs-excel.js');
+  const xlsx=createRequire(import.meta.url)('../assets/vendor/xlsx-0.20.3.min.js');
+  const excel=globalThis.JournalScoutCatalogExcel;
+  const manifest=JSON.parse(await readFile(path.join(root,'assets/catalogs/expanded-sources.json'),'utf8'));
+  const index=JSON.parse(await readFile(path.join(root,'assets/catalogs/standard-index.json'),'utf8')).sources;
+  assert.equal(manifest.catalogs.length,10);
+  assert.equal(new Set(manifest.catalogs.map(c=>c.institution)).size,9);
+  let total=0;
+  const entriesById=new Map();
+  for(const source of manifest.catalogs){
+    const item=index[source.sourceId];assert.equal(item.buildBatch,'20261113-expansion');
+    const bytes=await readFile(path.join(root,item.download));
+    assert.ok(bytes.length<=1024*1024);
+    const checked=excel.read(bytes.buffer.slice(bytes.byteOffset,bytes.byteOffset+bytes.byteLength),xlsx);
+    assert.deepEqual(checked.errors,[]);
+    assert.equal(checked.entries.length,item.count);
+    assert.equal(createHash('sha256').update(JSON.stringify(checked.entries)).digest('hex'),item.entriesSha256);
+    assert.equal(checked.metadata.institution,source.institution);
+    assert.equal(checked.metadata.edition,source.edition);
+    assert.equal(checked.metadata.scope,source.scope);
+    const book=xlsx.read(bytes,{type:'buffer'});
+    const provenance=xlsx.utils.sheet_to_json(book.Sheets['来源记录'],{header:1}).slice(1);
+    assert.deepEqual(provenance.map(row=>row[3]),source.originals.map(doc=>doc.sha256));
+    for(const doc of source.originals){assert.match(doc.sha256,/^[a-f0-9]{64}$/);assert.match(doc.url,/^https?:\/\//);}
+    for(const row of checked.entries){
+      assert.ok(row.sourceLocation&&row.scope);
+      assert.ok(!/[\r\n]/.test(row.name));
+      if(row.type==='conference')assert.ok(!row.issn&&!row.eissn&&!row.cn);
+    }
+    entriesById.set(source.sourceId,checked.entries);total+=item.count;
+  }
+  assert.equal(total,11656);
+  assert.deepEqual(Object.fromEntries(['A+','A','B+','B','C','D'].map(grade=>[grade,entriesById.get('cau-cem-2025').filter(r=>r.grade===grade).length])),
+    {'A+':6,'A':32,'B+':26,'B':101,'C':114,'D':35});
+  const xdu=entriesById.get('xidian-2025');
+  assert.ok(xdu.some(r=>r.name==='Science'&&r.grade==='顶尖成果A类'));
+  assert.ok(xdu.every(r=>!r.name.includes('童嘉颖')&&!/26200052/.test(r.name)));
+  const broken=entriesById.get('cpu-2026').find(r=>r.name==='EUROPEAN JOURNAL OF ORGANIC CHEMISTRY');
+  assert.equal(broken.issn,'');assert.match(broken.notes,/原表同范围对应多个不同刊名/);
+  assert.equal(entriesById.get('cpu-2026').filter(r=>r.type==='conference').length,59);
+  assert.equal(new Set(entriesById.get('cup-science-2026').map(r=>r.scope)).size,3);
 });

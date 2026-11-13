@@ -266,6 +266,27 @@
       "variant": "emblem",
       "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E8%A5%BF%E5%AE%89%E7%94%B5%E5%AD%90%E7%A7%91%E6%8A%80%E5%A4%A7%E5%AD%A6%20XDU.svg",
       "revision": "4f49b0a7079641fdbd45c4cbdc5ddf09"
+    },
+    "中国农业大学": {
+      "id": "ror-04v3ywz14",
+      "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-04v3ywz14/fba048f38ff640f9ab7b6b31c3371836/512.webp",
+      "variant": "emblem",
+      "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E4%B8%AD%E5%9B%BD%E5%86%9C%E4%B8%9A%E5%A4%A7%E5%AD%A6%20CAU.svg",
+      "revision": "fba048f38ff640f9ab7b6b31c3371836"
+    },
+    "复旦大学": {
+      "id": "ror-013q1eq08",
+      "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-013q1eq08/12262c2e43a04f4daabbc53e0664a405/512.webp",
+      "variant": "emblem",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fudan_University_Logo.svg",
+      "revision": "12262c2e43a04f4daabbc53e0664a405"
+    },
+    "东北财经大学": {
+      "id": "ror-05db1pj03",
+      "url": "https://www.scansci.com/logo-assets/00/logos/images/ror-05db1pj03/ac55f5fa711c4ee9a786b41a5b1c12be/512.webp",
+      "variant": "emblem",
+      "sourceUrl": "https://github.com/Magicdover/China-Universities-2026/blob/419bdc7ce6956fc88c2b70b3979f170b6666f111/assets/logos-new/%E4%B8%9C%E5%8C%97%E8%B4%A2%E7%BB%8F%E5%A4%A7%E5%AD%A6%20DUFE.svg",
+      "revision": "ac55f5fa711c4ee9a786b41a5b1c12be"
     }
   }
 }

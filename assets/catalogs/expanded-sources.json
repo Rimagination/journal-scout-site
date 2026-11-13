@@ -1,0 +1,237 @@
+{
+  "schemaVersion": 1,
+  "checkedOn": "2026-11-13",
+  "competitorReference": "https://www.scigreat.com/s/app/?t=onescholar",
+  "catalogs": [
+    {
+      "sourceId": "cpu-2026",
+      "institution": "中国药科大学",
+      "is985": false,
+      "is211": true,
+      "name": "共识期刊及会议目录",
+      "label": "药大",
+      "edition": "2026版",
+      "scope": "自然科学、计算机会议、人文社科，逐项保留学科范围",
+      "sourceUrl": "https://ist.cpu.edu.cn/zcwj/qkml.htm",
+      "effectiveDate": "",
+      "currentness": "2026版已核对",
+      "notes": "保留各学科的原分类；有过渡期与预警排除条件。 只整理原表具名条目，论文类型、发表时间、预警排除及其他认定条件以原文件为准。",
+      "parser": "cpu-2026",
+      "originals": [
+        {
+          "filename": "cpu-2026.pdf",
+          "url": "https://ist.cpu.edu.cn/__local/C/17/3A/3F844A87446577EF89D53A25842_D42DA90B_12452E.pdf",
+          "sha256": "1769ac2f4b7c3b5f484bb94e978f609a944522f4bafc09a4f4fa652154122b28"
+        }
+      ],
+      "checkedOn": "2026-11-13"
+    },
+    {
+      "sourceId": "xidian-2025",
+      "institution": "西安电子科技大学",
+      "is985": false,
+      "is211": true,
+      "name": "高水平期刊与会议目录（具名条目）",
+      "label": "西电",
+      "edition": "2025版（西电学科〔2025〕1号）",
+      "scope": "分学科、研究生学术成果认定",
+      "sourceUrl": "https://gr.xidian.edu.cn/info/1044/18524.htm",
+      "effectiveDate": "2025-01-01",
+      "currentness": "2026通知确认适用",
+      "notes": "2025-01-01起正式发表的论文适用；此前按历史版本。原PDF含个人水印，仅供本地核验，不作公开配图。 只整理原表具名条目，论文类型、发表时间、预警排除及其他认定条件以原文件为准。",
+      "parser": "xidian-2025",
+      "originals": [
+        {
+          "filename": "xidian-2025.pdf",
+          "url": "https://hz.xidian.edu.cn/system/_content/download.jsp?urltype=news.DownloadAttachUrl&owner=1735626794&wbfileid=34A5B5F242749621EF76CED1BE2D2AB3",
+          "sha256": "343a9d64791ce1058bd3d80a6b5edd813bd14950bf4bc17629d51d6e22caa848"
+        }
+      ],
+      "checkedOn": "2026-11-13"
+    },
+    {
+      "sourceId": "ncepu-2025",
+      "institution": "华北电力大学",
+      "is985": false,
+      "is211": true,
+      "name": "高质量学术期刊分级目录",
+      "label": "华电",
+      "edition": "2025版；2026起执行",
+      "scope": "仅科学研究类绩效奖励",
+      "sourceUrl": "https://keyan.ncepu.edu.cn/tzgg/872eafe92e2344f997778821d188360a.htm",
+      "effectiveDate": "2026-01-01",
+      "currentness": "2025-12-31发布通知已核对",
+      "notes": "原试行版同时废止；含预警整改/再次预警及Article/Review条件。 只整理原表具名条目，论文类型、发表时间、预警排除及其他认定条件以原文件为准。",
+      "parser": "ncepu-2025",
+      "originals": [
+        {
+          "filename": "ncepu-2025.pdf",
+          "url": "https://keyan.ncepu.edu.cn/docs/2026-01/55feaee24a664011bac23dc8aaff5c02.pdf",
+          "sha256": "e189289e307749e9eb5c94d2711241de5a0863d10ae6703accd4b78d348b66f5"
+        }
+      ],
+      "checkedOn": "2026-11-13"
+    },
+    {
+      "sourceId": "zju-2024-docx",
+      "institution": "浙江大学",
+      "is985": true,
+      "is211": true,
+      "name": "国内学术期刊分级目录指南",
+      "label": "浙大",
+      "edition": "2024版",
+      "scope": "国内期刊",
+      "sourceUrl": "https://kyc.lsu.edu.cn/2025/1009/c1772a359166/page.htm",
+      "effectiveDate": "",
+      "currentness": "浙大官网确认2024版；全文入口需登录",
+      "notes": "本地完整DOCX来自丽水学院科研处官方转载，非浙大公开直链；浙大原始通知： https://hr.zju.edu.cn/cn/2025/0728/c28843a3077295/page.htm 。转载时间不能当修订时间。 只整理原表具名条目，论文类型、发表时间、预警排除及其他认定条件以原文件为准。",
+      "parser": "zju-2024-docx",
+      "originals": [
+        {
+          "filename": "zju-2024-docx.docx",
+          "url": "https://kyc.lsu.edu.cn/_upload/article/files/d2/bd/5660f5cf444a8e97e059e002feaf/9945bef7-3a79-4fa4-8cf6-6d342f3e188f.docx",
+          "sha256": "f13394f8c6dbf26262ac5f6b36bc8c7dc0fc50e708a19b4dbe1291935b6dc642"
+        }
+      ],
+      "checkedOn": "2026-11-13"
+    },
+    {
+      "sourceId": "zuel-2025",
+      "institution": "中南财经政法大学",
+      "is985": false,
+      "is211": true,
+      "name": "学术期刊指引",
+      "label": "中南财大",
+      "edition": "2025版",
+      "scope": "中文与英文学术期刊，按原学科分别认定",
+      "sourceUrl": "https://zhxmt.zuel.edu.cn/_upload/article/files/76/77/ac5d9e2344d7aa80ceaf2568c94d/0bb65257-6e41-49bf-9f12-35f221c035fa.pdf",
+      "effectiveDate": "2025-07-02",
+      "currentness": "2025版公开原件已核对",
+      "notes": "发表时CCF A主会长文、JCR Q1、ABS等附加规则须单独处理；预警与退出索引条款优先。2025年底前存在旧版过渡条件。 只整理原表具名条目，论文类型、发表时间、预警排除及其他认定条件以原文件为准。",
+      "parser": "zuel-2025",
+      "originals": [
+        {
+          "filename": "zuel-2025.pdf",
+          "url": "https://zhxmt.zuel.edu.cn/_upload/article/files/76/77/ac5d9e2344d7aa80ceaf2568c94d/0bb65257-6e41-49bf-9f12-35f221c035fa.pdf",
+          "sha256": "5a9495c48d4d57fb2c1fdaccdd796c72ff32e42ac0ac443d707cfa095db8327b"
+        }
+      ],
+      "checkedOn": "2026-11-13"
+    },
+    {
+      "sourceId": "cau-cem-2025",
+      "institution": "中国农业大学",
+      "is985": true,
+      "is211": true,
+      "name": "经济管理学院高水平学术期刊目录",
+      "label": "中农经管",
+      "edition": "2025版",
+      "scope": "仅经济管理学院",
+      "sourceUrl": "https://cem.cau.edu.cn/art/2025/5/20/art_56824_1131144.html",
+      "effectiveDate": "",
+      "currentness": "当前可取得的完整公开名单为2025版；2026年会议另提及工商学科目录，尚未取得其公开完整名单",
+      "notes": "保留A+、A、B+、B、C、D等级；未具名的其他SSCI/SCI认定规则不展开。原刊号错误仅记录，不猜测改号。 只整理原表具名条目，论文类型、发表时间、预警排除及其他认定条件以原文件为准。 2026年1月19日学院会议审议了工商学科高水平期刊目录，未取得其完整公开附件，不能宣称本包已包含该次修订。会议来源：https://cem.cau.edu.cn/art/2026/1/20/art_36255_1097377.html",
+      "parser": "cau-cem-2025",
+      "originals": [
+        {
+          "filename": "cau-cem-2025.pdf",
+          "url": "http://cem.cau.edu.cn/module/download/downfile.jsp?classid=0&filename=af9fd5de7ae741dba8756c7cf8be0c43.pdf",
+          "sha256": "5c89d975a6b72b7093d57e9d6b9f5b7e5657e794d9913cbfcb74a0e22ca79512"
+        }
+      ],
+      "checkedOn": "2026-11-13"
+    },
+    {
+      "sourceId": "dufe-2025",
+      "institution": "东北财经大学",
+      "is985": false,
+      "is211": false,
+      "name": "中文与外文学术期刊目录",
+      "label": "东北财大",
+      "edition": "2025年修订；2026-01-01起施行",
+      "scope": "中文与外文学术期刊分列",
+      "sourceUrl": "https://kyc.dufe.edu.cn/content_101111.html",
+      "effectiveDate": "2026-01-01",
+      "currentness": "2025修订原件与2026-09-09研究生院执行通知已核对",
+      "notes": "中文、英文分级原样保留；降档、预警自动剔除和其他动态认定条件以原文件为准。仅整理具名期刊，不展开D/E类集合规则。 只整理原表具名条目，论文类型、发表时间、预警排除及其他认定条件以原文件为准。",
+      "parser": "dufe-2025",
+      "originals": [
+        {
+          "filename": "dufe-2025-primary.pdf",
+          "url": "https://kyc.dufe.edu.cn/file/0d184322-abf4-11f1-86fd-005056a49984/%E4%B8%9C%E5%8C%97%E8%B4%A2%E7%BB%8F%E5%A4%A7%E5%AD%A6%E5%AD%A6%E6%9C%9F%E5%88%8A%E7%9B%AE%E5%BD%95%EF%BC%882025%E5%B9%B4%E4%BF%AE%E8%AE%A2%EF%BC%89.pdf",
+          "sha256": "d2cc342a372607e7dd9c59c202c3001dfa4d4cef31c4acc8fd2edd7c4598cf3b"
+        }
+      ],
+      "checkedOn": "2026-11-13"
+    },
+    {
+      "sourceId": "fdu-som-cn-2025",
+      "institution": "复旦大学",
+      "is985": true,
+      "is211": true,
+      "name": "管理学院国内期刊目录",
+      "label": "复旦管院",
+      "edition": "2025修订版",
+      "scope": "仅管理学院国内期刊",
+      "sourceUrl": "https://www.fdsm.fudan.edu.cn/upec/download_upec/list2.htm",
+      "effectiveDate": "",
+      "currentness": "2025-02-17审议通过，学院官网2025-07-01发布",
+      "notes": "仅限复旦大学管理学院；原文中SCI/SSCI等括号说明不作为刊名。国内A+、A、A-、B按原件保留。 只整理原表具名条目，论文类型、发表时间、预警排除及其他认定条件以原文件为准。",
+      "parser": "fdu-som-cn-2025",
+      "originals": [
+        {
+          "filename": "fdu-som-cn-primary.pdf",
+          "url": "https://www.fdsm.fudan.edu.cn/_upload/article/files/d8/6c/cff700da4f08aa9205c0179f8de2/62358b19-7797-4642-8d59-642c624376c5.pdf",
+          "sha256": "af363f1792484a56bb025c59095eda64c712f70fefc3013507761fbad8f9d0b2"
+        }
+      ],
+      "checkedOn": "2026-11-13"
+    },
+    {
+      "sourceId": "fdu-som-en-2024",
+      "institution": "复旦大学",
+      "is985": true,
+      "is211": true,
+      "name": "管理学院国际期刊目录",
+      "label": "复旦管院",
+      "edition": "2018版·2024-02-27修订",
+      "scope": "仅管理学院国际期刊，保留分学科等级",
+      "sourceUrl": "https://www.fdsm.fudan.edu.cn/upec/download_upec/list2.htm",
+      "effectiveDate": "",
+      "currentness": "官网当前公开附件为2018版2024修订，2025-07-01发布",
+      "notes": "网页公开时间不是版本年；按Finance、Accounting等原学科分组保留。不可作为全校通用分级。 只整理原表具名条目，论文类型、发表时间、预警排除及其他认定条件以原文件为准。",
+      "parser": "fdu-som-en-2024",
+      "originals": [
+        {
+          "filename": "fdu-som-en-2024.pdf",
+          "url": "https://www.fdsm.fudan.edu.cn/_upload/article/files/03/fc/36b82da14342a170a5bdfc34ceb2/450e15c5-7ec3-4c8c-af4b-033f49618598.pdf",
+          "sha256": "53e60d6be19d295f2d7087e21a338e9b6c4f77549990f25caebdd6147575a5d7"
+        }
+      ],
+      "checkedOn": "2026-11-13"
+    },
+    {
+      "sourceId": "cup-science-2026",
+      "institution": "中国石油大学（北京）",
+      "is985": false,
+      "is211": true,
+      "name": "理学院高水平期刊目录",
+      "label": "中石大理院",
+      "edition": "2026版",
+      "scope": "仅理学院：化学、应用数学与能源数据科学、能源物理科学与技术",
+      "sourceUrl": "https://grs.cup.edu.cn/wenku/www/202606/090933074knf.pdf",
+      "effectiveDate": "",
+      "currentness": "2026年博士生创新成果要求附件原件已核对",
+      "notes": "仅提取原件PDF第72–85页理学院三专业的具名A/B期刊。仅服务相应博士学位创新成果认定；前置条件与署名要求须查看原件第70–85页。未展开中科院分区、学会目录及SCI/EI动态规则。 只整理原表具名条目，论文类型、发表时间、预警排除及其他认定条件以原文件为准。",
+      "parser": "cup-science-2026",
+      "originals": [
+        {
+          "filename": "cup-2026.pdf",
+          "url": "https://grs.cup.edu.cn/wenku/www/202606/090933074knf.pdf",
+          "sha256": "25faf30638a1aec7ea273c758efca67ef00ed0c4c60d5561ab144d42ed5621aa"
+        }
+      ],
+      "checkedOn": "2026-11-13"
+    }
+  ]
+}

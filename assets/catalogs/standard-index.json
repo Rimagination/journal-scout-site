@@ -122,6 +122,176 @@
         "nwafu-food-b-2025"
       ],
       "download": "./downloads/catalogs/standard/nwafu-food-2025-20261113.xlsx"
+    },
+    "cpu-2026": {
+      "sourceId": "cpu-2026",
+      "count": 3088,
+      "originalCount": 3089,
+      "parts": 1,
+      "files": [
+        "cpu-2026-20261113.xlsx"
+      ],
+      "conferenceCount": 59,
+      "sourceSha256": "1769ac2f4b7c3b5f484bb94e978f609a944522f4bafc09a4f4fa652154122b28",
+      "sourceIds": [
+        "cpu-2026"
+      ],
+      "download": "./downloads/catalogs/standard/cpu-2026-20261113.xlsx",
+      "buildBatch": "20261113-expansion",
+      "entriesSha256": "f08db6c71608f3f31d10ff6f3232edd54adf52b34b6c94d80a9386429cc0259b"
+    },
+    "xidian-2025": {
+      "sourceId": "xidian-2025",
+      "count": 762,
+      "originalCount": 762,
+      "parts": 1,
+      "files": [
+        "xidian-2025-20261113.xlsx"
+      ],
+      "conferenceCount": 3,
+      "sourceSha256": "343a9d64791ce1058bd3d80a6b5edd813bd14950bf4bc17629d51d6e22caa848",
+      "sourceIds": [
+        "xidian-2025"
+      ],
+      "download": "./downloads/catalogs/standard/xidian-2025-20261113.xlsx",
+      "buildBatch": "20261113-expansion",
+      "entriesSha256": "37a241d7b86f9cedd571c0085caa7819ca7f73441b3e2013df33c7e2b05f6380"
+    },
+    "ncepu-2025": {
+      "sourceId": "ncepu-2025",
+      "count": 2221,
+      "originalCount": 2221,
+      "parts": 1,
+      "files": [
+        "ncepu-2025-20261113.xlsx"
+      ],
+      "conferenceCount": 32,
+      "sourceSha256": "e189289e307749e9eb5c94d2711241de5a0863d10ae6703accd4b78d348b66f5",
+      "sourceIds": [
+        "ncepu-2025"
+      ],
+      "download": "./downloads/catalogs/standard/ncepu-2025-20261113.xlsx",
+      "buildBatch": "20261113-expansion",
+      "entriesSha256": "0037d6cbd762ae2df91c7116d88b7e47842cee1241effc642373cff6f6532128"
+    },
+    "zju-2024-docx": {
+      "sourceId": "zju-2024-docx",
+      "count": 1867,
+      "originalCount": 1867,
+      "parts": 1,
+      "files": [
+        "zju-2024-docx-20261113.xlsx"
+      ],
+      "conferenceCount": 0,
+      "sourceSha256": "f13394f8c6dbf26262ac5f6b36bc8c7dc0fc50e708a19b4dbe1291935b6dc642",
+      "sourceIds": [
+        "zju-2024-docx"
+      ],
+      "download": "./downloads/catalogs/standard/zju-2024-docx-20261113.xlsx",
+      "buildBatch": "20261113-expansion",
+      "entriesSha256": "f2931d6f655f18b31a228f499f58b0f207e48dc0922304e5999d0b514bbe525e"
+    },
+    "zuel-2025": {
+      "sourceId": "zuel-2025",
+      "count": 1685,
+      "originalCount": 1685,
+      "parts": 1,
+      "files": [
+        "zuel-2025-20261113.xlsx"
+      ],
+      "conferenceCount": 15,
+      "sourceSha256": "5a9495c48d4d57fb2c1fdaccdd796c72ff32e42ac0ac443d707cfa095db8327b",
+      "sourceIds": [
+        "zuel-2025"
+      ],
+      "download": "./downloads/catalogs/standard/zuel-2025-20261113.xlsx",
+      "buildBatch": "20261113-expansion",
+      "entriesSha256": "59b4f20299539a378fc4538416656e8f7715df8f049e11264d9450722160d735"
+    },
+    "cau-cem-2025": {
+      "sourceId": "cau-cem-2025",
+      "count": 314,
+      "originalCount": 314,
+      "parts": 1,
+      "files": [
+        "cau-cem-2025-20261113.xlsx"
+      ],
+      "conferenceCount": 0,
+      "sourceSha256": "5c89d975a6b72b7093d57e9d6b9f5b7e5657e794d9913cbfcb74a0e22ca79512",
+      "sourceIds": [
+        "cau-cem-2025"
+      ],
+      "download": "./downloads/catalogs/standard/cau-cem-2025-20261113.xlsx",
+      "buildBatch": "20261113-expansion",
+      "entriesSha256": "2eb0939b67fc80f030aed0600f69e040f7e916c43561e9281185bcbfede4898d"
+    },
+    "dufe-2025": {
+      "sourceId": "dufe-2025",
+      "count": 1172,
+      "originalCount": 1173,
+      "parts": 1,
+      "files": [
+        "dufe-2025-20261113.xlsx"
+      ],
+      "conferenceCount": 0,
+      "sourceSha256": "d2cc342a372607e7dd9c59c202c3001dfa4d4cef31c4acc8fd2edd7c4598cf3b",
+      "sourceIds": [
+        "dufe-2025"
+      ],
+      "download": "./downloads/catalogs/standard/dufe-2025-20261113.xlsx",
+      "buildBatch": "20261113-expansion",
+      "entriesSha256": "be23441a943881ef76efde8a67a5c1b3dc3054e3037b3076cc12bddd8033e7c8"
+    },
+    "fdu-som-cn-2025": {
+      "sourceId": "fdu-som-cn-2025",
+      "count": 45,
+      "originalCount": 45,
+      "parts": 1,
+      "files": [
+        "fdu-som-cn-2025-20261113.xlsx"
+      ],
+      "conferenceCount": 0,
+      "sourceSha256": "af363f1792484a56bb025c59095eda64c712f70fefc3013507761fbad8f9d0b2",
+      "sourceIds": [
+        "fdu-som-cn-2025"
+      ],
+      "download": "./downloads/catalogs/standard/fdu-som-cn-2025-20261113.xlsx",
+      "buildBatch": "20261113-expansion",
+      "entriesSha256": "ea175f60f72bbb9e8615ec5645a27522852a5d03f31b6b5bf0c5ed6563686981"
+    },
+    "fdu-som-en-2024": {
+      "sourceId": "fdu-som-en-2024",
+      "count": 242,
+      "originalCount": 242,
+      "parts": 1,
+      "files": [
+        "fdu-som-en-2024-20261113.xlsx"
+      ],
+      "conferenceCount": 0,
+      "sourceSha256": "53e60d6be19d295f2d7087e21a338e9b6c4f77549990f25caebdd6147575a5d7",
+      "sourceIds": [
+        "fdu-som-en-2024"
+      ],
+      "download": "./downloads/catalogs/standard/fdu-som-en-2024-20261113.xlsx",
+      "buildBatch": "20261113-expansion",
+      "entriesSha256": "8c6276d3fd168c1a6a04f875be43c6699f8cc9e0f5122bc870c07b7c7de799e3"
+    },
+    "cup-science-2026": {
+      "sourceId": "cup-science-2026",
+      "count": 260,
+      "originalCount": 260,
+      "parts": 1,
+      "files": [
+        "cup-science-2026-20261113.xlsx"
+      ],
+      "conferenceCount": 0,
+      "sourceSha256": "25faf30638a1aec7ea273c758efca67ef00ed0c4c60d5561ab144d42ed5621aa",
+      "sourceIds": [
+        "cup-science-2026"
+      ],
+      "download": "./downloads/catalogs/standard/cup-science-2026-20261113.xlsx",
+      "buildBatch": "20261113-expansion",
+      "entriesSha256": "effe3254cf066257fb1b6a5da00d956ac50de191bf4548e4e5f2c135436e2091"
     }
   }
 }

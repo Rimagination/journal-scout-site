@@ -195,6 +195,16 @@ def prepare():
 def publish():
     subprocess.run(['node', str(SITE / 'scripts/build-standard-catalogs.mjs')], cwd=SITE, check=True)
     manifest = json.loads((WORK / 'manifest.json').read_text(encoding='utf-8'))
+    # Rebuilding the first batch must not remove independently reviewed additions.
+    expanded_path = SITE / 'assets/catalogs/expanded-sources.json'
+    published_index = SITE / 'assets/catalogs/standard-index.json'
+    if expanded_path.exists() and published_index.exists():
+        previous = json.loads(published_index.read_text(encoding='utf-8'))['sources']
+        expanded = json.loads(expanded_path.read_text(encoding='utf-8'))['catalogs']
+        additions = {item['sourceId']: previous[item['sourceId']] for item in expanded
+                     if item['sourceId'] in previous and item['sourceId'] not in manifest['sources']}
+    else:
+        additions = {}
     downloads = SITE / 'downloads/catalogs/standard'
     downloads.mkdir(parents=True, exist_ok=True)
     only = sys.argv[sys.argv.index('--only') + 1] if '--only' in sys.argv else None
@@ -209,6 +219,7 @@ def publish():
         review = json.loads((folder / '整理记录.json').read_text(encoding='utf-8'))
         workbook(package, downloads / Path(item['download']).name, review)
     template(SITE / 'assets/templates/catalog-upload-v1.xlsx')
+    manifest['sources'].update(additions)
     (SITE / 'assets/catalogs/standard-index.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2), encoding='utf-8')
     subprocess.run(['python', str(SITE / 'scripts/build-reference-library.py')], cwd=SITE, check=True)
     print(json.dumps({'standardCatalogs': len(manifest['sources']), 'rows': sum(s['count'] for s in manifest['sources'].values()),
