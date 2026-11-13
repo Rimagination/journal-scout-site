@@ -82,8 +82,8 @@
 .install-option--offline.is-open { border-color: #87a8c7; background: #edf4fa; box-shadow: 0 0 0 2px rgba(70,119,164,.08); }
 .install-option__copy { display: grid; grid-area: copy; gap: 4px; }
 .install-option__copy strong { color: #29453c; font-size: 13px; }
-.install-option__brand { display: flex; align-items: center; gap: 8px; }
-.install-option__brand img { flex: none; width: 24px; height: 24px; object-fit: contain; }
+.install-option--branded { grid-template-areas: "mark copy action toggle"; grid-template-columns: 36px minmax(0, 1fr) auto auto; column-gap: 11px; padding: 15px; }
+.install-option--branded > .browser-mark { grid-area: mark; }
 .install-option__copy span { color: #697c71; font-size: 11px; line-height: 1.65; }
 .install-option__action { grid-area: action; padding: 8px 10px; border: 1px solid #b8dbc9; border-radius: 7px; background: #eff8f1; color: #176b59; font-size: 12px; font-weight: 700; line-height: 1.3; text-decoration: none; white-space: nowrap; }
 .install-option__action:hover { background: #e1f2e7; }
@@ -250,6 +250,9 @@
 @media (min-width: 761px) and (max-width: 1050px) {
   .browser-guides { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
+@media (min-width: 761px) and (max-width: 900px) {
+  .zotero-install-entry__sources { grid-template-columns: 1fr; }
+}
 @media (max-width: 760px) {
   .zotero-install-entry__card { flex-wrap: wrap; }
   .zotero-install-entry__copy { flex-basis: calc(100% - 64px); }
@@ -292,6 +295,7 @@
   .browser-guide { padding: 10px 14px; }
   .browser-guide__body { padding: 16px; }
   .install-option { grid-template-areas: "copy toggle" "action action"; grid-template-columns: minmax(0, 1fr) auto; }
+  .install-option--branded { grid-template-areas: "mark copy toggle" ". action action"; grid-template-columns: 36px minmax(0, 1fr) auto; }
   .install-option__action { justify-self: start; }
   .release-history { padding: 35px 0 48px; }
   .release-history__list li { grid-template-columns: 1fr; gap: 7px; }
