@@ -1,5 +1,5 @@
 {
-  "manualVersion": "0.1.11",
+  "manualVersion": "0.1.11.1",
   "sites": [
     {
       "name": "CPS Journals（中国物理学会）",
@@ -170,7 +170,7 @@
         "kns.cnki.net"
       ],
       "pages": "搜索结果、期刊论文详情",
-      "note": "",
+      "note": "支持常见校园代理和 WebVPN 的域名、路径改写；需授权当前代理网站或开启全部 HTTPS 网站识别。",
       "keywords": "CNKI",
       "language": "zh"
     },
