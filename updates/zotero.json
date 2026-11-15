@@ -3,20 +3,9 @@
     "journal-scout@scansci.com": {
       "updates": [
         {
-          "version": "0.1.3",
-          "update_link": "https://journal.scansci.com/downloads/journal-scout-zotero-0.1.3.xpi",
-          "update_hash": "sha256:2636324f574a246d840cb1c50e126cc21728e1409a753e09db81326b9459d958",
-          "applications": {
-            "zotero": {
-              "strict_min_version": "7.0",
-              "strict_max_version": "10.0.*"
-            }
-          }
-        },
-        {
-          "version": "0.1.2",
-          "update_link": "https://journal.scansci.com/downloads/journal-scout-zotero-0.1.2.xpi",
-          "update_hash": "sha256:be70cce053c5c5ef5d83bd848c10f7a5c3983834570274b96607f2bc14db6754",
+          "version": "0.1.3.1",
+          "update_link": "https://journal.scansci.com/downloads/journal-scout-zotero-0.1.3.1.xpi",
+          "update_hash": "sha256:5204f0468d49c80ff700c304002303b6039dae6a9bb8e5c3450836e5ea7ac04a",
           "applications": {
             "zotero": {
               "strict_min_version": "7.0",
